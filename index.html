@@ -1,0 +1,2514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Key Global Projects – Inherit Corporate Values, Achieve a Global Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* =============================================
+       DESIGN SYSTEM — mirrors VisaPOS exactly
+       Navy: #0d1f4e  |  Red: #d02020
+       White cards on light-gray bg, dark navy sections
+    ============================================= */
+    :root {
+      --navy:   #0d1f4e;
+      --red:    #d02020;
+      --reddark:#aa1818;
+      --white:  #ffffff;
+      --offbg:  #f2f4f8;
+      --gray:   #666666;
+      --border: #e2e6ef;
+      --f: 'Nunito Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f); color: #222; overflow-x: hidden; background: #fff; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .dot { cursor: pointer; transition: opacity .2s; }
+
+    /* ── shared section labels (match VisaPOS exactly) ── */
+    .lbl   { color: var(--red); font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .htitle{ font-size: 40px; font-weight: 900; color: var(--navy); line-height: 1.15; margin-bottom: 0; }
+    .htitle span { color: var(--red); }
+    .sec-head { text-align: center; margin-bottom: 48px; }
+
+    /* ── buttons — VisaPOS pill with circle arrow ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 28px; border-radius: 40px;
+      font-weight: 800; font-size: 14px; text-transform: uppercase;
+      letter-spacing: .5px; cursor: pointer; border: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-red   { background: var(--red);   color: #fff; box-shadow: 0 6px 18px rgba(208,32,32,.35); }
+    .btn-red:hover { background: var(--reddark); transform: translateY(-2px); }
+    .btn-navy  { background: var(--navy);  color: #fff; }
+    .btn-navy:hover { background: #162861; transform: translateY(-2px); }
+    .btn .arr  { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .btn-outline-red {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid var(--red); color: var(--red);
+      padding: 9px 20px; border-radius: 40px;
+      font-weight: 800; font-size: 13px; transition: all .2s;
+    }
+    .btn-outline-red:hover { background: var(--red); color: #fff; }
+
+    /* ══════════════════════════════════════════
+        CHATBOT WIDGET
+    ══════════════════════════════════════════ */
+    #chat-widget {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9998;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+    }
+    #chat-bubble {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--red); color: #fff; font-size: 24px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 6px 24px rgba(208,32,32,.45);
+      transition: transform .2s, box-shadow .2s;
+      animation: pulsePlay 2.5s ease-in-out infinite;
+    }
+    #chat-bubble:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(208,32,32,.55); }
+    #chat-box {
+      width: 360px; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 48px rgba(13,31,78,.22);
+      display: none; flex-direction: column;
+      background: #fff; max-height: 520px;
+    }
+    #chat-box.open { display: flex; }
+    #chat-header {
+      background: var(--navy); padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    #chat-header .ch-left { display: flex; align-items: center; gap: 12px; }
+    #chat-header .ch-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--red); display: flex; align-items: center;
+      justify-content: center; font-size: 16px; color: #fff;
+    }
+    #chat-header .ch-info .ch-name { color: #fff; font-weight: 900; font-size: 14px; }
+    #chat-header .ch-info .ch-status {
+      color: rgba(255,255,255,.6); font-size: 12px; display: flex;
+      align-items: center; gap: 5px;
+    }
+    #chat-header .ch-info .ch-status::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; display: inline-block;
+    }
+    #chat-close {
+      color: rgba(255,255,255,.6); font-size: 18px; cursor: pointer;
+      transition: color .2s;
+    }
+    #chat-close:hover { color: #fff; }
+    #chat-messages {
+      flex: 1; overflow-y: auto; padding: 18px 16px;
+      display: flex; flex-direction: column; gap: 12px;
+      background: #f8f9fc;
+    }
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+    .cm { display: flex; gap: 8px; align-items: flex-end; }
+    .cm.bot { justify-content: flex-start; }
+    .cm.user { justify-content: flex-end; }
+    .cm-avatar {
+      width: 28px; height: 28px; border-radius: 50%; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: #fff; flex-shrink: 0;
+    }
+    .cm-bubble {
+      max-width: 78%; padding: 10px 14px; border-radius: 16px;
+      font-size: 13.5px; line-height: 1.6;
+    }
+    .cm.bot .cm-bubble {
+      background: #fff; color: #222;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 8px rgba(13,31,78,.07);
+    }
+    .cm.user .cm-bubble {
+      background: var(--red); color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .cm-typing { display: flex; gap: 4px; padding: 12px 14px; }
+    .cm-typing span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gray); display: inline-block;
+      animation: typingDot 1.2s ease-in-out infinite;
+    }
+    .cm-typing span:nth-child(2) { animation-delay: .2s; }
+    .cm-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes typingDot {
+      0%,60%,100% { transform: translateY(0); opacity: .4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+    #chat-footer {
+      padding: 12px 14px; background: #fff;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 8px; align-items: center;
+    }
+    #chat-input {
+      flex: 1; border: 1.5px solid var(--border); border-radius: 24px;
+      padding: 10px 16px; font-size: 13.5px; font-family: var(--f);
+      outline: none; color: #222; transition: border-color .2s;
+    }
+    #chat-input:focus { border-color: var(--red); }
+    #chat-send {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--red); color: #fff; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 14px; transition: background .2s;
+      flex-shrink: 0;
+    }
+    #chat-send:hover { background: var(--reddark); }
+    #chat-quick-replies {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      padding: 0 16px 10px;
+    }
+    .qr-btn {
+      font-size: 12px; font-weight: 700; padding: 5px 12px;
+      border-radius: 20px; border: 1.5px solid var(--red);
+      color: var(--red); background: #fff; cursor: pointer;
+      transition: all .2s; font-family: var(--f);
+    }
+    .qr-btn:hover { background: var(--red); color: #fff; }
+    
+    /* ══════════════════════════════════════════
+       1. TOPBAR
+    ══════════════════════════════════════════ */
+    .topbar {
+      background: var(--navy);
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 0;
+    }
+    .topbar .inner {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .topbar-left { display: flex; gap: 28px; flex-wrap: wrap; }
+    .topbar-left span { display: flex; align-items: center; gap: 7px; }
+    .topbar-left i { color: var(--red); }
+    .topbar-left a { color: inherit; }
+    .topbar-right {
+      display: flex;
+      gap: 0;
+      background: var(--red);
+      overflow: visible;
+      clip-path: polygon(28px 0%, 100% 0%, 100% 100%, 0% 100%);
+      padding-left: 28px;
+      margin-right: -28px;
+      align-self: stretch;
+    }
+    .topbar-right a {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 14px; transition: background .2s;
+      border-right: 1px solid rgba(255,255,255,.15);
+    }
+    .topbar-right a:last-child { border-right: none; }
+    .topbar-right a:hover { background: rgba(255,255,255,.18); }
+
+    /* ══════════════════════════════════════════
+       2. NAVBAR
+    ══════════════════════════════════════════ */
+    .navbar {
+      background: #fff; position: sticky; top: 0; z-index: 999;
+      box-shadow: 0 2px 20px rgba(13,31,78,.1);
+    }
+    .navbar .inner {
+      display: flex; align-items: center;
+      justify-content: space-between; padding: 18px 16px; gap: 8px;
+      max-width: 1400px; margin: 0 auto;
+    }
+    /* Logo */
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 48px; height: 48px; background: var(--navy);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; color: #fff; font-size: 22px;
+    }
+    .logo-text { line-height: 1.1; }
+    .logo-text .en {
+      font-size: 24px; font-weight: 900; color: var(--navy);
+      letter-spacing: -.3px; text-transform: uppercase;
+    }
+    .logo-text .en span { color: var(--red); }
+    .logo-text .zh { font-size: 11px; color: var(--gray); letter-spacing: 2px; font-weight: 700; }
+    /* Nav */
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 800; color: var(--navy);
+      padding: 8px 14px; text-transform: uppercase; letter-spacing: .3px;
+      position: relative; transition: color .2s;
+    }
+    .nav-links a.active { color: var(--red); }
+    .nav-links a:hover { color: var(--red); }
+    .nav-search { font-size: 18px; color: var(--navy); cursor: pointer; padding: 8px; margin-left: 4px; }
+    .nav-search:hover { color: var(--red); }
+
+    .topbar .wrap,
+    .navbar .wrap {
+      max-width: 1350px;
+      padding: 0 28px;
+    }
+
+   /* ══════════════════════════════════════════
+      3. HERO SLIDER
+    ══════════════════════════════════════════ */
+    .hero {
+      min-height: 580px; position: relative; overflow: hidden;
+    }
+    .hero-slide {
+      position: absolute; inset: 0;
+      display: flex; align-items: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      z-index: 0;
+    }
+    .hero-slide.active {
+      opacity: 1; visibility: visible; z-index: 1;
+      position: relative; min-height: 580px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      background-repeat: no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(13,31,78,.93) 45%, rgba(13,31,78,.6) 75%, rgba(13,31,78,.25) 100%);
+    }
+    .hero .wrap { width: 100%; position: relative; z-index: 2; }
+    .hero-content {
+      max-width: 580px; padding: 90px 0;
+      margin-left: 0; margin-right: auto;
+    }
+    .hero-badge {
+      color: var(--red); font-weight: 900; font-size: 14px;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 58px; font-weight: 900; color: #fff;
+      line-height: 1.05; margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--red); }
+    .hero p {
+      color: rgba(255,255,255,.8); font-size: 15px; line-height: 1.75;
+      margin-bottom: 36px; max-width: 500px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* Hero text animation base — hidden by default */
+    .hero-anim {
+      opacity: 0;
+      transform: translateY(36px);
+    }
+
+    /* Arrows */
+    .hero-arr {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.3); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; cursor: pointer; font-size: 16px;
+      transition: all .2s; z-index: 10;
+    }
+    .hero-arr:hover { background: var(--red); border-color: var(--red); }
+    .hero-arr.left { left: 20px; }
+    .hero-arr.right { right: 20px; }
+
+    /* Dots */
+    .hero-dots {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 10;
+    }
+    .hero-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(255,255,255,.4); cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+    .hero-dot.active { background: var(--red); transform: scale(1.3); }
+
+    /* ══════════════════════════════════════════
+       4. FEATURE CARDS (navy/red/navy)
+    ══════════════════════════════════════════ */
+
+    .fcards { padding: 72px 0; background: #fff; }
+    .fcards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+
+    .fcard {
+      background: var(--navy); border-radius: 14px;
+      padding: 36px 30px;
+      transition: transform .3s ease, background .6s ease, box-shadow .3s ease;
+    }
+    .fcard:nth-child(2) { background: var(--red); }
+    .fcard:hover { transform: translateY(-6px); }
+    .fcard:nth-child(1):hover,
+    .fcard:nth-child(3):hover { background: var(--red); }
+
+    .fcard-icon-box {
+      width: 58px; height: 58px; border-radius: 12px;
+      background: var(--red); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 24px;
+      transition: background .6s ease;
+      box-shadow: 0 4px 14px rgba(0,0,0,.2);
+    }
+    .fcard-icon-box i { font-size: 24px; color: #fff; }
+
+    .fcard:nth-child(2) .fcard-icon-box { background: var(--navy); }
+
+    .fcard:nth-child(1):hover .fcard-icon-box,
+    .fcard:nth-child(3):hover .fcard-icon-box { background: var(--navy) !important; }
+
+    .fcard h3 { color: #fff; font-size: 20px; font-weight: 900; margin-bottom: 12px; }
+    .fcard p  { color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.7; }
+
+    /* ══════════════════════════════════════════
+       5. ABOUT — split layout with red-corner image
+    ══════════════════════════════════════════ */
+    .about { padding: 90px 0; background: #fff; }
+    .split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    /* image frame: red top-left corner + dotted bottom-right */
+    .img-box { position: relative; }
+    .img-box::before {
+      content: ''; position: absolute;
+      top: -16px; left: 0; width: 44%; height: 50%;
+      border-top: 6px solid var(--red); border-left: 6px solid var(--red);
+      border-radius: 4px 0 0 0; z-index: 0;
+    }
+    .img-box::after {
+      content: ''; position: absolute;
+      bottom: -14px; right: -14px;
+      width: 42%; height: 42%;
+      background: radial-gradient(circle, var(--red) 1.5px, transparent 1.5px);
+      background-size: 12px 12px; z-index: 0;
+    }
+    .img-ph {
+      position: relative; z-index: 1;
+      width: 100%; height: 460px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; overflow: hidden;
+    }
+    /* colored placeholder backgrounds */
+    .bg-navy { background: linear-gradient(135deg,#1a3070,#0d1f4e); }
+    .bg-red   { background: linear-gradient(135deg,#e03040,#a01820); }
+    .bg-blue  { background: linear-gradient(135deg,#2d5299,#1a3070); }
+    .bg-teal  { background: linear-gradient(135deg,#1a6b8a,#0d3f5e); }
+    .bg-grn   { background: linear-gradient(135deg,#1a7a4a,#0d4f30); }
+    .bg-gold  { background: linear-gradient(135deg,#c8930a,#8a6200); }
+    .bg-purp  { background: linear-gradient(135deg,#5a2d82,#3a1a5e); }
+    .bg-dark  { background: linear-gradient(135deg,#1a2540,#0d1530); }
+    .ph-i { font-size: 80px; color: rgba(255,255,255,.12); }
+    .ph-t { font-size: 12px; color: rgba(255,255,255,.28); text-align: center; padding: 0 20px; margin-top: 10px; }
+    /* years badge */
+    .yrs-badge {
+      position: absolute; bottom: 28px; left: -24px; z-index: 2;
+      width: 114px; height: 114px; border-radius: 50%;
+      background: var(--red); border: 5px dashed rgba(255,255,255,.5);
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; color: #fff; text-align: center;
+      box-shadow: 0 10px 30px rgba(208,32,32,.45);
+    }
+    .yrs-badge .big { font-size: 34px; font-weight: 900; line-height: 1; }
+    .yrs-badge .sm  { font-size: 11px; font-weight: 700; padding: 0 8px; line-height: 1.3; }
+    .about-text .lbl { margin-bottom: 10px; }
+    .about-text .htitle { font-size: 38px; margin-bottom: 18px; }
+    .about-text p { color: var(--gray); font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+    .checks { list-style: none; margin-bottom: 32px; }
+    .checks li { display: flex; align-items: center; gap: 12px; padding: 7px 0; font-size: 15px; color: #333; font-weight: 700; }
+    .checks li .chk { color: var(--red); font-size: 20px; }
+
+    /* ══════════════════════════════════════════
+       6. SERVICES — 3×2 grid photo cards
+       exact VisaPOS style: photo top, icon badge bottom-right
+    ══════════════════════════════════════════ */
+    .services { padding: 90px 0; background: var(--offbg); }
+    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .svc-card {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(13,31,78,.07);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(13,31,78,.13); }
+    .svc-photo { position: relative; width: 100%; height: 200px; overflow: hidden; }
+    .svc-photo-ph { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+    .svc-photo-ph i { color: rgba(255,255,255,.35); }
+    .svc-icon-badge {
+      position: absolute; bottom: -18px; right: 20px;
+      width: 56px; height: 56px; background: var(--red); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(208,32,32,.4);
+    }
+    .svc-icon-badge i { color: #fff; font-size: 22px; }
+    .svc-body { padding: 30px 22px 24px; }
+    .svc-body h3 { font-size: 19px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+    .svc-body p { color: var(--gray); font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+
+    /* ══════════════════════════════════════════
+       7. SKILLS / EXPERTISE (image left, bars right)
+    ══════════════════════════════════════════ */
+    .skills { padding: 90px 0; background: #fff; }
+    .skill-bars { margin: 20px 0 32px; }
+    .sb { margin-bottom: 22px; }
+    .sb-hdr { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .sb-hdr span { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; color: var(--navy); }
+    .sb-track { height: 6px; background: #e2e6ef; border-radius: 99px; overflow: hidden; }
+    .sb-fill  { height: 100%; background: var(--red); border-radius: 99px; }
+
+    /* ══════════════════════════════════════════
+       8. STATS BANNER — full red with city bg
+    ══════════════════════════════════════════ */
+    .stats {
+      background: var(--red);
+      background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1400&q=60');
+      background-blend-mode: multiply; background-size: cover; background-position: center bottom;
+      padding: 72px 0;
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .stat { text-align: center; color: #fff; }
+    .stat .si { font-size: 48px; margin-bottom: 18px; opacity: .9; }
+    .stat .num { font-size: 56px; font-weight: 900; line-height: 1; }
+    .stat .lbl2 { font-size: 15px; font-weight: 700; opacity: .88; margin-top: 8px; }
+
+    /* ══════════════════════════════════════════
+       9. ADVISORY PROGRAM (replaces Coaching) — 3 cards with photo + metadata
+    ══════════════════════════════════════════ */
+    .advisory { padding: 90px 0; background: var(--offbg); }
+    .adv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .adv-card {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(13,31,78,.07); transition: transform .25s;
+    }
+    .adv-card:hover { transform: translateY(-6px); }
+    .adv-photo { width: 100%; height: 200px; overflow: hidden; }
+    .adv-ph { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+    .adv-ph i { color: rgba(255,255,255,.32); }
+    .adv-meta { display: flex; gap: 16px; padding: 14px 18px 0; }
+    .adv-meta span { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray); font-weight: 600; }
+    .adv-meta i { color: var(--red); }
+    .adv-body { padding: 10px 18px 22px; }
+    .adv-body h3 { font-size: 18px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+    .adv-body p { color: var(--gray); font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
+    .slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 36px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--red); opacity: .35; }
+    .dot.active { opacity: 1; }
+
+    /* ══════════════════════════════════════════
+       10. WHY CHOOSE US — dark navy left + photo right
+    ══════════════════════════════════════════ */
+    .why { background: var(--navy); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
+    .why-left { padding: 72px 64px 72px 0; }
+    .why-left .lbl { color: rgba(255,255,255,.7); }
+    .why-left .htitle { color: #fff; font-size: 38px; margin-bottom: 18px; }
+    .why-left p { color: rgba(255,255,255,.65); font-size: 15px; line-height: 1.75; margin-bottom: 28px; }
+    .why-feats { list-style: none; margin-bottom: 0; }
+    .why-feat { display: flex; align-items: flex-start; gap: 18px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .why-feat:last-child { border-bottom: none; }
+    .why-feat-ico {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-feat-ico i { color: var(--red); font-size: 20px; }
+    .why-feat h4 { color: #fff; font-size: 15px; font-weight: 800; margin-bottom: 5px; }
+    .why-feat p  { color: rgba(255,255,255,.58); font-size: 13.5px; line-height: 1.6; }
+    .why-right {
+      background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80') center/cover no-repeat;
+      position: relative;
+    }
+    .why-right .play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 72px; height: 72px; background: var(--red); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 24px; cursor: pointer;
+      box-shadow: 0 0 0 14px rgba(208,32,32,.22); transition: transform .2s;
+    }
+    .why-right .play:hover { transform: translate(-50%,-50%) scale(1.1); }
+
+    /* ══════════════════════════════════════════
+       11. TESTIMONIALS — cards with dashed avatar above
+    ══════════════════════════════════════════ */
+    .testimonials { padding: 90px 0; background: var(--offbg); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .testi-card {
+      background: #fff; border-radius: 14px; padding: 32px 26px 26px;
+      box-shadow: 0 4px 20px rgba(13,31,78,.07); position: relative;
+      margin-top: 28px;
+    }
+    .testi-avatar {
+      position: absolute; top: -26px; left: 50%; transform: translateX(-50%);
+      width: 58px; height: 58px; border-radius: 50%;
+      border: 3px dashed var(--red);
+      background: linear-gradient(135deg,#c8d4f0,#8fa3d4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--navy); overflow: hidden;
+    }
+    .testi-stars { color: var(--red); font-size: 16px; margin-bottom: 14px; }
+    .testi-card p { color: var(--gray); font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+    .testi-foot { display: flex; align-items: center; justify-content: space-between; }
+    .testi-name { font-weight: 900; color: var(--navy); font-size: 15px; }
+    .testi-role { color: var(--gray); font-size: 13px; margin-top: 2px; }
+    .testi-quote { color: var(--red); font-size: 36px; line-height: 1; font-family: Georgia, serif; opacity: .9; }
+
+    /* ══════════════════════════════════════════
+       12. MARKETS / INDUSTRIES (replaces Countries)
+    ══════════════════════════════════════════ */
+    .markets { padding: 90px 0; background: #fff; }
+    .mkt-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .mkt-card { text-align: center; border-radius: 14px; overflow: hidden; transition: transform .25s; }
+    .mkt-card:hover { transform: translateY(-6px); }
+    .mkt-photo { position: relative; width: 100%; height: 220px; overflow: hidden; }
+    .mkt-ph { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; font-size: 64px; }
+    .mkt-ph i { color: rgba(255,255,255,.3); }
+    .mkt-flag {
+      position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+      width: 58px; height: 58px; background: var(--red); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; box-shadow: 0 4px 14px rgba(208,32,32,.35); z-index: 1;
+    }
+    .mkt-body { padding: 34px 18px 24px; }
+    .mkt-body h3 { font-size: 19px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+    .mkt-body p  { color: var(--gray); font-size: 14px; line-height: 1.65; margin-bottom: 14px; }
+    .mkt-body a  { color: var(--navy); font-weight: 800; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; transition: color .2s; }
+    .mkt-body a:hover { color: var(--red); }
+    
+    /* ══ CASES ══ */
+    .cases { padding: 90px 0; background: #fff; }
+    .cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; margin-bottom: 48px; }
+    .case-card {
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(13,31,78,.08);
+      transition: transform .25s, box-shadow .25s;
+      background: #fff;
+    }
+    .case-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(13,31,78,.13); }
+    .case-photo {
+      height: 160px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .case-ticker {
+      position: absolute; top: 20px; left: 20px;
+      background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3);
+      color: #fff; font-size: 22px; font-weight: 900;
+      padding: 6px 16px; border-radius: 8px; letter-spacing: 2px;
+    }
+    .case-ico { font-size: 56px; color: rgba(255,255,255,.18); }
+    .case-body { padding: 24px 26px 28px; }
+    .case-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(208,32,32,.08); color: var(--red);
+      font-size: 12px; font-weight: 800; padding: 5px 12px;
+      border-radius: 40px; margin-bottom: 12px; border: 1.5px solid rgba(208,32,32,.18);
+    }
+    .case-body h3 { font-size: 19px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+    .case-body p  { color: var(--gray); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+    .case-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .case-tags span {
+      font-size: 12px; font-weight: 700; padding: 4px 12px;
+      border-radius: 40px; background: var(--offbg); color: var(--navy);
+    }
+    /* summary strip */
+    .case-summary {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px; background: var(--navy); border-radius: 16px; padding: 36px 40px;
+    }
+    .cs-item { display: flex; align-items: flex-start; gap: 18px; color: rgba(255,255,255,.85); }
+    .cs-item > i { font-size: 28px; color: var(--red); flex-shrink: 0; margin-top: 3px; }
+    .cs-item strong { display: block; color: #fff; font-size: 15px; margin-bottom: 6px; }
+    .cs-item p { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.65); margin: 0; }
+    @media(max-width:768px){
+      .cases-grid { grid-template-columns: 1fr; }
+      .case-summary { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════
+       13. TEAM — 4 portrait cards with share btn
+    ══════════════════════════════════════════ */
+    .team { padding: 90px 0; background: var(--offbg); }
+    .team-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+    .team-card {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(13,31,78,.07);
+      transition: transform .25s;
+    }
+    .team-card:hover { transform: translateY(-6px); }
+    .team-photo { width: 100%; height: 300px; overflow: hidden; position: relative; }
+    .team-ph { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; }
+    .team-ph i { font-size: 80px; color: rgba(255,255,255,.2); }
+    .team-foot {
+      padding: 18px 20px; background: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .team-foot h4 { font-size: 18px; font-weight: 900; color: var(--navy); }
+    .team-foot span { font-size: 13px; color: var(--red); font-weight: 700; margin-top: 2px; display: block; }
+    .share-btn {
+      width: 42px; height: 42px; background: var(--red); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 16px; flex-shrink: 0;
+    }
+    /* team detail strip below team section (bio) */
+    .team-bio-strip { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+    .tbs { background: #fff; border-radius: 14px; padding: 28px 24px; box-shadow: 0 4px 20px rgba(13,31,78,.07); }
+    .tbs h4 { font-size: 16px; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+    .tbs p  { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 10px; }
+    .cred-list { list-style: none; }
+    .cred-list li { font-size: 13px; color: #444; font-weight: 700; padding: 3px 0; display: flex; align-items: center; gap: 8px; }
+    .cred-list li i { color: var(--red); font-size: 10px; }
+
+    /* ══════════════════════════════════════════
+       14. CONSULTATION FORM — split layout
+    ══════════════════════════════════════════ */
+    .consult { overflow: hidden; }
+    .consult-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+    .consult-img {
+      background:
+        linear-gradient(to right, rgba(13,31,78,.15), rgba(13,31,78,.05)),
+        url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80') center/cover no-repeat;
+    }
+    .consult-form { background: var(--navy); padding: 64px 52px; }
+    .consult-form h2 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .consult-form > p { color: rgba(255,255,255,.6); font-size: 15px; line-height: 1.7; margin-bottom: 28px; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .ff input, .ff select, .ff textarea {
+      width: 100%; padding: 14px 18px;
+      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.15);
+      border-radius: 8px; color: #fff; font-size: 14px; font-family: var(--f);
+      outline: none; transition: border-color .2s;
+    }
+    .ff input::placeholder, .ff textarea::placeholder { color: rgba(255,255,255,.4); }
+    .ff input:focus, .ff select:focus, .ff textarea:focus { border-color: var(--red); }
+    .ff select option { background: var(--navy); color: #fff; }
+    .ff textarea { resize: vertical; min-height: 100px; }
+    .ff { margin-bottom: 16px; }
+
+    /* ══════════════════════════════════════════
+       15. BLOG — 3 cards with author/date meta
+    ══════════════════════════════════════════ */
+    .blog { padding: 90px 0; background: #fff; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .blog-card {
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(13,31,78,.07);
+      transition: transform .25s;
+    }
+    .blog-card:hover { transform: translateY(-6px); }
+    .blog-photo { width: 100%; height: 210px; overflow: hidden; }
+    .blog-ph { width: 100%; height: 210px; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+    .blog-ph i { color: rgba(255,255,255,.3); }
+    .blog-body { background: #fff; padding: 22px 22px 24px; }
+    .blog-meta { display: flex; gap: 18px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .blog-meta span { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray); font-weight: 600; }
+    .blog-meta i { color: var(--red); }
+    .blog-body h3 { font-size: 16.5px; font-weight: 900; color: var(--navy); line-height: 1.4; margin-bottom: 10px; }
+    .blog-body p  { color: var(--gray); font-size: 13.5px; line-height: 1.65; margin-bottom: 18px; }
+
+    /* ══ FAQ ══ */
+    .faq { padding: 90px 0; background: var(--offbg); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .faq-item {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(13,31,78,.06); margin-bottom: 12px;
+    }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; cursor: pointer; gap: 16px;
+      font-weight: 800; font-size: 15px; color: var(--navy);
+      transition: background .2s;
+    }
+    .faq-q:hover { background: var(--offbg); }
+    .faq-q i {
+      font-size: 14px; color: var(--red); flex-shrink: 0;
+      transition: transform .3s ease;
+    }
+    .faq-item.open .faq-q { background: var(--navy); color: #fff; }
+    .faq-item.open .faq-q i { color: #fff; transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, padding .3s ease;
+      font-size: 14px; color: var(--gray); line-height: 1.75;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 18px 24px 22px; }
+    @media(max-width:768px){ .faq-grid { grid-template-columns: 1fr; } }
+
+    /* ══════════════════════════════════════════
+       16. PARTNER LOGOS strip
+    ══════════════════════════════════════════ */
+    .partners { padding: 44px 0; border-top: 1px solid var(--border); background: #fff; }
+    .partners-row { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+    .p-logo {
+      font-size: 18px; font-weight: 900; color: var(--navy); letter-spacing: 1px;
+      opacity: .3; filter: grayscale(1); transition: opacity .2s, filter .2s;
+      font-family: var(--f);
+    }
+    .p-logo:hover { opacity: .75; filter: none; color: var(--red); }
+
+    /* ══════════════════════════════════════════
+       17. FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      position: relative;
+      color: rgba(255,255,255,.82);
+      overflow: hidden;
+    }
+    /* City background image */
+    footer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=70') center/cover no-repeat;
+      z-index: 0;
+    }
+    /* Semi-transparent navy overlay on main footer */
+    .footer-main-wrap {
+      position: relative; z-index: 1;
+      background: rgba(13,31,78,.88);
+    }
+    .footer-main {
+      display: grid; grid-template-columns: 2fr 1.2fr 1.4fr 1.6fr;
+      gap: 48px; padding: 72px 0 48px;
+    }
+    .f-brand .logo-text .en { color: #fff; }
+    .f-brand .logo-text .zh { color: rgba(255,255,255,.45); }
+    .f-brand p { font-size: 14px; line-height: 1.8; margin: 16px 0 18px; }
+    .f-contact li { display: flex; align-items: center; gap: 9px; font-size: 14px; margin-bottom: 9px; list-style: none; }
+    .f-contact li i { color: var(--red); width: 14px; flex-shrink: 0; }
+    .f-socials { display: flex; gap: 8px; margin-top: 20px; }
+    .f-socials a {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 15px; transition: background .2s;
+    }
+    .f-socials a:hover { background: #fff; color: var(--red); }
+    .f-col h4 {
+      font-size: 18px; font-weight: 900; color: #fff; text-transform: uppercase;
+      margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 3px solid var(--red); display: inline-block;
+    }
+    .f-links { list-style: none; }
+    .f-links li { margin-bottom: 10px; }
+    .f-links a {
+      color: rgba(255,255,255,.65); font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px; transition: color .2s;
+    }
+    .f-links a::before { content: '▸'; color: var(--red); font-size: 11px; }
+    .f-links a:hover { color: #fff; }
+    .nl p { font-size: 14px; line-height: 1.75; margin-bottom: 18px; }
+    .nl-field {
+      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.25);
+      border-radius: 8px; padding: 13px 16px; color: #fff; font-size: 14px;
+      width: 100%; margin-bottom: 12px; outline: none; font-family: var(--f);
+    }
+    .nl-field::placeholder { color: rgba(255,255,255,.38); }
+    /* Darker bottom bar */
+    .footer-bot-wrap {
+      position: relative; z-index: 1;
+      background: #0b1a41;
+    }
+    .footer-bot {
+      padding: 20px 0; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bot p { font-size: 13px; color: rgba(255,255,255,.65); }
+    .footer-bot span { color: var(--red); }
+    .footer-bot-links { display: flex; gap: 24px; }
+    .footer-bot-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s; font-weight: 600; }
+    .footer-bot-links a:hover { color: #fff; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media(max-width:1024px){
+      .fcards-grid,.svc-grid,.testi-grid,.blog-grid,.adv-grid,.mkt-grid { grid-template-columns: repeat(2,1fr); }
+      .split-2,.why-grid { grid-template-columns: 1fr; gap: 48px; }
+      .why-right { min-height: 320px; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .consult-grid { grid-template-columns: 1fr; }
+      .consult-img { min-height: 280px; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 44px; }
+    }
+    @media(max-width:640px){
+      .fcards-grid,.svc-grid,.testi-grid,.blog-grid,.adv-grid,.mkt-grid,.team-grid,.team-bio-strip { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: 1fr; }
+      .frow { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 34px; }
+      .nav-links { display: none; }
+      .topbar-left { font-size: 12px; gap: 10px; }
+      .why-left { padding: 48px 0; }
+    }
+
+    /* ══════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════ */
+
+    /* — Scroll reveal base — */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.88);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Staggered children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .stagger.visible > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay: 0.12s; }
+    .stagger.visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay: 0.24s; }
+    .stagger.visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay: 0.36s; }
+    .stagger.visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay: 0.48s; }
+    .stagger.visible > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay: 0.60s; }
+
+/* — Hero animations — */
+    /* Page-load: first slide text animates in via CSS keyframes */
+    .hero-slide.active .hero-anim {
+      animation: heroFadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both;
+      animation-delay: var(--d, 0s);
+    }
+    /* When switching slides, JS removes inline styles so CSS takes over */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* Arrows fade in on load */
+    .hero-arr { animation: fadeIn 0.8s ease 1s both; }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* — Skill bars animation — */
+    .sb-fill {
+      width: 0 !important;
+      transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .sb-fill.animated {
+      width: var(--target-width) !important;
+    }
+
+    /* — Stat counter — */
+    .stat .num { transition: none; }
+
+    /* — Navbar scroll shrink — */
+    .navbar { transition: box-shadow 0.3s ease, padding 0.3s ease; }
+    .navbar.scrolled .inner { padding-top: 12px; padding-bottom: 12px; }
+    .navbar.scrolled { box-shadow: 0 4px 28px rgba(13,31,78,.18); }
+
+    /* — Topbar slide up on scroll — */
+    .topbar { transition: transform 0.35s ease, opacity 0.35s ease; }
+    .topbar.hidden { transform: translateY(-100%); opacity: 0; }
+
+    /* — Card hover glow — */
+    .fcard   { transition: transform .3s ease, box-shadow .3s ease; }
+    .fcard:hover { box-shadow: 0 18px 48px rgba(13,31,78,.22); }
+    .svc-card:hover { box-shadow: 0 18px 48px rgba(208,32,32,.12); }
+
+    /* — Pulse play button — */
+    .why-right .play {
+      animation: pulsePlay 2.5s ease-in-out infinite;
+    }
+    @keyframes pulsePlay {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(208,32,32,.5), 0 0 0 14px rgba(208,32,32,.22); }
+      50%       { box-shadow: 0 0 0 14px rgba(208,32,32,.18), 0 0 0 28px rgba(208,32,32,.06); }
+    }
+
+    /* — Floating badge on about image — */
+    .yrs-badge {
+      animation: floatBadge 3.5s ease-in-out infinite;
+    }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    /* — Navbar active line indicator — */
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 14px; right: 14px;
+      height: 2px; background: var(--red);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    /* — Smooth page load overlay — */
+    #page-loader {
+      position: fixed; inset: 0; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #page-loader.gone { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      display: flex; align-items: center; gap: 14px;
+      animation: loaderPulse 1s ease-in-out infinite alternate;
+    }
+    @keyframes loaderPulse {
+      from { opacity: 0.5; transform: scale(0.97); }
+      to   { opacity: 1;   transform: scale(1); }
+    }
+    .loader-icon {
+      width: 56px; height: 56px; background: var(--red);
+      border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; color: #fff; font-size: 26px;
+    }
+    .loader-text { color: #fff; }
+    .loader-text .en { font-size: 26px; font-weight: 900; }
+    .loader-text .en span { color: var(--red); }
+    .loader-text .zh { font-size: 12px; color: rgba(255,255,255,.5); letter-spacing: 2px; }
+    .loader-bar {
+      position: absolute; bottom: 0; left: 0;
+      height: 3px; background: var(--red);
+      animation: loaderBar 1.2s ease forwards;
+    }
+    @keyframes loaderBar {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+
+    /* — Marquee partner strip — */
+    .partners-track {
+      display: flex; gap: 60px; align-items: center;
+      animation: marquee 18s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .partners-wrap {
+      overflow: hidden;
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+    .partners-wrap .sec-head {
+      margin-bottom: 40px;
+    }
+
+    /* — Section number accent — */
+    .sec-head { position: relative; }
+
+    /* — Hover underline on links — */
+    .f-links a, .mkt-body a {
+      transition: color .2s, gap .2s;
+    }
+    .f-links a:hover, .mkt-body a:hover {
+      gap: 10px;
+    }
+
+    /* — Blog photo zoom on hover — */
+    .blog-photo { overflow: hidden; }
+    .blog-ph, .blog-photo img {
+      transition: transform 0.5s ease;
+    }
+    .blog-card:hover .blog-ph { transform: scale(1.06); }
+
+    /* — Adv photo zoom — */
+    .adv-ph { transition: transform 0.5s ease; }
+    .adv-card:hover .adv-ph { transform: scale(1.06); }
+
+    /* — Service photo zoom — */
+    .svc-photo-ph { transition: transform 0.5s ease; }
+    .svc-card:hover .svc-photo-ph { transform: scale(1.06); }
+
+    /* — Team photo zoom — */
+    .team-ph { transition: transform 0.5s ease; }
+    .team-card:hover .team-ph { transform: scale(1.06); }
+
+    /* ── mobile hamburger ── */
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px; background: var(--navy);
+      transition: all 0.3s ease; border-radius: 2px;
+    }
+    @media(max-width:640px){
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: #fff; padding: 16px 24px;
+        box-shadow: 0 8px 28px rgba(0,0,0,.12);
+        gap: 4px; transform: scaleY(0); transform-origin: top;
+        transition: transform 0.3s ease; opacity: 0;
+      }
+      .nav-links.open { transform: scaleY(1); opacity: 1; display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="page-loader">
+  <div class="loader-logo">
+    <div class="loader-icon"><i class="fas fa-key"></i></div>
+    <div class="loader-text">
+      <div class="en">KEY <span>GL</span>OBAL</div>
+      <div class="zh">金钥国际 · PROJECTS</div>
+    </div>
+  </div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- ══ 1. TOPBAR ══ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i> +65 9456 0451</span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:info@key.com.sg">info@key.com.sg</a></span>
+        <span><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-weixin"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 2. NAVBAR ══ -->
+<div class="navbar">
+  <div class="wrap">
+    <div class="inner">
+      <div class="logo">
+        <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px; width:auto; object-fit:contain;">
+      </div>
+        <div class="nav-links">
+        <a href="#" class="active">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#services">SERVICES</a>
+        <a href="#team">TEAM</a>
+        <a href="#cases">CASES</a>
+        <a href="#blog">BLOG</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">CONTACT</a>
+        <a href="#bizmatch">BIZMATCH +</a>
+      </div>
+      <a href="#contact" class="btn btn-red">GET QUOTE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+      <div class="nav-toggle" id="navToggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 3. HERO ══ -->
+<section class="hero" id="hero-section">
+
+  <!-- Slide 1 -->
+  <div class="hero-slide active">
+    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80');"></div>
+    <div class="wrap">
+      <div class="hero-content">
+        <div class="hero-badge hero-anim" style="--d:0.1s">Trusted Corporate Advisory Firm · Singapore</div>
+        <h1 class="hero-anim" style="--d:0.3s">WE ARE YOUR TRUSTED<br><span>CORPORATE ADVISORY</span><br>PARTNER</h1>
+        <p class="hero-anim" style="--d:0.5s">From M&A integration and business valuation to full-cycle IPO strategies — Key Global Projects (金钥国际) helps businesses inherit their corporate values and achieve a global future.</p>
+        <div class="hero-btns hero-anim" style="--d:0.7s">
+          <a href="#contact" class="btn btn-red">CONTACT US <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          <a href="#about" class="btn btn-navy">ABOUT US <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="hero-slide">
+    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1600&q=80');"></div>
+    <div class="wrap">
+      <div class="hero-content">
+        <div class="hero-badge hero-anim" style="--d:0.1s">Singapore M&A · IPO · Capital Markets</div>
+        <h1 class="hero-anim" style="--d:0.3s">BRIDGING TRADITIONAL<br><span>ENTERPRISES</span><br>TO GLOBAL MARKETS</h1>
+        <p class="hero-anim" style="--d:0.5s">4 successful Nasdaq listings in 2024. S$500M+ in transactions facilitated. Key Global Projects helps Singapore businesses inherit their value and achieve an international future.</p>
+        <div class="hero-btns hero-anim" style="--d:0.7s">
+          <a href="#cases" class="btn btn-red">OUR CASES <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          <a href="#services" class="btn btn-navy">OUR SERVICES <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="hero-slide">
+    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=1600&q=80');"></div>
+    <div class="wrap">
+      <div class="hero-content">
+        <div class="hero-badge hero-anim" style="--d:0.1s">AI-Enhanced Advisory Platform</div>
+        <h1 class="hero-anim" style="--d:0.3s">INTELLIGENT<br><span>CORPORATE ADVISORY</span><br>FOR YOUR FUTURE</h1>
+        <p class="hero-anim" style="--d:0.5s">Our AI-powered advisory platform combines director-led expertise with intelligent guidance on IPO readiness, M&A strategy, and capital market frameworks.</p>
+        <div class="hero-btns hero-anim" style="--d:0.7s">
+          <a href="#contact" class="btn btn-red">GET STARTED <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          <a href="#about" class="btn btn-navy">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrows -->
+  <div class="hero-arr left" id="heroPrev"><i class="fas fa-arrow-left"></i></div>
+  <div class="hero-arr right" id="heroNext"><i class="fas fa-arrow-right"></i></div>
+
+</section>
+
+<!-- ══ 4. FEATURE CARDS ══ -->
+<section class="fcards">
+  <div class="wrap">
+    <div class="fcards-grid stagger">
+      <div class="fcard">
+        <div class="fcard-icon-box"><i class="fas fa-chart-line"></i></div>
+        <h3>Business Valuation</h3>
+        <p>Comprehensive valuation assessments to maximize your business's true worth, attract investors, and fuel aggressive growth with actionable strategies.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon-box"><i class="fas fa-handshake"></i></div>
+        <h3>Mergers & Acquisitions</h3>
+        <p>Full-cycle M&A support — buyer screening, valuation, negotiations, optimal shareholding arrangements, and resource matching for long-term growth.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon-box"><i class="fas fa-landmark"></i></div>
+        <h3>IPO &amp; Listing Strategies</h3>
+        <p>Bespoke IPO preparation, compliance management, and reverse takeover (RTO) execution to position your company for a successful U.S. or international listing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. ABOUT ══ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="split-2">
+      <div class="img-box reveal-left">
+        <div class="img-ph bg-navy">
+          <i class="fas fa-building ph-i"></i>
+          <p class="ph-t">[Photo: KGP Singapore office or team]</p>
+        </div>
+        <div class="yrs-badge">
+          <div class="big" style="font-size:22px;margin-bottom:2px;">Est.</div>
+          <div class="big">2013</div>
+          <div class="sm">Singapore</div>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <p class="lbl">ABOUT US</p>
+        <h2 class="htitle">We Provide <span>Corporate Advisory</span> &amp; Growth Services</h2>
+        <p style="margin-top:18px;">Key Global Projects Pte. Ltd. (金钥国际) is a Singapore-incorporated management consultancy specialising in M&A integration, IPO strategies, and corporate advisory. Founded in December 2013, we help businesses inherit their corporate values while achieving a global future — bridging traditional enterprises with international capital markets.</p>
+        <ul class="checks">
+          <li><i class="fas fa-check-circle chk"></i> 4 successful Nasdaq listings facilitated in 2024 (PC, SAG, JBDI, SKK)</li>
+          <li><i class="fas fa-check-circle chk"></i> S$500M+ in transactions facilitated by our founders</li>
+          <li><i class="fas fa-check-circle chk"></i> Bilingual advisory in English and 中文 (Mandarin)</li>
+        </ul>
+        <a href="#services" class="btn btn-red">DISCOVER MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. SERVICES ══ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="lbl">OUR SERVICES</p>
+      <h2 class="htitle">What We <span>Offer</span></h2>
+    </div>
+    <div class="svc-grid stagger">
+
+      <div class="svc-card">
+        <div class="svc-photo">
+          <div class="svc-photo-ph bg-navy"><i class="fas fa-chart-bar"></i></div>
+          <div class="svc-icon-badge"><i class="fas fa-chart-bar"></i></div>
+        </div>
+        <div class="svc-body">
+          <h3>Business Valuation</h3>
+          <p>Personalized, actionable strategies to maximize your business's true worth for investors, acquisitions, or share issuance.</p>
+          <a href="#" class="btn-outline-red">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-photo">
+          <div class="svc-photo-ph bg-blue"><i class="fas fa-handshake"></i></div>
+          <div class="svc-icon-badge"><i class="fas fa-handshake"></i></div>
+        </div>
+        <div class="svc-body">
+          <h3>M&amp;A Planning</h3>
+          <p>End-to-end mergers and acquisitions support — from buyer screening and valuation to negotiations and corporate structuring.</p>
+          <a href="#" class="btn-outline-red">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-photo">
+          <div class="svc-photo-ph bg-red"><i class="fas fa-landmark"></i></div>
+          <div class="svc-icon-badge"><i class="fas fa-landmark"></i></div>
+        </div>
+        <div class="svc-body">
+          <h3>IPO Strategies</h3>
+          <p>Joint IPO approach, individual offering preparation, and reverse takeover (RTO) execution through specialized listing partners.</p>
+          <a href="#" class="btn-outline-red">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-photo">
+          <div class="svc-photo-ph bg-teal"><i class="fas fa-building"></i></div>
+          <div class="svc-icon-badge"><i class="fas fa-building"></i></div>
+        </div>
+        <div class="svc-body">
+          <h3>Corporate Structuring</h3>
+          <p>Optimal shareholding arrangements, entity structuring, and detailed financial forecasting to position your company for growth.</p>
+          <a href="#" class="btn-outline-red">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-photo">
+          <div class="svc-photo-ph bg-grn"><i class="fas fa-seedling"></i></div>
+          <div class="svc-icon-badge"><i class="fas fa-seedling"></i></div>
+        </div>
+        <div class="svc-body">
+          <h3>Business Modernisation</h3>
+          <p>Helping traditional enterprises modernise operations, adopt technology, and achieve sustainable development for the next generation.</p>
+          <a href="#" class="btn-outline-red">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-photo">
+          <div class="svc-photo-ph bg-purp"><i class="fas fa-robot"></i></div>
+          <div class="svc-icon-badge"><i class="fas fa-robot"></i></div>
+        </div>
+        <div class="svc-body">
+          <h3>AI Advisory Platform</h3>
+          <p>Our AI-enhanced consultancy platform provides intelligent, director-led guidance on U.S. IPO readiness and capital market frameworks.</p>
+          <a href="#" class="btn-outline-red">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. SKILLS / EXPERTISE ══ -->
+<section class="skills">
+  <div class="wrap">
+    <div class="split-2">
+      <div class="img-box reveal-left">
+        <div class="img-ph bg-dark">
+          <i class="fas fa-users-cog ph-i"></i>
+          <p class="ph-t">[Photo: KGP advisory session / team consultation]</p>
+        </div>
+      </div>
+      <div>
+        <p class="lbl">OUR SKILLS</p>
+        <h2 class="htitle" style="margin-bottom:18px;">We Offer You The <span>Best Corporate</span> Advisory Service</h2>
+        <p style="color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:20px;">Our team of certified accountants, M&A specialists, and capital market advisors brings deep expertise across all aspects of Singapore corporate advisory, cross-border transactions, and international listings.</p>
+        <div class="skill-bars">
+          <div class="sb">
+            <div class="sb-hdr"><span>M&amp;A Advisory</span><span>95%</span></div>
+            <div class="sb-track"><div class="sb-fill" data-width="95"></div></div>
+          </div>
+          <div class="sb">
+            <div class="sb-hdr"><span>IPO &amp; Listing Strategy</span><span>92%</span></div>
+            <div class="sb-track"><div class="sb-fill" data-width="92"></div></div>
+          </div>
+          <div class="sb">
+            <div class="sb-hdr"><span>Business Valuation</span><span>90%</span></div>
+            <div class="sb-track"><div class="sb-fill" data-width="90"></div></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-red">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. STATS BANNER ══ -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid stagger">
+      <div class="stat">
+        <div class="si"><i class="fas fa-users"></i></div>
+        <div class="num">100+</div>
+        <div class="lbl2">Clients Served</div>
+      </div>
+      <div class="stat">
+        <div class="si"><i class="fas fa-globe-asia"></i></div>
+        <div class="num">4</div>
+        <div class="lbl2">Nasdaq Listings in 2024</div>
+      </div>
+      <div class="stat">
+        <div class="si"><i class="fas fa-dollar-sign"></i></div>
+        <div class="num">500M+</div>
+        <div class="lbl2">SGD Transactions Facilitated</div>
+      </div>
+      <div class="stat">
+        <div class="si"><i class="fas fa-calendar-check"></i></div>
+        <div class="num">2013</div>
+        <div class="lbl2">Est. in Singapore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 9. ADVISORY PROGRAM (Coaching section equivalent) ══ -->
+<section class="advisory">
+  <div class="wrap">
+    <div class="sec-head">  
+      <p class="lbl">ADVISORY PROGRAMS</p>
+      <h2 class="htitle">Best <span>Advisory</span> From Us</h2>
+    </div>
+
+    <div class="adv-slider-wrap" style="overflow:hidden;">
+      <div class="adv-grid stagger" id="advGrid">
+
+        <div class="adv-card" data-slide-card>
+          <div class="adv-photo"><div class="adv-ph bg-navy"><i class="fas fa-chart-pie"></i></div></div>
+          <div class="adv-meta">
+            <span><i class="fas fa-clock"></i> Full-Cycle</span>
+            <span><i class="fas fa-clipboard-list"></i> M&amp;A Support</span>
+          </div>
+          <div class="adv-body">
+            <h3>Mergers &amp; Acquisitions</h3>
+            <p>End-to-end M&A services from strategy development and buyer screening through negotiations and post-merger integration planning.</p>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          </div>
+        </div>
+
+        <div class="adv-card" data-slide-card>
+          <div class="adv-photo"><div class="adv-ph bg-blue"><i class="fas fa-landmark"></i></div></div>
+          <div class="adv-meta">
+            <span><i class="fas fa-clock"></i> Full-Cycle</span>
+            <span><i class="fas fa-clipboard-list"></i> Listing Support</span>
+          </div>
+          <div class="adv-body">
+            <h3>U.S. IPO Strategy</h3>
+            <p>From compliance management to Nasdaq listing execution — we've helped four companies successfully list in the U.S. in 2024 alone.</p>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          </div>
+        </div>
+
+        <div class="adv-card" data-slide-card>
+          <div class="adv-photo"><div class="adv-ph bg-teal"><i class="fas fa-search-dollar"></i></div></div>
+          <div class="adv-meta">
+            <span><i class="fas fa-clock"></i> Full-Cycle</span>
+            <span><i class="fas fa-clipboard-list"></i> Valuation</span>
+          </div>
+          <div class="adv-body">
+            <h3>Business Valuation</h3>
+            <p>Comprehensive valuation assessments for investor attraction, acquisitions, divestitures, or share issuance — customized to your business.</p>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          </div>
+        </div>
+
+        <div class="adv-card" data-slide-card>
+          <div class="adv-photo"><div class="adv-ph bg-grn"><i class="fas fa-seedling"></i></div></div>
+          <div class="adv-meta">
+            <span><i class="fas fa-clock"></i> Full-Cycle</span>
+            <span><i class="fas fa-clipboard-list"></i> Modernisation</span>
+          </div>
+          <div class="adv-body">
+            <h3>Business Modernisation</h3>
+            <p>Helping traditional enterprises modernise operations, adopt technology, and achieve sustainable development for the next generation of ownership.</p>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          </div>
+        </div>
+
+        <div class="adv-card" data-slide-card>
+          <div class="adv-photo"><div class="adv-ph bg-gold"><i class="fas fa-exchange-alt"></i></div></div>
+          <div class="adv-meta">
+            <span><i class="fas fa-clock"></i> Full-Cycle</span>
+            <span><i class="fas fa-clipboard-list"></i> RTO</span>
+          </div>
+          <div class="adv-body">
+            <h3>Reverse Takeover (RTO)</h3>
+            <p>Acquire a listed shell company to dramatically accelerate your path to public markets — a faster, cost-effective alternative to a traditional IPO.</p>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          </div>
+        </div>
+
+        <div class="adv-card" data-slide-card>
+          <div class="adv-photo"><div class="adv-ph bg-purp"><i class="fas fa-building"></i></div></div>
+          <div class="adv-meta">
+            <span><i class="fas fa-clock"></i> Full-Cycle</span>
+            <span><i class="fas fa-clipboard-list"></i> Structuring</span>
+          </div>
+          <div class="adv-body">
+            <h3>Corporate Structuring</h3>
+            <p>Optimal shareholding arrangements, entity structuring, and detailed financial forecasting to position your company for sustainable long-term growth.</p>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="slider-dots" id="advDots" style="margin-top:36px;">
+      <div class="dot active" onclick="goAdvSlide(0)"></div>
+      <div class="dot" onclick="goAdvSlide(1)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. WHY CHOOSE US ══ -->
+<section class="why">
+  <div class="wrap" style="padding:0 30px;">
+    <div class="why-grid">
+      <div class="why-left">
+        <p class="lbl">WHY CHOOSE US</p>
+        <h2 class="htitle" style="margin-bottom:16px;">We Build The <span>Dream With Passion</span> For You</h2>
+        <p>The perfect combination of industrial operations and financial compliance — we provide a full range of services that create higher commercial value through the comprehensive allocation of technology to capital.</p>
+        <ul class="why-feats">
+          <li class="why-feat">
+            <div class="why-feat-ico"><i class="fas fa-trophy"></i></div>
+            <div>
+              <h4>Combination of Strength</h4>
+              <p>The fusion of industrial operations and financial compliance delivers a full spectrum of advisory services under one roof.</p>
+            </div>
+          </li>
+          <li class="why-feat">
+            <div class="why-feat-ico"><i class="fas fa-gem"></i></div>
+            <div>
+              <h4>Value Mining</h4>
+              <p>We comprehensively allocate technology to capital — creating higher commercial value and unlocking hidden growth potential.</p>
+            </div>
+          </li>
+          <li class="why-feat">
+            <div class="why-feat-ico"><i class="fas fa-compass"></i></div>
+            <div>
+              <h4>Market Adaptation</h4>
+              <p>Deep industry trend knowledge and flexible strategies that respond to market changes for sustainable long-term success.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-right">
+        <div class="play"><i class="fas fa-play"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11. TESTIMONIALS ══ -->
+<section class="testimonials">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="lbl">TESTIMONIALS</p>
+      <h2 class="htitle">What Our <span>Clients Say</span></h2>
+    </div>
+
+    <div style="overflow:hidden;">
+      <div class="testi-grid stagger" id="testiGrid">
+
+        <div class="testi-card" data-slide-card>
+          <div class="testi-avatar"><i class="fas fa-user"></i></div>
+          <div class="testi-stars">★★★★★</div>
+          <p>Key Global's M&A advisory team guided us through a complex cross-border acquisition seamlessly. Their deep Singapore market knowledge and bilingual capability were invaluable throughout the entire process.</p>
+          <div class="testi-foot">
+            <div>
+              <div class="testi-name">Zhang Wei</div>
+              <div class="testi-role">CEO, SinoTech Capital</div>
+            </div>
+            <div class="testi-quote">"</div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-slide-card>
+          <div class="testi-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="testi-stars">★★★★★</div>
+          <p>Edmund Chan and the KGP team took our traditional business through a complete valuation and IPO preparation. We listed on Nasdaq in 2024 ahead of schedule — world-class execution and support.</p>
+          <div class="testi-foot">
+            <div>
+              <div class="testi-name">David Lim</div>
+              <div class="testi-role">Founder, Regional Supply Co.</div>
+            </div>
+            <div class="testi-quote">"</div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-slide-card>
+          <div class="testi-avatar"><i class="fas fa-user-circle"></i></div>
+          <div class="testi-stars">★★★★★</div>
+          <p>Patrick Tan's network and strategic guidance unlocked significant deal-flow for our firm. Key Global are more than consultants — they are true strategic partners for sustainable business growth.</p>
+          <div class="testi-foot">
+            <div>
+              <div class="testi-name">Sarah Tan</div>
+              <div class="testi-role">Managing Director, Raffles Investments</div>
+            </div>
+            <div class="testi-quote">"</div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-slide-card>
+          <div class="testi-avatar"><i class="fas fa-user"></i></div>
+          <div class="testi-stars">★★★★★</div>
+          <p>KGP's corporate structuring advice transformed how we approached our shareholding arrangements. The team's financial expertise and hands-on guidance made our expansion into international markets far smoother than expected.</p>
+          <div class="testi-foot">
+            <div>
+              <div class="testi-name">Michael Ong</div>
+              <div class="testi-role">Director, Ong Brothers Holdings</div>
+            </div>
+            <div class="testi-quote">"</div>
+          </div>
+        </div>
+
+       <div class="testi-card" data-slide-card>
+          <div class="testi-avatar"><i class="fas fa-user-tie"></i></div>
+          <div class="testi-stars">★★★★★</div>
+          <p>The business valuation report KGP produced was exceptionally thorough. It gave us the confidence and credibility to approach investors — and we secured the funding we needed within three months.</p>
+          <div class="testi-foot">
+            <div>
+              <div class="testi-name">Linda Chen</div>
+              <div class="testi-role">CEO, GreenPath Technologies</div>
+            </div>
+            <div class="testi-quote">"</div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-slide-card>
+          <div class="testi-avatar"><i class="fas fa-user-circle"></i></div>
+          <div class="testi-stars">★★★★★</div>
+          <p>As a traditional family business facing succession challenges, we didn't know where to turn. KGP guided us through the entire M&A process with patience and professionalism. We found the right buyer and secured our legacy.</p>
+          <div class="testi-foot">
+            <div>
+              <div class="testi-name">Raymond Koh</div>
+              <div class="testi-role">Owner, Koh Engineering Pte Ltd</div>
+            </div>
+            <div class="testi-quote">"</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="slider-dots" id="testiDots" style="margin-top:40px;">
+      <div class="dot active" onclick="goTestiSlide(0)"></div>
+      <div class="dot" onclick="goTestiSlide(1)"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CASES: SUCCESS STORIES ══ -->
+<section class="cases" id="cases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="lbl">SUCCESS STORIES</p>
+      <h2 class="htitle">Listed in the <span>United States</span></h2>
+      <p style="color:var(--gray);font-size:15px;max-width:600px;margin:12px auto 0;">Through equity design and strategic investment combinations, Key Global facilitated four successful Nasdaq listings in 2024.</p>
+    </div>
+
+    <div class="cases-grid stagger">
+
+      <div class="case-card">
+        <div class="case-photo bg-navy">
+          <div class="case-ticker">PC</div>
+          <i class="fas fa-utensils case-ico"></i>
+        </div>
+        <div class="case-body">
+          <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
+          <h3>PC — Catering Enterprises</h3>
+          <p>A Singapore-based catering company that achieved a successful Nasdaq listing through KGP's equity design and strategic investment combination approach.</p>
+          <div class="case-tags">
+            <span>Catering</span><span>Nasdaq</span><span>2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-photo bg-blue">
+          <div class="case-ticker">SAG</div>
+          <i class="fas fa-car case-ico"></i>
+        </div>
+        <div class="case-body">
+          <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
+          <h3>SAG — Auto Parts Supplier</h3>
+          <p>An automotive parts supplier that entered international capital markets through KGP's full-cycle IPO advisory and capital structuring services.</p>
+          <div class="case-tags">
+            <span>Automotive</span><span>Nasdaq</span><span>2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-photo bg-teal">
+          <div class="case-ticker">JBDI</div>
+          <i class="fas fa-flask case-ico"></i>
+        </div>
+        <div class="case-body">
+          <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
+          <h3>JBDI — Chemical &amp; Drum Supply</h3>
+          <p>A chemical and drum supply company that leveraged KGP's RTO expertise and compliance management to achieve a smooth U.S. listing.</p>
+          <div class="case-tags">
+            <span>Chemical</span><span>Nasdaq</span><span>2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-photo bg-red">
+          <div class="case-ticker">SKK</div>
+          <i class="fas fa-tools case-ico"></i>
+        </div>
+        <div class="case-body">
+          <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
+          <h3>SKK — Cable Plumbing Contractors</h3>
+          <p>A specialist trades contractor that successfully listed on Nasdaq in 2024, supported by KGP's end-to-end IPO strategy and market capitalisation management.</p>
+          <div class="case-tags">
+            <span>Construction</span><span>Nasdaq</span><span>2024</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary strip -->
+    <div class="case-summary reveal">
+      <div class="cs-item">
+        <i class="fas fa-rocket"></i>
+        <div>
+          <strong>Core Method</strong>
+          <p>Equity design combined with strategic investment to enter international markets</p>
+        </div>
+      </div>
+      <div class="cs-item">
+        <i class="fas fa-eye"></i>
+        <div>
+          <strong>Future Outlook</strong>
+          <p>Continuing to guide the transformation of traditional industries into global capital markets</p>
+        </div>
+      </div>
+      <div class="cs-item">
+        <i class="fas fa-globe"></i>
+        <div>
+          <strong>Exchange</strong>
+          <p>All 4 companies listed on Nasdaq — the world's largest technology stock exchange</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ 13. TEAM ══ -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="lbl">TEAM</p>
+      <h2 class="htitle">Meet <span>Experts</span></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-ph bg-navy"><i class="fas fa-user-tie"></i></div>
+        </div>
+        <div class="team-foot">
+          <div>
+            <h4>Patrick Tan</h4>
+            <span>Founder</span>
+          </div>
+          <div class="share-btn"><i class="fas fa-share-alt"></i></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-ph bg-red"><i class="fas fa-user-tie"></i></div>
+        </div>
+        <div class="team-foot">
+          <div>
+            <h4>Edmund Chan</h4>
+            <span>Director</span>
+          </div>
+          <div class="share-btn"><i class="fas fa-share-alt"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bio detail strip -->
+    <div class="team-bio-strip" style="margin-top:28px;">
+      <div class="tbs">
+        <h4>Patrick Tan — Founder</h4>
+        <p>Founder of Raffles Developments (commercial properties agency), facilitating transactions of over S$500 million. Currently an independent director of a NYSE-listed company. Led the ECO WALL green building materials commercialisation.</p>
+        <ul class="cred-list">
+          <li><i class="fas fa-chevron-right"></i> Independent Director, NYSE-Listed Company</li>
+          <li><i class="fas fa-chevron-right"></i> Diploma in Electronic Engineering, Singapore Polytechnic</li>
+        </ul>
+      </div>
+      <div class="tbs">
+        <h4>Edmund Chan — Director</h4>
+        <p>Previously at KPMG and BDO with 7+ years of audit experience in M&A and listed company projects. Currently CFO of a Hong Kong-listed company and independent director of three US-listed companies.</p>
+        <ul class="cred-list">
+          <li><i class="fas fa-chevron-right"></i> ACCA Chartered Accountant, UK</li>
+          <li><i class="fas fa-chevron-right"></i> ISCA Chartered Accountant, Singapore</li>
+          <li><i class="fas fa-chevron-right"></i> Member, IBBA — International Business Brokers</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ 14. CONSULTATION FORM ══ -->
+<section class="consult" id="contact">
+  <div class="consult-grid">
+    <div class="consult-img"></div>
+    <div class="consult-form">
+      <h2>Get Free Consultation</h2>
+      <p>Tell us about your business goals and one of our experts will respond within 24 hours.</p>
+      <div class="frow">
+        <div class="ff"><input type="text" placeholder="Your Name"/></div>
+        <div class="ff"><input type="email" placeholder="Your Email"/></div>
+      </div>
+      <div class="frow">
+        <div class="ff">
+          <select>
+            <option value="" disabled selected>Select Service</option>
+            <option>Business Valuation</option>
+            <option>Mergers &amp; Acquisitions</option>
+            <option>IPO Strategy</option>
+            <option>Corporate Structuring</option>
+            <option>Business Modernisation</option>
+            <option>AI Advisory Platform</option>
+          </select>
+        </div>
+        <div class="ff">
+          <select>
+            <option value="" disabled selected>Select Country</option>
+            <option>Singapore</option>
+            <option>China</option>
+            <option>Malaysia</option>
+            <option>Hong Kong</option>
+            <option>USA</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="ff"><textarea placeholder="Your Message"></textarea></div>
+      <button class="btn btn-red" type="button">GET QUOTE <span class="arr"><i class="fas fa-arrow-right"></i></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 15. BLOG ══ -->
+<section class="blog" id="blog">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="lbl">OUR BLOG</p>
+      <h2 class="htitle">News &amp; <span>Blog</span></h2>
+    </div>
+    <div class="blog-grid stagger">
+
+      <div class="blog-card">
+        <div class="blog-photo"><div class="blog-ph bg-navy"><i class="fas fa-newspaper"></i></div></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span><i class="fas fa-user-circle"></i> By KGP Team</span>
+            <span><i class="fas fa-calendar-alt"></i> November 2025</span>
+          </div>
+          <h3>4 Singapore Companies Successfully Listed on Nasdaq in 2024</h3>
+          <p>Key Global facilitated four Nasdaq listings — PC, SAG, JBDI, and SKK — through equity design and strategic investment combinations.</p>
+          <a href="#" class="btn btn-red" style="font-size:12px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-photo"><div class="blog-ph bg-blue"><i class="fas fa-newspaper"></i></div></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span><i class="fas fa-user-circle"></i> By KGP Team</span>
+            <span><i class="fas fa-calendar-alt"></i> October 2025</span>
+          </div>
+          <h3>The Business Inheritance Problem: How M&amp;A Can Save Traditional Enterprises</h3>
+          <p>Over 60% of Singapore family businesses face succession challenges. How M&A integration offers a sustainable path forward.</p>
+          <a href="#" class="btn btn-red" style="font-size:12px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-photo"><div class="blog-ph bg-teal"><i class="fas fa-newspaper"></i></div></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span><i class="fas fa-user-circle"></i> By KGP Team</span>
+            <span><i class="fas fa-calendar-alt"></i> September 2025</span>
+          </div>
+          <h3>Reverse Takeover (RTO) vs. Traditional IPO: Which Path Is Right for You?</h3>
+          <p>A practical guide comparing RTO execution against traditional public offering routes for Singapore companies targeting the US market.</p>
+          <a href="#" class="btn btn-red" style="font-size:12px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FAQ ══ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="lbl">FAQ</p>
+      <h2 class="htitle">Frequently Asked <span>Questions</span></h2>
+    </div>
+    <div class="faq-grid">
+
+      <div class="faq-col">
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>What services does Key Global Projects offer?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            We offer Business Valuation, M&A Planning, IPO Strategies, Corporate Structuring, Business Modernisation, and our AI Advisory Platform. Each service is tailored to help Singapore and regional businesses access capital markets and grow sustainably.
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>How long does an IPO process typically take?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            A U.S. Nasdaq listing typically takes 12–18 months from initial preparation to listing day. However, a Reverse Takeover (RTO) can significantly shorten this timeline by acquiring an existing listed shell company.
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>What is a Reverse Takeover (RTO)?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            An RTO involves acquiring a publicly listed shell company to gain a stock exchange listing without going through the traditional IPO process. It is faster, more cost-effective, and a proven path we have successfully executed for our clients.
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Do you work with companies outside Singapore?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            Yes. While we are Singapore-incorporated and have deep local expertise, we work with clients across Malaysia, China, Hong Kong, and internationally. Our bilingual capability in English and Mandarin is a key advantage for cross-border transactions.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-col">
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>How is a business valuation conducted?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            Our valuation process involves a comprehensive assessment of your financials, assets, market position, and growth potential. We produce a structured valuation report that can be used for investor presentations, M&A negotiations, or share issuance purposes.
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>What is BizMatch and how does it work?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            BizMatch is our business matching marketplace where buyers and sellers of Singapore businesses can connect. Browse available listings by industry and price range, and our team will facilitate introductions and advisory throughout the transaction.
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>How do I get started with Key Global Projects?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            The easiest way is to fill in our free consultation form on this page, or speak directly with our AI Advisor chatbot for an initial assessment. One of our directors will respond within 24 hours to discuss your goals and the best path forward.
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>How much does your advisory service cost?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            Our fees vary depending on the scope and complexity of your project. We offer a free initial consultation to understand your needs before providing a transparent, tailored proposal. Contact us to schedule your complimentary session.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 16. PARTNER LOGOS ══ -->
+<div class="partners-wrap">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:44px;">
+      <p class="lbl">AFFILIATIONS & EXCHANGES</p>
+    </div>
+    <div style="overflow:hidden;">
+      <div class="partners-track">
+        <div class="p-logo">NASDAQ</div>
+        <div class="p-logo">NYSE</div>
+        <div class="p-logo">SGX</div>
+        <div class="p-logo">ACRA</div>
+        <div class="p-logo">ACCA</div>
+        <div class="p-logo">IBBA</div>
+        <div class="p-logo">ISCA</div>
+        <!-- duplicate for seamless loop -->
+        <div class="p-logo">NASDAQ</div>
+        <div class="p-logo">NYSE</div>
+        <div class="p-logo">SGX</div>
+        <div class="p-logo">ACRA</div>
+        <div class="p-logo">ACCA</div>
+        <div class="p-logo">IBBA</div>
+        <div class="p-logo">ISCA</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 17. FOOTER ══ -->
+<footer>
+  <div class="footer-main-wrap">
+    <div class="wrap">
+      <div class="footer-main">
+
+        <div class="f-brand">
+          <div class="logo" style="margin-bottom:14px;">
+            <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px; width:auto; object-fit:contain;">
+          </div>
+          <p>Inherit Corporate Values, Achieve a Global Future. Singapore's trusted partner for M&A, IPO advisory, and business growth strategies since 2013.</p>
+          <ul class="f-contact" style="list-style:none;">
+            <li><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
+            <li><i class="fas fa-phone"></i> +65 9456 0451</li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:info@key.com.sg" style="color:inherit;">info@key.com.sg</a></li>
+          </ul>
+          <div class="f-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+          </div>
+        </div>
+
+        <div class="f-col">
+          <h4>Quick Links</h4>
+          <ul class="f-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#faq">FAQ's</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#team">Team Members</a></li>
+            <li><a href="#blog">Latest Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="f-col">
+          <h4>Our Services</h4>
+          <ul class="f-links">
+            <li><a href="#">Business Valuation</a></li>
+            <li><a href="#">M&amp;A Planning</a></li>
+            <li><a href="#">IPO Strategies</a></li>
+            <li><a href="#">Corporate Structuring</a></li>
+            <li><a href="#">Business Modernisation</a></li>
+            <li><a href="#">AI Advisory Platform</a></li>
+            <li><a href="#">RTO Execution</a></li>
+          </ul>
+        </div>
+
+        <div class="f-col nl">
+          <h4>Newsletter</h4>
+          <p>Subscribe to our newsletter to get the latest updates on Singapore capital markets, M&A, and IPO opportunities. Stay connected.</p>
+          <input class="nl-field" type="email" placeholder="Your Email"/>
+          <a href="#" class="btn btn-red" style="font-size:13px;padding:12px 24px;display:inline-flex;">
+            SUBSCRIBE NOW <span class="arr"><i class="fas fa-paper-plane"></i></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bot-wrap">
+    <div class="wrap">
+      <div class="footer-bot">
+        <p>© Copyright 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
+        <div class="footer-bot-links">
+          <a href="#">Support</a>
+          <a href="#">Terms Of Services</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('page-loader').classList.add('gone');
+
+    // Re-trigger hero text animation after loader fades out
+    document.querySelectorAll('.hero-slide.active .hero-anim').forEach(el => {
+      el.style.animation = 'none';
+      void el.offsetWidth; // force reflow
+      el.style.animation = '';
+    });
+
+  }, 1300);
+});
+
+// ── Topbar hide on scroll down ──
+let lastScroll = 0;
+const topbar = document.querySelector('.topbar');
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  const current = window.scrollY;
+  if (current > 80) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  lastScroll = current;
+});
+
+// ── Scroll Reveal ──
+const revealEls = document.querySelectorAll(
+  '.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .sec-head'
+);
+
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => revealObs.observe(el));
+
+
+// ── Skill Bar Animation ──
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.sb-fill').forEach(fill => {
+        const w = fill.getAttribute('data-width');
+        if (w) {
+          fill.style.setProperty('--target-width', w + '%');
+          setTimeout(() => fill.classList.add('animated'), 100);
+        }
+      });
+      barObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.skill-bars').forEach(el => barObs.observe(el));
+
+// ── Counter Animation ──
+function animateCounter(el, target, duration = 2000) {
+  let start = 0;
+  const step = timestamp => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.stat .num').forEach(num => {
+        const raw = num.textContent.trim();
+        // Skip non-numeric or year values
+        if (raw === '2013' || raw.includes('M') || raw.includes('+')) return;
+        const target = parseInt(raw);
+        if (!isNaN(target)) animateCounter(num, target);
+      });
+      counterObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('.stats').forEach(el => counterObs.observe(el));
+
+// ── Active nav on scroll ──
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) {
+      current = sec.getAttribute('id');
+    }
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+<!-- ══ CHATBOT WIDGET ══ -->
+<div id="chat-widget">
+  <div id="chat-box">
+    <div id="chat-header">
+      <div class="ch-left">
+        <div class="ch-avatar"><i class="fas fa-robot"></i></div>
+        <div class="ch-info">
+          <div class="ch-name">KGP AI Advisor</div>
+          <div class="ch-status">Online — IPO & M&A Advisory</div>
+        </div>
+      </div>
+      <span id="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></span>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-quick-replies">
+      <button class="qr-btn" onclick="sendQuick('What services do you offer?')">Our Services</button>
+      <button class="qr-btn" onclick="sendQuick('How do I list on Nasdaq?')">Nasdaq IPO</button>
+      <button class="qr-btn" onclick="sendQuick('Tell me about M&A advisory')">M&A Advisory</button>
+      <button class="qr-btn" onclick="sendQuick('How much does it cost?')">Pricing</button>
+    </div>
+    <div id="chat-footer">
+      <input id="chat-input" type="text" placeholder="Ask about IPO, M&A, valuation…"
+        onkeydown="if(event.key==='Enter') sendMessage()"/>
+      <button id="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <div id="chat-bubble" onclick="toggleChat()">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+</div>
+
+<script>
+// ── KGP Chatbot ──
+const chatMessages = document.getElementById('chat-messages');
+const chatBox = document.getElementById('chat-box');
+const chatInput = document.getElementById('chat-input');
+let chatOpen = false;
+let conversationHistory = [];
+
+const SYSTEM_PROMPT = `You are the KGP AI Advisor for Key Global Projects Pte. Ltd. (金钥国际), a Singapore-incorporated corporate advisory firm founded in December 2013. You assist potential clients with questions about the company's services and help assess their IPO or M&A readiness.
+
+Key facts about Key Global Projects:
+- Location: 47 Kallang Pudding Rd, #11-07, The Crescent @ Kallang, Singapore 349318
+- Founders: Patrick Tan (Founder) and Edmund Chan (Director)
+- Tagline: "Inherit Corporate Values, Achieve a Global Future"
+- 4 successful Nasdaq listings in 2024: PC (Catering), SAG (Auto Parts), JBDI (Chemical/Drum Supply), SKK (Cable Plumbing Contractors)
+- S$500M+ in transactions facilitated
+
+Services offered:
+1. Business Valuation – Comprehensive assessments to maximize business worth for investors or acquisitions
+2. Mergers & Acquisitions (M&A) Planning – Full-cycle support including buyer screening, negotiations, corporate structuring
+3. IPO Strategies – Joint IPO approach, individual offering preparation, and Reverse Takeover (RTO) execution
+4. Corporate Structuring – Optimal shareholding arrangements and financial forecasting
+5. Business Modernisation – Helping traditional enterprises adopt technology for sustainable development
+6. AI Advisory Platform – AI-enhanced IPO readiness guidance based on director expertise
+
+About the team:
+- Patrick Tan: Founder of Raffles Developments, facilitated S$500M+ transactions, independent director of NYSE-listed company, Diploma in Electronic Engineering (Singapore Polytechnic)
+- Edmund Chan: Previously KPMG & BDO, 7+ years audit experience, currently CFO of HK-listed company and independent director of 3 US-listed companies, ACCA (UK) & ISCA (Singapore) Chartered Accountant, IBBA member
+
+Guidelines:
+- Be helpful, professional, and concise
+- Focus on qualifying leads — ask about their business type, goals, and readiness
+- Encourage them to fill in the contact form or call for a free consultation
+- Keep responses under 120 words
+- If asked about pricing, explain it varies by scope and invite them to schedule a free consultation
+- Speak warmly but with authority — you represent a trusted Singapore advisory firm
+- You can respond in English or Chinese (Mandarin) based on the user's language`;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  chatBox.classList.toggle('open', chatOpen);
+  if (chatOpen && chatMessages.children.length === 0) {
+    setTimeout(() => addBotMessage("你好! Hi! I'm the KGP AI Advisor 👋 I can help you explore IPO readiness, M&A opportunities, or business valuation. What brings you here today?"), 400);
+  }
+  if (chatOpen) chatInput.focus();
+}
+
+function addBotMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'cm bot';
+  el.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-bubble">${text}</div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function addUserMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'cm user';
+  el.innerHTML = `<div class="cm-bubble">${text}</div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showTyping() {
+  const el = document.createElement('div');
+  el.className = 'cm bot'; el.id = 'typing-indicator';
+  el.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-bubble cm-typing"><span></span><span></span><span></span></div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function hideTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+
+async function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  chatInput.value = '';
+  addUserMessage(text);
+  conversationHistory.push({ role: 'user', content: text });
+  showTyping();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: SYSTEM_PROMPT,
+        messages: conversationHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "I'm sorry, I couldn't process that. Please try again or contact us directly.";
+    hideTyping();
+    addBotMessage(reply);
+    conversationHistory.push({ role: 'assistant', content: reply });
+  } catch (e) {
+    hideTyping();
+    addBotMessage("Sorry, I'm having trouble connecting. Please <a href='#contact' style='color:var(--red);font-weight:700;'>fill in our form</a> and we'll get back to you within 24 hours.");
+  }
+}
+
+function sendQuick(text) {
+  chatInput.value = text;
+  sendMessage();
+}
+</script>
+<script>
+// ══ SLIDER UTILITY ══
+function createSlider({ gridId, dotsId, intervalMs = 5000 }) {
+  let page = 0;
+  let timer = null;
+  const grid = document.getElementById(gridId);
+  const dotsContainer = document.getElementById(dotsId);
+  if (!grid || !dotsContainer) return;
+
+  function getPerPage() {
+    return window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  }
+
+  function getTotalPages() {
+    const cards = grid.querySelectorAll('[data-slide-card]');
+    return Math.ceil(cards.length / getPerPage());
+  }
+
+  function goTo(targetPage, animate = true) {
+    const cards = Array.from(grid.querySelectorAll('[data-slide-card]'));
+    const perPage = getPerPage();
+    const total = Math.ceil(cards.length / perPage);
+    page = ((targetPage % total) + total) % total;
+
+    if (animate) {
+      grid.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      grid.style.opacity = '0';
+      grid.style.transform = 'translateX(20px)';
+      setTimeout(() => {
+        applyVisibility(cards, perPage);
+        grid.style.transform = 'translateX(-20px)';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            grid.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            grid.style.opacity = '1';
+            grid.style.transform = 'translateX(0)';
+          });
+        });
+      }, 350);
+    } else {
+      applyVisibility(cards, perPage);
+    }
+
+    dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === page);
+    });
+  }
+
+  function applyVisibility(cards, perPage) {
+    cards.forEach((c, i) => {
+      c.style.display = (i >= page * perPage && i < (page + 1) * perPage) ? '' : 'none';
+    });
+  }
+
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(() => goTo(page + 1), intervalMs);
+  }
+
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  // Dot clicks
+  dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      goTo(i);
+      stopAuto();
+      startAuto(); // restart timer after manual interaction
+    });
+  });
+
+  // Pause on hover
+  grid.addEventListener('mouseenter', stopAuto);
+  grid.addEventListener('mouseleave', startAuto);
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  grid.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    stopAuto();
+  }, { passive: true });
+  grid.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(diff > 0 ? page + 1 : page - 1);
+    startAuto();
+  }, { passive: true });
+
+  // Resize handler
+  window.addEventListener('resize', () => {
+    // Rebuild dots based on new perPage
+    const total = getTotalPages();
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => { goTo(i); stopAuto(); startAuto(); });
+      dotsContainer.appendChild(d);
+    }
+    goTo(0, false);
+  });
+
+  // Init
+  goTo(0, false);
+  startAuto();
+}
+
+// ══ INIT BOTH SLIDERS ══
+document.addEventListener('DOMContentLoaded', () => {
+  createSlider({ gridId: 'advGrid',   dotsId: 'advDots',   intervalMs: 5000 });
+  createSlider({ gridId: 'testiGrid', dotsId: 'testiDots', intervalMs: 6000 });
+});
+
+// ── Hero Slider ──
+let heroPage = 0;
+let heroTimer = null;
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.hero-dot');
+
+function goHeroSlide(n) {
+  // Reset current slide elements instantly
+  heroSlides[heroPage].querySelectorAll('.hero-anim').forEach(el => {
+    el.style.animation = 'none';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(36px)';
+  });
+
+  heroSlides[heroPage].classList.remove('active');
+  heroPage = ((n % heroSlides.length) + heroSlides.length) % heroSlides.length;
+  heroSlides[heroPage].classList.add('active');
+
+  // Re-trigger CSS keyframe animation on new slide
+  heroSlides[heroPage].querySelectorAll('.hero-anim').forEach(el => {
+    el.style.animation = 'none';
+    el.style.opacity = '';
+    el.style.transform = '';
+    void el.offsetWidth; // force reflow to restart animation
+    el.style.animation = '';
+  });
+}
+
+function startHeroAuto() {
+  heroTimer = setInterval(() => goHeroSlide(heroPage + 1), 6000);
+}
+
+document.getElementById('heroPrev').addEventListener('click', () => {
+  clearInterval(heroTimer);
+  goHeroSlide(heroPage - 1);
+  startHeroAuto();
+});
+document.getElementById('heroNext').addEventListener('click', () => {
+  clearInterval(heroTimer);
+  goHeroSlide(heroPage + 1);
+  startHeroAuto();
+});
+
+startHeroAuto();
+
+</script>
+</body>
+</html>
