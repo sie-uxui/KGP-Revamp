@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BizMatch — Business Marketplace | Key Global Projects</title>
+  <meta name="description" content="Browse verified Singapore businesses for sale. AI-powered business matching by Key Global Projects — your trusted M&A and IPO advisor."/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+  /* ═══════════════════════════════════════════════════════
+     KGP DESIGN SYSTEM — exact match to corporate website
+     Primary Navy : #0d1f4e   |   Primary Red : #d02020
+     Font: Nunito Sans
+  ═══════════════════════════════════════════════════════ */
+  :root {
+    --navy:    #0d1f4e;
+    --navydark:#091638;
+    --red:     #d02020;
+    --reddark: #aa1818;
+    --white:   #ffffff;
+    --offbg:   #f2f4f8;
+    --gray:    #666666;
+    --lgray:   #999999;
+    --border:  #e2e6ef;
+    --shadow:  0 4px 24px rgba(13,31,78,.08);
+    --f:       'Nunito Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--f); color: #333; overflow-x: hidden; background: #fff; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ul { list-style: none; }
+  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── Typography helpers ── */
+  .eyebrow { color: var(--red); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px; }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 30px; border-radius: 40px;
+    font-family: var(--f); font-weight: 800; font-size: 13.5px;
+    text-transform: uppercase; letter-spacing: .6px;
+    cursor: pointer; border: none; transition: background .2s, transform .15s, box-shadow .2s;
+  }
+  .btn .arr { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  .btn-red  { background: var(--red); color: #fff; box-shadow: 0 6px 20px rgba(208,32,32,.32); }
+  .btn-red:hover  { background: var(--reddark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(208,32,32,.38); }
+  .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 6px 20px rgba(13,31,78,.25); }
+  .btn-navy:hover { background: var(--navydark); transform: translateY(-2px); }
+
+  /* ═══════════════════════════════════════════════════
+     TOPBAR
+  ═══════════════════════════════════════════════════ */
+  .topbar { background: var(--navy); color: rgba(255,255,255,.8); font-size: 13px; font-weight: 600; }
+  .topbar-inner { display: flex; align-items: stretch; justify-content: space-between; min-height: 44px; }
+  .topbar-left { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; padding: 8px 0; }
+  .topbar-left span { display: flex; align-items: center; gap: 7px; }
+  .topbar-left i { color: var(--red); font-size: 12px; }
+  .topbar-right {
+    display: flex; align-items: stretch;
+    background: var(--red);
+    clip-path: polygon(22px 0%, 100% 0%, 100% 100%, 0% 100%);
+    padding-left: 22px;
+  }
+  .topbar-right a {
+    display: flex; align-items: center; justify-content: center;
+    width: 42px; color: #fff; font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,.18); transition: background .2s;
+  }
+  .topbar-right a:last-child { border-right: none; }
+  .topbar-right a:hover { background: rgba(255,255,255,.15); }
+
+  /* ═══════════════════════════════════════════════════
+     NAVBAR
+  ═══════════════════════════════════════════════════ */
+  .navbar {
+    background: #fff; position: relative; top: 0; z-index: 900;
+    box-shadow: 0 3px 20px rgba(13,31,78,.09);
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-box { width: 46px; height: 46px; background: var(--navy); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo-box i { color: #fff; font-size: 20px; }
+  .logo-words .en { font-size: 22px; font-weight: 900; color: var(--navy); text-transform: uppercase; line-height: 1.1; letter-spacing: -.2px; }
+  .logo-words .en span { color: var(--red); }
+  .logo-words .zh { font-size: 10.5px; color: var(--lgray); letter-spacing: 2.5px; font-weight: 700; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; }
+  .nav-links a {
+    font-size: 13px; font-weight: 800; color: var(--navy);
+    padding: 8px 13px; text-transform: uppercase; letter-spacing: .4px;
+    position: relative; transition: color .2s; white-space: nowrap;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 2px; left: 13px; right: 13px;
+    height: 2px; background: var(--red); transform: scaleX(0);
+    transform-origin: left; transition: transform .25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2.5px; background: var(--navy); border-radius: 2px; transition: all .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  .mobile-nav { display: none; background: #fff; border-top: 2px solid var(--red); box-shadow: 0 8px 24px rgba(13,31,78,.12); }
+  .mobile-nav.open { display: block; }
+  .mobile-nav a { display: block; padding: 14px 28px; font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--navy); border-bottom: 1px solid var(--border); letter-spacing: .4px; }
+  .mobile-nav a:hover, .mobile-nav a.active { color: var(--red); background: rgba(208,32,32,.04); }
+  .mobile-nav .mn-cta { padding: 18px 28px; }
+
+  /* ══════════════════════════════════════════
+        CHATBOT WIDGET
+    ══════════════════════════════════════════ */
+    #chat-widget {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9998;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+    }
+    #chat-bubble {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--red); color: #fff; font-size: 24px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 6px 24px rgba(208,32,32,.45);
+      transition: transform .2s, box-shadow .2s;
+      animation: pulsePlay 2.5s ease-in-out infinite;
+    }
+    #chat-bubble:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(208,32,32,.55); }
+    #chat-box {
+      width: 360px; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 48px rgba(13,31,78,.22);
+      display: none; flex-direction: column;
+      background: #fff; max-height: 520px;
+    }
+    #chat-box.open { display: flex; }
+    #chat-header {
+      background: var(--navy); padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    #chat-header .ch-left { display: flex; align-items: center; gap: 12px; }
+    #chat-header .ch-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--red); display: flex; align-items: center;
+      justify-content: center; font-size: 16px; color: #fff;
+    }
+    #chat-header .ch-info .ch-name { color: #fff; font-weight: 900; font-size: 14px; }
+    #chat-header .ch-info .ch-status {
+      color: rgba(255,255,255,.6); font-size: 12px; display: flex;
+      align-items: center; gap: 5px;
+    }
+    #chat-header .ch-info .ch-status::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; display: inline-block;
+    }
+    #chat-close {
+      color: rgba(255,255,255,.6); font-size: 18px; cursor: pointer;
+      transition: color .2s;
+    }
+    #chat-close:hover { color: #fff; }
+    #chat-messages {
+      flex: 1; overflow-y: auto; padding: 18px 16px;
+      display: flex; flex-direction: column; gap: 12px;
+      background: #f8f9fc;
+    }
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+    .cm { display: flex; gap: 8px; align-items: flex-end; }
+    .cm.bot { justify-content: flex-start; }
+    .cm.user { justify-content: flex-end; }
+    .cm-avatar {
+      width: 28px; height: 28px; border-radius: 50%; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: #fff; flex-shrink: 0;
+    }
+    .cm-bubble {
+      max-width: 78%; padding: 10px 14px; border-radius: 16px;
+      font-size: 13.5px; line-height: 1.6;
+    }
+    .cm.bot .cm-bubble {
+      background: #fff; color: #222;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 8px rgba(13,31,78,.07);
+    }
+    .cm.user .cm-bubble {
+      background: var(--red); color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .cm-typing { display: flex; gap: 4px; padding: 12px 14px; }
+    .cm-typing span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gray); display: inline-block;
+      animation: typingDot 1.2s ease-in-out infinite;
+    }
+    .cm-typing span:nth-child(2) { animation-delay: .2s; }
+    .cm-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes typingDot {
+      0%,60%,100% { transform: translateY(0); opacity: .4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+    @keyframes pulsePlay {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(208,32,32,.5), 0 6px 24px rgba(208,32,32,.45); }
+      50%       { box-shadow: 0 0 0 12px rgba(208,32,32,.18), 0 6px 24px rgba(208,32,32,.45); }
+    }
+    #chat-footer {
+      padding: 12px 14px; background: #fff;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 8px; align-items: center;
+    }
+    #chat-input {
+      flex: 1; border: 1.5px solid var(--border); border-radius: 24px;
+      padding: 10px 16px; font-size: 13.5px; font-family: var(--f);
+      outline: none; color: #222; transition: border-color .2s;
+    }
+    #chat-input:focus { border-color: var(--red); }
+    #chat-send {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--red); color: #fff; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 14px; transition: background .2s;
+      flex-shrink: 0;
+    }
+    #chat-send:hover { background: var(--reddark); }
+    #chat-quick-replies {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      padding: 0 16px 10px;
+    }
+    .qr-btn {
+      font-size: 12px; font-weight: 700; padding: 5px 12px;
+      border-radius: 20px; border: 1.5px solid var(--red);
+      color: var(--red); background: #fff; cursor: pointer;
+      transition: all .2s; font-family: var(--f);
+    }
+    .qr-btn:hover { background: var(--red); color: #fff; }
+
+  /* ═══════════════════════════════════════════════════
+     HERO
+  ═══════════════════════════════════════════════════ */
+  .bm-hero {
+    background: var(--navy);
+    background-image: linear-gradient(135deg, rgba(13,31,78,.97) 50%, rgba(13,31,78,.75)),
+                      url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=60');
+    background-size: cover; background-position: center;
+    padding: 90px 0 72px;
+    min-height: 580px;; position: relative; overflow: hidden;
+  }
+  .bm-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: var(--red); }
+  .bm-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .bm-hero-inner { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: center; position: relative; }
+  .bm-hero-badge {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px;
+    background: rgba(208,32,32,.15); border: 1px solid rgba(208,32,32,.4);
+    color: #ff9090; font-size: 12px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1.8px;
+    padding: 6px 16px; border-radius: 40px;
+  }
+  .bm-hero-badge i { color: var(--red); }
+  .bm-hero-anim {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  .bm-hero .bm-hero-anim {
+    animation: heroFadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .bm-hero-anim {
+  opacity: 0;
+  transform: translateY(36px);
+  animation: heroFadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay: var(--d, 0s);
+  }
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .bm-hero h1 { font-size: 54px; font-weight: 900; color: #fff; line-height: 1.07; margin-bottom: 18px; }
+  .bm-hero h1 span { color: var(--red); }
+  .bm-hero-desc { color: rgba(255,255,255,.75); font-size: 16px; line-height: 1.78; max-width: 560px; margin-bottom: 28px; }
+  .bm-type-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+  .bm-type-tab {
+    display: flex; align-items: center; gap: 7px;
+    padding: 8px 16px; border-radius: 40px; cursor: pointer;
+    font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px;
+    border: 2px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65);
+    background: transparent; transition: all .2s; font-family: var(--f);
+  }
+  .bm-type-tab:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+  .bm-type-tab.active { background: var(--red); border-color: var(--red); color: #fff; }
+  .bm-type-tab i { font-size: 12px; }
+  .bm-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .bm-hero-stats { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 28px 22px; }
+  .bm-stat { text-align: center; padding: 14px 0; }
+  .bm-stat .num { font-size: 42px; font-weight: 900; color: #fff; line-height: 1; }
+  .bm-stat .lbl2 { font-size: 11.5px; color: rgba(255,255,255,.55); font-weight: 700; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+  .bm-stat-div { height: 1px; background: rgba(255,255,255,.1); margin: 0 12px; }
+
+  /* ═══════════════════════════════════════════════════
+     SEARCH STRIP (sticky)
+  ═══════════════════════════════════════════════════ */
+  .search-strip {
+    background: #fff; border-bottom: 1px solid var(--border); padding: 22px 0;
+    box-shadow: 0 4px 20px rgba(13,31,78,.06);
+    position: sticky; top: 0; z-index: 800;
+  }
+  .search-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; display: flex; align-items: center; gap: 10px;
+    background: var(--offbg); border: 2px solid var(--border);
+    border-radius: 40px; padding: 0 20px; transition: border-color .2s, background .2s;
+  }
+  .search-box:focus-within { border-color: var(--red); background: #fff; box-shadow: 0 0 0 3px rgba(208,32,32,.08); }
+  .search-box i { color: var(--lgray); font-size: 15px; }
+  .search-box input {
+    flex: 1; border: none; background: transparent;
+    padding: 13px 0; font-family: var(--f); font-size: 14.5px; color: #222; outline: none;
+  }
+  .search-box input::placeholder { color: #aaa; }
+  .dd-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--offbg); border: 2px solid var(--border);
+    border-radius: 40px; padding: 10px 18px;
+    font-family: var(--f); font-size: 13.5px; font-weight: 700;
+    color: var(--navy); cursor: pointer; transition: all .2s; white-space: nowrap;
+  }
+  .dd-pill:hover, .dd-pill:focus-within { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.04); }
+  .dd-pill i { color: var(--red); font-size: 13px; }
+  .dd-pill select { border: none; background: transparent; font-family: var(--f); font-size: 13.5px; font-weight: 700; color: inherit; cursor: pointer; outline: none; max-width: 160px; }
+  .search-go {
+    background: var(--red); color: #fff; border: none;
+    padding: 13px 28px; border-radius: 40px;
+    font-family: var(--f); font-size: 13.5px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .5px; cursor: pointer;
+    display: flex; align-items: center; gap: 9px;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 4px 16px rgba(208,32,32,.3); white-space: nowrap;
+  }
+  .search-go:hover { background: var(--reddark); transform: translateY(-1px); }
+
+  /* ═══════════════════════════════════════════════════
+     HOW IT WORKS
+  ═══════════════════════════════════════════════════ */
+  .how-strip { background: var(--navy); padding: 60px 0; }
+  .how-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; position: relative; }
+  .how-grid::before { content: ''; position: absolute; top: 38px; left: 12%; right: 12%; height: 1px; background: rgba(255,255,255,.08); z-index: 0; }
+  .how-step { text-align: center; position: relative; z-index: 1; }
+  .how-ico {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: rgba(255,255,255,.06); border: 2px solid rgba(255,255,255,.12);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px; transition: all .3s;
+  }
+  .how-step:hover .how-ico { background: var(--red); border-color: var(--red); transform: scale(1.07); }
+  .how-ico i { font-size: 28px; color: var(--red); transition: color .3s; }
+  .how-step:hover .how-ico i { color: #fff; }
+  .how-step h4 { color: #fff; font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+  .how-step p { color: rgba(255,255,255,.5); font-size: 14px; line-height: 1.7; max-width: 200px; margin: 0 auto; }
+
+  /* ═══════════════════════════════════════════════════
+     MAIN LAYOUT
+  ═══════════════════════════════════════════════════ */
+  .bm-main { padding: 48px 0 88px; background: var(--offbg); }
+  .bm-layout { display: grid; grid-template-columns: 290px 1fr; gap: 36px; align-items: start; }
+  .sidebar { position: static; }
+  .sidebar-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+  .sc-head { background: var(--navy); padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; }
+  .sc-head h4 { color: #fff; font-size: 15px; font-weight: 900; text-transform: uppercase; letter-spacing: .8px; }
+  .sc-reset { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.8); padding: 4px 12px; border-radius: 20px; font-family: var(--f); font-size: 12px; font-weight: 700; cursor: pointer; transition: all .2s; }
+  .sc-reset:hover { background: var(--red); border-color: var(--red); color: #fff; }
+  .sc-body { padding: 22px; }
+  .fg { margin-bottom: 24px; }
+  .fg:last-child { margin-bottom: 0; }
+  .fg-title { font-size: 11px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .fg-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .price-chips { display: flex; flex-direction: column; gap: 7px; }
+  .pc { display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-radius: 8px; cursor: pointer; border: 2px solid var(--border); background: var(--offbg); font-size: 13.5px; font-weight: 700; color: var(--navy); transition: all .18s; user-select: none; }
+  .pc i { font-size: 11px; color: transparent; width: 13px; transition: color .18s; }
+  .pc:hover { border-color: rgba(208,32,32,.4); color: var(--red); }
+  .pc.sel { background: var(--red); border-color: var(--red); color: #fff; }
+  .pc.sel i { color: #fff; }
+  .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .lc { padding: 8px 6px; border-radius: 8px; text-align: center; border: 2px solid var(--border); background: var(--offbg); font-size: 13px; font-weight: 800; color: var(--navy); cursor: pointer; transition: all .18s; user-select: none; }
+  .lc:hover { border-color: var(--navy); }
+  .lc.sel { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .fg-select { width: 100%; padding: 11px 14px; border: 2px solid var(--border); border-radius: 8px; font-family: var(--f); font-size: 13.5px; color: var(--navy); background: var(--offbg); cursor: pointer; outline: none; transition: border-color .2s; }
+  .fg-select:focus, .fg-select:hover { border-color: var(--red); background: #fff; }
+  .sc-divider { height: 1px; background: var(--border); margin: 0 22px; }
+  .sc-match-cta { padding: 24px 22px; background: linear-gradient(145deg, var(--navy), #162861); text-align: center; }
+  .sc-match-cta .ico { font-size: 34px; color: var(--red); margin-bottom: 12px; display: block; }
+  .sc-match-cta h5 { color: #fff; font-size: 15px; font-weight: 900; margin-bottom: 8px; }
+  .sc-match-cta p { color: rgba(255,255,255,.6); font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
+  .sc-match-btn { display: block; width: 100%; background: var(--red); color: #fff; border: none; padding: 12px; border-radius: 8px; font-family: var(--f); font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; transition: background .2s; }
+  .sc-match-btn:hover { background: var(--reddark); }
+
+  /* ═══════════════════════════════════════════════════
+     LISTINGS TOPBAR
+  ═══════════════════════════════════════════════════ */
+  .lt-bar { background: #fff; border-radius: 14px; padding: 16px 22px; margin-bottom: 26px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; box-shadow: var(--shadow); }
+  .lt-count { font-size: 15px; color: var(--gray); font-weight: 600; }
+  .lt-count strong { font-size: 22px; font-weight: 900; color: var(--red); margin-right: 2px; }
+  .lt-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lt-sort-lbl { font-size: 12px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .6px; }
+  .lt-sort { padding: 9px 16px; border: 2px solid var(--border); border-radius: 40px; font-family: var(--f); font-size: 13.5px; font-weight: 700; color: var(--navy); background: var(--offbg); cursor: pointer; outline: none; transition: all .2s; }
+  .lt-sort:hover, .lt-sort:focus { border-color: var(--red); background: #fff; }
+  .view-toggle { display: flex; gap: 4px; }
+  .vt-btn { width: 38px; height: 38px; border-radius: 8px; border: 2px solid var(--border); background: var(--offbg); color: var(--gray); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all .2s; }
+  .vt-btn:hover, .vt-btn.active { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.06); }
+  .af-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; align-items: center; }
+  .af-row:empty { display: none; }
+  .af-lbl { font-size: 11px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: 1px; }
+  .af-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(208,32,32,.07); color: var(--red); border: 1.5px solid rgba(208,32,32,.22); border-radius: 40px; padding: 4px 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all .18s; }
+  .af-tag:hover { background: var(--red); color: #fff; border-color: var(--red); }
+  .af-tag i { font-size: 10px; }
+
+  /* ═══════════════════════════════════════════════════
+     LISTING CARDS
+  ═══════════════════════════════════════════════════ */
+  .listings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 26px; margin-bottom: 44px; }
+  .listings-grid.lv { grid-template-columns: 1fr; }
+  .listings-grid.lv .lcard { flex-direction: row; }
+  .listings-grid.lv .lcard-photo { width: 260px; min-width: 260px; height: auto; min-height: 200px; }
+  .listings-grid.lv .lcard-body { flex: 1; }
+
+  .lcard { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; opacity: 0; transform: translateY(28px); animation: cardIn .48s ease forwards; }
+  .lcard:hover { transform: translateY(-7px); box-shadow: 0 18px 48px rgba(13,31,78,.14); }
+  @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
+  .lcard:nth-child(1){animation-delay:.04s} .lcard:nth-child(2){animation-delay:.08s}
+  .lcard:nth-child(3){animation-delay:.12s} .lcard:nth-child(4){animation-delay:.16s}
+  .lcard:nth-child(5){animation-delay:.20s} .lcard:nth-child(6){animation-delay:.24s}
+  .lcard:nth-child(7){animation-delay:.28s} .lcard:nth-child(8){animation-delay:.32s}
+  .lcard:nth-child(9){animation-delay:.36s} .lcard:nth-child(10){animation-delay:.40s}
+  .lcard:nth-child(11){animation-delay:.44s} .lcard:nth-child(12){animation-delay:.48s}
+
+  .lcard-photo { position: relative; height: 210px; overflow: hidden; background: #c8d0e0; flex-shrink: 0; }
+  .lcard-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .lcard:hover .lcard-photo img { transform: scale(1.06); }
+  .ph-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .ph-placeholder i { font-size: 56px; color: rgba(255,255,255,.2); }
+
+  /* Badges */
+  .badge { position: absolute; padding: 5px 12px; border-radius: 40px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; z-index: 2; }
+  .btl { top:13px; left:13px; } .btr { top:13px; right:13px; } .bbl { bottom:13px; left:13px; } .bbr { bottom:13px; right:13px; }
+  .b-feat { background: var(--red); color:#fff; }
+  .b-new  { background: #16a34a; color:#fff; }
+  .b-hot  { background: #ea7c00; color:#fff; animation: bHot 2s ease-in-out infinite; }
+  @keyframes bHot { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+  .b-kgp  { background: rgba(13,31,78,.85); border:1px solid rgba(255,255,255,.22); color:#fff; }
+  .b-ind  { background: rgba(13,31,78,.8); color:#fff; }
+
+  /* Match score (FRD §2.2.5 — High/Med/Low) */
+  .match-score { position:absolute; bottom:13px; right:13px; z-index:2; display:flex; align-items:center; gap:5px; padding:5px 10px; border-radius:8px; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; }
+  .ms-hi  { background: rgba(22,163,74,.9); color:#fff; }
+  .ms-med { background: rgba(234,124,0,.9); color:#fff; }
+
+  /* Card body */
+  .lcard-body { padding: 20px 22px 18px; display: flex; flex-direction: column; flex: 1; }
+  .lcard-body h3 { font-size: 17.5px; font-weight: 900; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+  .lcard-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 11px; }
+  .lcard-meta span { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--gray); font-weight: 600; }
+  .lcard-meta i { color: var(--red); font-size: 11.5px; }
+  .lcard-desc { color: var(--gray); font-size: 13.5px; line-height: 1.68; margin-bottom: 14px; flex: 1; }
+  .fin-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .fin-pill { background: var(--offbg); border-radius: 7px; padding: 6px 11px; }
+  .fin-pill .fl { font-size: 11px; color: var(--gray); font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
+  .fin-pill .fv { font-size: 13px; font-weight: 900; color: var(--navy); margin-top: 1px; }
+  .lcard-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); gap: 10px; }
+  .lcard-price { font-size: 24px; font-weight: 900; color: var(--navy); line-height: 1; }
+  .lcard-price small { font-size: 12px; color: var(--gray); font-weight: 600; display: block; margin-top: 2px; }
+  .lcard-actions { display: flex; gap: 7px; align-items: center; }
+  .btn-interest { background: var(--red); color: #fff; border: none; padding: 10px 20px; border-radius: 40px; font-family: var(--f); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; cursor: pointer; transition: background .18s, transform .15s; white-space: nowrap; box-shadow: 0 4px 14px rgba(208,32,32,.3); }
+  .btn-interest:hover { background: var(--reddark); transform: translateY(-2px); }
+  .btn-save { width: 40px; height: 40px; border-radius: 40px; flex-shrink: 0; border: 2px solid var(--border); background: var(--offbg); color: var(--gray); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14.5px; transition: all .18s; }
+  .btn-save:hover { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.06); }
+  .btn-save.saved { border-color: var(--red); background: rgba(208,32,32,.08); color: var(--red); }
+  .no-results { grid-column: 1/-1; text-align: center; padding: 80px 24px; display: none; flex-direction: column; align-items: center; gap: 14px; }
+  .no-results.show { display: flex; }
+  .no-results i { font-size: 60px; color: var(--border); }
+  .no-results h3 { font-size: 22px; color: var(--navy); font-weight: 900; }
+  .no-results p { color: var(--gray); font-size: 14.5px; }
+  .pagination { display: flex; justify-content: center; gap: 8px; }
+  .pg-btn { width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--border); background: #fff; font-family: var(--f); font-size: 14px; font-weight: 800; color: var(--navy); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .18s; }
+  .pg-btn:hover:not(:disabled) { border-color: var(--red); color: var(--red); }
+  .pg-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+  .pg-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+  /* ═══════════════════════════════════════════════════
+     CALENDLY CTA STRIP  (FRD §2.3.4)
+  ═══════════════════════════════════════════════════ */
+  .cal-strip { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 0; }
+  .cal-inner { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+  .cal-text h2 { font-size: 34px; font-weight: 900; color: var(--navy); margin-bottom: 12px; line-height: 1.2; }
+  .cal-text h2 span { color: var(--red); }
+  .cal-text p { color: var(--gray); font-size: 15px; line-height: 1.75; max-width: 520px; }
+  .cal-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+  .cal-placeholder { background: var(--offbg); border: 2px dashed var(--border); border-radius: 14px; min-width: 340px; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 32px; }
+  .cal-placeholder i { font-size: 40px; color: var(--border); }
+  .cal-placeholder span { font-size: 13px; color: var(--lgray); font-weight: 700; text-align: center; }
+  .cal-placeholder small { font-size: 11.5px; color: #bbb; text-align: center; }
+
+  /* ═══════════════════════════════════════════════════
+     MODALS
+  ═══════════════════════════════════════════════════ */
+  .modal-bg { display: none; position: fixed; inset: 0; z-index: 9800; background: rgba(13,31,78,.72); backdrop-filter: blur(5px); }
+  .modal-bg.open { display: block; }
+  .modal-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-58%); opacity: 0; z-index: 9900; width: 94%; max-width: 560px; background: #fff; border-radius: 18px; box-shadow: 0 28px 72px rgba(13,31,78,.3); overflow: hidden; transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .28s; }
+  .modal-box.open { display: block; transform: translate(-50%,-50%); opacity: 1; }
+  .mh { background: var(--navy); padding: 26px 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+  .mh-left { display: flex; align-items: center; gap: 14px; }
+  .mh-ico { width: 50px; height: 50px; background: var(--red); border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mh-ico i { font-size: 21px; color: #fff; }
+  .mh h3 { color: #fff; font-size: 19px; font-weight: 900; }
+  .mh p { color: rgba(255,255,255,.58); font-size: 13.5px; margin-top: 3px; }
+  .mh-close { background: rgba(255,255,255,.1); border: none; color: rgba(255,255,255,.65); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; transition: background .2s; margin-top: 2px; }
+  .mh-close:hover { background: var(--red); color: #fff; }
+  .mb { padding: 28px 30px; max-height: 72vh; overflow-y: auto; }
+  .mb::-webkit-scrollbar { width: 4px; }
+  .mb::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  .ff { margin-bottom: 15px; }
+  .ff label { display: block; font-size: 12.5px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .7px; margin-bottom: 7px; }
+  .ff input, .ff textarea, .ff select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 8px; font-family: var(--f); font-size: 14px; color: #222; background: var(--offbg); outline: none; transition: border-color .2s; }
+  .ff input:focus, .ff textarea:focus, .ff select:focus { border-color: var(--red); background: #fff; }
+  .ff textarea { resize: vertical; min-height: 88px; }
+  .ff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .m-note { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; background: var(--offbg); border-radius: 8px; padding: 12px 15px; font-size: 13px; color: var(--gray); line-height: 1.55; }
+  .m-note i { color: var(--red); font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+  .m-submit { width: 100%; padding: 15px; background: var(--red); color: #fff; border: none; border-radius: 40px; font-family: var(--f); font-size: 14.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .18s, transform .15s; box-shadow: 0 6px 20px rgba(208,32,32,.32); }
+  .m-submit:hover { background: var(--reddark); transform: translateY(-2px); }
+  .m-success { display: none; text-align: center; padding: 44px 30px; }
+  .m-success.show { display: block; }
+  .m-success-ico { width: 80px; height: 80px; background: rgba(22,163,74,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .m-success-ico i { font-size: 36px; color: #16a34a; }
+  .m-success h3 { font-size: 23px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+  .m-success p { color: var(--gray); font-size: 14.5px; line-height: 1.72; margin-bottom: 24px; }
+
+  .btn-share { background: none; border: 2px solid var(--border); color: var(--gray); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; transition: all .2s; flex-shrink: 0; }
+  .btn-share:hover { border-color: var(--navy); color: var(--navy); background: rgba(13,31,78,.06); }
+
+  
+  .mm-step-dot {
+    width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border);
+    background: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 900; color: var(--lgray); flex-shrink: 0; transition: all .3s;
+  }
+  .mm-step-dot.active { background: var(--red); border-color: var(--red); color: #fff; }
+  .mm-step-dot.done  { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .mm-step-line { flex: 1; height: 2px; background: var(--border); margin: 0 6px; transition: background .3s; }
+  .mm-step-line.done { background: var(--navy); }
+
+  /* ── Match question chips ── */
+  .mm-q-chip {
+    padding: 8px 16px; border-radius: 40px; border: 2px solid var(--border);
+    background: var(--offbg); font-family: var(--f); font-size: 13px; font-weight: 800;
+    color: var(--navy); cursor: pointer; transition: all .18s; display: flex; align-items: center; gap: 6px;
+  }
+  .mm-q-chip:hover { border-color: var(--red); color: var(--red); }
+  .mm-q-chip.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+  
+  footer { position: relative; color: rgba(255,255,255,.82); overflow: hidden; }
+  footer::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=70') center/cover no-repeat; z-index: 0; }
+  .footer-main-wrap { position: relative; z-index: 1; background: rgba(13,31,78,.88); }
+  .footer-main { display: grid; grid-template-columns: 2fr 1.2fr 1.4fr 1.6fr; gap: 48px; padding: 72px 0 48px; }
+  .f-brand p { font-size: 14px; line-height: 1.8; margin: 16px 0 18px; }
+  .f-contact { list-style: none; }
+  .f-contact li { display: flex; align-items: center; gap: 9px; font-size: 14px; margin-bottom: 9px; }
+  .f-contact li i { color: var(--red); width: 14px; flex-shrink: 0; }
+  .f-socials { display: flex; gap: 8px; margin-top: 20px; }
+  .f-socials a { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; transition: background .2s; }
+  .f-socials a:hover { background: #fff; color: var(--red); }
+  .f-col h4 { font-size: 18px; font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 3px solid var(--red); display: inline-block; }
+  .f-links { list-style: none; }
+  .f-links li { margin-bottom: 10px; }
+  .f-links a { color: rgba(255,255,255,.65); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+  .f-links a::before { content: '▸'; color: var(--red); font-size: 11px; }
+  .f-links a:hover { color: #fff; }
+  .footer-bot-wrap { position: relative; z-index: 1; background: #0b1a41; }
+  .footer-bot { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bot p { font-size: 13px; color: rgba(255,255,255,.65); }
+  .footer-bot span { color: var(--red); }
+  .footer-bot-links { display: flex; gap: 24px; }
+  .footer-bot-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s; font-weight: 600; }
+  .footer-bot-links a:hover { color: #fff; }
+  @media(max-width:1024px){ .footer-main { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:640px){ .footer-main { grid-template-columns: 1fr; } }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════════════ */
+  @media(max-width:1100px){
+    .bm-hero-inner { grid-template-columns: 1fr; }
+    .bm-hero-stats { display: flex; flex-direction: row; justify-content: center; }
+    .bm-hero-stats .bm-stat { flex: 1; }
+    .bm-hero-stats .bm-stat-div { width: 1px; height: auto; }
+    .bm-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .how-grid { grid-template-columns: 1fr 1fr; }
+    .how-grid::before { display: none; }
+    .f-main { grid-template-columns: 1fr 1fr; }
+    .cal-inner { grid-template-columns: 1fr; }
+    .cal-placeholder { min-width: auto; width: 100%; }
+  }
+  @media(max-width:768px){
+    .bm-hero { padding: 56px 0 52px; min-height: 0; }
+    .bm-hero h1 { font-size: 36px; }
+    .search-row { flex-direction: column; align-items: stretch; }
+    .dd-pill { width: 100%; }
+    .dd-pill select { flex: 1; }
+    .search-go { width: 100%; justify-content: center; }
+    .listings-grid { grid-template-columns: 1fr; }
+    .listings-grid.lv .lcard { flex-direction: column; }
+    .listings-grid.lv .lcard-photo { width: 100%; min-width: auto; height: 210px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .how-grid { grid-template-columns: 1fr; }
+    .f-main { grid-template-columns: 1fr; }
+    .ff-row { grid-template-columns: 1fr; }
+    .cal-text h2 { font-size: 26px; }
+    .search-strip { top: 0; }
+    .sidebar-card .btn-red { display: none; }
+  }
+  @media(max-width:480px){
+    .bm-hero h1 { font-size: 28px; }
+    .bm-hero-btns { flex-direction: column; }
+    .btn { justify-content: center; }
+    .lt-bar { flex-direction: column; align-items: flex-start; }
+    .lt-controls { width: 100%; justify-content: space-between; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- ════ TOPBAR ════ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i>+65 9456 0451</span>
+        <span><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2cbccc4cde2c9c7db8cc1cdcf8cd1c5">[email&#160;protected]</a></span>
+        <span><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WeChat"><i class="fab fa-weixin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar">
+  <div class="wrap">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px; width:auto; object-fit:contain;">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#cases">Cases</a>
+        <a href="index.html#team">Team</a>
+        <a href="index.html#blog">Blog</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="bizmatch.html" class="active">BizMatch +</a>
+      </div>
+      <a href="index.html#contact" class="btn btn-red" style="padding:12px 22px;font-size:12.5px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#cases">Cases</a>
+    <a href="index.html#team">Team</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="bizmatch.html" class="active">BizMatch +</a>
+    <div class="mn-cta">
+      <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="bm-hero">
+  <div class="wrap">
+    <div class="bm-hero-inner">
+
+      <div>
+        <div class="bm-hero-badge bm-hero-anim" style="--d:0.1s"><i class="fas fa-bolt"></i> AI-Powered Matching</div>
+        <h1 class="bm-hero-anim" style="--d:0.3s">Find Your<br>Next <span>Business</span><br>Opportunity</h1>
+        <p class="bm-hero-desc bm-hero-anim" style="--d:0.5s">Browse verified Singapore businesses for sale. From established F&B outlets to tech startups — discover your next acquisition through KGP's AI-curated marketplace.</p>
+
+        <!-- FRD §2.2.2 Match Type Selector -->
+        <div class="bm-type-tabs bm-hero-anim" style="--d:0.65s">
+          <button class="bm-type-tab active" data-type="buyer" onclick="setMatchType(this)">
+            <i class="fas fa-shopping-cart"></i> Buy a Business
+          </button>
+          <button class="bm-type-tab" data-type="supplier" onclick="setMatchType(this)">
+            <i class="fas fa-truck"></i> Find Supplier
+          </button>
+          <button class="bm-type-tab" data-type="partner" onclick="setMatchType(this)">
+            <i class="fas fa-handshake"></i> Find Partner
+          </button>
+        </div>
+
+        <div class="bm-hero-btns bm-hero-anim" style="--d:0.8s">
+          <button class="btn btn-red" onclick="scrollToListings()">
+            Browse Listings <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </button>
+          <button class="btn btn-navy" onclick="openMatchModal()">
+            Get AI-Matched <span class="arr"><i class="fas fa-bolt"></i></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bm-hero-stats bm-hero-anim" style="--d:0.9s">
+        <div class="bm-stat"><div class="num">150+</div><div class="lbl2">Active Listings</div></div>
+        <div class="bm-stat-div"></div>
+        <div class="bm-stat"><div class="num">$2B+</div><div class="lbl2">Total Value</div></div>
+        <div class="bm-stat-div"></div>
+        <div class="bm-stat"><div class="num">12</div><div class="lbl2">Industries</div></div>
+        <div class="bm-stat-div"></div>
+        <div class="bm-stat"><div class="num">98%</div><div class="lbl2">Match Rate</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ SEARCH STRIP ════ -->
+<div class="search-strip" id="listingsAnchor">
+  <div class="wrap">
+    <div class="search-row">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search by name, keyword, industry…" oninput="applyFilters()"/>
+      </div>
+      <div class="dd-pill">
+        <i class="fas fa-industry"></i>
+        <select id="industryFilter" onchange="applyFilters()">
+          <option value="">All Industries</option>
+          <option value="fnb">F&B / Restaurant</option>
+          <option value="retail">Retail</option>
+          <option value="tech">Technology</option>
+          <option value="manufacturing">Manufacturing</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="education">Education</option>
+          <option value="services">Professional Services</option>
+          <option value="construction">Construction</option>
+          <option value="logistics">Logistics</option>
+          <option value="beauty">Beauty & Wellness</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="realestate">Real Estate</option>
+          <option value="importexport">Import/Export</option>
+          <option value="ecommerce">E-Commerce</option>
+          <option value="automotive">Automotive</option>
+        </select>
+      </div>
+      <div class="dd-pill">
+        <i class="fas fa-map-marker-alt"></i>
+        <select id="locationFilter" onchange="applyFilters()">
+          <option value="">All Locations</option>
+          <option value="central">Central</option>
+          <option value="east">East</option>
+          <option value="west">West</option>
+          <option value="north">North</option>
+          <option value="south">South</option>
+        </select>
+      </div>
+      <button class="search-go" onclick="applyFilters()"><i class="fas fa-sliders-h"></i> Filter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ HOW IT WORKS ════ -->
+<div class="how-strip">
+  <div class="wrap">
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-ico"><i class="fas fa-search"></i></div>
+        <h4>Browse Listings</h4>
+        <p>Explore verified businesses across 12+ industries sourced from Singapore's top marketplaces.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-ico"><i class="fas fa-robot"></i></div>
+        <h4>AI-Matched Results</h4>
+        <p>Our algorithm scores each listing against your profile, surfacing the best fits first.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-ico"><i class="fas fa-paper-plane"></i></div>
+        <h4>Express Interest</h4>
+        <p>Submit your details confidentially — a KGP consultant connects you within 24 hours.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-ico"><i class="fas fa-rocket"></i></div>
+        <h4>Close the Deal</h4>
+        <p>Full M&A advisory from due diligence to signing — KGP guides every step of the way.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ MAIN LISTINGS ════ -->
+<section class="bm-main">
+  <div class="wrap">
+    <div class="bm-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <div class="sc-head">
+            <h4><i class="fas fa-sliders-h" style="color:var(--red);margin-right:8px;"></i>Filters</h4>
+            <button class="sc-reset" onclick="resetFilters()">Reset All</button>
+          </div>
+          <div class="sc-body">
+            <div class="fg">
+              <div class="fg-title">Price Range</div>
+              <div class="price-chips" id="priceChips">
+                <div class="pc" data-range="0-100k" onclick="togglePc(this)"><i class="fas fa-check"></i>Under $100K</div>
+                <div class="pc" data-range="100k-500k" onclick="togglePc(this)"><i class="fas fa-check"></i>$100K – $500K</div>
+                <div class="pc" data-range="500k-1m" onclick="togglePc(this)"><i class="fas fa-check"></i>$500K – $1M</div>
+                <div class="pc" data-range="1m-5m" onclick="togglePc(this)"><i class="fas fa-check"></i>$1M – $5M</div>
+                <div class="pc" data-range="5m+" onclick="togglePc(this)"><i class="fas fa-check"></i>$5M+</div>
+              </div>
+            </div>
+            <div class="fg">
+              <div class="fg-title">Location</div>
+              <div class="loc-grid" id="locChips">
+                <div class="lc" data-loc="central" onclick="toggleLc(this)">Central</div>
+                <div class="lc" data-loc="east" onclick="toggleLc(this)">East</div>
+                <div class="lc" data-loc="west" onclick="toggleLc(this)">West</div>
+                <div class="lc" data-loc="north" onclick="toggleLc(this)">North</div>
+                <div class="lc" data-loc="south" onclick="toggleLc(this)">South</div>
+              </div>
+            </div>
+            <div class="fg">
+              <div class="fg-title">Industry</div>
+              <select class="fg-select" id="industrySidebar" onchange="syncIndustry(this.value)">
+                <option value="">All Industries</option>
+                <option value="fnb">F&B / Restaurant</option>
+                <option value="retail">Retail</option>
+                <option value="tech">Technology</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="education">Education</option>
+                <option value="services">Professional Services</option>
+                <option value="construction">Construction</option>
+                <option value="logistics">Logistics</option>
+                <option value="beauty">Beauty & Wellness</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="realestate">Real Estate</option>
+                <option value="importexport">Import/Export</option>
+                <option value="ecommerce">E-Commerce</option>
+                <option value="automotive">Automotive</option>
+              </select>
+            </div>
+          </div>
+          <div class="sc-divider"></div>
+          <!-- AI Match CTA -->
+          <div class="sc-match-cta">
+            <i class="fas fa-robot ico"></i>
+            <h5>Get AI-Matched</h5>
+            <p>Tell us what you're looking for. Our algorithm finds the best businesses for your profile.</p>
+            <button class="sc-match-btn" onclick="openMatchModal()">Find My Matches</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Listings area -->
+      <div>
+        <!-- Topbar -->
+        <div class="lt-bar">
+          <div class="lt-count"><strong id="resultsCount">12</strong> businesses found</div>
+          <div class="lt-controls">
+            <span class="lt-sort-lbl">Sort:</span>
+            <select class="lt-sort" id="sortSelect" onchange="applyFilters()">
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low → High</option>
+              <option value="price-high">Price: High → Low</option>
+              <option value="newest">Newest First</option>
+            </select>
+            <div class="view-toggle">
+              <button class="vt-btn active" id="gvBtn" onclick="setView('grid')" title="Grid view"><i class="fas fa-th"></i></button>
+              <button class="vt-btn" id="lvBtn" onclick="setView('list')" title="List view"><i class="fas fa-list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active filter tags -->
+        <div class="af-row" id="afRow"></div>
+
+        <!-- Featured Listings pinned section -->
+        <div id="featuredSection" style="margin-bottom:28px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-star" style="color:#f59e0b;font-size:14px;"></i>
+            <span style="font-size:12px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1.4px;">Featured Listings</span>
+            <div style="flex:1;height:1px;background:var(--border);"></div>
+          </div>
+        </div>
+        <div class="listings-grid" id="listingsGrid">
+
+          <!-- 1 — Italian Restaurant ● Featured ● High Match -->
+          <div class="lcard" data-industry="fnb" data-price="850000" data-location="central" data-featured="1" data-title="Established Italian Restaurant">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge btl b-feat">Featured</span>
+              <span class="badge btr b-kgp">KGP Listed</span>
+              <span class="badge bbl b-ind"><i class="fas fa-utensils"></i> F&B</span>
+              <div class="match-score ms-hi"><i class="fas fa-bolt"></i> High Match</div>
+            </div>
+            <div class="lcard-body">
+              <h3>Established Italian Restaurant</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2015</span>
+              </div>
+              <p class="lcard-desc">Prime-location Italian restaurant with a loyal customer base. Fully equipped kitchen, 60 seats, consistent revenue and strong brand presence.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$1.2M/yr</div></div>
+                <div class="fin-pill"><div class="fl">Staff</div><div class="fv">12 FTE</div></div>
+                <div class="fin-pill"><div class="fl">Age</div><div class="fv">9 yrs</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$850,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Established Italian Restaurant')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 — Fashion Boutique ● New -->
+          <div class="lcard" data-industry="retail" data-price="320000" data-location="east" data-featured="0" data-title="Fashion Boutique Chain">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge btl b-new">New</span>
+              <span class="badge bbl b-ind"><i class="fas fa-tshirt"></i> Retail</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Fashion Boutique Chain</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> East</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2018</span>
+              </div>
+              <p class="lcard-desc">Three locations across Singapore with strong online presence, established supplier relationships, and a proven model ready to scale.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$680K/yr</div></div>
+                <div class="fin-pill"><div class="fl">Outlets</div><div class="fv">3 locations</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$320,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Fashion Boutique Chain')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 — SaaS HR Tech ● Hot ● Featured ● High Match -->
+          <div class="lcard" data-industry="tech" data-price="1500000" data-location="central" data-featured="1" data-title="SaaS Platform — HR Tech">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge btl b-hot">Hot Deal</span>
+              <span class="badge bbl b-ind"><i class="fas fa-laptop-code"></i> Technology</span>
+              <div class="match-score ms-hi"><i class="fas fa-bolt"></i> High Match</div>
+            </div>
+            <div class="lcard-body">
+              <h3>SaaS Platform — HR Tech</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2020</span>
+              </div>
+              <p class="lcard-desc">Profitable HR management SaaS with 200+ corporate clients. Strong ARR, modern tech stack, and significant ASEAN growth potential.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">ARR</div><div class="fv">~$420K</div></div>
+                <div class="fin-pill"><div class="fl">Clients</div><div class="fv">200+ corps</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$1,500,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('SaaS Platform — HR Tech')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 — Auto Parts -->
+          <div class="lcard" data-industry="automotive" data-price="680000" data-location="west" data-featured="0" data-title="Auto Parts Supply Business">
+            <div class="lcard-photo">
+              <div class="ph-placeholder" style="background:linear-gradient(135deg,#1e3a70,#0d1f4e)"><i class="fas fa-car"></i></div>
+              <span class="badge bbl b-ind"><i class="fas fa-car"></i> Automotive</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Auto Parts Supply Business</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> West</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2012</span>
+              </div>
+              <p class="lcard-desc">Established supplier to workshops and dealerships. Robust inventory system and loyal B2B relationships built over 12 years.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$2M/yr</div></div>
+                <div class="fin-pill"><div class="fl">Age</div><div class="fv">12 yrs</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$680,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Auto Parts Supply Business')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 — Specialty Coffee ● New -->
+          <div class="lcard" data-industry="fnb" data-price="250000" data-location="north" data-featured="0" data-title="Specialty Coffee Cafe">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge btl b-new">New</span>
+              <span class="badge bbl b-ind"><i class="fas fa-coffee"></i> F&B</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Specialty Coffee Cafe</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> North</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2019</span>
+              </div>
+              <p class="lcard-desc">Instagram-worthy cafe with strong social media following. Turnkey operation with trained staff and strong weekend footfall.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$380K/yr</div></div>
+                <div class="fin-pill"><div class="fl">Staff</div><div class="fv">6 FTE</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$250,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Specialty Coffee Cafe')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 — Electronics Manufacturing ● Featured ● Med Match -->
+          <div class="lcard" data-industry="manufacturing" data-price="2800000" data-location="west" data-featured="1" data-title="Electronics Manufacturing Facility">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge btl b-feat">Featured</span>
+              <span class="badge btr b-kgp">KGP Listed</span>
+              <span class="badge bbl b-ind"><i class="fas fa-industry"></i> Manufacturing</span>
+              <div class="match-score ms-med"><i class="fas fa-signal"></i> Med Match</div>
+            </div>
+            <div class="lcard-body">
+              <h3>Electronics Manufacturing Facility</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> West</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2010</span>
+              </div>
+              <p class="lcard-desc">ISO certified facility with major brand contracts. Modern equipment, skilled workforce of 45, and a 14-year track record.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$8M/yr</div></div>
+                <div class="fin-pill"><div class="fl">Staff</div><div class="fv">45 FTE</div></div>
+                <div class="fin-pill"><div class="fl">Cert</div><div class="fv">ISO 9001</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$2,800,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Electronics Manufacturing Facility')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7 — Accounting Practice -->
+          <div class="lcard" data-industry="services" data-price="420000" data-location="central" data-featured="0" data-title="Accounting Practice">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge bbl b-ind"><i class="fas fa-calculator"></i> Services</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Accounting Practice</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2016</span>
+              </div>
+              <p class="lcard-desc">Well-established practice serving 80+ SME clients. Recurring fee model, experienced team, and a strong referral network in place.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Clients</div><div class="fv">80+ SMEs</div></div>
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$520K/yr</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$420,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Accounting Practice')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8 — Construction Firm -->
+          <div class="lcard" data-industry="construction" data-price="1200000" data-location="south" data-featured="0" data-title="Construction & Contracting Firm">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge bbl b-ind"><i class="fas fa-hard-hat"></i> Construction</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Construction & Contracting Firm</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> South</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2013</span>
+              </div>
+              <p class="lcard-desc">BCA licensed contractor with strong project pipeline. Skilled workforce, modern equipment, and HDB-approved status for competitive edge.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$4M/yr</div></div>
+                <div class="fin-pill"><div class="fl">Licence</div><div class="fv">BCA Grade A</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$1,200,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Construction & Contracting Firm')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9 — Beauty Spa -->
+          <div class="lcard" data-industry="retail" data-price="180000" data-location="east" data-featured="0" data-title="Beauty & Wellness Spa">
+            <div class="lcard-photo">
+              <div class="ph-placeholder" style="background:linear-gradient(135deg,#5a2d82,#3a1a5e)"><i class="fas fa-spa"></i></div>
+              <span class="badge bbl b-ind"><i class="fas fa-spa"></i> Retail</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Beauty & Wellness Spa</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> East</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2017</span>
+              </div>
+              <p class="lcard-desc">Premium spa with established membership base, modern facilities, and high customer retention. Strategic location in a busy suburban mall.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Members</div><div class="fv">340+ active</div></div>
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$310K/yr</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$180,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Beauty & Wellness Spa')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10 — Craft Beer Bar ● Hot -->
+          <div class="lcard" data-industry="fnb" data-price="540000" data-location="central" data-featured="0" data-title="Craft Beer Bar & Taproom">
+            <div class="lcard-photo">
+              <div class="ph-placeholder" style="background:linear-gradient(135deg,#c8930a,#8a5e00)"><i class="fas fa-beer"></i></div>
+              <span class="badge btl b-hot">Hot Deal</span>
+              <span class="badge bbl b-ind"><i class="fas fa-glass-cheers"></i> F&B</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Craft Beer Bar & Taproom</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2018</span>
+              </div>
+              <p class="lcard-desc">Trendy bar with high foot traffic and strong weekend revenue. Unique branding, loyal following, and corporate event hosting capability.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$900K/yr</div></div>
+                <div class="fin-pill"><div class="fl">Capacity</div><div class="fv">80 pax</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$540,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Craft Beer Bar & Taproom')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11 — Digital Marketing Agency ● New -->
+          <div class="lcard" data-industry="tech" data-price="95000" data-location="central" data-featured="0" data-title="Digital Marketing Agency">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge btl b-new">New</span>
+              <span class="badge bbl b-ind"><i class="fas fa-bullhorn"></i> Technology</span>
+            </div>
+            <div class="lcard-body">
+              <h3>Digital Marketing Agency</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2021</span>
+              </div>
+              <p class="lcard-desc">Fast-growing agency with 25+ active retainer clients. Remote-capable team, proven processes, and strong recurring contract revenue.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Clients</div><div class="fv">25+ active</div></div>
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$220K/yr</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$95,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Digital Marketing Agency')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12 — Medical Clinic Chain ● Featured ● High Match -->
+          <div class="lcard" data-industry="services" data-price="3500000" data-location="central" data-featured="1" data-title="Medical Clinic Chain">
+            <div class="lcard-photo">
+              <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+              <span class="badge btl b-feat">Featured</span>
+              <span class="badge btr b-kgp">KGP Listed</span>
+              <span class="badge bbl b-ind"><i class="fas fa-clinic-medical"></i> Healthcare</span>
+              <div class="match-score ms-hi"><i class="fas fa-bolt"></i> High Match</div>
+            </div>
+            <div class="lcard-body">
+              <h3>Medical Clinic Chain</h3>
+              <div class="lcard-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span><i class="fas fa-calendar-alt"></i> Est. 2014</span>
+              </div>
+              <p class="lcard-desc">Four-clinic network with government and corporate panel agreements. Experienced doctors, modern facilities, strong recurring financials.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$6M/yr</div></div>
+                <div class="fin-pill"><div class="fl">Clinics</div><div class="fv">4 locations</div></div>
+                <div class="fin-pill"><div class="fl">Status</div><div class="fv">MOH Panel</div></div>
+              </div>
+              <div class="lcard-foot">
+                <div class="lcard-price">$3,500,000<small>Asking Price (SGD)</small></div>
+                <div class="lcard-actions">
+                  <button class="btn-save" onclick="toggleSave(this)"><i class="far fa-heart"></i></button>
+                  <button class="btn-share" onclick="shareListingLink(this)" title="Share this listing"><i class="fas fa-share-alt"></i></button>
+                  <button class="btn-interest" onclick="openInterestModal('Medical Clinic Chain')">I'm Interested</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /listings-grid -->
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults">
+          <i class="fas fa-search"></i>
+          <h3>No businesses found</h3>
+          <p>Try adjusting your search or filters.</p>
+          <button class="btn btn-red" onclick="resetFilters()" style="margin-top:4px;">
+            Reset Filters <span class="arr"><i class="fas fa-redo"></i></span>
+          </button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="pg-btn" disabled><i class="fas fa-chevron-left"></i></button>
+          <button class="pg-btn active">1</button>
+          <button class="pg-btn">2</button>
+          <button class="pg-btn">3</button>
+          <button class="pg-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div><!-- /listings area -->
+
+    </div><!-- /bm-layout -->
+  </div>
+</section>
+
+<!-- ════ CALENDLY CTA STRIP ════ -->
+<section class="cal-strip">
+  <div class="wrap">
+    <div class="cal-inner">
+      <div class="cal-text">
+        <span class="eyebrow">Free Consultation</span>
+        <h2>Ready to take the <span>next step?</span></h2>
+        <p>Schedule a free 30-minute call with a KGP M&A consultant. We'll help you assess target businesses, understand your options, and map out your acquisition strategy.</p>
+        <div class="cal-btns">
+          <button class="btn btn-red" onclick="openInterestModal('General Consultation')">
+            Book a Call <span class="arr"><i class="fas fa-calendar-alt"></i></span>
+          </button>
+          <a href="index.html#contact" class="btn btn-navy">
+            Contact Us <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+      <div class="cal-placeholder">
+        <i class="fas fa-calendar-check"></i>
+        <span>Calendly Booking Widget</span>
+        <small>Embed your Calendly link here<br>via the Calendly script tag</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ INTEREST MODAL ════ -->
+<div class="modal-bg" id="modalBg" onclick="closeInterestModal()"></div>
+<div class="modal-box" id="interestModal">
+  <div class="mh">
+    <div class="mh-left">
+      <div class="mh-ico"><i class="fas fa-handshake"></i></div>
+      <div>
+        <h3>Express Your Interest</h3>
+        <p id="modalBizName">Business Name</p>
+      </div>
+    </div>
+    <button class="mh-close" onclick="closeInterestModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="modalFormWrap">
+    <div class="mb">
+      <div class="ff-row">
+        <div class="ff"><label>Your Name *</label><input type="text" id="iName" placeholder="John Tan"/></div>
+        <div class="ff"><label>Email Address *</label><input type="email" id="iEmail" placeholder="john@company.com"/></div>
+      </div>
+      <div class="ff-row">
+        <div class="ff"><label>Phone Number</label><input type="tel" id="iPhone" placeholder="+65 9123 4567"/></div>
+        <div class="ff"><label>Company Name</label><input type="text" id="iCompany" placeholder="Company Pte Ltd"/></div>
+      </div>
+      <div class="ff"><label>Message (Optional)</label><textarea id="iMsg" placeholder="Tell us about your interest and any questions…"></textarea></div>
+      <button class="m-submit" onclick="submitInterest()"><i class="fas fa-paper-plane"></i> Submit Interest</button>
+      <div class="m-note"><i class="fas fa-shield-alt"></i> Your information is strictly confidential. A KGP consultant will contact you within 1 business day.</div>
+    </div>
+  </div>
+  <div class="m-success" id="modalSuccess">
+    <div class="m-success-ico"><i class="fas fa-check"></i></div>
+    <h3>Interest Submitted!</h3>
+    <p>Thank you. A Key Global Projects consultant will reach out within <strong>1 business day</strong>.</p>
+    <div style="background:var(--offbg);border-radius:12px;padding:18px 20px;text-align:left;margin:16px 0 20px;">
+      <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">KGP Contact Details</div>
+      <div style="font-size:13.5px;color:var(--navy);display:flex;flex-direction:column;gap:7px;">
+        <span><i class="fas fa-phone" style="color:var(--red);width:16px;"></i> +65 9456 0451</span>
+        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> info@keyglobalprojects.com</span>
+        <span><i class="fas fa-map-marker-alt" style="color:var(--red);width:16px;"></i> 47 Kallang Pudding Rd, #11-07</span>
+      </div>
+    </div>
+    <div style="background:var(--offbg);border:2px dashed var(--border);border-radius:12px;padding:24px;margin-bottom:20px;text-align:center;">
+      <i class="fas fa-calendar-check" style="font-size:32px;color:var(--border);display:block;margin-bottom:8px;"></i>
+      <span style="font-size:13px;color:var(--lgray);font-weight:700;">Calendly Booking Widget</span><br>
+      <small style="font-size:11.5px;color:#bbb;">Schedule a consultation immediately</small>
+    </div>
+    <button class="btn btn-red" onclick="closeInterestModal()" style="margin:0 auto;">
+      Close <span class="arr"><i class="fas fa-times"></i></span>
+    </button>
+  </div>
+</div>
+
+<!-- ════ AI MATCH MODAL ════ -->
+<div class="modal-bg" id="matchModalBg" onclick="closeMatchModal()"></div>
+<div class="modal-box" id="matchModal" style="max-width:600px;">
+  <div class="mh">
+    <div class="mh-left">
+      <div class="mh-ico"><i class="fas fa-robot"></i></div>
+      <div>
+        <h3>AI Business Matching</h3>
+        <p>3-step onboarding — takes under a minute</p>
+      </div>
+    </div>
+    <button class="mh-close" onclick="closeMatchModal()"><i class="fas fa-times"></i></button>
+  </div>
+
+  <!-- Step indicator -->
+  <div style="background:var(--offbg);border-bottom:1px solid var(--border);padding:14px 30px;display:flex;align-items:center;gap:0;">
+    <div class="mm-step-dot active" id="msDot1">1</div>
+    <div class="mm-step-line" id="msLine1"></div>
+    <div class="mm-step-dot" id="msDot2">2</div>
+    <div class="mm-step-line" id="msLine2"></div>
+    <div class="mm-step-dot" id="msDot3">3</div>
+    <div style="margin-left:14px;font-size:13px;font-weight:700;color:var(--gray)" id="msLabel">Get Started</div>
+  </div>
+
+  <div class="mb" id="matchModalBody">
+
+    <!-- ── STEP 1: Lead capture + returning user ── -->
+    <div id="mmStep1">
+      <div style="text-align:center;margin-bottom:22px;">
+        <div style="font-size:15px;font-weight:900;color:var(--navy);margin-bottom:4px;">Match your business, find potential partners</div>
+        <div style="font-size:13px;color:var(--gray);">or browse our business listings</div>
+      </div>
+
+      <div class="ff-row">
+        <div class="ff"><label>Your Name *</label><input type="text" id="mmName" placeholder="Full name"/></div>
+        <div class="ff"><label>Business Name *</label><input type="text" id="mmBizName" placeholder="Company name"/></div>
+      </div>
+      <div class="ff-row">
+        <div class="ff"><label>Email Address *</label><input type="email" id="mmEmail" placeholder="you@company.com"/></div>
+        <div class="ff"><label>Contact Number</label><input type="tel" id="mmPhone" placeholder="+65 9XXX XXXX"/></div>
+      </div>
+
+      <div style="background:rgba(208,32,32,.04);border:1px solid rgba(208,32,32,.15);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
+        <div style="font-size:12.5px;font-weight:900;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">AI &amp; PDPA Disclaimer</div>
+        <p style="font-size:12.5px;color:var(--gray);line-height:1.65;margin-bottom:10px;">This platform uses AI-powered algorithms to suggest potential business matches. Results are indicative and do not constitute financial, legal, or investment advice. We recommend consulting a qualified professional before making any business decisions.</p>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;font-weight:700;color:var(--navy);">
+          <input type="checkbox" id="mmPdpa" style="width:16px;height:16px;margin-top:1px;flex-shrink:0;accent-color:var(--red);">
+          I have read and agree to the above terms &amp; <a href="#" style="color:var(--red);">Privacy Policy</a>
+        </label>
+      </div>
+
+      <!-- Returning user section -->
+      <div style="border-top:1px dashed var(--border);margin:18px 0 16px;"></div>
+      <div style="text-align:center;margin-bottom:14px;font-size:13px;font-weight:700;color:var(--lgray);">BEEN HERE BEFORE?</div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <input type="email" id="mmReturnEmail" placeholder="Enter your email to retrieve your matches" style="flex:1;padding:11px 15px;border:2px solid var(--border);border-radius:8px;font-family:var(--f);font-size:14px;color:#222;background:var(--offbg);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--border)'">
+        <button onclick="sendMagicLink()" style="white-space:nowrap;padding:11px 20px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--f);font-size:13px;font-weight:800;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='var(--navydark)'" onmouseout="this.style.background='var(--navy)'">View Matches</button>
+      </div>
+      <div style="text-align:center;font-size:11.5px;color:var(--lgray);margin-top:6px;">A verification link will be sent to your inbox.</div>
+
+      <div style="display:flex;gap:12px;margin-top:20px;">
+        <button class="m-submit" style="flex:1;" onclick="mmGoStep2()"><i class="fas fa-arrow-right"></i> Continue</button>
+      </div>
+      <div style="text-align:center;margin-top:12px;">
+        <a href="#" onclick="closeMatchModal();scrollToListings();return false;" style="font-size:13px;color:var(--lgray);font-weight:700;text-decoration:underline;">Skip — Browse listings without matching</a>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Match criteria ── -->
+    <div id="mmStep2" style="display:none;">
+      <div style="font-size:14px;font-weight:700;color:var(--gray);margin-bottom:18px;">Tell us what you're looking for. Answer in 2 minutes — show on one page.</div>
+
+      <div class="ff">
+        <label>Q1 — What are you looking for? *</label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+          <button class="mm-q-chip active" data-val="buyer" onclick="toggleMmChip(this,'q1')"><i class="fas fa-shopping-cart"></i> Buy a Business</button>
+          <button class="mm-q-chip" data-val="supplier" onclick="toggleMmChip(this,'q1')"><i class="fas fa-truck"></i> Find a Supplier</button>
+          <button class="mm-q-chip" data-val="partner" onclick="toggleMmChip(this,'q1')"><i class="fas fa-handshake"></i> Find a Partner</button>
+        </div>
+      </div>
+
+      <div class="ff">
+        <label>Q2 — What industry are you interested in?</label>
+        <select style="width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:8px;font-family:var(--f);font-size:13.5px;color:var(--navy);background:var(--offbg);cursor:pointer;outline:none;transition:border-color .2s;" id="mmIndustry">
+          <option value="">Select industry...</option>
+          <option value="fnb">F&B / Restaurant</option>
+          <option value="retail">Retail</option>
+          <option value="tech">Technology</option>
+          <option value="manufacturing">Manufacturing</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="education">Education</option>
+          <option value="services">Professional Services</option>
+          <option value="construction">Construction</option>
+          <option value="logistics">Logistics</option>
+          <option value="beauty">Beauty & Wellness</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="realestate">Real Estate</option>
+          <option value="importexport">Import/Export</option>
+          <option value="ecommerce">E-Commerce</option>
+        </select>
+      </div>
+
+      <div class="ff">
+        <label>Q3 — What is your budget range?</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;" id="mmBudgetGroup">
+          <button class="mm-q-chip" data-val="0-100k" onclick="toggleMmChip(this,'q3')">Under $100K</button>
+          <button class="mm-q-chip" data-val="100k-500k" onclick="toggleMmChip(this,'q3')">$100K–$500K</button>
+          <button class="mm-q-chip" data-val="500k-1m" onclick="toggleMmChip(this,'q3')">$500K–$1M</button>
+          <button class="mm-q-chip" data-val="1m-5m" onclick="toggleMmChip(this,'q3')">$1M–$5M</button>
+          <button class="mm-q-chip" data-val="5m+" onclick="toggleMmChip(this,'q3')">$5M+</button>
+        </div>
+      </div>
+
+      <div class="ff">
+        <label>Q4 — Preferred location?</label>
+        <select style="width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:8px;font-family:var(--f);font-size:13.5px;color:var(--navy);background:var(--offbg);cursor:pointer;outline:none;" id="mmLocation">
+          <option value="">Any location</option>
+          <option>Orchard</option><option>Bugis</option><option>Jurong East</option>
+          <option>Tampines</option><option>Woodlands</option><option>Toa Payoh</option>
+          <option>Bishan</option><option>Clementi</option><option>Sengkang</option>
+          <option>Punggol</option><option>Ang Mo Kio</option><option>Bedok</option>
+        </select>
+      </div>
+
+      <div class="ff">
+        <label>Q5 — Your company's annual revenue?</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+          <button class="mm-q-chip" data-val="lt100k" onclick="toggleMmChip(this,'q5')">Under $100K</button>
+          <button class="mm-q-chip" data-val="100k-500k" onclick="toggleMmChip(this,'q5')">$100K–$500K</button>
+          <button class="mm-q-chip" data-val="500k-1m" onclick="toggleMmChip(this,'q5')">$500K–$1M</button>
+          <button class="mm-q-chip" data-val="1m-5m" onclick="toggleMmChip(this,'q5')">$1M–$5M</button>
+          <button class="mm-q-chip" data-val="5m+" onclick="toggleMmChip(this,'q5')">$5M+</button>
+        </div>
+      </div>
+
+      <div class="ff" style="background:var(--offbg);border-radius:10px;padding:14px 16px;">
+        <label style="margin-bottom:10px;display:block;">Q6 — Receive weekly match updates by email?</label>
+        <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+          <div class="mm-toggle" id="mmDigestToggle" onclick="this.classList.toggle('on')" style="width:46px;height:26px;border-radius:13px;background:var(--red);cursor:pointer;position:relative;transition:background .2s;flex-shrink:0;">
+            <div style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s;transform:translateX(20px);"></div>
+          </div>
+          <span style="font-size:13px;font-weight:600;color:var(--navy);">Yes — send me a weekly digest of new matches</span>
+        </label>
+        <p style="font-size:11.5px;color:var(--lgray);margin-top:8px;line-height:1.5;">By opting in, you consent to receiving weekly match communications from Key Global Projects. You may unsubscribe at any time. See our <a href="#" style="color:var(--red);">Privacy Policy</a>.</p>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button onclick="mmGoStep1()" style="padding:14px 20px;background:var(--offbg);color:var(--navy);border:2px solid var(--border);border-radius:40px;font-family:var(--f);font-size:13.5px;font-weight:800;cursor:pointer;">← Back</button>
+        <button class="m-submit" style="flex:1;" onclick="mmGoStep3()"><i class="fas fa-bolt"></i> Find My Matches</button>
+      </div>
+      <div style="text-align:center;margin-top:10px;"><a href="#" onclick="mmGoStep3();return false;" style="font-size:12.5px;color:var(--lgray);font-weight:700;text-decoration:underline;">Skip — use default criteria and skip settings</a></div>
+    </div>
+
+    <!-- ── STEP 3: Results ── -->
+    <div id="mmStep3" style="display:none;text-align:center;padding:20px 0;">
+      <div style="width:72px;height:72px;background:rgba(208,32,32,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">
+        <i class="fas fa-check" style="font-size:30px;color:var(--red);"></i>
+      </div>
+      <div style="font-size:18px;font-weight:900;color:var(--navy);margin-bottom:8px;">You're all set!</div>
+      <p style="font-size:14px;color:var(--gray);line-height:1.7;max-width:380px;margin:0 auto 22px;">We'll email you when new matches are available. Check your inbox for a confirmation toast.</p>
+      <div style="background:var(--offbg);border-radius:12px;padding:16px 20px;text-align:left;margin-bottom:20px;">
+        <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Criteria Summary</div>
+        <div style="font-size:13.5px;color:var(--navy);font-weight:600;" id="mmCriteriaSummary">All industries · Any budget · Any location</div>
+      </div>
+      <button class="btn btn-red" onclick="closeMatchModal();scrollToListings();" style="margin:0 auto;">
+        Browse All Listings <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </button>
+      <div style="margin-top:14px;">
+        <a href="#" onclick="closeMatchModal();return false;" style="font-size:12.5px;color:var(--lgray);font-weight:700;text-decoration:underline;">Edit my match criteria</a>
+        &nbsp;·&nbsp;
+        <a href="#" style="font-size:12.5px;color:var(--lgray);font-weight:700;text-decoration:underline;">Unsubscribe from weekly digest</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-main-wrap">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="f-brand">
+          <a href="index.html" style="display:inline-block;margin-bottom:14px;">
+            <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;width:auto;object-fit:contain;">
+          </a>
+          <p>Inherit Corporate Values, Achieve a Global Future. Singapore's trusted M&A and IPO advisory partner since 2013.</p>
+          <ul class="f-contact">
+            <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
+            <li><i class="fas fa-phone"></i>+65 9456 0451</li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
+          </ul>
+          <div class="f-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+          </div>
+        </div>
+        <div class="f-col">
+          <h4>Quick Links</h4>
+          <ul class="f-links">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#services">Our Services</a></li>
+            <li><a href="index.html#cases">Success Stories</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>BizMatch</h4>
+          <ul class="f-links">
+            <li><a href="#">Browse All Listings</a></li>
+            <li><a href="#" onclick="openMatchModal()">AI Business Matching</a></li>
+            <li><a href="index.html#services">M&amp;A Advisory</a></li>
+            <li><a href="index.html#services">IPO Strategies</a></li>
+            <li><a href="index.html#services">Business Valuation</a></li>
+            <li><a href="index.html#services">Corporate Structuring</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>Book a Consult</h4>
+          <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;margin-bottom:20px;">Interested in a listing or need M&amp;A guidance? Our consultants are standing by.</p>
+          <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;display:inline-flex;margin-bottom:14px;">
+            Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <p style="color:rgba(255,255,255,.4);font-size:12px;">Mon – Fri, 9 AM – 6 PM SGT</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot-wrap">
+    <div class="wrap">
+      <div class="footer-bot">
+        <p>© 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
+        <div class="footer-bot-links">
+          <a href="#">Support</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="kgp-admin.html" style="color:rgba(255,255,255,.25);">Admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════ JAVASCRIPT ════ -->
+
+<!-- ══ CHATBOT WIDGET ══ -->
+<div id="chat-widget">
+  <div id="chat-box">
+    <div id="chat-header">
+      <div class="ch-left">
+        <div class="ch-avatar"><i class="fas fa-robot"></i></div>
+        <div class="ch-info">
+          <div class="ch-name">KGP AI Advisor</div>
+          <div class="ch-status">Online — IPO & M&A Advisory</div>
+        </div>
+      </div>
+      <span id="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></span>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-quick-replies">
+      <button class="qr-btn" onclick="sendQuick('What services do you offer?')">Our Services</button>
+      <button class="qr-btn" onclick="sendQuick('How do I list on Nasdaq?')">Nasdaq IPO</button>
+      <button class="qr-btn" onclick="sendQuick('Tell me about M&A advisory')">M&A Advisory</button>
+      <button class="qr-btn" onclick="sendQuick('How much does it cost?')">Pricing</button>
+    </div>
+    <div id="chat-footer">
+      <input id="chat-input" type="text" placeholder="Ask about IPO, M&A, valuation…"
+        onkeydown="if(event.key==='Enter') sendMessage()"/>
+      <button id="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <div id="chat-bubble" onclick="toggleChat()">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+</div>
+
+<script>
+// ── KGP Chatbot ──
+const chatMessages = document.getElementById('chat-messages');
+const chatBox = document.getElementById('chat-box');
+const chatInput = document.getElementById('chat-input');
+let chatOpen = false;
+let conversationHistory = [];
+
+const SYSTEM_PROMPT = `You are the KGP AI Advisor for Key Global Projects Pte. Ltd. (金钥国际), a Singapore-incorporated corporate advisory firm founded in December 2013. You assist potential clients with questions about the company's services and help assess their IPO or M&A readiness.
+
+Key facts about Key Global Projects:
+- Location: 47 Kallang Pudding Rd, #11-07, The Crescent @ Kallang, Singapore 349318
+- Founders: Patrick Tan (Founder) and Edmund Chan (Director)
+- Tagline: "Inherit Corporate Values, Achieve a Global Future"
+- 4 successful Nasdaq listings in 2024: PC (Catering), SAG (Auto Parts), JBDI (Chemical/Drum Supply), SKK (Cable Plumbing Contractors)
+- S$500M+ in transactions facilitated
+
+Services offered:
+1. Business Valuation – Comprehensive assessments to maximize business worth for investors or acquisitions
+2. Mergers & Acquisitions (M&A) Planning – Full-cycle support including buyer screening, negotiations, corporate structuring
+3. IPO Strategies – Joint IPO approach, individual offering preparation, and Reverse Takeover (RTO) execution
+4. Corporate Structuring – Optimal shareholding arrangements and financial forecasting
+5. Business Modernisation – Helping traditional enterprises adopt technology for sustainable development
+6. AI Advisory Platform – AI-enhanced IPO readiness guidance based on director expertise
+
+About the team:
+- Patrick Tan: Founder of Raffles Developments, facilitated S$500M+ transactions, independent director of NYSE-listed company, Diploma in Electronic Engineering (Singapore Polytechnic)
+- Edmund Chan: Previously KPMG & BDO, 7+ years audit experience, currently CFO of HK-listed company and independent director of 3 US-listed companies, ACCA (UK) & ISCA (Singapore) Chartered Accountant, IBBA member
+
+Guidelines:
+- Be helpful, professional, and concise
+- Focus on qualifying leads — ask about their business type, goals, and readiness
+- Encourage them to fill in the contact form or call for a free consultation
+- Keep responses under 120 words
+- If asked about pricing, explain it varies by scope and invite them to schedule a free consultation
+- Speak warmly but with authority — you represent a trusted Singapore advisory firm
+- You can respond in English or Chinese (Mandarin) based on the user's language`;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  chatBox.classList.toggle('open', chatOpen);
+  if (chatOpen && chatMessages.children.length === 0) {
+    setTimeout(() => addBotMessage("你好! Hi! I'm the KGP AI Advisor 👋 I can help you explore IPO readiness, M&A opportunities, or business valuation. What brings you here today?"), 400);
+  }
+  if (chatOpen) chatInput.focus();
+}
+
+function addBotMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'cm bot';
+  el.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-bubble">${text}</div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function addUserMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'cm user';
+  el.innerHTML = `<div class="cm-bubble">${text}</div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showTyping() {
+  const el = document.createElement('div');
+  el.className = 'cm bot'; el.id = 'typing-indicator';
+  el.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-bubble cm-typing"><span></span><span></span><span></span></div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function hideTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+
+async function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  chatInput.value = '';
+  addUserMessage(text);
+  conversationHistory.push({ role: 'user', content: text });
+  showTyping();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: SYSTEM_PROMPT,
+        messages: conversationHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "I'm sorry, I couldn't process that. Please try again or contact us directly.";
+    hideTyping();
+    addBotMessage(reply);
+    conversationHistory.push({ role: 'assistant', content: reply });
+  } catch (e) {
+    hideTyping();
+    addBotMessage("Sorry, I'm having trouble connecting. Please <a href='#contact' style='color:var(--red);font-weight:700;'>fill in our form</a> and we'll get back to you within 24 hours.");
+  }
+}
+
+function sendQuick(text) {
+  chatInput.value = text;
+  sendMessage();
+}
+</script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── State ── */
+const allCards = Array.from(document.querySelectorAll('.lcard'));
+let selPrices  = new Set();
+let selLocs    = new Set();
+
+/* ── Scroll ── */
+function scrollToListings(){ document.getElementById('listingsAnchor').scrollIntoView({behavior:'smooth'}); }
+
+/* ── Match type tabs ── */
+function setMatchType(btn){
+  document.querySelectorAll('.bm-type-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const mi = document.getElementById('matchTypeInput');
+  if(mi) mi.value = btn.dataset.type;
+}
+
+/* ── Chips ── */
+function togglePc(el){
+  el.classList.toggle('sel');
+  const r=el.dataset.range;
+  el.classList.contains('sel') ? selPrices.add(r) : selPrices.delete(r);
+  applyFilters();
+}
+function toggleLc(el){
+  el.classList.toggle('sel');
+  const l=el.dataset.loc;
+  el.classList.contains('sel') ? selLocs.add(l) : selLocs.delete(l);
+  const dd=document.getElementById('locationFilter');
+  dd.value = selLocs.size===1 ? [...selLocs][0] : '';
+  applyFilters();
+}
+
+/* ── Sync industry ── */
+function syncIndustry(val){
+  document.getElementById('industryFilter').value=val;
+  applyFilters();
+}
+
+/* ── Price range util ── */
+function inRange(price,range){
+  const p=parseInt(price);
+  if(range==='0-100k')    return p<100000;
+  if(range==='100k-500k') return p>=100000 && p<500000;
+  if(range==='500k-1m')   return p>=500000 && p<1000000;
+  if(range==='1m-5m')     return p>=1000000 && p<5000000;
+  if(range==='5m+')       return p>=5000000;
+  return true;
+}
+
+/* ── Core filter + sort ── */
+function applyFilters(){
+  const s  = document.getElementById('searchInput').value.toLowerCase().trim();
+  const ind= document.getElementById('industryFilter').value;
+  const loc= document.getElementById('locationFilter').value;
+  const srt= document.getElementById('sortSelect').value;
+
+  document.getElementById('industrySidebar').value = ind;
+
+  let visible=[];
+  allCards.forEach(c=>{
+    const ci=c.dataset.industry, cp=c.dataset.price, cl=c.dataset.location;
+    const ct=c.dataset.title.toLowerCase();
+    const cd=c.querySelector('.lcard-desc').textContent.toLowerCase();
+    let show=true;
+    if(s && !ct.includes(s) && !cd.includes(s)) show=false;
+    if(ind && ci!==ind) show=false;
+    if(loc && cl!==loc) show=false;
+    if(selLocs.size>0 && !selLocs.has(cl)) show=false;
+    if(selPrices.size>0 && ![...selPrices].some(r=>inRange(cp,r))) show=false;
+    c.style.display=show?'':'none';
+    if(show) visible.push(c);
+  });
+
+  visible.sort((a,b)=>{
+    const pa=parseInt(a.dataset.price), pb=parseInt(b.dataset.price);
+    if(srt==='price-low')  return pa-pb;
+    if(srt==='price-high') return pb-pa;
+    if(srt==='featured')   return parseInt(b.dataset.featured)-parseInt(a.dataset.featured);
+    return 0;
+  });
+  const g=document.getElementById('listingsGrid');
+  visible.forEach(c=>g.appendChild(c));
+
+  document.getElementById('resultsCount').textContent=visible.length;
+  document.getElementById('noResults').classList.toggle('show',visible.length===0);
+  renderAfTags();
+}
+
+/* ── Active filter tags ── */
+function renderAfTags(){
+  const row=document.getElementById('afRow');
+  const ind=document.getElementById('industryFilter').value;
+  const loc=document.getElementById('locationFilter').value;
+  const tags=[];
+  if(ind) tags.push({l:iLbl(ind),c:()=>{document.getElementById('industryFilter').value='';document.getElementById('industrySidebar').value='';applyFilters();}});
+  if(loc) tags.push({l:cap(loc),c:()=>{document.getElementById('locationFilter').value='';applyFilters();}});
+  selPrices.forEach(r=>tags.push({l:pLbl(r),c:()=>{selPrices.delete(r);document.querySelectorAll(`.pc[data-range="${r}"]`).forEach(e=>e.classList.remove('sel'));applyFilters();}}));
+  selLocs.forEach(l=>tags.push({l:cap(l),c:()=>{selLocs.delete(l);document.querySelectorAll(`.lc[data-loc="${l}"]`).forEach(e=>e.classList.remove('sel'));applyFilters();}}));
+
+  row.innerHTML='';
+  if(!tags.length) return;
+  const lbl=document.createElement('span');
+  lbl.className='af-lbl'; lbl.textContent='Active:';
+  row.appendChild(lbl);
+  tags.forEach(t=>{
+    const el=document.createElement('span');
+    el.className='af-tag';
+    el.innerHTML=`${t.l} <i class="fas fa-times"></i>`;
+    el.onclick=t.c;
+    row.appendChild(el);
+  });
+}
+function iLbl(v){return{fnb:'F&B',retail:'Retail',tech:'Technology',automotive:'Automotive',manufacturing:'Manufacturing',services:'Prof. Services',construction:'Construction',healthcare:'Healthcare',education:'Education',logistics:'Logistics',beauty:'Beauty & Wellness',entertainment:'Entertainment',realestate:'Real Estate',importexport:'Import/Export',ecommerce:'E-Commerce'}[v]||v;}
+function pLbl(r){return{'0-100k':'<$100K','100k-500k':'$100K–$500K','500k-1m':'$500K–$1M','1m-5m':'$1M–$5M','5m+':'$5M+'}[r]||r;}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+
+/* ── Reset ── */
+function resetFilters(){
+  document.getElementById('searchInput').value='';
+  document.getElementById('industryFilter').value='';
+  document.getElementById('industrySidebar').value='';
+  document.getElementById('locationFilter').value='';
+  document.getElementById('sortSelect').value='featured';
+  selPrices.clear(); selLocs.clear();
+  document.querySelectorAll('.pc.sel,.lc.sel').forEach(e=>e.classList.remove('sel'));
+  applyFilters();
+}
+
+/* ── View toggle ── */
+function setView(v){
+  const g=document.getElementById('listingsGrid');
+  const gb=document.getElementById('gvBtn'), lb=document.getElementById('lvBtn');
+  if(v==='list'){ g.classList.add('lv'); lb.classList.add('active'); gb.classList.remove('active'); }
+  else          { g.classList.remove('lv'); gb.classList.add('active'); lb.classList.remove('active'); }
+}
+
+/* ── Save ── */
+function toggleSave(btn){
+  btn.classList.toggle('saved');
+  btn.querySelector('i').className=btn.classList.contains('saved')?'fas fa-heart':'far fa-heart';
+}
+
+/* ── Share ── */
+function shareListingLink(btn){
+  const card=btn.closest('.lcard');
+  const title=card?card.dataset.title:'this listing';
+  const url=window.location.href.split('#')[0]+'#listing-'+encodeURIComponent(title);
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(()=>{
+      const orig=btn.innerHTML;
+      btn.innerHTML='<i class="fas fa-check" style="color:#16a34a"></i>';
+      setTimeout(()=>btn.innerHTML=orig,1800);
+    });
+  } else {
+    prompt('Copy this link:',url);
+  }
+}
+
+
+/* ── Interest Modal ── */
+function openInterestModal(biz){
+  document.getElementById('modalBizName').textContent=biz;
+  document.getElementById('modalFormWrap').style.display='';
+  document.getElementById('modalSuccess').classList.remove('show');
+  document.getElementById('modalBg').classList.add('open');
+  const m=document.getElementById('interestModal');
+  m.style.display='block';
+  requestAnimationFrame(()=>m.classList.add('open'));
+  document.body.style.overflow='hidden';
+}
+function closeInterestModal(){
+  const m=document.getElementById('interestModal');
+  m.classList.remove('open');
+  setTimeout(()=>m.style.display='none',360);
+  document.getElementById('modalBg').classList.remove('open');
+  document.body.style.overflow='';
+}
+function submitInterest(){
+  if(!document.getElementById('iName').value.trim()||!document.getElementById('iEmail').value.trim()){
+    alert('Please fill in your name and email.'); return;
+  }
+  document.getElementById('modalFormWrap').style.display='none';
+  document.getElementById('modalSuccess').classList.add('show');
+}
+
+/* ── Match Modal ── */
+function openMatchModal(){
+  document.getElementById('matchModalBg').classList.add('open');
+  const m=document.getElementById('matchModal');
+  m.style.display='block';
+  requestAnimationFrame(()=>m.classList.add('open'));
+  document.body.style.overflow='hidden';
+  mmShowStep(1);
+}
+function closeMatchModal(){
+  const m=document.getElementById('matchModal');
+  m.classList.remove('open');
+  setTimeout(()=>m.style.display='none',360);
+  document.getElementById('matchModalBg').classList.remove('open');
+  document.body.style.overflow='';
+}
+function mmShowStep(n){
+  document.getElementById('mmStep1').style.display = n===1?'':'none';
+  document.getElementById('mmStep2').style.display = n===2?'':'none';
+  document.getElementById('mmStep3').style.display = n===3?'':'none';
+  // dots
+  [1,2,3].forEach(i=>{
+    const d=document.getElementById('msDot'+i);
+    d.className='mm-step-dot'+(i<n?' done':i===n?' active':'');
+  });
+  [1,2].forEach(i=>{
+    const l=document.getElementById('msLine'+i);
+    l.className='mm-step-line'+(i<n?' done':'');
+  });
+  const labels=['Get Started','Match Criteria','Your Matches'];
+  document.getElementById('msLabel').textContent=labels[n-1];
+}
+function mmGoStep2(){
+  const name=document.getElementById('mmName').value.trim();
+  const biz=document.getElementById('mmBizName').value.trim();
+  const email=document.getElementById('mmEmail').value.trim();
+  const pdpa=document.getElementById('mmPdpa').checked;
+  if(!name||!biz||!email){alert('Please fill in your name, business name, and email.');return;}
+  if(!pdpa){alert('Please agree to the terms & Privacy Policy to continue.');return;}
+  mmShowStep(2);
+}
+function mmGoStep1(){ mmShowStep(1); }
+function mmGoStep3(){
+  const industry = document.getElementById('mmIndustry').value;
+  const location = document.getElementById('mmLocation').value;
+  const budgetChip = document.querySelector('#mmBudgetGroup .mm-q-chip.active');
+  const budget = budgetChip ? budgetChip.dataset.val : '';
+  const parts = [
+    industry ? iLbl(industry) : 'All industries',
+    budget ? pLbl(budget) : 'Any budget',
+    location || 'Any location'
+  ];
+  document.getElementById('mmCriteriaSummary').textContent = parts.join(' · ');
+  mmShowStep(3);
+}
+
+function toggleMmChip(el,group){
+  // For q1, allow single select; for others allow multi
+  if(group==='q1'){
+    document.querySelectorAll('#mmStep2 .mm-q-chip[data-val]').forEach(c=>{
+      if(c.closest('[id^=mmBudget]')||c.closest('[onclick*="q5"]')) return;
+      c.classList.remove('active');
+    });
+  }
+  el.classList.toggle('active');
+}
+
+function sendMagicLink(){
+  const e=document.getElementById('mmReturnEmail').value.trim();
+  if(!e){alert('Please enter your email address.');return;}
+  // In production this would call the API
+  alert('A verification link has been sent to '+e+'. Please check your inbox.');
+}
+
+
+/* ── Mobile hamburger ── */
+document.getElementById('hamburger').addEventListener('click', function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+});

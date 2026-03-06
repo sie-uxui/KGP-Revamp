@@ -217,8 +217,13 @@
        2. NAVBAR
     ══════════════════════════════════════════ */
     .navbar {
-      background: #fff; position: sticky; top: 0; z-index: 999;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 999;
       box-shadow: 0 2px 20px rgba(13,31,78,.1);
+      transition: box-shadow 0.3s ease;
+      will-change: box-shadow;
     }
     .navbar .inner {
       display: flex; align-items: center;
@@ -965,10 +970,13 @@
     .nav-links a {
       position: relative;
     }
+   .nav-links a {
+      overflow: hidden; /* clip the ::after so it never overflows */
+    }
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -2px; left: 14px; right: 14px;
+      bottom: 0; left: 14px; right: 14px; /* bottom:0 not -2px */
       height: 2px; background: var(--red);
       transform: scaleX(0);
       transition: transform 0.25s ease;
@@ -1083,6 +1091,7 @@
       }
       .nav-links.open { transform: scaleY(1); opacity: 1; display: flex; }
     }
+    
   </style>
 </head>
 <body>
@@ -1130,12 +1139,11 @@
         <a href="#" class="active">HOME</a>
         <a href="#about">ABOUT</a>
         <a href="#services">SERVICES</a>
-        <a href="#team">TEAM</a>
         <a href="#cases">CASES</a>
+        <a href="#team">TEAM</a>
         <a href="#blog">BLOG</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact">CONTACT</a>
-        <a href="#bizmatch">BIZMATCH +</a>
+        <a href="bizmatch.html">BIZMATCH +</a>
       </div>
       <a href="#contact" class="btn btn-red">GET QUOTE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
       <div class="nav-toggle" id="navToggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -2017,16 +2025,15 @@
   <div class="footer-main-wrap">
     <div class="wrap">
       <div class="footer-main">
-
         <div class="f-brand">
-          <div class="logo" style="margin-bottom:14px;">
-            <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px; width:auto; object-fit:contain;">
-          </div>
+          <a href="index.html" style="display:inline-block;margin-bottom:14px;">
+            <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;width:auto;object-fit:contain;">
+          </a>
           <p>Inherit Corporate Values, Achieve a Global Future. Singapore's trusted partner for M&A, IPO advisory, and business growth strategies since 2013.</p>
-          <ul class="f-contact" style="list-style:none;">
+          <ul class="f-contact">
             <li><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
             <li><i class="fas fa-phone"></i> +65 9456 0451</li>
-            <li><i class="fas fa-envelope"></i> <a href="mailto:info@key.com.sg" style="color:inherit;">info@key.com.sg</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
           </ul>
           <div class="f-socials">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -2035,20 +2042,17 @@
             <a href="#"><i class="fab fa-weixin"></i></a>
           </div>
         </div>
-
         <div class="f-col">
           <h4>Quick Links</h4>
           <ul class="f-links">
             <li><a href="#about">About Us</a></li>
-            <li><a href="#faq">FAQ's</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
             <li><a href="#services">Our Services</a></li>
-            <li><a href="#team">Team Members</a></li>
-            <li><a href="#blog">Latest Blog</a></li>
+            <li><a href="#cases">Success Stories</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
-
         <div class="f-col">
           <h4>Our Services</h4>
           <ul class="f-links">
@@ -2061,28 +2065,27 @@
             <li><a href="#">RTO Execution</a></li>
           </ul>
         </div>
-
-        <div class="f-col nl">
-          <h4>Newsletter</h4>
-          <p>Subscribe to our newsletter to get the latest updates on Singapore capital markets, M&A, and IPO opportunities. Stay connected.</p>
-          <input class="nl-field" type="email" placeholder="Your Email"/>
-          <a href="#" class="btn btn-red" style="font-size:13px;padding:12px 24px;display:inline-flex;">
-            SUBSCRIBE NOW <span class="arr"><i class="fas fa-paper-plane"></i></span>
+        <div class="f-col">
+          <h4>Book a Consult</h4>
+          <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;margin-bottom:20px;">Ready to explore M&A, IPO, or valuation options? Our consultants are standing by for a free initial session.</p>
+          <a href="#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;display:inline-flex;margin-bottom:14px;">
+            Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
           </a>
+          <p style="color:rgba(255,255,255,.4);font-size:12px;">Mon – Fri, 9 AM – 6 PM SGT</p>
         </div>
-
       </div>
     </div>
   </div>
-
   <div class="footer-bot-wrap">
     <div class="wrap">
-      <div class="footer-bot">
-        <p>© Copyright 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
-        <div class="footer-bot-links">
-          <a href="#">Support</a>
-          <a href="#">Terms Of Services</a>
-          <a href="#">Privacy Policy</a>
+        <div class="footer-bot">
+          <p>© 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
+          <div class="footer-bot-links">
+            <a href="#">Support</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="kgp-admin.html" style="color:rgba(255,255,255,.25);">Admin</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2104,19 +2107,26 @@ window.addEventListener('load', () => {
   }, 1300);
 });
 
-// ── Topbar hide on scroll down ──
-let lastScroll = 0;
-const topbar = document.querySelector('.topbar');
 const navbar = document.querySelector('.navbar');
+let rafPending = false;
+let isScrolled = false;
+
 window.addEventListener('scroll', () => {
-  const current = window.scrollY;
-  if (current > 80) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-  lastScroll = current;
-});
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    const y = window.scrollY;
+    // Hysteresis: add at 80px, remove only below 60px
+    if (!isScrolled && y > 80) {
+      isScrolled = true;
+      navbar.classList.add('scrolled');
+    } else if (isScrolled && y < 60) {
+      isScrolled = false;
+      navbar.classList.remove('scrolled');
+    }
+    rafPending = false;
+  });
+}, { passive: true }); // passive:true boosts scroll performance
 
 // ── Scroll Reveal ──
 const revealEls = document.querySelectorAll(
@@ -2185,21 +2195,40 @@ const counterObs = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stats').forEach(el => counterObs.observe(el));
 
 // ── Active nav on scroll ──
-const sections = document.querySelectorAll('section[id], div[id]');
+// Maps sections with no nav link to the nearest linked section above them
+const sectionNavMap = {
+  'hero-section': '',
+  'about':        'about',
+  'services':     'services',
+  'cases':        'cases',
+  'team':         'team',
+  'blog':         'blog',
+  'faq':          'faq',
+};
+
+// For unlinkable sections, inherit the last known nav id
+const allSections = document.querySelectorAll('section, .stats, .advisory, .why, .testimonials, .skills, .fcards');
 const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(sec => {
+  let lastKnown = '';
+  allSections.forEach(sec => {
     if (window.scrollY >= sec.offsetTop - 120) {
-      current = sec.getAttribute('id');
+      const id = sec.id;
+      if (id && sectionNavMap[id] !== undefined) {
+        lastKnown = sectionNavMap[id];
+      }
+      current = lastKnown;
     }
   });
   navLinks.forEach(a => {
     a.classList.remove('active');
-    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    if (current && a.getAttribute('href') === '#' + current) {
+      a.classList.add('active');
+    }
   });
-});
+}, { passive: true });
 
 function toggleFaq(el) {
   const item = el.parentElement;
