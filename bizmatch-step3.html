@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Matches — BizMatch | Key Global Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+  /* ═══════════════════════════════════════════════════════
+     KGP DESIGN SYSTEM — exact match to bizmatch-step1/2
+     Navy: #0d1f4e  |  Red: #d02020  |  Nunito Sans
+  ═══════════════════════════════════════════════════════ */
+  :root {
+    --navy:    #0d1f4e;
+    --navydark:#091638;
+    --red:     #d02020;
+    --reddark: #aa1818;
+    --white:   #ffffff;
+    --offbg:   #f2f4f8;
+    --gray:    #666666;
+    --lgray:   #999999;
+    --border:  #e2e6ef;
+    --green:   #16a34a;
+    --yellow:  #ca8a04;
+    --orange:  #ea580c;
+    --shadow:  0 4px 28px rgba(13,31,78,.09);
+    --f:       'Nunito Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--f); color: #333; overflow-x: hidden; background: var(--offbg); }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 30px; border-radius: 40px;
+    font-family: var(--f); font-weight: 800; font-size: 13.5px;
+    text-transform: uppercase; letter-spacing: .6px;
+    cursor: pointer; border: none; transition: background .2s, transform .15s, box-shadow .2s;
+  }
+  .btn .arr { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  .btn-red   { background: var(--red);   color: #fff; box-shadow: 0 6px 20px rgba(208,32,32,.32); }
+  .btn-red:hover   { background: var(--reddark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(208,32,32,.38); }
+  .btn-navy  { background: var(--navy);  color: #fff; box-shadow: 0 6px 20px rgba(13,31,78,.25); }
+  .btn-navy:hover  { background: var(--navydark); transform: translateY(-2px); }
+  .btn-ghost { background: #fff; color: var(--navy); border: 2px solid var(--border); box-shadow: none; }
+  .btn-ghost:hover { border-color: var(--navy); transform: translateY(-2px); }
+
+  /* ═══ TOPBAR ═══ */
+  .topbar { background: var(--navy); color: rgba(255,255,255,.8); font-size: 13px; font-weight: 600; }
+  .topbar-inner { display: flex; align-items: stretch; justify-content: space-between; min-height: 44px; }
+  .topbar-left { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; padding: 8px 0; }
+  .topbar-left span { display: flex; align-items: center; gap: 7px; }
+  .topbar-left i { color: var(--red); font-size: 12px; }
+  .topbar-right {
+    display: flex; align-items: stretch;
+    background: var(--red);
+    clip-path: polygon(22px 0%, 100% 0%, 100% 100%, 0% 100%);
+    padding-left: 22px;
+  }
+  .topbar-right a {
+    display: flex; align-items: center; justify-content: center;
+    width: 42px; color: #fff; font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,.18); transition: background .2s;
+  }
+  .topbar-right a:last-child { border-right: none; }
+  .topbar-right a:hover { background: rgba(255,255,255,.15); }
+
+  /* ═══ NAVBAR ═══ */
+  .navbar { background: #fff; position: sticky; top: 0; z-index: 900; box-shadow: 0 2px 20px rgba(13,31,78,.1); }
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+  .logo img { height: 48px; width: auto; object-fit: contain; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 2px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 800; color: var(--navy);
+    padding: 8px 13px; text-transform: uppercase; letter-spacing: .3px;
+    position: relative; transition: color .2s; white-space: nowrap;
+  }
+  .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 13px; right: 13px; height: 2px; background: var(--red); transform: scaleX(0); transition: transform .25s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .3s; }
+  .mobile-nav { display: none; background: #fff; border-top: 1px solid var(--border); padding: 12px 0; }
+  .mobile-nav a { display: block; padding: 10px 28px; font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--navy); }
+  .mobile-nav a.active { color: var(--red); }
+  .mobile-nav .mn-cta { padding: 12px 28px; }
+  .mobile-nav.open { display: block; }
+
+  /* ═══ PAGE HERO ═══ */
+  .step-hero {
+    background: var(--navy);
+    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=60');
+    background-blend-mode: multiply; background-size: cover; background-position: center;
+    padding: 52px 0 44px; position: relative;
+  }
+  .step-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,31,78,.96) 40%, rgba(13,31,78,.78) 100%); }
+  .step-hero-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .step-hero-text .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; background: rgba(208,32,32,.15); border: 1px solid rgba(208,32,32,.4); color: #ff9090; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.8px; padding: 5px 14px; border-radius: 40px; }
+  .step-hero-text .eyebrow i { color: var(--red); }
+  .step-hero-text h1 { font-size: 34px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 10px; }
+  .step-hero-text h1 span { color: var(--red); }
+  .step-hero-text p { color: rgba(255,255,255,.7); font-size: 14.5px; line-height: 1.7; max-width: 520px; }
+  .step-hero-stats { display: flex; gap: 0; flex-shrink: 0; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); border-radius: 16px; overflow: hidden; }
+  .shs { text-align: center; padding: 24px 32px; }
+  .shs .num { font-size: 28px; font-weight: 900; color: #fff; line-height: 1; }
+  .shs .num span { color: var(--red); }
+  .shs .lbl { font-size: 11px; color: rgba(255,255,255,.65); font-weight: 700; margin-top: 5px; text-transform: uppercase; letter-spacing: .5px; }
+  .shs-div { width: 1px; background: rgba(255,255,255,.18); flex-shrink: 0; }
+
+  /* ═══ STEPPER BAR ═══ */
+  .stepper-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 0; box-shadow: 0 2px 12px rgba(13,31,78,.06); }
+  .stepper-inner { display: flex; align-items: center; justify-content: center; gap: 0; padding: 20px 0; }
+  .st-item { display: flex; align-items: center; }
+  .st-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; flex-shrink: 0; transition: all .3s; }
+  .st-dot.done   { background: var(--green); color: #fff; box-shadow: 0 3px 12px rgba(22,163,74,.3); }
+  .st-dot.active { background: var(--navy);  color: #fff; box-shadow: 0 3px 12px rgba(13,31,78,.3); }
+  .st-dot.inactive { background: #e8eaf0; color: #aaa; }
+  .st-label { margin-left: 10px; margin-right: 6px; }
+  .st-label .name { font-size: 13px; font-weight: 800; line-height: 1.2; }
+  .st-label .name.done   { color: var(--green); }
+  .st-label .name.active { color: var(--navy); }
+  .st-label .name.inactive { color: #bbb; }
+  .st-label .sub { font-size: 11px; color: var(--lgray); font-weight: 600; }
+  .st-line { width: 72px; height: 2px; background: #e0e3ed; margin: 0 16px; border-radius: 2px; flex-shrink: 0; }
+  .st-line.done { background: var(--green); }
+
+  /* ═══ MAIN LAYOUT ═══ */
+  .page-body { padding: 40px 0 72px; }
+  .page-inner { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: start; }
+
+  /* ═══ CONFIRMATION TOAST ═══ */
+  .toast {
+    display: flex; align-items: center; gap: 14px;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1.5px solid #86efac; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 22px;
+    animation: toastIn .5s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes toastIn { from { opacity:0; transform: translateY(-14px); } to { opacity:1; transform:none; } }
+  .toast-ico { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .toast-text strong { font-size: 14px; font-weight: 900; color: #14532d; display: block; margin-bottom: 2px; }
+  .toast-text span { font-size: 13px; color: #166534; }
+  .toast-close { margin-left: auto; background: none; border: none; color: #4ade80; font-size: 17px; cursor: pointer; padding: 4px; transition: color .2s; flex-shrink: 0; }
+  .toast-close:hover { color: var(--green); }
+
+  /* ═══ RESULTS HEADER ═══ */
+  .results-hdr { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .rh-left h2 { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+  .rh-left p { font-size: 13px; color: var(--gray); display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .rh-left .crit-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(13,31,78,.07); border-radius: 20px;
+    padding: 2px 10px; font-size: 12px; font-weight: 800; color: var(--navy);
+  }
+  .rh-left .crit-pill i { color: var(--red); font-size: 10px; }
+  .rh-sort { display: flex; align-items: center; gap: 8px; }
+  .rh-sort label { font-size: 12px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: .5px; white-space: nowrap; }
+  .rh-sort select {
+    padding: 9px 14px; border: 2px solid var(--border); border-radius: 8px;
+    font-family: var(--f); font-size: 13px; font-weight: 700; color: var(--navy);
+    background: #fff; cursor: pointer; outline: none; transition: border-color .2s;
+  }
+  .rh-sort select:focus { border-color: var(--red); }
+
+  /* tab strip — Buy / Supplier / Partner */
+  .algo-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .at-btn {
+    display: flex; align-items: center; gap: 7px;
+    padding: 8px 18px; border-radius: 40px; border: 2px solid var(--border);
+    font-family: var(--f); font-size: 12.5px; font-weight: 800; color: var(--gray);
+    background: #fff; cursor: pointer; transition: all .2s;
+  }
+  .at-btn i { font-size: 12px; }
+  .at-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .at-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); box-shadow: 0 3px 12px rgba(13,31,78,.22); }
+  .at-btn .at-count { background: rgba(255,255,255,.22); border-radius: 20px; padding: 1px 7px; font-size: 11px; }
+  .at-btn:not(.active) .at-count { background: var(--offbg); color: var(--navy); }
+
+  /* ═══ MATCH CARDS ═══ */
+  .match-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .mcard {
+    background: #fff; border-radius: 16px; overflow: hidden;
+    display: grid; grid-template-columns: 180px 1fr 160px;
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    position: relative;
+    opacity: 0; transform: translateY(20px);
+    animation: cardIn .45s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  .mcard:nth-child(1){ animation-delay:.05s }
+  .mcard:nth-child(2){ animation-delay:.12s }
+  .mcard:nth-child(3){ animation-delay:.19s }
+  .mcard:nth-child(4){ animation-delay:.26s }
+  .mcard:nth-child(5){ animation-delay:.33s }
+  .mcard:nth-child(6){ animation-delay:.40s }
+  @keyframes cardIn { to { opacity:1; transform:none; } }
+  .mcard:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(13,31,78,.14); border-color: #c4cce2; }
+
+  /* Image pane */
+  .mc-img { position: relative; overflow: hidden; }
+  .mc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+  .mcard:hover .mc-img img { transform: scale(1.06); }
+  .mc-img .ph { /* placeholder */ width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 54px; }
+  .badge { position: absolute; font-size: 10.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .5px; padding: 4px 10px; border-radius: 6px; line-height: 1.3; }
+  .badge.tl { top: 12px; left: 12px; }
+  .badge.tr { top: 12px; right: 12px; }
+  .b-new  { background: var(--green); color:#fff; }
+  .b-kgp  { background: rgba(13,31,78,.85); border:1px solid rgba(255,255,255,.22); color:#fff; }
+  .b-feat { background: var(--red); color:#fff; }
+  .b-hot  { background: #ea7c00; color:#fff; animation: bHot 2s ease-in-out infinite; }
+  @keyframes bHot { 0%,100%{box-shadow:0 0 0 0 rgba(234,124,0,.5)} 60%{box-shadow:0 0 0 8px rgba(234,124,0,0)} }
+
+  /* Body pane */
+  .mc-body { padding: 20px 24px; display: flex; flex-direction: column; border-right: 1.5px solid var(--border); }
+  .mc-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .mc-ind {
+    background: var(--offbg); border: 1.5px solid var(--border);
+    border-radius: 20px; padding: 3px 11px;
+    font-size: 11.5px; font-weight: 800; color: var(--navy);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .mc-ind i { color: var(--red); font-size: 10px; }
+  .mc-loc { font-size: 12.5px; color: var(--gray); display: flex; align-items: center; gap: 4px; font-weight: 700; }
+  .mc-loc i { color: var(--red); font-size: 11px; }
+  .mc-algo-label { margin-left: auto; font-size: 11px; font-weight: 800; color: var(--lgray); display: flex; align-items: center; gap: 4px; }
+  .mc-algo-label i { color: var(--red); font-size: 10px; }
+  .mc-title { font-size: 18px; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+  .mc-desc { font-size: 13.5px; color: var(--gray); line-height: 1.68; flex: 1; margin-bottom: 14px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .fin-row { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid var(--border); }
+  .fin-pill { background: var(--offbg); border-radius: 7px; padding: 6px 11px; }
+  .fin-pill .fl { font-size: 10.5px; color: var(--gray); font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
+  .fin-pill .fv { font-size: 13px; font-weight: 900; color: var(--navy); margin-top: 1px; }
+
+  /* Score pane */
+  .mc-score {
+    padding: 20px 18px; display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between; gap: 10px;
+    background: #fafbfd;
+  }
+  .mc-score-top { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+
+  /* SVG donut ring */
+  .score-ring { position: relative; width: 80px; height: 80px; flex-shrink: 0; }
+  .score-ring svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+  .score-ring svg circle { fill: none; stroke-width: 6; }
+  .sr-track { stroke: var(--border); }
+  .sr-fill { stroke-dasharray: 220; stroke-dashoffset: 220; transition: stroke-dashoffset .9s cubic-bezier(.22,1,.36,1); stroke-linecap: round; }
+  .sr-hi  { stroke: var(--green); }
+  .sr-med { stroke: var(--yellow); }
+  .sr-low { stroke: var(--orange); }
+  .score-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .score-num { font-size: 22px; font-weight: 900; color: var(--navy); line-height: 1; }
+  .score-denom { font-size: 9.5px; font-weight: 700; color: var(--lgray); }
+
+  .score-badge-row { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .4px; padding: 4px 12px; border-radius: 20px; }
+  .score-badge-row.hi  { background: #dcfce7; color: var(--green); }
+  .score-badge-row.med { background: #fef9c3; color: var(--yellow); }
+  .score-badge-row.low { background: #ffedd5; color: var(--orange); }
+  .score-badge-row i { font-size: 10px; }
+
+  .mc-price { font-size: 20px; font-weight: 900; color: var(--navy); text-align: center; line-height: 1; }
+  .mc-price small { font-size: 11px; color: var(--gray); font-weight: 600; display: block; margin-top: 3px; }
+
+  .mc-actions { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+  .mc-btn {
+    width: 100%; padding: 10px 12px; border-radius: 8px; font-family: var(--f);
+    font-size: 12.5px; font-weight: 800; cursor: pointer; border: none;
+    transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .mc-btn.primary { background: var(--red); color: #fff; box-shadow: 0 3px 12px rgba(208,32,32,.28); }
+  .mc-btn.primary:hover { background: var(--reddark); transform: translateY(-1px); }
+  .mc-btn.secondary { background: #fff; color: var(--navy); border: 1.5px solid var(--border); }
+  .mc-btn.secondary:hover { border-color: var(--navy); background: var(--offbg); }
+  .mc-btn-save {
+    width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--border);
+    background: var(--offbg); color: var(--gray); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 14px;
+    transition: all .18s; align-self: center;
+  }
+  .mc-btn-save:hover { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.06); }
+  .mc-btn-save.saved { border-color: var(--red); background: rgba(208,32,32,.08); color: var(--red); }
+
+  /* save + view row */
+  .mc-row { display: flex; gap: 7px; align-items: center; width: 100%; }
+  .mc-row .mc-btn.secondary { flex: 1; }
+
+  /* ═══ LOAD MORE STRIP ═══ */
+  .load-more {
+    margin-top: 24px; background: #fff; border: 1.5px dashed var(--border);
+    border-radius: 14px; padding: 22px; text-align: center;
+  }
+  .load-more p { font-size: 13.5px; color: var(--gray); margin-bottom: 14px; }
+  .load-more p strong { color: var(--navy); }
+
+  /* ═══ BROWSE ALL STRIP ═══ */
+  .browse-strip {
+    background: var(--navy); border-radius: 14px;
+    padding: 22px 26px; display: flex; align-items: center;
+    justify-content: space-between; gap: 16px; margin-top: 20px; flex-wrap: wrap;
+    box-shadow: 0 6px 24px rgba(13,31,78,.2);
+  }
+  .bs-text h3 { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .bs-text p { font-size: 13px; color: rgba(255,255,255,.6); }
+
+  /* ═══ RIGHT SIDEBAR ═══ */
+  .sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .info-card { background: #fff; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+  .ic-head { padding: 18px 22px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .ic-head i { color: var(--red); font-size: 16px; }
+  .ic-head span { font-size: 13px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .5px; }
+  .ic-body { padding: 18px 22px; }
+
+  /* Criteria summary card */
+  .crit-rows { display: flex; flex-direction: column; gap: 8px; }
+  .cr-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--offbg); border-radius: 10px; }
+  .cr-item i { color: var(--red); width: 15px; text-align: center; font-size: 12px; flex-shrink: 0; }
+  .cr-key { font-size: 10.5px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: .5px; width: 64px; flex-shrink: 0; }
+  .cr-val { font-size: 13px; font-weight: 800; color: var(--navy); flex: 1; }
+  .cr-edit {
+    width: 100%; margin-top: 14px; padding: 11px;
+    border: 2px solid var(--border); border-radius: 10px;
+    background: #fff; font-family: var(--f); font-size: 13px; font-weight: 800;
+    color: var(--navy); cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .cr-edit:hover { border-color: var(--navy); background: var(--offbg); }
+
+  /* Score legend */
+  .score-legend { display: flex; flex-direction: column; gap: 8px; }
+  .sl-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px; }
+  .sl-row.hi  { background: #f0fdf4; }
+  .sl-row.med { background: #fffbeb; }
+  .sl-row.low { background: #fff7ed; }
+  .sl-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .sl-dot.hi  { background: var(--green); }
+  .sl-dot.med { background: var(--yellow); }
+  .sl-dot.low { background: var(--orange); }
+  .sl-label { flex: 1; font-size: 13px; font-weight: 800; }
+  .sl-label.hi  { color: var(--green); }
+  .sl-label.med { color: var(--yellow); }
+  .sl-label.low { color: var(--orange); }
+  .sl-range { font-size: 11px; font-weight: 700; color: var(--lgray); }
+  .sl-foot { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; color: var(--lgray); line-height: 1.65; }
+
+  /* Digest card */
+  .digest-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+  .digest-head { background: var(--navy); padding: 18px 22px; display: flex; align-items: center; gap: 12px; }
+  .digest-head i { color: var(--red); font-size: 17px; }
+  .digest-head span { font-size: 13px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: .5px; }
+  .digest-body { padding: 18px 22px; }
+  .digest-body p { font-size: 13px; color: var(--gray); line-height: 1.65; margin-bottom: 14px; }
+  .digest-toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--offbg); border-radius: 10px; margin-bottom: 10px; }
+  .dt-label { font-size: 13px; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+  .dt-label i { color: var(--green); }
+  .toggle-sw { position: relative; width: 44px; height: 24px; }
+  .toggle-sw input { opacity: 0; width: 0; height: 0; }
+  .toggle-track { position: absolute; inset: 0; background: var(--green); border-radius: 24px; cursor: pointer; transition: background .3s; }
+  .toggle-track::before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: #fff; top: 3px; left: 21px; transition: left .3s; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+  .toggle-sw input:not(:checked) + .toggle-track { background: #cbd5e1; }
+  .toggle-sw input:not(:checked) + .toggle-track::before { left: 3px; }
+  .digest-note { font-size: 12px; color: var(--lgray); display: flex; align-items: flex-start; gap: 5px; line-height: 1.5; }
+  .digest-note i { color: var(--red); margin-top: 2px; flex-shrink: 0; }
+
+  /* CTA card */
+  .cta-card { background: var(--navy); border-radius: 16px; padding: 24px 22px; text-align: center; }
+  .cta-card .cta-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(208,32,32,.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 22px; color: var(--red); }
+  .cta-card h4 { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .cta-card p  { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 18px; }
+  .cta-card .btn { width: 100%; justify-content: center; }
+
+  /* ═══ INTEREST MODAL ═══ */
+  .modal-bg { display: none; position: fixed; inset: 0; z-index: 9800; background: rgba(13,31,78,.72); backdrop-filter: blur(5px); }
+  .modal-bg.open { display: block; }
+  .modal-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-58%); opacity: 0; z-index: 9900; width: 94%; max-width: 560px; background: #fff; border-radius: 18px; box-shadow: 0 28px 72px rgba(13,31,78,.3); overflow: hidden; transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .28s; }
+  .modal-box.open { display: block; transform: translate(-50%,-50%); opacity: 1; }
+  .mh { background: var(--navy); padding: 26px 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+  .mh-left { display: flex; align-items: center; gap: 14px; }
+  .mh-ico { width: 50px; height: 50px; background: var(--red); border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mh-ico i { font-size: 21px; color: #fff; }
+  .mh h3 { color: #fff; font-size: 19px; font-weight: 900; }
+  .mh p  { color: rgba(255,255,255,.58); font-size: 13.5px; margin-top: 3px; }
+  .mh-close { background: rgba(255,255,255,.1); border: none; color: rgba(255,255,255,.65); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; transition: background .2s; margin-top: 2px; }
+  .mh-close:hover { background: var(--red); color: #fff; }
+  .mb { padding: 28px 30px; max-height: 72vh; overflow-y: auto; }
+  .mb::-webkit-scrollbar { width: 4px; }
+  .mb::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  .ff { margin-bottom: 15px; }
+  .ff label { display: block; font-size: 12.5px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .7px; margin-bottom: 7px; }
+  .ff input, .ff textarea { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 8px; font-family: var(--f); font-size: 14px; color: #222; background: var(--offbg); outline: none; transition: border-color .2s; }
+  .ff input:focus, .ff textarea:focus { border-color: var(--red); background: #fff; }
+  .ff textarea { resize: vertical; min-height: 80px; }
+  .ff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .m-note { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; background: var(--offbg); border-radius: 8px; padding: 12px 15px; font-size: 13px; color: var(--gray); line-height: 1.55; }
+  .m-note i { color: var(--red); font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+  .m-submit { width: 100%; padding: 15px; background: var(--red); color: #fff; border: none; border-radius: 40px; font-family: var(--f); font-size: 14.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .18s, transform .15s; box-shadow: 0 6px 20px rgba(208,32,32,.32); }
+  .m-submit:hover { background: var(--reddark); transform: translateY(-2px); }
+  .m-success { display: none; text-align: center; padding: 44px 30px; }
+  .m-success.show { display: block; }
+  .m-success-ico { width: 80px; height: 80px; background: rgba(22,163,74,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .m-success-ico i { font-size: 36px; color: var(--green); }
+  .m-success h3 { font-size: 23px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+  .m-success p  { color: var(--gray); font-size: 14.5px; line-height: 1.72; margin-bottom: 24px; }
+  .m-match-context { background: rgba(13,31,78,.04); border: 1.5px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; text-align: left; }
+  .m-match-context .mc-label { font-size: 11px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .m-match-context .mc-name { font-size: 15px; font-weight: 900; color: var(--navy); }
+  .m-match-context .mc-sc  { font-size: 12.5px; color: var(--green); font-weight: 800; display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+
+  /* ══════════════════════════════════════════
+       CHATBOT WIDGET (copied from bizmatch.html)
+  ══════════════════════════════════════════ */
+  #chat-widget { position: fixed; bottom: 28px; right: 28px; z-index: 9998; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  #chat-bubble { width: 60px; height: 60px; border-radius: 50%; background: var(--red); color: #fff; font-size: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 24px rgba(208,32,32,.45); transition: transform .2s, box-shadow .2s; animation: pulsePlay 2.5s ease-in-out infinite; }
+  #chat-bubble:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(208,32,32,.55); }
+  #chat-box { width: 360px; border-radius: 18px; overflow: hidden; box-shadow: 0 16px 48px rgba(13,31,78,.22); display: none; flex-direction: column; background: #fff; max-height: 520px; }
+  #chat-box.open { display: flex; }
+  #chat-header { background: var(--navy); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+  #chat-header .ch-left { display: flex; align-items: center; gap: 12px; }
+  #chat-header .ch-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; }
+  #chat-header .ch-info .ch-name { color: #fff; font-weight: 900; font-size: 14px; }
+  #chat-header .ch-info .ch-status { color: rgba(255,255,255,.6); font-size: 12px; display: flex; align-items: center; gap: 5px; }
+  #chat-header .ch-info .ch-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; display: inline-block; }
+  #chat-close { color: rgba(255,255,255,.6); font-size: 18px; cursor: pointer; transition: color .2s; }
+  #chat-close:hover { color: #fff; }
+  #chat-messages { flex: 1; overflow-y: auto; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; background: #f8f9fc; }
+  #chat-messages::-webkit-scrollbar { width: 4px; }
+  #chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  .cm { display: flex; gap: 8px; align-items: flex-end; }
+  .cm.bot { justify-content: flex-start; }
+  .cm.user { justify-content: flex-end; }
+  .cm-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; flex-shrink: 0; }
+  .cm-bubble { max-width: 78%; padding: 10px 14px; border-radius: 16px; font-size: 13.5px; line-height: 1.6; }
+  .cm.bot .cm-bubble { background: #fff; color: #222; border-bottom-left-radius: 4px; box-shadow: 0 2px 8px rgba(13,31,78,.07); }
+  .cm.user .cm-bubble { background: var(--red); color: #fff; border-bottom-right-radius: 4px; }
+  .cm-typing { display: flex; gap: 4px; padding: 12px 14px; }
+  .cm-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--gray); display: inline-block; animation: typingDot 1.2s ease-in-out infinite; }
+  .cm-typing span:nth-child(2) { animation-delay: .2s; }
+  .cm-typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes typingDot { 0%,60%,100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-6px); opacity: 1; } }
+  @keyframes pulsePlay { 0%,100% { box-shadow: 0 0 0 0 rgba(208,32,32,.5), 0 6px 24px rgba(208,32,32,.45); } 50% { box-shadow: 0 0 0 12px rgba(208,32,32,.18), 0 6px 24px rgba(208,32,32,.45); } }
+  #chat-footer { padding: 12px 14px; background: #fff; border-top: 1px solid var(--border); display: flex; gap: 8px; align-items: center; }
+  #chat-input { flex: 1; border: 1.5px solid var(--border); border-radius: 24px; padding: 10px 16px; font-size: 13.5px; font-family: var(--f); outline: none; color: #222; transition: border-color .2s; }
+  #chat-input:focus { border-color: var(--red); }
+  #chat-send { width: 38px; height: 38px; border-radius: 50%; background: var(--red); color: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; transition: background .2s; flex-shrink: 0; }
+  #chat-send:hover { background: var(--reddark); }
+  #chat-quick-replies { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 16px 10px; }
+  .qr-btn { font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--red); color: var(--red); background: #fff; cursor: pointer; transition: all .2s; font-family: var(--f); }
+  .qr-btn:hover { background: var(--red); color: #fff; }
+
+  /* ═══ FOOTER ═══ */
+  footer { position: relative; color: rgba(255,255,255,.82); overflow: hidden; }
+  footer::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=70') center/cover no-repeat; z-index: 0; }
+  .footer-main-wrap { position: relative; z-index: 1; background: rgba(13,31,78,.88); }
+  .footer-main { display: grid; grid-template-columns: 2fr 1.2fr 1.4fr 1.6fr; gap: 48px; padding: 72px 0 48px; }
+  .f-brand p { font-size: 14px; line-height: 1.8; margin: 16px 0 18px; }
+  .f-contact { list-style: none; }
+  .f-contact li { display: flex; align-items: center; gap: 9px; font-size: 14px; margin-bottom: 9px; }
+  .f-contact li i { color: var(--red); width: 14px; flex-shrink: 0; }
+  .f-socials { display: flex; gap: 8px; margin-top: 20px; }
+  .f-socials a { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; transition: background .2s; }
+  .f-socials a:hover { background: #fff; color: var(--red); }
+  .f-col h4 { font-size: 18px; font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 3px solid var(--red); display: inline-block; }
+  .f-links { list-style: none; }
+  .f-links li { margin-bottom: 10px; }
+  .f-links a { color: rgba(255,255,255,.65); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+  .f-links a::before { content: '▸'; color: var(--red); font-size: 11px; }
+  .f-links a:hover { color: #fff; }
+  .footer-bot-wrap { position: relative; z-index: 1; background: #0b1a41; }
+  .footer-bot { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bot p { font-size: 13px; color: rgba(255,255,255,.65); }
+  .footer-bot span { color: var(--red); }
+  .footer-bot-links { display: flex; gap: 24px; }
+  .footer-bot-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s; font-weight: 600; }
+  .footer-bot-links a:hover { color: #fff; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:1100px){
+    .mcard { grid-template-columns: 160px 1fr 148px; }
+  }
+  @media(max-width:1024px){
+    .footer-main { grid-template-columns: 1fr 1fr; }
+    .page-inner { grid-template-columns: 1fr; }
+    .sidebar { display: grid; grid-template-columns: 1fr 1fr; }
+    .cta-card { grid-column: 1 / -1; }
+    .step-hero-stats { display: none; }
+  }
+  @media(max-width:768px){
+    .mcard { grid-template-columns: 1fr; grid-template-rows: 220px 1fr auto; }
+    .mc-body { border-right: none; border-bottom: 1.5px solid var(--border); }
+    .mc-score { flex-direction: row; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .mc-score-top { flex-direction: row; align-items: center; width: auto; }
+    .mc-actions { flex-direction: row; width: auto; flex: 1; }
+    .mc-row { flex: 1; }
+    .browse-strip { flex-direction: column; text-align: center; }
+  }
+  @media(max-width:640px){
+    .footer-main { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .stepper-inner { gap: 0; }
+    .st-line { width: 28px; margin: 0 6px; }
+    .st-label .sub { display: none; }
+    .sidebar { grid-template-columns: 1fr; }
+    .step-hero-text h1 { font-size: 26px; }
+    .ff-row { grid-template-columns: 1fr; }
+    .algo-tabs { gap: 4px; }
+    .at-btn { font-size: 12px; padding: 7px 13px; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- ════ TOPBAR ════ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i>+65 9456 0451</span>
+        <span><i class="fas fa-envelope"></i>info@keyglobalprojects.com</span>
+        <span><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WeChat"><i class="fab fa-weixin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar">
+  <div class="wrap">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <img src="KGP-Logo.png" alt="Key Global Projects">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#cases">Cases</a>
+        <a href="index.html#team">Team</a>
+        <a href="index.html#blog">Blog</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="bizmatch.html" class="active">BizMatch +</a>
+      </div>
+      <a href="index.html#contact" class="btn btn-red" style="padding:12px 22px;font-size:12.5px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#cases">Cases</a>
+    <a href="index.html#team">Team</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="bizmatch.html" class="active">BizMatch +</a>
+    <div class="mn-cta">
+      <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════ PAGE HERO ════ -->
+<div class="step-hero">
+  <div class="wrap">
+    <div class="step-hero-inner">
+      <div class="step-hero-text">
+        <span class="eyebrow"><i class="fas fa-bolt"></i> AI-Powered Business Matching</span>
+        <h1>Find Your Next<br><span>Business Opportunity</span></h1>
+        <p>Tell us about yourself and we'll match you with the most relevant business listings — buyers, suppliers, or partners — using our AI matching engine.</p>
+      </div>
+      <div class="step-hero-stats">
+        <div class="shs">
+          <div class="num"><span>8</span></div>
+          <div class="lbl">Your Matches</div>
+        </div>
+        <div class="shs-div"></div>
+        <div class="shs">
+          <div class="num">150+</div>
+          <div class="lbl">Active Listings</div>
+        </div>
+        <div class="shs-div"></div>
+        <div class="shs">
+          <div class="num">$2B+</div>
+          <div class="lbl">Total Value</div>
+        </div>
+        <div class="shs-div"></div>
+        <div class="shs">
+          <div class="num">98%</div>
+          <div class="lbl">Match Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ STEPPER BAR ════ -->
+<div class="stepper-bar">
+  <div class="wrap">
+    <div class="stepper-inner">
+
+      <div class="st-item">
+        <div class="st-dot done"><i class="fas fa-check" style="font-size:13px;"></i></div>
+        <div class="st-label">
+          <div class="name done">Get Started</div>
+          <div class="sub">Your details</div>
+        </div>
+      </div>
+
+      <div class="st-line done"></div>
+
+      <div class="st-item">
+        <div class="st-dot done"><i class="fas fa-check" style="font-size:13px;"></i></div>
+        <div class="st-label">
+          <div class="name done">Match Criteria</div>
+          <div class="sub">What you're looking for</div>
+        </div>
+      </div>
+
+      <div class="st-line done"></div>
+
+      <div class="st-item">
+        <div class="st-dot active">3</div>
+        <div class="st-label">
+          <div class="name active">Your Matches</div>
+          <div class="sub">AI-curated results</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ PAGE BODY ════ -->
+<div class="page-body">
+  <div class="wrap">
+
+    <!-- ── CONFIRMATION TOAST ── -->
+    <div class="toast" id="confirmToast">
+      <div class="toast-ico"><i class="fas fa-check"></i></div>
+      <div class="toast-text">
+        <strong>You're all set, Sarah! Your weekly digest is confirmed.</strong>
+        <span>New matches every Monday 8AM — we'll email you at sarah@acme.com.sg</span>
+      </div>
+      <button class="toast-close" onclick="document.getElementById('confirmToast').style.display='none'" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="page-inner">
+
+      <!-- ══ LEFT: RESULTS ══ -->
+      <div>
+
+        <!-- Results header -->
+        <div class="results-hdr">
+          <div class="rh-left">
+            <h2>Your Business Matches</h2>
+            <p>
+              Based on your criteria:
+              <span class="crit-pill"><i class="fas fa-shopping-cart"></i> Buy a Business</span>
+              <span class="crit-pill"><i class="fas fa-handshake"></i> Find a Partner</span>
+              <span class="crit-pill"><i class="fas fa-tag"></i> $500K – $5M</span>
+              <span class="crit-pill"><i class="fas fa-industry"></i> F&B, Technology</span>
+            </p>
+          </div>
+          <div class="rh-sort">
+            <label>Sort by</label>
+            <select>
+              <option>Match Score</option>
+              <option>Price: Low → High</option>
+              <option>Price: High → Low</option>
+              <option>Newest Listed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Algorithm tabs -->
+        <div class="algo-tabs">
+          <button class="at-btn active" onclick="setTab(this)">
+            <i class="fas fa-list"></i> All Results <span class="at-count">8</span>
+          </button>
+          <button class="at-btn" onclick="setTab(this)">
+            <i class="fas fa-shopping-cart"></i> Buy a Business <span class="at-count">5</span>
+          </button>
+          <button class="at-btn" onclick="setTab(this)">
+            <i class="fas fa-handshake"></i> Partner Match <span class="at-count">3</span>
+          </button>
+        </div>
+
+        <!-- ── MATCH CARDS ── -->
+        <div class="match-list" id="matchList">
+
+          <!-- ─── CARD 1: Italian Restaurant — HIGH 91 ─── -->
+          <div class="mcard">
+            <div class="mc-img">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop" alt="Italian Restaurant"/>
+              <span class="badge tl b-feat">Featured</span>
+              <span class="badge tr b-kgp">KGP Listed</span>
+            </div>
+            <div class="mc-body">
+              <div class="mc-meta">
+                <span class="mc-ind"><i class="fas fa-utensils"></i> F&amp;B / Restaurant</span>
+                <span class="mc-loc"><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span class="mc-algo-label"><i class="fas fa-shopping-cart"></i> Customer Match</span>
+              </div>
+              <h3 class="mc-title">Established Italian Restaurant</h3>
+              <p class="mc-desc">Prime-location Italian restaurant with a loyal customer base. Fully equipped kitchen, 60 seats, consistent revenue and strong brand presence in the CBD.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$1.2M/yr</div></div>
+                <div class="fin-pill"><div class="fl">Staff</div><div class="fv">12 FTE</div></div>
+                <div class="fin-pill"><div class="fl">Age</div><div class="fv">9 yrs</div></div>
+                <div class="fin-pill"><div class="fl">Asking</div><div class="fv" style="color:var(--red)">$850K</div></div>
+              </div>
+            </div>
+            <div class="mc-score">
+              <div class="mc-score-top">
+                <div class="score-ring">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="sr-track" cx="40" cy="40" r="35"/>
+                    <circle class="sr-fill sr-hi" cx="40" cy="40" r="35" style="stroke-dasharray:220;stroke-dashoffset:20;"/>
+                  </svg>
+                  <div class="score-inner">
+                    <div class="score-num">91</div>
+                    <div class="score-denom">/100</div>
+                  </div>
+                </div>
+                <div class="score-badge-row hi"><i class="fas fa-bolt"></i> High Match</div>
+              </div>
+              <div class="mc-actions">
+                <button class="mc-btn primary" onclick="openInterestModal('Established Italian Restaurant', 91)">
+                  <i class="fas fa-handshake"></i> I'm Interested
+                </button>
+                <div class="mc-row">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                    <i class="fas fa-eye"></i> View Details
+                  </button>
+                  <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── CARD 2: SaaS HR Tech — HIGH 87 ─── -->
+          <div class="mcard">
+            <div class="mc-img">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="SaaS HR Tech"/>
+              <span class="badge tl b-hot">Hot Deal</span>
+            </div>
+            <div class="mc-body">
+              <div class="mc-meta">
+                <span class="mc-ind"><i class="fas fa-laptop-code"></i> Technology</span>
+                <span class="mc-loc"><i class="fas fa-map-marker-alt"></i> Central</span>
+                <span class="mc-algo-label"><i class="fas fa-shopping-cart"></i> Customer Match</span>
+              </div>
+              <h3 class="mc-title">SaaS Platform — HR Tech</h3>
+              <p class="mc-desc">Profitable HR management SaaS with 200+ corporate clients. Strong ARR, modern tech stack, and significant ASEAN growth potential. Primed for IPO.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">ARR</div><div class="fv">~$420K</div></div>
+                <div class="fin-pill"><div class="fl">Clients</div><div class="fv">200+ corps</div></div>
+                <div class="fin-pill"><div class="fl">Age</div><div class="fv">4 yrs</div></div>
+                <div class="fin-pill"><div class="fl">Asking</div><div class="fv" style="color:var(--red)">$1.5M</div></div>
+              </div>
+            </div>
+            <div class="mc-score">
+              <div class="mc-score-top">
+                <div class="score-ring">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="sr-track" cx="40" cy="40" r="35"/>
+                    <circle class="sr-fill sr-hi" cx="40" cy="40" r="35" style="stroke-dasharray:220;stroke-dashoffset:29;"/>
+                  </svg>
+                  <div class="score-inner">
+                    <div class="score-num">87</div>
+                    <div class="score-denom">/100</div>
+                  </div>
+                </div>
+                <div class="score-badge-row hi"><i class="fas fa-bolt"></i> High Match</div>
+              </div>
+              <div class="mc-actions">
+                <button class="mc-btn primary" onclick="openInterestModal('SaaS Platform — HR Tech', 87)">
+                  <i class="fas fa-handshake"></i> I'm Interested
+                </button>
+                <div class="mc-row">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                    <i class="fas fa-eye"></i> View Details
+                  </button>
+                  <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── CARD 3: Cloud Kitchen — HIGH 82, NEW ─── -->
+          <div class="mcard">
+            <div class="mc-img">
+              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop" alt="Cloud Kitchen"/>
+              <span class="badge tl b-new">New</span>
+            </div>
+            <div class="mc-body">
+              <div class="mc-meta">
+                <span class="mc-ind"><i class="fas fa-utensils"></i> F&amp;B / Restaurant</span>
+                <span class="mc-loc"><i class="fas fa-map-marker-alt"></i> North</span>
+                <span class="mc-algo-label"><i class="fas fa-handshake"></i> Partner Match</span>
+              </div>
+              <h3 class="mc-title">Cloud Kitchen Network (3 Outlets)</h3>
+              <p class="mc-desc">Scalable cloud kitchen operation with 3 established prep hubs, 12 delivery-only F&B brands. Seeking a strategic partner for expansion into Malaysia.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$900K/yr</div></div>
+                <div class="fin-pill"><div class="fl">Brands</div><div class="fv">12 active</div></div>
+                <div class="fin-pill"><div class="fl">Outlets</div><div class="fv">3 hubs</div></div>
+                <div class="fin-pill"><div class="fl">Asking</div><div class="fv" style="color:var(--red)">$680K</div></div>
+              </div>
+            </div>
+            <div class="mc-score">
+              <div class="mc-score-top">
+                <div class="score-ring">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="sr-track" cx="40" cy="40" r="35"/>
+                    <circle class="sr-fill sr-hi" cx="40" cy="40" r="35" style="stroke-dasharray:220;stroke-dashoffset:40;"/>
+                  </svg>
+                  <div class="score-inner">
+                    <div class="score-num">82</div>
+                    <div class="score-denom">/100</div>
+                  </div>
+                </div>
+                <div class="score-badge-row hi"><i class="fas fa-bolt"></i> High Match</div>
+              </div>
+              <div class="mc-actions">
+                <button class="mc-btn primary" onclick="openInterestModal('Cloud Kitchen Network', 82)">
+                  <i class="fas fa-handshake"></i> I'm Interested
+                </button>
+                <div class="mc-row">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                    <i class="fas fa-eye"></i> View Details
+                  </button>
+                  <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── CARD 4: EdTech — MEDIUM 71 ─── -->
+          <div class="mcard">
+            <div class="mc-img">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop" alt="EdTech"/>
+            </div>
+            <div class="mc-body">
+              <div class="mc-meta">
+                <span class="mc-ind"><i class="fas fa-graduation-cap"></i> Education</span>
+                <span class="mc-loc"><i class="fas fa-map-marker-alt"></i> West</span>
+                <span class="mc-algo-label"><i class="fas fa-shopping-cart"></i> Customer Match</span>
+              </div>
+              <h3 class="mc-title">EdTech Platform — K-12 Tutoring</h3>
+              <p class="mc-desc">Digital learning platform with 4,000+ active student subscribers, established curriculum partnerships, and a proven hybrid tuition model.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Subscribers</div><div class="fv">4,200+</div></div>
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$560K/yr</div></div>
+                <div class="fin-pill"><div class="fl">Asking</div><div class="fv" style="color:var(--red)">$1.1M</div></div>
+              </div>
+            </div>
+            <div class="mc-score">
+              <div class="mc-score-top">
+                <div class="score-ring">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="sr-track" cx="40" cy="40" r="35"/>
+                    <circle class="sr-fill sr-med" cx="40" cy="40" r="35" style="stroke-dasharray:220;stroke-dashoffset:64;"/>
+                  </svg>
+                  <div class="score-inner">
+                    <div class="score-num">71</div>
+                    <div class="score-denom">/100</div>
+                  </div>
+                </div>
+                <div class="score-badge-row med"><i class="fas fa-circle-half-stroke"></i> Medium</div>
+              </div>
+              <div class="mc-actions">
+                <button class="mc-btn primary" onclick="openInterestModal('EdTech Platform — K-12 Tutoring', 71)">
+                  <i class="fas fa-handshake"></i> I'm Interested
+                </button>
+                <div class="mc-row">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                    <i class="fas fa-eye"></i> View Details
+                  </button>
+                  <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── CARD 5: Specialty Coffee — MEDIUM 65 ─── -->
+          <div class="mcard">
+            <div class="mc-img">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Specialty Coffee"/>
+              <span class="badge tl b-new">New</span>
+            </div>
+            <div class="mc-body">
+              <div class="mc-meta">
+                <span class="mc-ind"><i class="fas fa-coffee"></i> F&amp;B / Restaurant</span>
+                <span class="mc-loc"><i class="fas fa-map-marker-alt"></i> East</span>
+                <span class="mc-algo-label"><i class="fas fa-handshake"></i> Partner Match</span>
+              </div>
+              <h3 class="mc-title">Specialty Coffee Roastery &amp; Café</h3>
+              <p class="mc-desc">Award-winning single-origin roastery with café, wholesale B2B client base, and e-commerce subscriptions. Looking for capital partner to open 3rd outlet.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$380K/yr</div></div>
+                <div class="fin-pill"><div class="fl">B2B Clients</div><div class="fv">28 accounts</div></div>
+                <div class="fin-pill"><div class="fl">Asking</div><div class="fv" style="color:var(--red)">$520K</div></div>
+              </div>
+            </div>
+            <div class="mc-score">
+              <div class="mc-score-top">
+                <div class="score-ring">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="sr-track" cx="40" cy="40" r="35"/>
+                    <circle class="sr-fill sr-med" cx="40" cy="40" r="35" style="stroke-dasharray:220;stroke-dashoffset:77;"/>
+                  </svg>
+                  <div class="score-inner">
+                    <div class="score-num">65</div>
+                    <div class="score-denom">/100</div>
+                  </div>
+                </div>
+                <div class="score-badge-row med"><i class="fas fa-circle-half-stroke"></i> Medium</div>
+              </div>
+              <div class="mc-actions">
+                <button class="mc-btn primary" onclick="openInterestModal('Specialty Coffee Roastery', 65)">
+                  <i class="fas fa-handshake"></i> I'm Interested
+                </button>
+                <div class="mc-row">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                    <i class="fas fa-eye"></i> View Details
+                  </button>
+                  <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── CARD 6: Logistics — LOW 48 ─── -->
+          <div class="mcard">
+            <div class="mc-img">
+              <div class="ph" style="background:linear-gradient(135deg,#1a3a70,#0d1f4e);">🚚</div>
+            </div>
+            <div class="mc-body">
+              <div class="mc-meta">
+                <span class="mc-ind"><i class="fas fa-truck"></i> Logistics</span>
+                <span class="mc-loc"><i class="fas fa-map-marker-alt"></i> West</span>
+                <span class="mc-algo-label"><i class="fas fa-shopping-cart"></i> Customer Match</span>
+              </div>
+              <h3 class="mc-title">Last-Mile Delivery &amp; Fulfilment Co.</h3>
+              <p class="mc-desc">Established last-mile logistics operator with own fleet of 22 vehicles, WMS software, and contracts with 3 major e-commerce platforms.</p>
+              <div class="fin-row">
+                <div class="fin-pill"><div class="fl">Revenue</div><div class="fv">~$2.4M/yr</div></div>
+                <div class="fin-pill"><div class="fl">Fleet</div><div class="fv">22 vehicles</div></div>
+                <div class="fin-pill"><div class="fl">Asking</div><div class="fv" style="color:var(--red)">$3.2M</div></div>
+              </div>
+            </div>
+            <div class="mc-score">
+              <div class="mc-score-top">
+                <div class="score-ring">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="sr-track" cx="40" cy="40" r="35"/>
+                    <circle class="sr-fill sr-low" cx="40" cy="40" r="35" style="stroke-dasharray:220;stroke-dashoffset:114;"/>
+                  </svg>
+                  <div class="score-inner">
+                    <div class="score-num">48</div>
+                    <div class="score-denom">/100</div>
+                  </div>
+                </div>
+                <div class="score-badge-row low"><i class="fas fa-minus-circle"></i> Low Match</div>
+              </div>
+              <div class="mc-actions">
+                <button class="mc-btn primary" onclick="openInterestModal('Last-Mile Delivery Co.', 48)">
+                  <i class="fas fa-handshake"></i> I'm Interested
+                </button>
+                <div class="mc-row">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                    <i class="fas fa-eye"></i> View Details
+                  </button>
+                  <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /match-list -->
+
+        <!-- Load more / improve -->
+        <div class="load-more">
+          <p>Showing <strong>6 of 8</strong> matches · <strong>2 more</strong> results available</p>
+          <button class="btn btn-navy" style="margin:0 auto;">
+            Load More Matches <span class="arr"><i class="fas fa-chevron-down"></i></span>
+          </button>
+        </div>
+
+        <!-- Browse all strip -->
+        <div class="browse-strip">
+          <div class="bs-text">
+            <h3>Want to explore beyond your matches?</h3>
+            <p>Browse all 150+ active listings across every industry and price range.</p>
+          </div>
+          <a href="bizmatch.html" class="btn btn-red" style="font-size:13px;padding:13px 26px;">
+            Browse All Listings <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+      </div><!-- /left col -->
+
+      <!-- ══ RIGHT SIDEBAR ══ -->
+      <div class="sidebar">
+
+        <!-- Your Criteria -->
+        <div class="info-card">
+          <div class="ic-head">
+            <i class="fas fa-sliders-h"></i>
+            <span>Your Criteria</span>
+          </div>
+          <div class="ic-body">
+            <div class="crit-rows">
+              <div class="cr-item">
+                <i class="fas fa-user"></i>
+                <span class="cr-key">Name</span>
+                <span class="cr-val">Sarah Tan</span>
+              </div>
+              <div class="cr-item">
+                <i class="fas fa-bullseye"></i>
+                <span class="cr-key">Intent</span>
+                <span class="cr-val">Buy · Partner</span>
+              </div>
+              <div class="cr-item">
+                <i class="fas fa-industry"></i>
+                <span class="cr-key">Industry</span>
+                <span class="cr-val">F&amp;B, Technology</span>
+              </div>
+              <div class="cr-item">
+                <i class="fas fa-tag"></i>
+                <span class="cr-key">Budget</span>
+                <span class="cr-val">$500K – $5M</span>
+              </div>
+              <div class="cr-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="cr-key">Location</span>
+                <span class="cr-val">Any Singapore</span>
+              </div>
+              <div class="cr-item">
+                <i class="fas fa-chart-bar"></i>
+                <span class="cr-key">Revenue</span>
+                <span class="cr-val">$1M – $5M</span>
+              </div>
+            </div>
+            <button class="cr-edit" onclick="window.location.href='bizmatch-step2.html'">
+              <i class="fas fa-pencil-alt"></i> Refine Criteria
+            </button>
+          </div>
+        </div>
+
+        <!-- Match Score Guide -->
+        <div class="info-card">
+          <div class="ic-head">
+            <i class="fas fa-trophy"></i>
+            <span>Match Score Guide</span>
+          </div>
+          <div class="ic-body">
+            <div class="score-legend">
+              <div class="sl-row hi">
+                <div class="sl-dot hi"></div>
+                <div class="sl-label hi">High Match</div>
+                <div class="sl-range">75 – 100</div>
+              </div>
+              <div class="sl-row med">
+                <div class="sl-dot med"></div>
+                <div class="sl-label med">Medium Match</div>
+                <div class="sl-range">50 – 74</div>
+              </div>
+              <div class="sl-row low">
+                <div class="sl-dot low"></div>
+                <div class="sl-label low">Low Match</div>
+                <div class="sl-range">25 – 49</div>
+              </div>
+            </div>
+            <div class="sl-foot">
+              Scores are calculated from industry relevance, budget fit, location proximity, and listing recency. Matches below 25 are not shown.
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Digest -->
+        <div class="digest-card">
+          <div class="digest-head">
+            <i class="fas fa-envelope"></i>
+            <span>Weekly Digest</span>
+          </div>
+          <div class="digest-body">
+            <p>Get notified every Monday at 8AM when new matches appear. You opted in during sign-up — toggle below to change your preference.</p>
+            <div class="digest-toggle-row">
+              <div class="dt-label">
+                <i class="fas fa-check-circle"></i> Weekly email updates
+              </div>
+              <label class="toggle-sw">
+                <input type="checkbox" checked/>
+                <div class="toggle-track"></div>
+              </label>
+            </div>
+            <div class="digest-note">
+              <i class="fas fa-info-circle"></i>
+              Sent from noreply@keyglobalprojects.com. Unsubscribe anytime via the link in each email.
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA card -->
+        <div class="cta-card">
+          <div class="cta-icon"><i class="fas fa-calendar-check"></i></div>
+          <h4>Need expert guidance?</h4>
+          <p>Our M&A advisors can help you evaluate options and shortlist the right opportunities for your goals.</p>
+          <a href="index.html#contact" class="btn btn-red">
+            Book Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+      </div><!-- /sidebar -->
+    </div><!-- /page-inner -->
+  </div><!-- /wrap -->
+</div><!-- /page-body -->
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-main-wrap">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="f-brand">
+          <a href="index.html" style="display:inline-block;margin-bottom:14px;">
+            <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;width:auto;object-fit:contain;">
+          </a>
+          <p>Inherit Corporate Values, Achieve a Global Future. Singapore's trusted M&A and IPO advisory partner since 2013.</p>
+          <ul class="f-contact">
+            <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
+            <li><i class="fas fa-phone"></i>+65 9456 0451</li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
+          </ul>
+          <div class="f-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+          </div>
+        </div>
+        <div class="f-col">
+          <h4>Quick Links</h4>
+          <ul class="f-links">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#services">Our Services</a></li>
+            <li><a href="index.html#cases">Success Stories</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>BizMatch</h4>
+          <ul class="f-links">
+            <li><a href="#">Browse All Listings</a></li>
+            <li><a href="#" onclick="openMatchModal()">AI Business Matching</a></li>
+            <li><a href="index.html#services">M&amp;A Advisory</a></li>
+            <li><a href="index.html#services">IPO Strategies</a></li>
+            <li><a href="index.html#services">Business Valuation</a></li>
+            <li><a href="index.html#services">Corporate Structuring</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>Book a Consult</h4>
+          <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;margin-bottom:20px;">Interested in a listing or need M&amp;A guidance? Our consultants are standing by.</p>
+          <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;display:inline-flex;margin-bottom:14px;">
+            Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <p style="color:rgba(255,255,255,.4);font-size:12px;">Mon – Fri, 9 AM – 6 PM SGT</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot-wrap">
+    <div class="wrap">
+      <div class="footer-bot">
+        <p>© 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
+        <div class="footer-bot-links">
+          <a href="#">Support</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="kgp-admin.html" style="color:rgba(255,255,255,.25);">Admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════ INTEREST MODAL ════ -->
+<div class="modal-bg" id="modalBg" onclick="closeInterestModal()"></div>
+<div class="modal-box" id="interestModal">
+  <div class="mh">
+    <div class="mh-left">
+      <div class="mh-ico"><i class="fas fa-handshake"></i></div>
+      <div>
+        <h3>Express Your Interest</h3>
+        <p id="modalBizName">Business Name</p>
+      </div>
+    </div>
+    <button class="mh-close" onclick="closeInterestModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="modalFormWrap">
+    <div class="mb">
+      <!-- Match context pill -->
+      <div class="m-match-context" id="modalMatchCtx">
+        <div class="mc-label">Matched Listing</div>
+        <div class="mc-name" id="modalCtxName">—</div>
+        <div class="mc-sc"><i class="fas fa-bolt"></i> <span id="modalCtxScore">—</span> Match Score</div>
+      </div>
+      <div class="ff-row">
+        <div class="ff"><label>Your Name *</label><input type="text" value="Sarah Tan" placeholder="John Tan"/></div>
+        <div class="ff"><label>Email Address *</label><input type="email" value="sarah@acme.com.sg" placeholder="john@company.com"/></div>
+      </div>
+      <div class="ff-row">
+        <div class="ff"><label>Phone Number</label><input type="tel" value="+65 9123 4567" placeholder="+65 9123 4567"/></div>
+        <div class="ff"><label>Company Name</label><input type="text" value="Acme Holdings Pte Ltd" placeholder="Company Pte Ltd"/></div>
+      </div>
+      <div class="ff"><label>Message (Optional)</label><textarea placeholder="Tell us about your interest and any questions…"></textarea></div>
+      <button class="m-submit" onclick="submitInterest()"><i class="fas fa-paper-plane"></i> Submit Interest</button>
+      <div class="m-note"><i class="fas fa-shield-alt"></i> Your information is strictly confidential. A KGP consultant will contact you within 1 business day.</div>
+    </div>
+  </div>
+  <div class="m-success" id="modalSuccess">
+    <div class="m-success-ico"><i class="fas fa-check"></i></div>
+    <h3>Interest Submitted!</h3>
+    <p>Thank you, Sarah. A Key Global Projects consultant will reach out within <strong>1 business day</strong>.</p>
+    <div style="background:var(--offbg);border-radius:12px;padding:18px 20px;text-align:left;margin:16px 0 20px;">
+      <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">KGP Contact Details</div>
+      <div style="font-size:13.5px;color:var(--navy);display:flex;flex-direction:column;gap:7px;">
+        <span><i class="fas fa-phone" style="color:var(--red);width:16px;"></i> +65 9456 0451</span>
+        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> info@keyglobalprojects.com</span>
+        <span><i class="fas fa-map-marker-alt" style="color:var(--red);width:16px;"></i> 47 Kallang Pudding Rd, #11-07</span>
+      </div>
+    </div>
+    <div style="background:var(--offbg);border:2px dashed var(--border);border-radius:12px;padding:24px;margin-bottom:20px;text-align:center;">
+      <i class="fas fa-calendar-check" style="font-size:32px;color:var(--border);display:block;margin-bottom:8px;"></i>
+      <span style="font-size:13px;color:var(--lgray);font-weight:700;">Calendly Booking Widget</span><br>
+      <small style="font-size:11.5px;color:#bbb;">Schedule a consultation immediately</small>
+    </div>
+    <button class="btn btn-red" onclick="closeInterestModal()" style="margin:0 auto;">
+      Close <span class="arr"><i class="fas fa-times"></i></span>
+    </button>
+  </div>
+</div>
+
+<!-- ════ CHATBOT WIDGET ════ -->
+<div id="chat-widget">
+  <div id="chat-box">
+    <div id="chat-header">
+      <div class="ch-left">
+        <div class="ch-avatar"><i class="fas fa-robot"></i></div>
+        <div class="ch-info">
+          <div class="ch-name">KGP AI Advisor</div>
+          <div class="ch-status">Online — IPO &amp; M&A Advisory</div>
+        </div>
+      </div>
+      <span id="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></span>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-quick-replies">
+      <button class="qr-btn" onclick="sendQuick('Tell me more about a listing')">About a Match</button>
+      <button class="qr-btn" onclick="sendQuick('How do I pursue an acquisition?')">Next Steps</button>
+      <button class="qr-btn" onclick="sendQuick('Book a consultation')">Book Consult</button>
+    </div>
+    <div id="chat-footer">
+      <input id="chat-input" type="text" placeholder="Ask about your matches or KGP services…" onkeydown="if(event.key==='Enter') sendMessage()"/>
+      <button id="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <div id="chat-bubble" onclick="toggleChat()">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+</div>
+
+<script>
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+// ── Algorithm tab switcher ──
+function setTab(btn) {
+  document.querySelectorAll('.at-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── Save / Unsave ──
+function toggleSave(btn) {
+  btn.classList.toggle('saved');
+  btn.innerHTML = btn.classList.contains('saved')
+    ? '<i class="fas fa-heart"></i>'
+    : '<i class="far fa-heart"></i>';
+}
+
+// ── Interest Modal ──
+let currentBiz = '';
+function openInterestModal(name, score) {
+  currentBiz = name;
+  document.getElementById('modalBizName').textContent = name;
+  document.getElementById('modalCtxName').textContent = name;
+  document.getElementById('modalCtxScore').textContent = score + '/100';
+  document.getElementById('modalFormWrap').style.display = '';
+  document.getElementById('modalSuccess').classList.remove('show');
+  document.getElementById('modalBg').classList.add('open');
+  document.getElementById('interestModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeInterestModal() {
+  document.getElementById('modalBg').classList.remove('open');
+  document.getElementById('interestModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitInterest() {
+  document.getElementById('modalFormWrap').style.display = 'none';
+  document.getElementById('modalSuccess').classList.add('show');
+}
+
+// ── Chat widget ──
+const chatMessages = document.getElementById('chat-messages');
+const chatBox = document.getElementById('chat-box');
+const chatInput = document.getElementById('chat-input');
+let chatOpen = false;
+let conversationHistory = [];
+
+const SYSTEM_PROMPT = `You are the KGP AI Advisor for Key Global Projects Pte. Ltd., a Singapore corporate advisory firm. The user has just completed the BizMatch flow and is viewing their AI-curated match results. Help them understand their matches, next steps for acquisition or partnership, and how KGP can support them. Keep responses under 100 words and be warm, professional, and action-oriented.`;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  chatBox.classList.toggle('open', chatOpen);
+  if (chatOpen && chatMessages.children.length === 0) {
+    setTimeout(() => addBotMessage("Great news — your matches are ready! 🎉 I can help you understand any of these listings, explain next steps for an acquisition, or book you a free consultation with our advisors. What would you like to know?"), 400);
+  }
+  if (chatOpen) chatInput.focus();
+}
+function addBotMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'cm bot';
+  el.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-bubble">${text}</div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function addUserMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'cm user';
+  el.innerHTML = `<div class="cm-bubble">${text}</div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function showTyping() {
+  const el = document.createElement('div');
+  el.className = 'cm bot'; el.id = 'typing-indicator';
+  el.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-bubble cm-typing"><span></span><span></span><span></span></div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function hideTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+function sendQuick(text) { chatInput.value = text; sendMessage(); }
+async function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  chatInput.value = '';
+  addUserMessage(text);
+  conversationHistory.push({ role: 'user', content: text });
+  showTyping();
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 200,
+        system: SYSTEM_PROMPT,
+        messages: conversationHistory
+      })
+    });
+    const data = await response.json();
+    hideTyping();
+    const reply = data.content?.[0]?.text || "I'm having trouble connecting right now. Please try again shortly.";
+    addBotMessage(reply);
+    conversationHistory.push({ role: 'assistant', content: reply });
+  } catch (e) {
+    hideTyping();
+    addBotMessage("Sorry, I'm having trouble connecting right now. Please try again or call us directly at +65 9456 0451.");
+  }
+}
+</script>
+</body>
+</html>

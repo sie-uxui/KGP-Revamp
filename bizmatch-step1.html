@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BizMatch — Get Started | Key Global Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+  /* ═══════════════════════════════════════════════════════
+     KGP DESIGN SYSTEM — exact match to bizmatch.html
+     Navy: #0d1f4e  |  Red: #d02020  |  Nunito Sans
+  ═══════════════════════════════════════════════════════ */
+  :root {
+    --navy:    #0d1f4e;
+    --navydark:#091638;
+    --red:     #d02020;
+    --reddark: #aa1818;
+    --white:   #ffffff;
+    --offbg:   #f2f4f8;
+    --gray:    #666666;
+    --lgray:   #999999;
+    --border:  #e2e6ef;
+    --green:   #16a34a;
+    --f:       'Nunito Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--f); color: #333; overflow-x: hidden; background: var(--offbg); }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 30px; border-radius: 40px;
+    font-family: var(--f); font-weight: 800; font-size: 13.5px;
+    text-transform: uppercase; letter-spacing: .6px;
+    cursor: pointer; border: none; transition: background .2s, transform .15s, box-shadow .2s;
+  }
+  .btn .arr { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  .btn-red  { background: var(--red); color: #fff; box-shadow: 0 6px 20px rgba(208,32,32,.32); }
+  .btn-red:hover  { background: var(--reddark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(208,32,32,.38); }
+  .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 6px 20px rgba(13,31,78,.25); }
+  .btn-navy:hover { background: var(--navydark); transform: translateY(-2px); }
+
+  /* ═══ TOPBAR ═══ */
+  .topbar { background: var(--navy); color: rgba(255,255,255,.8); font-size: 13px; font-weight: 600; }
+  .topbar-inner { display: flex; align-items: stretch; justify-content: space-between; min-height: 44px; }
+  .topbar-left { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; padding: 8px 0; }
+  .topbar-left span { display: flex; align-items: center; gap: 7px; }
+  .topbar-left i { color: var(--red); font-size: 12px; }
+  .topbar-right {
+    display: flex; align-items: stretch;
+    background: var(--red);
+    clip-path: polygon(22px 0%, 100% 0%, 100% 100%, 0% 100%);
+    padding-left: 22px;
+  }
+  .topbar-right a {
+    display: flex; align-items: center; justify-content: center;
+    width: 42px; color: #fff; font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,.18); transition: background .2s;
+  }
+  .topbar-right a:last-child { border-right: none; }
+  .topbar-right a:hover { background: rgba(255,255,255,.15); }
+
+  /* ═══ NAVBAR ═══ */
+  .navbar {
+    background: #fff; position: sticky; top: 0; z-index: 900;
+    box-shadow: 0 2px 20px rgba(13,31,78,.1);
+  }
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+  .logo img { height: 48px; width: auto; object-fit: contain; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 2px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 800; color: var(--navy);
+    padding: 8px 13px; text-transform: uppercase; letter-spacing: .3px;
+    position: relative; transition: color .2s; white-space: nowrap;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 13px; right: 13px;
+    height: 2px; background: var(--red); transform: scaleX(0); transition: transform .25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .3s; }
+  .mobile-nav { display: none; background: #fff; border-top: 1px solid var(--border); padding: 12px 0; }
+  .mobile-nav a { display: block; padding: 10px 28px; font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--navy); }
+  .mobile-nav a.active { color: var(--red); }
+  .mobile-nav .mn-cta { padding: 12px 28px; }
+  .mobile-nav.open { display: block; }
+
+  /* ═══ PAGE HERO ═══ */
+  .step-hero {
+    background: var(--navy);
+    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=60');
+    background-blend-mode: multiply; background-size: cover; background-position: center;
+    padding: 52px 0 44px;
+    position: relative;
+  }
+  .step-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(13,31,78,.96) 40%, rgba(13,31,78,.78) 100%);
+  }
+  .step-hero-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .step-hero-text .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; background: rgba(208,32,32,.15); border: 1px solid rgba(208,32,32,.4); color: #ff9090; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.8px; padding: 5px 14px; border-radius: 40px; }
+  .step-hero-text .eyebrow i { color: var(--red); }
+  .step-hero-text h1 { font-size: 34px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 10px; }
+  .step-hero-text h1 span { color: var(--red); }
+  .step-hero-text p { color: rgba(255,255,255,.7); font-size: 14.5px; line-height: 1.7; max-width: 520px; }
+  .step-hero-stats { display: flex; gap: 0; flex-shrink: 0; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); border-radius: 16px; overflow: hidden; }
+  .shs { text-align: center; padding: 24px 32px; }
+  .shs .num { font-size: 28px; font-weight: 900; color: #fff; line-height: 1; }
+  .shs .lbl { font-size: 11px; color: rgba(255,255,255,.65); font-weight: 700; margin-top: 5px; text-transform: uppercase; letter-spacing: .5px; }
+  .shs-div { width: 1px; background: rgba(255,255,255,.18); flex-shrink: 0; }
+
+  /* ═══ STEPPER BAR ═══ */
+  .stepper-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(13,31,78,.06);
+  }
+  .stepper-inner {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 20px 0;
+  }
+  .st-item { display: flex; align-items: center; }
+  .st-dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 900; flex-shrink: 0;
+    transition: all .3s;
+  }
+  .st-dot.done { background: var(--green); color: #fff; box-shadow: 0 3px 12px rgba(22,163,74,.3); }
+  .st-dot.active { background: var(--navy); color: #fff; box-shadow: 0 3px 12px rgba(13,31,78,.3); }
+  .st-dot.inactive { background: #e8eaf0; color: #aaa; }
+  .st-label { margin-left: 10px; margin-right: 6px; }
+  .st-label .name { font-size: 13px; font-weight: 800; line-height: 1.2; }
+  .st-label .name.done { color: var(--green); }
+  .st-label .name.active { color: var(--navy); }
+  .st-label .name.inactive { color: #bbb; }
+  .st-label .sub { font-size: 11px; color: var(--lgray); font-weight: 600; }
+  .st-line { width: 72px; height: 2px; background: #e0e3ed; margin: 0 16px; border-radius: 2px; flex-shrink: 0; }
+  .st-line.done { background: var(--green); }
+
+  /* ═══ MAIN LAYOUT ═══ */
+  .page-body { padding: 48px 0 72px; }
+  .page-inner {
+    display: grid; grid-template-columns: 1fr 380px;
+    gap: 32px; align-items: start;
+  }
+
+  /* ═══ FORM CARD ═══ */
+  .form-card {
+    background: #fff; border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(13,31,78,.09);
+    overflow: hidden;
+  }
+  .fc-head {
+    background: var(--navy); padding: 28px 32px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .fc-head-ico {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--red); display: flex; align-items: center;
+    justify-content: center; font-size: 22px; color: #fff;
+    flex-shrink: 0; box-shadow: 0 4px 14px rgba(208,32,32,.4);
+  }
+  .fc-head-text h2 { font-size: 20px; font-weight: 900; color: #fff; line-height: 1.2; }
+  .fc-head-text p  { font-size: 13px; color: rgba(255,255,255,.6); margin-top: 3px; }
+  .fc-body { padding: 32px; }
+
+  /* Tabs: New User / Returning User */
+  .tab-row { display: flex; gap: 0; margin-bottom: 28px; background: var(--offbg); border-radius: 10px; padding: 4px; }
+  .tab-btn {
+    flex: 1; padding: 10px 16px; border: none; border-radius: 8px;
+    font-family: var(--f); font-size: 13px; font-weight: 800;
+    cursor: pointer; transition: all .2s; color: var(--lgray); background: transparent;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .tab-btn.active { background: #fff; color: var(--navy); box-shadow: 0 2px 10px rgba(13,31,78,.1); }
+  .tab-btn i { font-size: 13px; }
+
+  /* ─ New User Form ─ */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .ff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .ff { margin-bottom: 16px; }
+  .ff label {
+    display: block; font-size: 12px; font-weight: 900; color: var(--navy);
+    text-transform: uppercase; letter-spacing: .6px; margin-bottom: 7px;
+  }
+  .ff label .req { color: var(--red); margin-left: 2px; }
+  .ff input, .ff select {
+    width: 100%; padding: 12px 16px;
+    border: 2px solid var(--border); border-radius: 10px;
+    font-family: var(--f); font-size: 14px; color: #222;
+    background: var(--offbg); outline: none; transition: border-color .2s, background .2s;
+  }
+  .ff input:focus, .ff select:focus { border-color: var(--red); background: #fff; }
+  .ff input::placeholder { color: #bbb; }
+  .ff .hint { font-size: 11.5px; color: var(--lgray); margin-top: 5px; font-weight: 600; }
+
+  /* Optional badge on Contact field */
+  .ff-label-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
+  .ff-label-row label { margin-bottom: 0; }
+  .opt-badge { font-size: 10px; font-weight: 800; color: var(--lgray); background: #e8eaf0; padding: 2px 8px; border-radius: 20px; letter-spacing: .5px; text-transform: uppercase; }
+
+  /* PDPA box */
+  .pdpa-box {
+    background: rgba(208,32,32,.04); border: 1.5px solid rgba(208,32,32,.18);
+    border-radius: 12px; padding: 16px 18px; margin-bottom: 18px;
+  }
+  .pdpa-title { font-size: 11px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+  .pdpa-title i { color: var(--red); }
+  .pdpa-box p { font-size: 12.5px; color: var(--gray); line-height: 1.65; margin-bottom: 12px; }
+  .pdpa-check-row {
+    display: flex; align-items: flex-start; gap: 10px; cursor: pointer;
+  }
+  .pdpa-check-row input[type="checkbox"] {
+    width: 16px; height: 16px; flex-shrink: 0;
+    accent-color: var(--red); cursor: pointer; margin-top: 1px;
+  }
+  .pdpa-check-row span { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.5; }
+  .pdpa-check-row a { color: var(--red); }
+
+  /* Submit area */
+  .submit-area { margin-top: 4px; }
+  .submit-btn {
+    width: 100%; padding: 16px; border-radius: 40px;
+    background: var(--red); color: #fff; border: none;
+    font-family: var(--f); font-size: 15px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: .8px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    box-shadow: 0 6px 22px rgba(208,32,32,.36);
+    transition: background .2s, transform .15s, box-shadow .2s;
+  }
+  .submit-btn:hover { background: var(--reddark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(208,32,32,.42); }
+  .submit-btn .arr { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .skip-link { text-align: center; margin-top: 16px; }
+  .skip-link a { font-size: 13px; color: var(--lgray); font-weight: 700; border-bottom: 1px dashed currentColor; transition: color .2s; }
+  .skip-link a:hover { color: var(--navy); }
+
+  /* ─ Divider ─ */
+  .or-div { display: flex; align-items: center; gap: 14px; margin: 24px 0; }
+  .or-div::before, .or-div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .or-div span { font-size: 12px; font-weight: 800; color: var(--lgray); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+
+  /* ─ Returning User Panel ─ */
+  .return-intro { margin-bottom: 22px; }
+  .return-intro h3 { font-size: 17px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+  .return-intro p { font-size: 13.5px; color: var(--gray); line-height: 1.65; }
+
+  .magic-input-row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .magic-input-row input {
+    flex: 1; padding: 13px 16px;
+    border: 2px solid var(--border); border-radius: 10px;
+    font-family: var(--f); font-size: 14px; color: #222;
+    background: var(--offbg); outline: none; transition: border-color .2s, background .2s;
+  }
+  .magic-input-row input:focus { border-color: var(--red); background: #fff; }
+  .magic-input-row input::placeholder { color: #bbb; }
+  .magic-send-btn {
+    padding: 13px 22px; background: var(--navy); color: #fff; border: none;
+    border-radius: 10px; font-family: var(--f); font-size: 13px; font-weight: 800;
+    cursor: pointer; white-space: nowrap; transition: background .2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .magic-send-btn:hover { background: var(--navydark); }
+  .magic-send-btn:disabled { background: #b0b8cc; cursor: not-allowed; }
+
+  .magic-hint { font-size: 12px; color: var(--lgray); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .magic-hint i { color: var(--red); }
+
+  /* Sent state */
+  .magic-sent-box { display: none; background: rgba(22,163,74,.06); border: 1.5px solid rgba(22,163,74,.25); border-radius: 12px; padding: 18px 20px; margin-top: 16px; }
+  .magic-sent-box.show { display: block; }
+  .magic-sent-box .sent-title { font-size: 14px; font-weight: 900; color: var(--green); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .magic-sent-box p { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 10px; }
+  .magic-sent-box .expiry { font-size: 12px; font-weight: 800; color: var(--lgray); display: flex; align-items: center; gap: 6px; }
+  .magic-sent-box .expiry i { color: var(--red); }
+
+  .resend-row { margin-top: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .resend-btn {
+    font-size: 12.5px; font-weight: 800; color: var(--navy);
+    background: #e8eaf0; border: none; border-radius: 20px;
+    padding: 6px 16px; cursor: pointer; font-family: var(--f);
+    transition: background .2s; display: flex; align-items: center; gap: 6px;
+  }
+  .resend-btn:hover:not(:disabled) { background: var(--navy); color: #fff; }
+  .resend-btn:disabled { color: #aaa; cursor: not-allowed; background: #f0f0f0; }
+  .resend-countdown { font-size: 12px; font-weight: 700; color: var(--lgray); }
+
+  /* ─ How it works (inline) ─ */
+  .how-row { display: flex; gap: 0; margin-bottom: 24px; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .how-step { flex: 1; padding: 14px 16px; text-align: center; border-right: 1px solid var(--border); position: relative; }
+  .how-step:last-child { border-right: none; }
+  .how-step .num { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+  .how-step .how-icon { font-size: 20px; color: var(--red); margin-bottom: 6px; }
+  .how-step .how-label { font-size: 11.5px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+
+  /* ═══ RIGHT SIDEBAR ═══ */
+  .sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+  .info-card {
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(13,31,78,.07);
+    overflow: hidden;
+  }
+  .ic-head {
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .ic-head i { color: var(--red); font-size: 16px; }
+  .ic-head span { font-size: 13px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .5px; }
+  .ic-body { padding: 18px 22px; }
+
+  /* Stats info card */
+  .stat-row { display: flex; justify-content: space-between; margin-bottom: 16px; }
+  .stat-row:last-child { margin-bottom: 0; }
+  .stat-item { text-align: center; }
+  .stat-item .val { font-size: 22px; font-weight: 900; color: var(--navy); line-height: 1; }
+  .stat-item .val span { color: var(--red); }
+  .stat-item .lbl { font-size: 11px; color: var(--lgray); font-weight: 700; margin-top: 3px; text-transform: uppercase; letter-spacing: .4px; }
+
+  /* Benefits list */
+  .benefit-list { list-style: none; }
+  .benefit-list li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: #333; font-weight: 600; }
+  .benefit-list li:last-child { border-bottom: none; }
+  .benefit-list li i { color: var(--red); font-size: 13px; margin-top: 1px; flex-shrink: 0; }
+
+  /* Algorithm explainer */
+  .algo-list { list-style: none; }
+  .algo-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .algo-item:last-child { border-bottom: none; }
+  .algo-name { font-size: 13px; font-weight: 900; color: var(--navy); margin-bottom: 3px; display: flex; align-items: center; gap: 7px; }
+  .algo-name i { color: var(--red); font-size: 12px; }
+  .algo-desc { font-size: 12px; color: var(--lgray); line-height: 1.5; }
+
+  /* Score legend */
+  .score-legend { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sl-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; }
+  .sl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* CTA card */
+  .cta-card { background: var(--navy); border-radius: 16px; padding: 24px 22px; text-align: center; }
+  .cta-card .cta-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(208,32,32,.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 22px; color: var(--red); }
+  .cta-card h4 { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .cta-card p { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 18px; }
+  .cta-card .btn { width: 100%; justify-content: center; }
+
+  /* ═══ FOOTER ═══ */
+  footer { position: relative; color: rgba(255,255,255,.82); overflow: hidden; }
+  footer::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=70') center/cover no-repeat; z-index: 0; }
+  .footer-main-wrap { position: relative; z-index: 1; background: rgba(13,31,78,.88); }
+  .footer-main { display: grid; grid-template-columns: 2fr 1.2fr 1.4fr 1.6fr; gap: 48px; padding: 72px 0 48px; }
+  .f-brand p { font-size: 14px; line-height: 1.8; margin: 16px 0 18px; }
+  .f-contact { list-style: none; }
+  .f-contact li { display: flex; align-items: center; gap: 9px; font-size: 14px; margin-bottom: 9px; }
+  .f-contact li i { color: var(--red); width: 14px; flex-shrink: 0; }
+  .f-socials { display: flex; gap: 8px; margin-top: 20px; }
+  .f-socials a { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; transition: background .2s; }
+  .f-socials a:hover { background: #fff; color: var(--red); }
+  .f-col h4 { font-size: 18px; font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 3px solid var(--red); display: inline-block; }
+  .f-links { list-style: none; }
+  .f-links li { margin-bottom: 10px; }
+  .f-links a { color: rgba(255,255,255,.65); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+  .f-links a::before { content: '▸'; color: var(--red); font-size: 11px; }
+  .f-links a:hover { color: #fff; }
+  .footer-bot-wrap { position: relative; z-index: 1; background: #0b1a41; }
+  .footer-bot { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bot p { font-size: 13px; color: rgba(255,255,255,.65); }
+  .footer-bot span { color: var(--red); }
+  .footer-bot-links { display: flex; gap: 24px; }
+  .footer-bot-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s; font-weight: 600; }
+  .footer-bot-links a:hover { color: #fff; }
+
+  @media(max-width:1024px){ .footer-main { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:640px){ .footer-main { grid-template-columns: 1fr; } }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:1024px){
+    .page-inner { grid-template-columns: 1fr; }
+    .sidebar { display: grid; grid-template-columns: 1fr 1fr; }
+    .cta-card { grid-column: 1 / -1; }
+    .step-hero-stats { display: none; }
+  }
+  @media(max-width:640px){
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .ff-row { grid-template-columns: 1fr; }
+    .stepper-inner { gap: 0; }
+    .st-line { width: 28px; margin: 0 6px; }
+    .st-label .sub { display: none; }
+    .how-row { flex-direction: column; }
+    .how-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .how-step:last-child { border-bottom: none; }
+    .sidebar { grid-template-columns: 1fr; }
+    .stat-row { flex-wrap: wrap; gap: 12px; }
+    .step-hero-text h1 { font-size: 26px; }
+    .fc-body { padding: 22px; }
+  }
+  @media(max-width:480px){
+    .magic-input-row { flex-direction: column; }
+    .magic-send-btn { width: 100%; justify-content: center; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- ════ TOPBAR ════ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i>+65 9456 0451</span>
+        <span><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88e1e6eee7c8e3edf1efe4e7eae9e4f8fae7e2edebfcfba6ebe7e5">[email&#160;protected]</a></span>
+        <span><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WeChat"><i class="fab fa-weixin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar">
+  <div class="wrap">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <img src="KGP-Logo.png" alt="Key Global Projects">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#cases">Cases</a>
+        <a href="index.html#team">Team</a>
+        <a href="index.html#blog">Blog</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="bizmatch.html" class="active">BizMatch +</a>
+      </div>
+      <a href="index.html#contact" class="btn btn-red" style="padding:12px 22px;font-size:12.5px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#cases">Cases</a>
+    <a href="index.html#team">Team</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="bizmatch.html" class="active">BizMatch +</a>
+    <div class="mn-cta">
+      <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════ PAGE HERO ════ -->
+<div class="step-hero">
+  <div class="wrap">
+    <div class="step-hero-inner">
+      <div class="step-hero-text">
+        <span class="eyebrow"><i class="fas fa-bolt"></i> AI-Powered Business Matching</span>
+        <h1>Find Your Next<br><span>Business Opportunity</span></h1>
+        <p>Tell us about yourself and we'll match you with the most relevant business listings — buyers, suppliers, or partners — using our AI matching engine.</p>
+      </div>
+      <div class="step-hero-stats">
+        <div class="shs">
+          <div class="num">150+</div>
+          <div class="lbl">Active Listings</div>
+        </div>
+        <div class="shs-div"></div>
+        <div class="shs">
+          <div class="num">$2B+</div>
+          <div class="lbl">Total Value</div>
+        </div>
+        <div class="shs-div"></div>
+        <div class="shs">
+          <div class="num">12</div>
+          <div class="lbl">Industries</div>
+        </div>
+        <div class="shs-div"></div>
+        <div class="shs">
+          <div class="num">98%</div>
+          <div class="lbl">Match Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ STEPPER BAR ════ -->
+<div class="stepper-bar">
+  <div class="wrap">
+    <div class="stepper-inner">
+
+      <div class="st-item">
+        <div class="st-dot active">1</div>
+        <div class="st-label">
+          <div class="name active">Get Started</div>
+          <div class="sub">Your details</div>
+        </div>
+      </div>
+
+      <div class="st-line"></div>
+
+      <div class="st-item">
+        <div class="st-dot inactive">2</div>
+        <div class="st-label">
+          <div class="name inactive">Match Criteria</div>
+          <div class="sub">What you're looking for</div>
+        </div>
+      </div>
+
+      <div class="st-line"></div>
+
+      <div class="st-item">
+        <div class="st-dot inactive">3</div>
+        <div class="st-label">
+          <div class="name inactive">Your Matches</div>
+          <div class="sub">AI-curated results</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ PAGE BODY ════ -->
+<div class="page-body">
+  <div class="wrap">
+    <div class="page-inner">
+
+      <!-- ── LEFT: FORM CARD ── -->
+      <div class="form-card">
+        <div class="fc-head">
+          <div class="fc-head-ico"><i class="fas fa-user-plus"></i></div>
+          <div class="fc-head-text">
+            <h2>Step 1 — Get Started</h2>
+            <p>Takes under a minute · No credit card required</p>
+          </div>
+        </div>
+        <div class="fc-body">
+
+          <!-- How it works mini strip -->
+          <div class="how-row">
+            <div class="how-step">
+              <div class="num">1</div>
+              <div class="how-icon"><i class="fas fa-user"></i></div>
+              <div class="how-label">Tell us<br>who you are</div>
+            </div>
+            <div class="how-step">
+              <div class="num">2</div>
+              <div class="how-icon"><i class="fas fa-sliders-h"></i></div>
+              <div class="how-label">Set your<br>criteria</div>
+            </div>
+            <div class="how-step">
+              <div class="num">3</div>
+              <div class="how-icon"><i class="fas fa-bolt"></i></div>
+              <div class="how-label">View AI<br>matches</div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="tab-row">
+            <button class="tab-btn active" id="tabNew" onclick="switchTab('new')">
+              <i class="fas fa-user-plus"></i> New User
+            </button>
+            <button class="tab-btn" id="tabReturn" onclick="switchTab('return')">
+              <i class="fas fa-history"></i> Returning User
+            </button>
+          </div>
+
+          <!-- ── NEW USER PANEL ── -->
+          <div class="tab-panel active" id="panelNew">
+
+            <div class="ff-row">
+              <div class="ff">
+                <label>Your Name <span class="req">*</span></label>
+                <input type="text" id="name" placeholder="Full name" autocomplete="name"/>
+              </div>
+              <div class="ff">
+                <label>Business Name <span class="req">*</span></label>
+                <input type="text" id="bizName" placeholder="Company or trading name"/>
+              </div>
+            </div>
+
+            <div class="ff-row">
+              <div class="ff">
+                <label>Email Address <span class="req">*</span></label>
+                <input type="email" id="email" placeholder="you@company.com" autocomplete="email"/>
+              </div>
+              <div class="ff">
+                <div class="ff-label-row">
+                  <label>Contact Number</label>
+                  <span class="opt-badge">Optional</span>
+                </div>
+                <input type="tel" id="phone" placeholder="+65 9XXX XXXX" autocomplete="tel"/>
+              </div>
+            </div>
+
+            <!-- PDPA / AI Disclaimer -->
+            <div class="pdpa-box">
+              <div class="pdpa-title"><i class="fas fa-shield-alt"></i> AI &amp; PDPA Disclaimer</div>
+              <p>This platform uses AI-powered algorithms to suggest potential business matches. Results are indicative and do not constitute financial, legal, or investment advice. We recommend consulting a qualified professional before making any business decisions.</p>
+              <p style="margin-bottom:0;">Your personal data will be collected and used in accordance with the Singapore <strong>Personal Data Protection Act (PDPA)</strong> and our Privacy Policy.</p>
+              <div style="margin-top:12px;">
+                <label class="pdpa-check-row">
+                  <input type="checkbox" id="pdpaCheck"/>
+                  <span>I have read and agree to the above terms &amp; <a href="#">Privacy Policy</a> <span class="req" style="color:var(--red);">*</span></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-area">
+              <button class="submit-btn" onclick="handleNewUser()">
+                <i class="fas fa-arrow-right"></i>
+                Continue to Match Criteria
+                <span class="arr"><i class="fas fa-chevron-right"></i></span>
+              </button>
+            </div>
+            <div class="skip-link">
+              <a href="bizmatch.html">Skip — Browse listings without matching</a>
+            </div>
+
+          </div><!-- /panelNew -->
+
+          <!-- ── RETURNING USER PANEL ── -->
+          <div class="tab-panel" id="panelReturn">
+
+            <div class="return-intro">
+              <h3>Welcome back!</h3>
+              <p>Enter your email address below and we'll send a secure magic link to retrieve your saved matches and criteria. The link expires in <strong>15 minutes</strong>.</p>
+            </div>
+
+            <div class="ff">
+              <label>Your Email Address <span class="req">*</span></label>
+              <div class="magic-input-row">
+                <input type="email" id="returnEmail" placeholder="you@company.com" autocomplete="email"/>
+                <button class="magic-send-btn" id="sendMagicBtn" onclick="handleSendMagicLink()">
+                  <i class="fas fa-paper-plane"></i> Send Link
+                </button>
+              </div>
+              <p class="magic-hint"><i class="fas fa-lock"></i> We'll never share your email. Link valid for 15 minutes.</p>
+            </div>
+
+            <!-- Sent confirmation (hidden by default) -->
+            <div class="magic-sent-box" id="magicSentBox">
+              <div class="sent-title"><i class="fas fa-check-circle"></i> Magic link sent!</div>
+              <p>We've sent a verification link to <strong id="sentEmailDisplay">—</strong>. Click the link in your email to access your matches.</p>
+              <div class="expiry"><i class="fas fa-clock"></i> Link expires in <span id="expiryCountdown">15:00</span></div>
+              <div class="resend-row">
+                <button class="resend-btn" id="resendBtn" onclick="handleResend()" disabled>
+                  <i class="fas fa-redo"></i> Resend Link
+                </button>
+                <span class="resend-countdown" id="resendCountdown">Available in <span id="resendTimer">60</span>s</span>
+              </div>
+            </div>
+
+            <div class="or-div"><span>Or start fresh</span></div>
+
+            <button class="btn btn-navy" style="width:100%;justify-content:center;" onclick="switchTab('new')">
+              <i class="fas fa-user-plus"></i> Create New Profile
+              <span class="arr"><i class="fas fa-arrow-right"></i></span>
+            </button>
+
+            <div class="skip-link" style="margin-top:16px;">
+              <a href="bizmatch.html">Skip — Browse listings without matching</a>
+            </div>
+
+          </div><!-- /panelReturn -->
+
+        </div><!-- /fc-body -->
+      </div><!-- /form-card -->
+
+      <!-- ── RIGHT SIDEBAR ── -->
+      <div class="sidebar">
+
+        <!-- Stats -->
+        <div class="info-card">
+          <div class="ic-head">
+            <i class="fas fa-chart-bar"></i>
+            <span>Marketplace Stats</span>
+          </div>
+          <div class="ic-body">
+            <div class="stat-row">
+              <div class="stat-item">
+                <div class="val">150<span>+</span></div>
+                <div class="lbl">Active Listings</div>
+              </div>
+              <div class="stat-item">
+                <div class="val">$2B<span>+</span></div>
+                <div class="lbl">Total Value</div>
+              </div>
+              <div class="stat-item">
+                <div class="val">98<span>%</span></div>
+                <div class="lbl">Match Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why match -->
+        <div class="info-card">
+          <div class="ic-head">
+            <i class="fas fa-star"></i>
+            <span>Why Use AI Matching?</span>
+          </div>
+          <div class="ic-body">
+            <ul class="benefit-list">
+              <li><i class="fas fa-check-circle"></i> Personalised scores for every listing</li>
+              <li><i class="fas fa-check-circle"></i> Weekly digest of new matches by email</li>
+              <li><i class="fas fa-check-circle"></i> Results tailored to your budget &amp; industry</li>
+              <li><i class="fas fa-check-circle"></i> Save time — skip irrelevant listings</li>
+              <li><i class="fas fa-check-circle"></i> 100% free — no commitment required</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Algorithms -->
+        <div class="info-card">
+          <div class="ic-head">
+            <i class="fas fa-robot"></i>
+            <span>Matching Algorithms</span>
+          </div>
+          <div class="ic-body">
+            <ul class="algo-list">
+              <li class="algo-item">
+                <div class="algo-name"><i class="fas fa-shopping-cart"></i> Customer Match</div>
+                <div class="algo-desc">For buyers — matches your budget and target industry against active acquisition listings.</div>
+              </li>
+              <li class="algo-item">
+                <div class="algo-name"><i class="fas fa-truck"></i> Supplier Match</div>
+                <div class="algo-desc">For sourcing — connects you with suppliers by industry, location, and scale compatibility.</div>
+              </li>
+              <li class="algo-item">
+                <div class="algo-name"><i class="fas fa-handshake"></i> Partner Match</div>
+                <div class="algo-desc">For partnerships — pairs businesses of similar size and complementary industry focus.</div>
+              </li>
+            </ul>
+            <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+              <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">Match Score Guide</div>
+              <div class="score-legend">
+                <div class="sl-item"><div class="sl-dot" style="background:#16a34a;"></div><span style="color:#16a34a;">75–100 High</span></div>
+                <div class="sl-item"><div class="sl-dot" style="background:#ca8a04;"></div><span style="color:#ca8a04;">50–74 Medium</span></div>
+                <div class="sl-item"><div class="sl-dot" style="background:#ea580c;"></div><span style="color:#ea580c;">25–49 Low</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA card -->
+        <div class="cta-card">
+          <div class="cta-icon"><i class="fas fa-calendar-check"></i></div>
+          <h4>Prefer to speak with an advisor?</h4>
+          <p>Skip the matching flow and book a free 30-minute consultation with our M&A team directly.</p>
+          <a href="index.html#contact" class="btn btn-red">
+            Book Free Consultation
+            <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+      </div><!-- /sidebar -->
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-main-wrap">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="f-brand">
+          <a href="index.html" style="display:inline-block;margin-bottom:14px;">
+            <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;width:auto;object-fit:contain;">
+          </a>
+          <p>Inherit Corporate Values, Achieve a Global Future. Singapore's trusted M&A and IPO advisory partner since 2013.</p>
+          <ul class="f-contact">
+            <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
+            <li><i class="fas fa-phone"></i>+65 9456 0451</li>
+            <li><i class="fas fa-envelope"></i>info@keyglobalprojects.com</li>
+          </ul>
+          <div class="f-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+          </div>
+        </div>
+        <div class="f-col">
+          <h4>Quick Links</h4>
+          <ul class="f-links">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#services">Our Services</a></li>
+            <li><a href="index.html#cases">Success Stories</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>BizMatch</h4>
+          <ul class="f-links">
+            <li><a href="bizmatch.html">Browse All Listings</a></li>
+            <li><a href="bizmatch-step1.html">AI Business Matching</a></li>
+            <li><a href="index.html#services">M&amp;A Advisory</a></li>
+            <li><a href="index.html#services">IPO Strategies</a></li>
+            <li><a href="index.html#services">Business Valuation</a></li>
+            <li><a href="index.html#services">Corporate Structuring</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>Book a Consult</h4>
+          <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;margin-bottom:20px;">Interested in a listing or need M&amp;A guidance? Our consultants are standing by.</p>
+          <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;display:inline-flex;margin-bottom:14px;">
+            Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <p style="color:rgba(255,255,255,.4);font-size:12px;">Mon – Fri, 9 AM – 6 PM SGT</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot-wrap">
+    <div class="wrap">
+      <div class="footer-bot">
+        <p>© 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
+        <div class="footer-bot-links">
+          <a href="#">Support</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="kgp-admin.html" style="color:rgba(255,255,255,.25);">Admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Tab switching ──
+function switchTab(tab) {
+  const isNew = tab === 'new';
+  document.getElementById('tabNew').classList.toggle('active', isNew);
+  document.getElementById('tabReturn').classList.toggle('active', !isNew);
+  document.getElementById('panelNew').classList.toggle('active', isNew);
+  document.getElementById('panelReturn').classList.toggle('active', !isNew);
+}
+
+// ── Mobile nav ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+// ── New User submit validation ──
+function handleNewUser() {
+  const name     = document.getElementById('name').value.trim();
+  const bizName  = document.getElementById('bizName').value.trim();
+  const email    = document.getElementById('email').value.trim();
+  const pdpa     = document.getElementById('pdpaCheck').checked;
+
+  if (!name) { shakeField('name', 'Full name is required.'); return; }
+  if (!bizName) { shakeField('bizName', 'Business name is required.'); return; }
+  if (!email || !isValidEmail(email)) { shakeField('email', 'A valid email address is required.'); return; }
+  if (!pdpa) {
+    const pdpaBox = document.querySelector('.pdpa-box');
+    pdpaBox.style.borderColor = 'var(--red)';
+    pdpaBox.style.background  = 'rgba(208,32,32,.07)';
+    setTimeout(() => {
+      pdpaBox.style.borderColor = 'rgba(208,32,32,.18)';
+      pdpaBox.style.background  = 'rgba(208,32,32,.04)';
+    }, 2000);
+    alert('Please agree to the AI & PDPA disclaimer to continue.');
+    return;
+  }
+  // Pass — redirect to step 2
+  window.location.href = 'bizmatch-step2.html';
+}
+
+function shakeField(id, msg) {
+  const el = document.getElementById(id);
+  el.style.borderColor = 'var(--red)';
+  el.style.background  = 'rgba(208,32,32,.04)';
+  el.focus();
+  setTimeout(() => {
+    el.style.borderColor = 'var(--border)';
+    el.style.background  = 'var(--offbg)';
+  }, 2500);
+  alert(msg);
+}
+
+function isValidEmail(e) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+}
+
+// ── Magic link flow ──
+let expiryInterval  = null;
+let resendInterval  = null;
+let resendCooldown  = 60; // seconds
+let expirySeconds   = 900; // 15 min = 900s
+
+function handleSendMagicLink() {
+  const emailVal = document.getElementById('returnEmail').value.trim();
+  if (!emailVal || !isValidEmail(emailVal)) {
+    const inp = document.getElementById('returnEmail');
+    inp.style.borderColor = 'var(--red)';
+    setTimeout(() => inp.style.borderColor = 'var(--border)', 2500);
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // Show sent box
+  document.getElementById('sentEmailDisplay').textContent = emailVal;
+  document.getElementById('magicSentBox').classList.add('show');
+
+  // Disable send button
+  const sendBtn = document.getElementById('sendMagicBtn');
+  sendBtn.disabled = true;
+  sendBtn.innerHTML = '<i class="fas fa-check"></i> Sent';
+
+  // Start 15-min expiry countdown
+  clearInterval(expiryInterval);
+  expirySeconds = 900;
+  updateExpiryDisplay();
+  expiryInterval = setInterval(() => {
+    expirySeconds--;
+    updateExpiryDisplay();
+    if (expirySeconds <= 0) {
+      clearInterval(expiryInterval);
+      document.getElementById('expiryCountdown').textContent = 'Expired';
+      document.getElementById('expiryCountdown').style.color = 'var(--red)';
+    }
+  }, 1000);
+
+  // Start 60s resend cooldown
+  startResendCooldown();
+}
+
+function updateExpiryDisplay() {
+  const m = Math.floor(expirySeconds / 60);
+  const s = expirySeconds % 60;
+  document.getElementById('expiryCountdown').textContent =
+    String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+function startResendCooldown() {
+  resendCooldown = 60;
+  const resendBtn   = document.getElementById('resendBtn');
+  const resendTimer = document.getElementById('resendTimer');
+  const resendCdown = document.getElementById('resendCountdown');
+
+  resendBtn.disabled = true;
+  resendCdown.style.display = '';
+  resendTimer.textContent = resendCooldown;
+
+  clearInterval(resendInterval);
+  resendInterval = setInterval(() => {
+    resendCooldown--;
+    resendTimer.textContent = resendCooldown;
+    if (resendCooldown <= 0) {
+      clearInterval(resendInterval);
+      resendBtn.disabled = false;
+      resendCdown.style.display = 'none';
+    }
+  }, 1000);
+}
+
+function handleResend() {
+  // Reset expiry + restart cooldown
+  clearInterval(expiryInterval);
+  expirySeconds = 900;
+  updateExpiryDisplay();
+  document.getElementById('expiryCountdown').style.color = '';
+  expiryInterval = setInterval(() => {
+    expirySeconds--;
+    updateExpiryDisplay();
+    if (expirySeconds <= 0) {
+      clearInterval(expiryInterval);
+      document.getElementById('expiryCountdown').textContent = 'Expired';
+      document.getElementById('expiryCountdown').style.color = 'var(--red)';
+    }
+  }, 1000);
+
+  startResendCooldown();
+
+  // Visual

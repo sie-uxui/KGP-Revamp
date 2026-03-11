@@ -266,7 +266,7 @@
       3. HERO SLIDER
     ══════════════════════════════════════════ */
     .hero {
-      min-height: 580px; position: relative; overflow: hidden;
+      min-height: 590px; position: relative; overflow: hidden;
     }
     .hero-slide {
       position: absolute; inset: 0;
@@ -277,7 +277,7 @@
     }
     .hero-slide.active {
       opacity: 1; visibility: visible; z-index: 1;
-      position: relative; min-height: 580px;
+      position: relative; min-height: 590px;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -2095,17 +2095,27 @@
 
 <script>
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('page-loader').classList.add('gone');
+  const loader = document.getElementById('page-loader');
+  const hasVisited = sessionStorage.getItem('kgp_visited');
 
-    // Re-trigger hero text animation after loader fades out
+  if (hasVisited) {
+    loader.style.display = 'none';
     document.querySelectorAll('.hero-slide.active .hero-anim').forEach(el => {
       el.style.animation = 'none';
-      void el.offsetWidth; // force reflow
+      void el.offsetWidth;
       el.style.animation = '';
     });
-
-  }, 1300);
+  } else {
+    sessionStorage.setItem('kgp_visited', '1');
+    setTimeout(() => {
+      loader.classList.add('gone');
+      document.querySelectorAll('.hero-slide.active .hero-anim').forEach(el => {
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = '';
+      });
+    }, 1300);
+  }
 });
 
 const navbar = document.querySelector('.navbar');
