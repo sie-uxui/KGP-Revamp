@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KGP — Mockup Navigator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --navy:  #0d1f4e;
+      --red:   #d02020;
+      --gray:  #666;
+      --lgray: #999;
+      --border:#e2e6ef;
+      --offbg: #f2f4f8;
+      --f: 'Nunito Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--f); background: var(--offbg); color: #222; min-height: 100vh; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: var(--navy);
+      padding: 0 32px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: rgba(255,255,255,.6);
+    }
+    .navbar-title span { color: #fff; }
+    .navbar-badge {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--navy);
+      border-bottom: 3px solid var(--red);
+      padding: 32px 32px 28px;
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .hero-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .hero-desc {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.45);
+    }
+
+    /* ── Content ── */
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 36px 32px 80px;
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 36px; }
+    .section-title {
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--lgray);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Page list ── */
+    .page-list { display: flex; flex-direction: column; gap: 4px; }
+
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      transition: border-color .15s;
+      gap: 16px;
+    }
+    .page-link:hover { border-color: var(--navy); }
+    .page-link:hover .pl-name { color: var(--red); }
+    .page-link:hover .pl-arrow { color: var(--red); }
+
+    .pl-left { display: flex; align-items: center; gap: 14px; }
+    .pl-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .pl-icon.navy  { background: rgba(13,31,78,.08);  color: var(--navy); }
+    .pl-icon.red   { background: rgba(208,32,32,.08); color: var(--red); }
+    .pl-icon.green { background: rgba(22,163,74,.08);  color: #16a34a; }
+    .pl-icon.amber { background: rgba(217,119,6,.08);  color: #d97706; }
+
+    .pl-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      transition: color .15s;
+    }
+    .pl-file {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--lgray);
+      margin-top: 1px;
+    }
+    .pl-arrow {
+      font-size: 11px;
+      color: #ccc;
+      flex-shrink: 0;
+      transition: color .15s;
+    }
+
+    /* ── Flow steps ── */
+    .flow-steps { display: flex; gap: 4px; flex-wrap: wrap; }
+    .flow-step {
+      flex: 1;
+      min-width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      transition: border-color .15s;
+      gap: 10px;
+    }
+    .flow-step:hover { border-color: var(--navy); }
+    .flow-step:hover .fs-name { color: var(--red); }
+    .flow-step:hover .pl-arrow { color: var(--red); }
+
+    .fs-num {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 2px;
+    }
+    .fs-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+      transition: color .15s;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 20px 28px;
+      font-size: 11.5px;
+      color: var(--lgray);
+      font-weight: 600;
+      border-top: 1px solid var(--border);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero { animation: fadeUp .3s ease both; }
+    .main { animation: fadeUp .35s .06s ease both; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-title"><span>Key Global Projects</span> — Mockup Navigator</div>
+    <div class="navbar-badge">Client Preview</div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">Design Review</div>
+      <div class="hero-title">All mockup pages, one place.</div>
+      <p class="hero-desc">Click any page below to open the mockup. For internal and client review only.</p>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <div class="section">
+      <div class="section-title">Public Website</div>
+      <div class="page-list">
+
+        <a href="index.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon navy"><i class="fas fa-house"></i></div>
+            <div>
+              <div class="pl-name">Homepage</div>
+              <div class="pl-file">index.html</div>
+            </div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+        <a href="bizmatch.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon red"><i class="fas fa-briefcase"></i></div>
+            <div>
+              <div class="pl-name">BizMatch — Marketplace</div>
+              <div class="pl-file">bizmatch.html</div>
+            </div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">BizMatch — Buyer Form (3-step flow)</div>
+      <div class="flow-steps">
+
+        <a href="bizmatch-step1.html" class="flow-step">
+          <div>
+            <div class="fs-num">Step 01</div>
+            <div class="fs-name">Business Preferences</div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+        <a href="bizmatch-step2.html" class="flow-step">
+          <div>
+            <div class="fs-num">Step 02</div>
+            <div class="fs-name">Buyer Profile</div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+        <a href="bizmatch-step3.html" class="flow-step">
+          <div>
+            <div class="fs-num">Step 03</div>
+            <div class="fs-name">Contact & Submit</div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Admin Portal</div>
+      <div class="page-list">
+
+        <a href="kgp-admin-login.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon amber"><i class="fas fa-sign-in-alt"></i></div>
+            <div>
+              <div class="pl-name">Admin Login</div>
+              <div class="pl-file">kgp-admin-login.html</div>
+            </div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+        <a href="kgp-admin.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon green"><i class="fas fa-gauge-high"></i></div>
+            <div>
+              <div class="pl-name">Admin Dashboard</div>
+              <div class="pl-file">kgp-admin.html</div>
+            </div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Key Global Projects Pte. Ltd. &nbsp;·&nbsp; Mockup Navigator v1.0 &nbsp;·&nbsp; Developed by Skubbs Private Limited
+  </div>
+
+</body>
+</html>
