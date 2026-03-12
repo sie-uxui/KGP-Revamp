@@ -32,7 +32,9 @@
   body { font-family: var(--f); color: #333; overflow-x: hidden; background: var(--offbg); }
   a { text-decoration: none; color: inherit; }
   ul { list-style: none; }
-  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+  .topbar .wrap,
+  .navbar .wrap { max-width: 1350px; padding: 0 28px; }
 
   /* ── Buttons ── */
   .btn {
@@ -59,20 +61,22 @@
   .topbar-right {
     display: flex; align-items: stretch;
     background: var(--red);
-    clip-path: polygon(22px 0%, 100% 0%, 100% 100%, 0% 100%);
-    padding-left: 22px;
+    clip-path: polygon(28px 0%, 100% 0%, 100% 100%, 0% 100%);
+    padding-left: 28px;
+    margin-right: -28px;
+    align-self: stretch;
   }
   .topbar-right a {
     display: flex; align-items: center; justify-content: center;
-    width: 42px; color: #fff; font-size: 14px;
-    border-right: 1px solid rgba(255,255,255,.18); transition: background .2s;
+    width: 36px; height: 36px; color: #fff; font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,.15); transition: background .2s;
   }
   .topbar-right a:last-child { border-right: none; }
   .topbar-right a:hover { background: rgba(255,255,255,.15); }
 
   /* ═══ NAVBAR ═══ */
   .navbar { background: #fff; position: sticky; top: 0; z-index: 900; box-shadow: 0 2px 20px rgba(13,31,78,.1); }
-  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 16px; }
   .logo img { height: 48px; width: auto; object-fit: contain; display: block; }
   .nav-links { display: flex; align-items: center; gap: 2px; }
   .nav-links a {
@@ -99,7 +103,7 @@
     padding: 52px 0 44px; position: relative;
   }
   .step-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,31,78,.96) 40%, rgba(13,31,78,.78) 100%); }
-  .step-hero-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .step-hero-inner { position: relative; z-index: 1; max-width: 640px; }
   .step-hero-text .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; background: rgba(208,32,32,.15); border: 1px solid rgba(208,32,32,.4); color: #ff9090; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.8px; padding: 5px 14px; border-radius: 40px; }
   .step-hero-text .eyebrow i { color: var(--red); }
   .step-hero-text h1 { font-size: 34px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 10px; }
@@ -131,7 +135,7 @@
 
   /* ═══ MAIN LAYOUT ═══ */
   .page-body { padding: 40px 0 72px; }
-  .page-inner { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: start; }
+  .page-inner { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
 
   /* ═══ CONFIRMATION TOAST ═══ */
   .toast {
@@ -186,7 +190,7 @@
 
   .mcard {
     background: #fff; border-radius: 16px; overflow: hidden;
-    display: grid; grid-template-columns: 180px 1fr 160px;
+    display: grid; grid-template-columns: 220px 1fr 160px;
     border: 1.5px solid var(--border);
     box-shadow: var(--shadow);
     transition: transform .25s, box-shadow .25s, border-color .25s;
@@ -482,7 +486,7 @@
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:1100px){
-    .mcard { grid-template-columns: 160px 1fr 148px; }
+    .mcard { grid-template-columns: 190px 1fr 148px; }
   }
   @media(max-width:1024px){
     .footer-main { grid-template-columns: 1fr 1fr; }
@@ -523,7 +527,7 @@
     <div class="topbar-inner">
       <div class="topbar-left">
         <span><i class="fas fa-phone"></i>+65 9456 0451</span>
-        <span><i class="fas fa-envelope"></i>info@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8c1c6cec7e8c3cdd1cfc4c7cac9c4d8dac7c2cdcbdcdb86cbc7c5">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
       </div>
       <div class="topbar-right">
@@ -588,27 +592,6 @@
         <h1>Find Your Next<br><span>Business Opportunity</span></h1>
         <p>Tell us about yourself and we'll match you with the most relevant business listings — buyers, suppliers, or partners — using our AI matching engine.</p>
       </div>
-      <div class="step-hero-stats">
-        <div class="shs">
-          <div class="num"><span>8</span></div>
-          <div class="lbl">Your Matches</div>
-        </div>
-        <div class="shs-div"></div>
-        <div class="shs">
-          <div class="num">150+</div>
-          <div class="lbl">Active Listings</div>
-        </div>
-        <div class="shs-div"></div>
-        <div class="shs">
-          <div class="num">$2B+</div>
-          <div class="lbl">Total Value</div>
-        </div>
-        <div class="shs-div"></div>
-        <div class="shs">
-          <div class="num">98%</div>
-          <div class="lbl">Match Rate</div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -659,7 +642,7 @@
       <div class="toast-ico"><i class="fas fa-check"></i></div>
       <div class="toast-text">
         <strong>You're all set, Sarah! Your weekly digest is confirmed.</strong>
-        <span>New matches every Monday 8AM — we'll email you at sarah@acme.com.sg</span>
+        <span>New matches every Monday 8AM — we'll email you at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfacbeadbeb79fbebcb2baf1bcb0b2f1acb8">[email&#160;protected]</a></span>
       </div>
       <button class="toast-close" onclick="document.getElementById('confirmToast').style.display='none'" aria-label="Dismiss"><i class="fas fa-times"></i></button>
     </div>
@@ -1118,7 +1101,7 @@
             </div>
             <div class="digest-note">
               <i class="fas fa-info-circle"></i>
-              Sent from noreply@keyglobalprojects.com. Unsubscribe anytime via the link in each email.
+              Sent from <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f799988592879b8eb79c928e909b9895969b8785989d92948384d994989a">[email&#160;protected]</a>. Unsubscribe anytime via the link in each email.
             </div>
           </div>
         </div>
@@ -1151,7 +1134,7 @@
           <ul class="f-contact">
             <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
             <li><i class="fas fa-phone"></i>+65 9456 0451</li>
-            <li><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
+            <li><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#0f666169604f646a766863606d6e637f7d60656a6c7b7c216c6062" style="color:inherit;"><span class="__cf_email__" data-cfemail="375e595158775c524e505b5855565b4745585d525443441954585a">[email&#160;protected]</span></a></li>
           </ul>
           <div class="f-socials">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1250,7 +1233,7 @@
       <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">KGP Contact Details</div>
       <div style="font-size:13.5px;color:var(--navy);display:flex;flex-direction:column;gap:7px;">
         <span><i class="fas fa-phone" style="color:var(--red);width:16px;"></i> +65 9456 0451</span>
-        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> info@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="61080f070e210a0418060d0e03000d11130e0b040215124f020e0c">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt" style="color:var(--red);width:16px;"></i> 47 Kallang Pudding Rd, #11-07</span>
       </div>
     </div>
@@ -1294,7 +1277,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── Hamburger ──
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobileNav').classList.toggle('open');
@@ -1393,21 +1376,27 @@ async function sendMessage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 200,
+        max_tokens: 300,
         system: SYSTEM_PROMPT,
         messages: conversationHistory
       })
     });
     const data = await response.json();
+    const reply = data.content?.[0]?.text || "I'm sorry, I couldn't process that. Please try again.";
     hideTyping();
-    const reply = data.content?.[0]?.text || "I'm having trouble connecting right now. Please try again shortly.";
     addBotMessage(reply);
     conversationHistory.push({ role: 'assistant', content: reply });
   } catch (e) {
     hideTyping();
-    addBotMessage("Sorry, I'm having trouble connecting right now. Please try again or call us directly at +65 9456 0451.");
+    addBotMessage("Sorry, I'm having trouble connecting. Please <a href='index.html#contact' style='color:var(--red);font-weight:700;'>contact us directly</a> and we'll get back to you within 24 hours.");
   }
 }
+
+// ── Mobile nav ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
 </script>
+
 </body>
 </html>

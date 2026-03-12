@@ -29,7 +29,9 @@
   body { font-family: var(--f); color: #333; overflow-x: hidden; background: var(--offbg); }
   a { text-decoration: none; color: inherit; }
   ul { list-style: none; }
-  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+  .topbar .wrap,
+  .navbar .wrap { max-width: 1350px; padding: 0 28px; }
 
   /* ── Buttons ── */
   .btn {
@@ -54,13 +56,15 @@
   .topbar-right {
     display: flex; align-items: stretch;
     background: var(--red);
-    clip-path: polygon(22px 0%, 100% 0%, 100% 100%, 0% 100%);
-    padding-left: 22px;
+    clip-path: polygon(28px 0%, 100% 0%, 100% 100%, 0% 100%);
+    padding-left: 28px;
+    margin-right: -28px;
+    align-self: stretch;
   }
   .topbar-right a {
     display: flex; align-items: center; justify-content: center;
-    width: 42px; color: #fff; font-size: 14px;
-    border-right: 1px solid rgba(255,255,255,.18); transition: background .2s;
+    width: 36px; height: 36px; color: #fff; font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,.15); transition: background .2s;
   }
   .topbar-right a:last-child { border-right: none; }
   .topbar-right a:hover { background: rgba(255,255,255,.15); }
@@ -70,7 +74,7 @@
     background: #fff; position: sticky; top: 0; z-index: 900;
     box-shadow: 0 2px 20px rgba(13,31,78,.1);
   }
-  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 16px; }
   .logo img { height: 48px; width: auto; object-fit: contain; display: block; }
   .nav-links { display: flex; align-items: center; gap: 2px; }
   .nav-links a {
@@ -104,7 +108,7 @@
     content: ''; position: absolute; inset: 0;
     background: linear-gradient(to right, rgba(13,31,78,.96) 40%, rgba(13,31,78,.78) 100%);
   }
-  .step-hero-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .step-hero-inner { position: relative; z-index: 1; max-width: 640px; }
   .step-hero-text .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; background: rgba(208,32,32,.15); border: 1px solid rgba(208,32,32,.4); color: #ff9090; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.8px; padding: 5px 14px; border-radius: 40px; }
   .step-hero-text .eyebrow i { color: var(--red); }
   .step-hero-text h1 { font-size: 34px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 10px; }
@@ -484,27 +488,6 @@
         <h1>Find Your Next<br><span>Business Opportunity</span></h1>
         <p>Tell us about yourself and we'll match you with the most relevant business listings — buyers, suppliers, or partners — using our AI matching engine.</p>
       </div>
-      <div class="step-hero-stats">
-        <div class="shs">
-          <div class="num">150+</div>
-          <div class="lbl">Active Listings</div>
-        </div>
-        <div class="shs-div"></div>
-        <div class="shs">
-          <div class="num">$2B+</div>
-          <div class="lbl">Total Value</div>
-        </div>
-        <div class="shs-div"></div>
-        <div class="shs">
-          <div class="num">12</div>
-          <div class="lbl">Industries</div>
-        </div>
-        <div class="shs-div"></div>
-        <div class="shs">
-          <div class="num">98%</div>
-          <div class="lbl">Match Rate</div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -800,7 +783,7 @@
           <ul class="f-contact">
             <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
             <li><i class="fas fa-phone"></i>+65 9456 0451</li>
-            <li><i class="fas fa-envelope"></i>info@keyglobalprojects.com</li>
+            <li><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ec85828a83ac8789958b80838e8d809c9e8386898f989fc28f8381">[email&#160;protected]</a></li>
           </ul>
           <div class="f-socials">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -857,7 +840,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── Tab switching ──
 function switchTab(tab) {
   const isNew = tab === 'new';
@@ -1002,5 +985,13 @@ function handleResend() {
   }, 1000);
 
   startResendCooldown();
+}
 
-  // Visual
+// ── Mobile nav ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>

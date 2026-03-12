@@ -32,7 +32,9 @@
   a { text-decoration: none; color: inherit; }
   img { max-width: 100%; display: block; }
   ul { list-style: none; }
-  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+  .topbar .wrap,
+  .navbar .wrap { max-width: 1350px; padding: 0 28px; }
 
   /* ── Typography helpers ── */
   .eyebrow { color: var(--red); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px; }
@@ -62,13 +64,15 @@
   .topbar-right {
     display: flex; align-items: stretch;
     background: var(--red);
-    clip-path: polygon(22px 0%, 100% 0%, 100% 100%, 0% 100%);
-    padding-left: 22px;
+    clip-path: polygon(28px 0%, 100% 0%, 100% 100%, 0% 100%);
+    padding-left: 28px;
+    margin-right: -28px;
+    align-self: stretch;
   }
   .topbar-right a {
     display: flex; align-items: center; justify-content: center;
-    width: 42px; color: #fff; font-size: 14px;
-    border-right: 1px solid rgba(255,255,255,.18); transition: background .2s;
+    width: 36px; height: 36px; color: #fff; font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,.15); transition: background .2s;
   }
   .topbar-right a:last-child { border-right: none; }
   .topbar-right a:hover { background: rgba(255,255,255,.15); }
@@ -81,7 +85,7 @@
     box-shadow: 0 3px 20px rgba(13,31,78,.09);
     border-bottom: 1px solid var(--border);
   }
-  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 16px; }
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo-box { width: 46px; height: 46px; background: var(--navy); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .logo-box i { color: #fff; font-size: 20px; }
@@ -252,7 +256,8 @@
                       linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
     background-size: 60px 60px;
   }
-  .bm-hero-inner { display: grid; grid-template-columns: 1fr 280px; gap: 56px; align-items: center; position: relative; }
+  .bm-hero-inner { display: block; position: relative; }
+  .bm-hero-content { max-width: 640px; }
   .bm-hero-badge {
     display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;
     background: rgba(208,32,32,.15); border: 1px solid rgba(208,32,32,.4);
@@ -599,7 +604,7 @@
     <div class="topbar-inner">
       <div class="topbar-left">
         <span><i class="fas fa-phone"></i>+65 9456 0451</span>
-        <span><i class="fas fa-envelope"></i>info@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fb92959d94bb909e829c9794999a978b8994919e988f88d5989496">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
       </div>
       <div class="topbar-right">
@@ -674,15 +679,7 @@
         </div>
       </div>
 
-      <div class="bm-hero-stats bm-hero-anim" style="--d:0.65s">
-        <div class="bm-stat"><div class="num">150+</div><div class="lbl2">Active Listings</div></div>
-        <div class="bm-stat-div"></div>
-        <div class="bm-stat"><div class="num">$2B+</div><div class="lbl2">Total Value</div></div>
-        <div class="bm-stat-div"></div>
-        <div class="bm-stat"><div class="num">12</div><div class="lbl2">Industries</div></div>
-        <div class="bm-stat-div"></div>
-        <div class="bm-stat"><div class="num">98%</div><div class="lbl2">Match Rate</div></div>
-      </div>
+
 
     </div>
   </div>
@@ -1269,7 +1266,7 @@
       <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">KGP Contact Details</div>
       <div style="font-size:13.5px;color:var(--navy);display:flex;flex-direction:column;gap:7px;">
         <span><i class="fas fa-phone" style="color:var(--red);width:16px;"></i> +65 9456 0451</span>
-        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> info@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="167f787079567d736f717a7974777a6664797c737562653875797b">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt" style="color:var(--red);width:16px;"></i> 47 Kallang Pudding Rd, #11-07</span>
       </div>
     </div>
@@ -1461,7 +1458,7 @@
           <ul class="f-contact">
             <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
             <li><i class="fas fa-phone"></i>+65 9456 0451</li>
-            <li><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
+            <li><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#3c55525a537c5759455b50535e5d504c4e5356595f484f125f5351" style="color:inherit;"><span class="__cf_email__" data-cfemail="d5bcbbb3ba95beb0acb2b9bab7b4b9a5a7babfb0b6a1a6fbb6bab8">[email&#160;protected]</span></a></li>
           </ul>
           <div class="f-socials">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1549,7 +1546,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── KGP Chatbot ──
 const chatMessages = document.getElementById('chat-messages');
 const chatBox = document.getElementById('chat-box');
@@ -1878,6 +1875,7 @@ function toggleMmChip(el,group){
   }
   el.classList.toggle('active');
 }
+
 function sendMagicLink(){
   const e=document.getElementById('mmReturnEmail').value.trim();
   if(!e){alert('Please enter your email address.');return;}
