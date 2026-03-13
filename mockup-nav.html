@@ -29,19 +29,9 @@
       align-items: center;
       justify-content: space-between;
     }
-    .navbar-title {
-      font-size: 13px;
-      font-weight: 900;
-      color: rgba(255,255,255,.6);
-    }
+    .navbar-title { font-size: 13px; font-weight: 900; color: rgba(255,255,255,.6); }
     .navbar-title span { color: #fff; }
-    .navbar-badge {
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.35);
-    }
+    .navbar-badge { font-size: 10px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.35); }
 
     /* ── Hero ── */
     .hero {
@@ -49,44 +39,29 @@
       border-bottom: 3px solid var(--red);
       padding: 32px 32px 28px;
     }
-    .hero-inner { max-width: 860px; margin: 0 auto; }
-    .hero-label {
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 8px;
+    .hero-inner { max-width: 920px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .hero-label { font-size: 11px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+    .hero-title { font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+    .hero-desc { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.45); }
+    .hero-count {
+      display: flex; gap: 0; flex-shrink: 0;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px; overflow: hidden;
     }
-    .hero-title {
-      font-size: 26px;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .hero-desc {
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(255,255,255,.45);
-    }
+    .hc-item { text-align: center; padding: 14px 20px; border-right: 1px solid rgba(255,255,255,.08); }
+    .hc-item:last-child { border-right: none; }
+    .hc-num { font-size: 22px; font-weight: 900; color: #fff; line-height: 1; }
+    .hc-lbl { font-size: 10px; font-weight: 700; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .5px; margin-top: 3px; }
 
     /* ── Content ── */
-    .main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 36px 32px 80px;
-    }
+    .main { max-width: 920px; margin: 0 auto; padding: 36px 32px 80px; }
 
     /* ── Section ── */
     .section { margin-bottom: 36px; }
     .section-title {
-      font-size: 10.5px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--lgray);
-      margin-bottom: 10px;
-      padding-bottom: 8px;
+      font-size: 10.5px; font-weight: 900; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--lgray);
+      margin-bottom: 10px; padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -94,15 +69,10 @@
     .page-list { display: flex; flex-direction: column; gap: 4px; }
 
     .page-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      transition: border-color .15s;
-      gap: 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; background: #fff;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      transition: border-color .15s; gap: 16px;
     }
     .page-link:hover { border-color: var(--navy); }
     .page-link:hover .pl-name { color: var(--red); }
@@ -110,84 +80,53 @@
 
     .pl-left { display: flex; align-items: center; gap: 14px; }
     .pl-icon {
-      width: 34px; height: 34px;
-      border-radius: 8px;
+      width: 34px; height: 34px; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 13px;
-      flex-shrink: 0;
+      font-size: 13px; flex-shrink: 0;
     }
     .pl-icon.navy  { background: rgba(13,31,78,.08);  color: var(--navy); }
     .pl-icon.red   { background: rgba(208,32,32,.08); color: var(--red); }
     .pl-icon.green { background: rgba(22,163,74,.08);  color: #16a34a; }
     .pl-icon.amber { background: rgba(217,119,6,.08);  color: #d97706; }
+    .pl-icon.teal  { background: rgba(13,100,138,.08); color: #0d648a; }
+    .pl-icon.purple{ background: rgba(124,58,237,.08); color: #7c3aed; }
 
-    .pl-name {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--navy);
-      transition: color .15s;
+    .pl-name { font-size: 14px; font-weight: 800; color: var(--navy); transition: color .15s; }
+    .pl-file { font-size: 11.5px; font-weight: 600; color: var(--lgray); margin-top: 1px; }
+    .pl-arrow { font-size: 11px; color: #ccc; flex-shrink: 0; transition: color .15s; }
+
+    .pl-right { display: flex; align-items: center; gap: 10px; }
+    .pl-tag {
+      font-size: 10px; font-weight: 900; padding: 3px 9px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .4px;
     }
-    .pl-file {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--lgray);
-      margin-top: 1px;
-    }
-    .pl-arrow {
-      font-size: 11px;
-      color: #ccc;
-      flex-shrink: 0;
-      transition: color .15s;
-    }
+    .pl-tag.new { background: rgba(22,163,74,.1); color: #16a34a; }
+    .pl-tag.email { background: rgba(124,58,237,.1); color: #7c3aed; }
 
     /* ── Flow steps ── */
     .flow-steps { display: flex; gap: 4px; flex-wrap: wrap; }
     .flow-step {
-      flex: 1;
-      min-width: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 13px 16px;
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      transition: border-color .15s;
-      gap: 10px;
+      flex: 1; min-width: 150px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 16px; background: #fff;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      transition: border-color .15s; gap: 10px;
     }
     .flow-step:hover { border-color: var(--navy); }
     .flow-step:hover .fs-name { color: var(--red); }
     .flow-step:hover .pl-arrow { color: var(--red); }
 
-    .fs-num {
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 2px;
-    }
-    .fs-name {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--navy);
-      transition: color .15s;
-    }
+    .fs-num { font-size: 10px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 2px; }
+    .fs-name { font-size: 13px; font-weight: 800; color: var(--navy); transition: color .15s; }
 
     /* ── Footer ── */
     .footer {
-      text-align: center;
-      padding: 20px 28px;
-      font-size: 11.5px;
-      color: var(--lgray);
-      font-weight: 600;
+      text-align: center; padding: 20px 28px;
+      font-size: 11.5px; color: var(--lgray); font-weight: 600;
       border-top: 1px solid var(--border);
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .hero { animation: fadeUp .3s ease both; }
     .main { animation: fadeUp .35s .06s ease both; }
   </style>
@@ -201,16 +140,24 @@
 
   <div class="hero">
     <div class="hero-inner">
-      <div class="hero-label">Design Review</div>
-      <div class="hero-title">All mockup pages, one place.</div>
-      <p class="hero-desc">Click any page below to open the mockup. For internal and client review only.</p>
+      <div>
+        <div class="hero-label">Design Review</div>
+        <div class="hero-title">All mockup pages, one place.</div>
+        <p class="hero-desc">Click any page below to open the mockup. For internal and client review only.</p>
+      </div>
+      <div class="hero-count">
+        <div class="hc-item"><div class="hc-num">13</div><div class="hc-lbl">Pages</div></div>
+        <div class="hc-item"><div class="hc-num">4</div><div class="hc-lbl">Modules</div></div>
+        <div class="hc-item"><div class="hc-num">1</div><div class="hc-lbl">Email</div></div>
+      </div>
     </div>
   </div>
 
   <div class="main">
 
+    <!-- ── CORPORATE WEBSITE ── -->
     <div class="section">
-      <div class="section-title">Public Website</div>
+      <div class="section-title">Corporate Website</div>
       <div class="page-list">
 
         <a href="index.html" class="page-link">
@@ -221,31 +168,155 @@
               <div class="pl-file">index.html</div>
             </div>
           </div>
-          <i class="fas fa-arrow-right pl-arrow"></i>
+          <div class="pl-right"><i class="fas fa-arrow-right pl-arrow"></i></div>
         </a>
 
-        <a href="bizmatch.html" class="page-link">
+        <a href="blog-article.html" class="page-link">
           <div class="pl-left">
-            <div class="pl-icon red"><i class="fas fa-briefcase"></i></div>
+            <div class="pl-icon navy"><i class="fas fa-newspaper"></i></div>
             <div>
-              <div class="pl-name">BizMatch — Marketplace</div>
-              <div class="pl-file">bizmatch.html</div>
+              <div class="pl-name">Blog Article</div>
+              <div class="pl-file">blog-article.html</div>
             </div>
           </div>
-          <i class="fas fa-arrow-right pl-arrow"></i>
+          <div class="pl-right">
+            <span class="pl-tag new">New</span>
+            <i class="fas fa-arrow-right pl-arrow"></i>
+          </div>
+        </a>
+
+        <a href="privacy-policy.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon navy"><i class="fas fa-shield-alt"></i></div>
+            <div>
+              <div class="pl-name">Disclaimer & Privacy Policy</div>
+              <div class="pl-file">privacy-policy.html</div>
+            </div>
+          </div>
+          <div class="pl-right">
+            <span class="pl-tag new">New</span>
+            <i class="fas fa-arrow-right pl-arrow"></i>
+          </div>
         </a>
 
       </div>
     </div>
 
+    <!-- ── ADVISORAI ── -->
     <div class="section">
-      <div class="section-title">BizMatch — Buyer Form (3-step flow)</div>
+      <div class="section-title">AdvisorAI — Chatbot Flow (3-step)</div>
+      <div class="flow-steps">
+
+        <a href="advisorai.html#screen1" class="flow-step">
+          <div>
+            <div class="fs-num">Step 01</div>
+            <div class="fs-name">Lead Capture</div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+        <a href="advisorai.html#screen2" class="flow-step">
+          <div>
+            <div class="fs-num">Step 02</div>
+            <div class="fs-name">PDPA Disclaimer</div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+        <a href="advisorai.html#screen3" class="flow-step">
+          <div>
+            <div class="fs-num">Step 03</div>
+            <div class="fs-name">Chat + Action Chips</div>
+          </div>
+          <i class="fas fa-arrow-right pl-arrow"></i>
+        </a>
+
+      </div>
+      <div class="page-list" style="margin-top:4px;">
+        <a href="advisorai.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon red"><i class="fas fa-robot"></i></div>
+            <div>
+              <div class="pl-name">AdvisorAI — Full Page</div>
+              <div class="pl-file">advisorai.html</div>
+            </div>
+          </div>
+          <div class="pl-right">
+            <span class="pl-tag new">New</span>
+            <i class="fas fa-arrow-right pl-arrow"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── BIZMATCH ── -->
+    <div class="section">
+      <div class="section-title">BizMatch — Platform</div>
+      <div class="page-list">
+
+        <a href="bizmatch.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon red"><i class="fas fa-store"></i></div>
+            <div>
+              <div class="pl-name">BizMatch — Browse Listings</div>
+              <div class="pl-file">bizmatch.html</div>
+            </div>
+          </div>
+          <div class="pl-right"><i class="fas fa-arrow-right pl-arrow"></i></div>
+        </a>
+
+        <a href="bizmatch-listing.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon red"><i class="fas fa-file-alt"></i></div>
+            <div>
+              <div class="pl-name">BizMatch — Listing Detail</div>
+              <div class="pl-file">bizmatch-listing.html</div>
+            </div>
+          </div>
+          <div class="pl-right"><i class="fas fa-arrow-right pl-arrow"></i></div>
+        </a>
+
+        <a href="bizmatch-returning.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon teal"><i class="fas fa-magic"></i></div>
+            <div>
+              <div class="pl-name">BizMatch — Returning User (Magic Link)</div>
+              <div class="pl-file">bizmatch-returning.html</div>
+            </div>
+          </div>
+          <div class="pl-right">
+            <span class="pl-tag new">New</span>
+            <i class="fas fa-arrow-right pl-arrow"></i>
+          </div>
+        </a>
+
+        <a href="bizmatch-email-template.html" class="page-link">
+          <div class="pl-left">
+            <div class="pl-icon purple"><i class="fas fa-envelope-open-text"></i></div>
+            <div>
+              <div class="pl-name">BizMatch — Weekly Digest Email Template</div>
+              <div class="pl-file">bizmatch-email-template.html</div>
+            </div>
+          </div>
+          <div class="pl-right">
+            <span class="pl-tag email">Email</span>
+            <span class="pl-tag new">New</span>
+            <i class="fas fa-arrow-right pl-arrow"></i>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ── BIZMATCH ONBOARDING FLOW ── -->
+    <div class="section">
+      <div class="section-title">BizMatch — New User Onboarding (3-step flow)</div>
       <div class="flow-steps">
 
         <a href="bizmatch-step1.html" class="flow-step">
           <div>
             <div class="fs-num">Step 01</div>
-            <div class="fs-name">Business Preferences</div>
+            <div class="fs-name">Lead Capture</div>
           </div>
           <i class="fas fa-arrow-right pl-arrow"></i>
         </a>
@@ -253,7 +324,7 @@
         <a href="bizmatch-step2.html" class="flow-step">
           <div>
             <div class="fs-num">Step 02</div>
-            <div class="fs-name">Buyer Profile</div>
+            <div class="fs-name">Match Criteria</div>
           </div>
           <i class="fas fa-arrow-right pl-arrow"></i>
         </a>
@@ -261,7 +332,7 @@
         <a href="bizmatch-step3.html" class="flow-step">
           <div>
             <div class="fs-num">Step 03</div>
-            <div class="fs-name">Contact & Submit</div>
+            <div class="fs-name">Match Results</div>
           </div>
           <i class="fas fa-arrow-right pl-arrow"></i>
         </a>
@@ -269,6 +340,7 @@
       </div>
     </div>
 
+    <!-- ── ADMIN PORTAL ── -->
     <div class="section">
       <div class="section-title">Admin Portal</div>
       <div class="page-list">
@@ -281,10 +353,10 @@
               <div class="pl-file">kgp-admin-login.html</div>
             </div>
           </div>
-          <i class="fas fa-arrow-right pl-arrow"></i>
+          <div class="pl-right"><i class="fas fa-arrow-right pl-arrow"></i></div>
         </a>
 
-        <a href="kgp-admin-login.html" class="page-link">
+        <a href="kgp-admin.html" class="page-link">
           <div class="pl-left">
             <div class="pl-icon green"><i class="fas fa-gauge-high"></i></div>
             <div>
@@ -292,7 +364,7 @@
               <div class="pl-file">kgp-admin.html</div>
             </div>
           </div>
-          <i class="fas fa-arrow-right pl-arrow"></i>
+          <div class="pl-right"><i class="fas fa-arrow-right pl-arrow"></i></div>
         </a>
 
       </div>
@@ -301,7 +373,7 @@
   </div>
 
   <div class="footer">
-    Key Global Projects Pte. Ltd. &nbsp;·&nbsp; Mockup Navigator v1.0 &nbsp;·&nbsp; Developed by Skubbs Private Limited
+    Key Global Projects Pte. Ltd. &nbsp;·&nbsp; Mockup Navigator v2.0 &nbsp;·&nbsp; Developed by Skubbs Private Limited
   </div>
 
 </body>

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>4 Singapore Companies Successfully Listed on Nasdaq in 2024 | KGP Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* =============================================
+       DESIGN SYSTEM — exact match to index.html
+       Navy: #0d1f4e  |  Red: #d02020
+    ============================================= */
+    :root {
+      --navy:   #0d1f4e;
+      --red:    #d02020;
+      --reddark:#aa1818;
+      --white:  #ffffff;
+      --offbg:  #f2f4f8;
+      --gray:   #666666;
+      --border: #e2e6ef;
+      --f: 'Nunito Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f); color: #222; overflow-x: hidden; background: #fff; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+    .lbl { color: var(--red); font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .htitle { font-size: 40px; font-weight: 900; color: var(--navy); line-height: 1.15; }
+    .htitle span { color: var(--red); }
+    .sec-head { text-align: center; margin-bottom: 48px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 28px; border-radius: 40px;
+      font-weight: 800; font-size: 14px; text-transform: uppercase;
+      letter-spacing: .5px; cursor: pointer; border: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-red   { background: var(--red); color: #fff; box-shadow: 0 6px 18px rgba(208,32,32,.35); }
+    .btn-red:hover { background: var(--reddark); transform: translateY(-2px); }
+    .btn-navy  { background: var(--navy); color: #fff; }
+    .btn-navy:hover { background: #162861; transform: translateY(-2px); }
+    .btn .arr  { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+
+    /* ══ TOPBAR ══ */
+    .topbar {
+      background: var(--navy);
+      color: rgba(255,255,255,.82);
+      font-size: 13px; font-weight: 600;
+      padding: 10px 0;
+    }
+    .topbar .inner {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      max-width: 1400px; margin: 0 auto; padding: 0 28px;
+    }
+    .topbar-left { display: flex; gap: 28px; flex-wrap: wrap; }
+    .topbar-left span { display: flex; align-items: center; gap: 7px; }
+    .topbar-left i { color: var(--red); }
+    .topbar-right {
+      display: flex; gap: 0;
+      background: var(--red);
+      clip-path: polygon(28px 0%, 100% 0%, 100% 100%, 0% 100%);
+      padding-left: 28px; margin-right: -28px; align-self: stretch;
+    }
+    .topbar-right a {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 14px; transition: background .2s;
+      border-right: 1px solid rgba(255,255,255,.15);
+    }
+    .topbar-right a:last-child { border-right: none; }
+    .topbar-right a:hover { background: rgba(255,255,255,.18); }
+
+    /* ══ NAVBAR ══ */
+    .navbar {
+      background: #fff; position: sticky; top: 0; z-index: 999;
+      box-shadow: 0 2px 20px rgba(13,31,78,.1);
+      transition: box-shadow .3s ease;
+    }
+    .navbar .inner {
+      display: flex; align-items: center;
+      justify-content: space-between; padding: 18px 16px; gap: 8px;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .navbar.scrolled .inner { padding-top: 12px; padding-bottom: 12px; }
+    .navbar.scrolled { box-shadow: 0 4px 28px rgba(13,31,78,.18); }
+    .logo img { height: 48px; width: auto; object-fit: contain; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 800; color: var(--navy);
+      padding: 8px 14px; text-transform: uppercase; letter-spacing: .3px;
+      position: relative; transition: color .2s; border-radius: 6px;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--red); }
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px;
+    }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: .3s; }
+
+    /* ══ ARTICLE HERO ══ */
+    .article-hero {
+      background: var(--navy);
+      position: relative; overflow: hidden;
+      padding: 64px 0 0;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,.02) 60px, rgba(255,255,255,.02) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,.02) 60px, rgba(255,255,255,.02) 61px);
+      pointer-events: none;
+    }
+    .article-hero::after {
+      content: '';
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(208,32,32,.14) 0%, transparent 70%);
+      top: -200px; right: -100px; pointer-events: none;
+    }
+    .article-hero .wrap { position: relative; z-index: 2; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 700;
+      color: rgba(255,255,255,.4);
+      text-transform: uppercase; letter-spacing: .8px;
+      margin-bottom: 24px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,.4); transition: color .2s; }
+    .breadcrumb a:hover { color: var(--red); }
+    .breadcrumb i { font-size: 9px; }
+    .breadcrumb span { color: rgba(255,255,255,.65); }
+
+    /* Category tag */
+    .article-cat {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--red); color: #fff;
+      font-size: 11.5px; font-weight: 900;
+      padding: 5px 14px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .8px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: 40px; font-weight: 900; color: #fff;
+      line-height: 1.15; margin-bottom: 20px;
+      max-width: 780px; letter-spacing: -.3px;
+    }
+    .article-hero h1 span { color: var(--red); }
+
+    /* Meta row */
+    .article-meta {
+      display: flex; align-items: center; gap: 24px;
+      flex-wrap: wrap; margin-bottom: 36px;
+    }
+    .am-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.55); }
+    .am-item i { color: var(--red); font-size: 12px; }
+    .am-item a { color: rgba(255,255,255,.55); transition: color .2s; }
+    .am-item a:hover { color: #fff; }
+    .am-divider { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.2); }
+
+    /* Hero feature image container — sits at bottom of hero, overlaps content */
+    .hero-img-wrap {
+      margin-top: 8px;
+      border-radius: 14px 14px 0 0;
+      overflow: hidden;
+      height: 380px;
+      position: relative;
+    }
+    .hero-img-ph {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a3070, #0d1f4e);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 14px;
+    }
+    .hero-img-ph i { font-size: 60px; color: rgba(255,255,255,.12); }
+    .hero-img-ph span { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.25); letter-spacing: .5px; }
+    /* Overlay gradient so it bleeds into content below */
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, #fff);
+      pointer-events: none;
+    }
+
+    /* ══ ARTICLE LAYOUT ══ */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+      max-width: 1200px; margin: 0 auto;
+      padding: 48px 28px 80px;
+      align-items: start;
+    }
+
+    /* ══ ARTICLE BODY ══ */
+    .article-body { min-width: 0; }
+
+    /* Reading progress bar */
+    #read-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; background: var(--red);
+      width: 0%; z-index: 9999;
+      transition: width .1s linear;
+    }
+
+    /* Article content typography */
+    .article-content { line-height: 1.9; color: #333; }
+    .article-content p { font-size: 16px; margin-bottom: 22px; }
+    .article-content h2 {
+      font-size: 26px; font-weight: 900; color: var(--navy);
+      margin: 40px 0 16px; line-height: 1.25;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--red);
+      display: inline-block;
+    }
+    .article-content h3 {
+      font-size: 19px; font-weight: 900; color: var(--navy);
+      margin: 28px 0 12px;
+    }
+    .article-content ul, .article-content ol {
+      margin: 0 0 22px 20px;
+    }
+    .article-content ul li, .article-content ol li {
+      font-size: 15.5px; margin-bottom: 10px; line-height: 1.75;
+    }
+    .article-content strong { color: var(--navy); font-weight: 900; }
+    .article-content a { color: var(--red); font-weight: 700; text-decoration: underline; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 5px solid var(--red);
+      background: var(--offbg);
+      padding: 22px 28px;
+      margin: 32px 0;
+      border-radius: 0 10px 10px 0;
+    }
+    .pull-quote p {
+      font-size: 18px; font-weight: 800; color: var(--navy);
+      line-height: 1.55; margin: 0; font-style: italic;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 10px;
+      font-size: 13px; font-weight: 700; color: var(--gray);
+      font-style: normal;
+    }
+
+    /* Info box */
+    .info-box {
+      background: rgba(13,31,78,.04);
+      border: 1px solid rgba(13,31,78,.12);
+      border-radius: 12px; padding: 22px 24px;
+      margin: 28px 0;
+    }
+    .info-box-title {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 13px; font-weight: 900; color: var(--navy);
+      text-transform: uppercase; letter-spacing: .6px;
+      margin-bottom: 14px;
+    }
+    .info-box-title i { color: var(--red); }
+    .info-box ul { margin-left: 16px; }
+    .info-box ul li { font-size: 14.5px; margin-bottom: 8px; color: #444; }
+
+    /* Success card — highlighted company result */
+    .success-cards { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin: 28px 0; }
+    .success-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+      box-shadow: 0 3px 14px rgba(13,31,78,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .success-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(13,31,78,.12); }
+    .sc-ticker {
+      display: inline-block;
+      background: var(--navy); color: #fff;
+      font-size: 12px; font-weight: 900;
+      padding: 3px 10px; border-radius: 6px;
+      letter-spacing: .5px; margin-bottom: 10px;
+    }
+    .sc-company { font-size: 15px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+    .sc-industry { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+    .sc-result {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 800; color: #16a34a;
+    }
+    .sc-result i { font-size: 12px; }
+
+    /* Article image placeholder */
+    .article-img {
+      width: 100%; border-radius: 12px;
+      overflow: hidden; margin: 28px 0;
+      background: linear-gradient(135deg, #e8edf5, #d0d8e8);
+      height: 280px; display: flex; align-items: center;
+      justify-content: center; flex-direction: column; gap: 10px;
+    }
+    .article-img i { font-size: 40px; color: rgba(13,31,78,.15); }
+    .article-img span { font-size: 12.5px; font-weight: 700; color: rgba(13,31,78,.3); letter-spacing: .4px; }
+
+    /* Tags row */
+    .article-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 36px 0 28px; }
+    .article-tags span { font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; }
+    .tag {
+      font-size: 12px; font-weight: 800;
+      padding: 5px 14px; border-radius: 20px;
+      border: 1.5px solid var(--border); color: var(--navy);
+      background: #fff; transition: all .2s; cursor: pointer;
+    }
+    .tag:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+    /* Share row */
+    .article-share {
+      display: flex; align-items: center; gap: 12px;
+      padding: 20px 0; border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); margin-bottom: 44px;
+      flex-wrap: wrap;
+    }
+    .share-label { font-size: 13px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .5px; }
+    .share-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; cursor: pointer; transition: all .2s;
+      border: 1.5px solid var(--border); color: var(--gray);
+      background: #fff;
+    }
+    .share-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .copy-link-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 800; color: var(--navy);
+      padding: 7px 16px; border-radius: 20px;
+      border: 1.5px solid var(--border); background: #fff;
+      cursor: pointer; transition: all .2s; font-family: var(--f);
+      margin-left: auto;
+    }
+    .copy-link-btn:hover { background: var(--offbg); }
+    .copy-link-btn i { font-size: 12px; }
+
+    /* Author card */
+    .author-card {
+      background: var(--offbg); border-radius: 14px;
+      padding: 24px; display: flex; gap: 20px;
+      align-items: flex-start; margin-bottom: 44px;
+      border: 1px solid var(--border);
+    }
+    .author-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: center; font-size: 26px; color: #fff;
+      flex-shrink: 0;
+    }
+    .author-info .author-label { font-size: 11px; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .author-info .author-name { font-size: 17px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+    .author-info .author-title { font-size: 13px; font-weight: 700; color: var(--gray); margin-bottom: 10px; }
+    .author-info .author-bio { font-size: 13.5px; color: #555; line-height: 1.65; }
+
+    /* Related articles */
+    .related-section { margin-bottom: 48px; }
+    .related-section h3 {
+      font-size: 22px; font-weight: 900; color: var(--navy);
+      margin-bottom: 20px; padding-bottom: 12px;
+      border-bottom: 3px solid var(--red); display: inline-block;
+    }
+    .related-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .related-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(13,31,78,.1); }
+    .related-thumb {
+      height: 130px; display: flex; align-items: center;
+      justify-content: center; font-size: 32px;
+    }
+    .related-thumb i { color: rgba(255,255,255,.3); }
+    .related-body { padding: 16px; }
+    .related-cat {
+      font-size: 11px; font-weight: 900; color: var(--red);
+      text-transform: uppercase; letter-spacing: .8px; margin-bottom: 7px;
+    }
+    .related-body h4 { font-size: 14.5px; font-weight: 900; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
+    .related-body .related-meta { font-size: 12px; font-weight: 700; color: var(--gray); display: flex; align-items: center; gap: 6px; }
+
+    /* CTA box */
+    .article-cta {
+      background: var(--navy); border-radius: 14px;
+      padding: 36px 32px; text-align: center;
+      margin-bottom: 8px; position: relative; overflow: hidden;
+    }
+    .article-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 50%, rgba(208,32,32,.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .article-cta h3 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 10px; position: relative; z-index: 1; }
+    .article-cta p { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 22px; position: relative; z-index: 1; }
+
+    /* ══ SIDEBAR ══ */
+    .article-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .sidebar-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 3px 16px rgba(13,31,78,.06);
+    }
+    .sidebar-card-head {
+      background: var(--navy); padding: 14px 18px;
+      font-size: 12px; font-weight: 900; color: rgba(255,255,255,.85);
+      text-transform: uppercase; letter-spacing: .8px;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .sidebar-card-head i { color: var(--red); font-size: 14px; }
+    .sidebar-card-body { padding: 18px; }
+
+    /* Table of Contents */
+    .toc-list { list-style: none; }
+    .toc-list li { margin-bottom: 4px; }
+    .toc-list a {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700; color: var(--gray);
+      padding: 7px 10px; border-radius: 8px;
+      border-left: 2px solid transparent;
+      transition: all .2s;
+    }
+    .toc-list a:hover, .toc-list a.active {
+      color: var(--navy); background: var(--offbg);
+      border-left-color: var(--red);
+    }
+    .toc-list a .toc-num { font-size: 10.5px; font-weight: 900; color: var(--red); min-width: 14px; }
+
+    /* Recent articles */
+    .recent-list { display: flex; flex-direction: column; gap: 14px; }
+    .recent-item { display: flex; gap: 12px; align-items: flex-start; }
+    .recent-thumb {
+      width: 62px; height: 52px; border-radius: 8px;
+      flex-shrink: 0; display: flex; align-items: center;
+      justify-content: center; font-size: 20px;
+    }
+    .recent-thumb i { color: rgba(255,255,255,.35); }
+    .recent-info .recent-cat { font-size: 10.5px; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 4px; }
+    .recent-info h5 { font-size: 13px; font-weight: 800; color: var(--navy); line-height: 1.4; margin-bottom: 4px; }
+    .recent-info .recent-date { font-size: 11.5px; font-weight: 700; color: var(--gray); }
+
+    /* Sticky TOC */
+    .sticky-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 20px; }
+
+    /* KGP contact sidebar */
+    .contact-sidebar-body { padding: 18px; }
+    .csb-item { display: flex; align-items: center; gap: 11px; margin-bottom: 13px; }
+    .csb-item:last-of-type { margin-bottom: 0; }
+    .csb-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--offbg); display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 13px; flex-shrink: 0; }
+    .csb-text .csb-label { font-size: 10.5px; font-weight: 900; color: var(--gray); text-transform: uppercase; letter-spacing: .4px; }
+    .csb-text .csb-val { font-size: 13.5px; font-weight: 800; color: var(--navy); }
+    .csb-cta {
+      display: block; width: 100%; margin-top: 16px;
+      padding: 12px; background: var(--red); color: #fff;
+      border: none; border-radius: 10px; font-family: var(--f);
+      font-size: 13px; font-weight: 900; cursor: pointer;
+      transition: background .2s; text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .csb-cta:hover { background: var(--reddark); }
+
+    /* ══ FOOTER ══ */
+    footer { position: relative; color: rgba(255,255,255,.82); overflow: hidden; }
+    footer::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=70') center/cover no-repeat;
+      z-index: 0;
+    }
+    .footer-main-wrap { position: relative; z-index: 1; background: rgba(13,31,78,.88); }
+    .footer-main { display: grid; grid-template-columns: 2fr 1.2fr 1.4fr 1.6fr; gap: 48px; padding: 72px 0 48px; }
+    .f-brand p { font-size: 14px; line-height: 1.8; margin: 16px 0 18px; color: rgba(255,255,255,.65); }
+    .f-contact { list-style: none; }
+    .f-contact li { display: flex; align-items: center; gap: 9px; font-size: 14px; margin-bottom: 9px; color: rgba(255,255,255,.65); }
+    .f-contact li i { color: var(--red); width: 14px; flex-shrink: 0; }
+    .f-socials { display: flex; gap: 8px; margin-top: 20px; }
+    .f-socials a { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; transition: background .2s; }
+    .f-socials a:hover { background: #fff; color: var(--red); }
+    .f-col h4 { font-size: 18px; font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 3px solid var(--red); display: inline-block; }
+    .f-links { list-style: none; }
+    .f-links li { margin-bottom: 10px; }
+    .f-links a { color: rgba(255,255,255,.65); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+    .f-links a::before { content: '▸'; color: var(--red); font-size: 11px; }
+    .f-links a:hover { color: #fff; }
+    .footer-bot-wrap { position: relative; z-index: 1; background: #0b1a41; }
+    .footer-bot { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bot p { font-size: 13px; color: rgba(255,255,255,.65); }
+    .footer-bot span { color: var(--red); }
+    .footer-bot-links { display: flex; gap: 24px; }
+    .footer-bot-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s; font-weight: 600; }
+    .footer-bot-links a:hover { color: #fff; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 1024px) {
+      .article-layout { grid-template-columns: 1fr; gap: 36px; }
+      .article-sidebar { display: none; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .article-hero h1 { font-size: 28px; }
+      .success-cards { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .hero-img-wrap { height: 220px; }
+      .topbar { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 12px 0; box-shadow: 0 8px 24px rgba(13,31,78,.12); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 28px; border-radius: 0; }
+      .navbar .inner { position: relative; }
+      .footer-main { grid-template-columns: 1fr; }
+      .article-meta { gap: 14px; }
+      .am-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reading progress bar -->
+  <div id="read-progress"></div>
+
+  <!-- ══ TOPBAR ══ -->
+  <div class="topbar">
+    <div class="inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i> +65 9456 0451</span>
+        <span><i class="fas fa-envelope"></i> enquiry@keyglobalprojects.com</span>
+        <span><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-weixin"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <div class="navbar" id="navbar">
+    <div class="wrap">
+      <div class="inner">
+        <div class="logo">
+          <a href="index.html"><img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;"/></a>
+        </div>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">HOME</a>
+          <a href="index.html#about">ABOUT</a>
+          <a href="index.html#services">SERVICES</a>
+          <a href="index.html#cases">CASES</a>
+          <a href="index.html#team">TEAM</a>
+          <a href="index.html#blog" class="active">BLOG</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="bizmatch.html">BIZMATCH +</a>
+        </div>
+        <a href="index.html#contact" class="btn btn-red">GET QUOTE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+        <div class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ARTICLE HERO ══ -->
+  <div class="article-hero">
+    <div class="wrap">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="index.html#blog">Blog</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>IPO</span>
+      </div>
+
+      <div class="article-cat"><i class="fas fa-chart-line"></i> IPO</div>
+
+      <h1>4 Singapore Companies Successfully Listed on <span>Nasdaq</span> in 2024</h1>
+
+      <div class="article-meta">
+        <div class="am-item"><i class="fas fa-user-circle"></i> By <a href="#">KGP Team</a></div>
+        <div class="am-divider"></div>
+        <div class="am-item"><i class="fas fa-calendar-alt"></i> November 2025</div>
+        <div class="am-divider"></div>
+        <div class="am-item"><i class="fas fa-clock"></i> 7 min read</div>
+        <div class="am-divider"></div>
+        <div class="am-item"><i class="fas fa-eye"></i> 2,841 views</div>
+      </div>
+
+      <!-- Feature image -->
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80" alt="Nasdaq stock market" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ARTICLE LAYOUT ══ -->
+  <div class="article-layout">
+
+    <!-- ════════ MAIN CONTENT ════════ -->
+    <main class="article-body" id="articleBody">
+
+      <div class="article-content">
+
+        <p>In a landmark year for Singapore's capital markets ambitions, <strong>Key Global Projects (KGP)</strong> facilitated four successful Nasdaq listings in 2024 — a testament to the growing appetite among Singapore SMEs to access US capital markets and the viability of strategic equity structuring as a path to public listing.</p>
+
+        <p>These listings represent a significant milestone not just for the companies involved, but for Singapore's broader IPO ecosystem. Each transaction was unique in its structure, yet shared a common thread: disciplined preparation, targeted investor positioning, and a well-executed go-public strategy guided by KGP's director-led advisory team.</p>
+
+        <!-- Info box -->
+        <div class="info-box">
+          <div class="info-box-title"><i class="fas fa-info-circle"></i> Key Highlights</div>
+          <ul>
+            <li>4 successful Nasdaq listings completed within a single calendar year</li>
+            <li>Industries spanned: F&B catering, auto parts, chemical/drum supply, and cable plumbing contractors</li>
+            <li>Combined market capitalisation at listing exceeded SGD $200M</li>
+            <li>All listings achieved through equity design and strategic investment structuring</li>
+          </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <h2 id="s1">The Four Companies</h2>
+
+        <p>The four companies that achieved Nasdaq listings in 2024 came from diverse industries, demonstrating that the path to US public markets is accessible to Singapore SMEs across sectors — not just technology companies.</p>
+
+        <div class="success-cards">
+          <div class="success-card">
+            <div class="sc-ticker">PC</div>
+            <div class="sc-company">PC Catering Group</div>
+            <div class="sc-industry"><i class="fas fa-utensils" style="color:var(--red);font-size:11px;"></i> F&B / Catering</div>
+            <div class="sc-result"><i class="fas fa-check-circle"></i> Successfully Listed — Nasdaq 2024</div>
+          </div>
+          <div class="success-card">
+            <div class="sc-ticker">SAG</div>
+            <div class="sc-company">SAG Auto Parts</div>
+            <div class="sc-industry"><i class="fas fa-car" style="color:var(--red);font-size:11px;"></i> Automotive Parts</div>
+            <div class="sc-result"><i class="fas fa-check-circle"></i> Successfully Listed — Nasdaq 2024</div>
+          </div>
+          <div class="success-card">
+            <div class="sc-ticker">JBDI</div>
+            <div class="sc-company">JBDI Holdings</div>
+            <div class="sc-industry"><i class="fas fa-flask" style="color:var(--red);font-size:11px;"></i> Chemical / Drum Supply</div>
+            <div class="sc-result"><i class="fas fa-check-circle"></i> Successfully Listed — Nasdaq 2024</div>
+          </div>
+          <div class="success-card">
+            <div class="sc-ticker">SKK</div>
+            <div class="sc-company">SKK Group</div>
+            <div class="sc-industry"><i class="fas fa-hard-hat" style="color:var(--red);font-size:11px;"></i> Cable Plumbing Contractors</div>
+            <div class="sc-result"><i class="fas fa-check-circle"></i> Successfully Listed — Nasdaq 2024</div>
+          </div>
+        </div>
+
+        <!-- Section 2 -->
+        <h2 id="s2">The KGP Approach: Equity Design &amp; Strategic Investment</h2>
+
+        <p>What distinguished these listings from traditional IPO routes was the deliberate use of <strong>equity design</strong> — a methodology that involves restructuring a company's shareholding architecture to create an investment-ready profile before approaching public markets.</p>
+
+        <p>Rather than relying solely on underwriter-led roadshows, KGP's approach combines:</p>
+
+        <ul>
+          <li><strong>Pre-IPO equity placement</strong> to anchor institutional and strategic investors ahead of listing</li>
+          <li><strong>Corporate restructuring</strong> to optimise the legal holding structure for a US-listed vehicle</li>
+          <li><strong>Financial narrative positioning</strong> — articulating growth stories that resonate with US retail and institutional investors</li>
+          <li><strong>Compliance preparation</strong> — ensuring PCAOB-audited financials, SEC filings, and corporate governance standards are in place</li>
+        </ul>
+
+        <!-- Pull quote -->
+        <div class="pull-quote">
+          <p>"Our goal is not just to get a company listed — it's to ensure they are listing-ready in every dimension: financially, operationally, and in terms of their investor story."</p>
+          <cite>— Patrick Tan, Founder, Key Global Projects</cite>
+        </div>
+
+        <!-- Section 3 -->
+        <h2 id="s3">Why Nasdaq? Why 2024?</h2>
+
+        <p>Nasdaq remains the preferred exchange for growth-oriented SMEs seeking international visibility. With a lower minimum listing threshold compared to NYSE, a deep pool of technology and growth-focused investors, and strong secondary market liquidity, it presents a compelling case for Singapore companies with regional expansion ambitions.</p>
+
+        <div class="article-img" style="height:320px;padding:0;background:none;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80" alt="Nasdaq MarketSite New York" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>
+        </div>
+
+        <p>2024 also presented a favourable window. Interest rate stabilisation in the US, renewed appetite for international equity among US retail investors, and Singapore's strong regulatory reputation as a financial hub all contributed to a receptive market environment.</p>
+
+        <h3>Key Nasdaq Requirements for Foreign Private Issuers</h3>
+
+        <ul>
+          <li>Minimum shareholders' equity of <strong>USD $5 million</strong></li>
+          <li>Market value of listed securities of at least <strong>USD $50 million</strong></li>
+          <li>At least <strong>300 round lot shareholders</strong></li>
+          <li>Minimum bid price of <strong>USD $4 per share</strong> at listing</li>
+          <li>Audited financials prepared under <strong>US GAAP or IFRS</strong>, audited by a PCAOB-registered firm</li>
+        </ul>
+
+        <!-- Section 4 -->
+        <h2 id="s4">What This Means for Singapore SMEs</h2>
+
+        <p>The success of these four listings sends a clear message: a US public listing is no longer the exclusive domain of technology unicorns or large-cap enterprises. Traditional businesses — catering operators, auto parts distributors, industrial service providers — can and do access Nasdaq if they approach the process with the right advisors and a structured preparation timeline.</p>
+
+        <p>For Singapore SMEs considering this path, the key takeaways are:</p>
+
+        <ul>
+          <li>Start preparation <strong>18–24 months in advance</strong> of your target listing date</li>
+          <li>Engage a PCAOB-registered audit firm early in the process</li>
+          <li>Consider whether a traditional IPO or Reverse Takeover (RTO) better suits your timeline and capital requirements</li>
+          <li>Ensure your corporate governance structure meets SEC and Nasdaq standards</li>
+          <li>Build your investor narrative around a clearly articulated, defensible growth story</li>
+        </ul>
+
+        <!-- Section 5 -->
+        <h2 id="s5">Is Your Business Ready?</h2>
+
+        <p>KGP offers a comprehensive IPO Readiness Assessment for Singapore SMEs considering a US listing. Our team of chartered accountants, M&A specialists, and capital market advisors will evaluate your company across financial, legal, governance, and operational dimensions — and provide a clear roadmap to listing.</p>
+
+        <p>Whether you are exploring a traditional Nasdaq IPO or a Reverse Takeover route, our director-led advisory model means you work directly with experienced practitioners, not junior associates.</p>
+
+      </div><!-- /article-content -->
+
+      <!-- Tags -->
+      <div class="article-tags">
+        <span>Tags:</span>
+        <div class="tag">IPO</div>
+        <div class="tag">Nasdaq</div>
+        <div class="tag">Singapore SME</div>
+        <div class="tag">Capital Markets</div>
+        <div class="tag">Equity Design</div>
+        <div class="tag">RTO</div>
+      </div>
+
+      <!-- Share -->
+      <div class="article-share">
+        <span class="share-label">Share</span>
+        <button class="share-btn" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+        <button class="share-btn" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
+        <button class="share-btn" title="Share on Twitter"><i class="fab fa-twitter"></i></button>
+        <button class="share-btn" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></button>
+        <button class="copy-link-btn" onclick="copyLink(this)"><i class="fas fa-link"></i> Copy Link</button>
+      </div>
+
+      <!-- Author -->
+      <div class="author-card">
+        <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+        <div class="author-info">
+          <div class="author-label">Written by</div>
+          <div class="author-name">KGP Advisory Team</div>
+          <div class="author-title">Key Global Projects Pte. Ltd.</div>
+          <div class="author-bio">Our advisory team brings together chartered accountants, M&A specialists, and capital market practitioners with direct experience facilitating Singapore IPOs, RTOs, and cross-border transactions on US exchanges.</div>
+        </div>
+      </div>
+
+      <!-- Related -->
+      <div class="related-section">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <a href="blog-article.html" class="related-card">
+            <div class="related-thumb" style="padding:0;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=75" alt="M&A" style="width:100%;height:130px;object-fit:cover;display:block;"/>
+            </div>
+            <div class="related-body">
+              <div class="related-cat">M&amp;A</div>
+              <h4>The Business Inheritance Problem: How M&A Can Save Traditional Enterprises</h4>
+              <div class="related-meta"><i class="fas fa-calendar-alt"></i> October 2025</div>
+            </div>
+          </a>
+          <a href="blog-article.html" class="related-card">
+            <div class="related-thumb" style="padding:0;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400&q=75" alt="IPO" style="width:100%;height:130px;object-fit:cover;display:block;"/>
+            </div>
+            <div class="related-body">
+              <div class="related-cat">RTO</div>
+              <h4>Reverse Takeover vs. Traditional IPO: Which Path Is Right for You?</h4>
+              <div class="related-meta"><i class="fas fa-calendar-alt"></i> September 2025</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to explore a US listing for your business?</h3>
+        <p>Book a free initial consultation with our directors. No commitment required — just a candid conversation about your options.</p>
+        <a href="index.html#contact" class="btn btn-red" style="display:inline-flex;">
+          Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- ════════ SIDEBAR ════════ -->
+    <aside class="article-sidebar">
+      <div class="sticky-sidebar">
+
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head"><i class="fas fa-list-ul"></i> In This Article</div>
+          <div class="sidebar-card-body">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#s1" class="active"><span class="toc-num">01</span> The Four Companies</a></li>
+              <li><a href="#s2"><span class="toc-num">02</span> The KGP Approach</a></li>
+              <li><a href="#s3"><span class="toc-num">03</span> Why Nasdaq? Why 2024?</a></li>
+              <li><a href="#s4"><span class="toc-num">04</span> What This Means for SMEs</a></li>
+              <li><a href="#s5"><span class="toc-num">05</span> Is Your Business Ready?</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact KGP -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head"><i class="fas fa-phone-alt"></i> Talk to an Advisor</div>
+          <div class="contact-sidebar-body">
+            <div class="csb-item">
+              <div class="csb-icon"><i class="fas fa-phone"></i></div>
+              <div class="csb-text">
+                <div class="csb-label">Phone</div>
+                <div class="csb-val">+65 9456 0451</div>
+              </div>
+            </div>
+            <div class="csb-item">
+              <div class="csb-icon"><i class="fas fa-envelope"></i></div>
+              <div class="csb-text">
+                <div class="csb-label">Email</div>
+                <div class="csb-val">enquiry@keyglobalprojects.com</div>
+              </div>
+            </div>
+            <div class="csb-item">
+              <div class="csb-icon"><i class="fas fa-clock"></i></div>
+              <div class="csb-text">
+                <div class="csb-label">Hours</div>
+                <div class="csb-val">Mon–Fri, 9AM–6PM SGT</div>
+              </div>
+            </div>
+            <button class="csb-cta"><i class="fas fa-calendar-alt"></i> Schedule a Meeting</button>
+          </div>
+        </div>
+
+        <!-- Recent posts -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head"><i class="fas fa-newspaper"></i> Recent Articles</div>
+          <div class="sidebar-card-body">
+            <div class="recent-list">
+              <a href="blog-article.html" class="recent-item">
+                <div class="recent-thumb" style="padding:0;overflow:hidden;border-radius:8px;">
+                  <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=120&q=75" alt="M&A" style="width:62px;height:52px;object-fit:cover;display:block;border-radius:8px;"/>
+                </div>
+                <div class="recent-info">
+                  <div class="recent-cat">M&A</div>
+                  <h5>The Business Inheritance Problem: How M&A Can Save Traditional Enterprises</h5>
+                  <div class="recent-date">October 2025</div>
+                </div>
+              </a>
+              <a href="blog-article.html" class="recent-item">
+                <div class="recent-thumb" style="padding:0;overflow:hidden;border-radius:8px;">
+                  <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=120&q=75" alt="IPO" style="width:62px;height:52px;object-fit:cover;display:block;border-radius:8px;"/>
+                </div>
+                <div class="recent-info">
+                  <div class="recent-cat">RTO</div>
+                  <h5>Reverse Takeover vs. Traditional IPO: Which Path Is Right for You?</h5>
+                  <div class="recent-date">September 2025</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- AdvisorAI promo -->
+        <div class="sidebar-card" style="background:var(--navy); border-color:var(--navy);">
+          <div style="padding:22px; text-align:center;">
+            <div style="width:50px;height:50px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;color:#fff;"><i class="fas fa-robot"></i></div>
+            <div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:8px;">Ask KGP AdvisorAI</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:16px;">Have questions about IPO readiness or M&A? Our AI advisor is available 24/7.</div>
+            <a href="advisorai.html" class="btn btn-red" style="font-size:12px;padding:10px 22px;display:inline-flex;">
+              Chat Now <span class="arr"><i class="fas fa-arrow-right"></i></span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div><!-- /article-layout -->
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-main-wrap">
+      <div class="wrap">
+        <div class="footer-main">
+          <div class="f-brand">
+            <a href="index.html" style="display:inline-block;margin-bottom:14px;">
+              <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;width:auto;object-fit:contain;"/>
+            </a>
+            <p>Inherit Corporate Values, Achieve a Global Future. Singapore's trusted partner for M&A, IPO advisory, and business growth strategies since 2013.</p>
+            <ul class="f-contact">
+              <li><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
+              <li><i class="fas fa-phone"></i> +65 9456 0451</li>
+              <li><i class="fas fa-envelope"></i> enquiry@keyglobalprojects.com</li>
+            </ul>
+            <div class="f-socials">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-weixin"></i></a>
+            </div>
+          </div>
+          <div class="f-col">
+            <h4>Quick Links</h4>
+            <ul class="f-links">
+              <li><a href="index.html#about">About Us</a></li>
+              <li><a href="index.html#services">Our Services</a></li>
+              <li><a href="index.html#cases">Success Stories</a></li>
+              <li><a href="index.html#team">Our Team</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
+              <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="f-col">
+            <h4>Our Services</h4>
+            <ul class="f-links">
+              <li><a href="#">Business Valuation</a></li>
+              <li><a href="#">M&amp;A Planning</a></li>
+              <li><a href="#">IPO Strategies</a></li>
+              <li><a href="#">Corporate Structuring</a></li>
+              <li><a href="#">Business Modernisation</a></li>
+              <li><a href="#">AI Advisory Platform</a></li>
+              <li><a href="#">RTO Execution</a></li>
+            </ul>
+          </div>
+          <div class="f-col">
+            <h4>Book a Consult</h4>
+            <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;margin-bottom:20px;">Ready to explore M&A, IPO, or valuation options? Our consultants are standing by for a free initial session.</p>
+            <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;display:inline-flex;margin-bottom:14px;">
+              Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+            </a>
+            <p style="color:rgba(255,255,255,.4);font-size:12px;">Mon – Fri, 9 AM – 6 PM SGT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bot-wrap">
+      <div class="wrap">
+        <div class="footer-bot">
+          <p>© 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
+          <div class="footer-bot-links">
+            <a href="#">Support</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="kgp-admin-login.html" style="color:rgba(255,255,255,.25);">Admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reading progress bar
+    window.addEventListener('scroll', () => {
+      const body = document.getElementById('articleBody');
+      const rect = body.getBoundingClientRect();
+      const total = body.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = Math.min(100, (scrolled / total) * 100);
+      document.getElementById('read-progress').style.width = pct + '%';
+    });
+
+    // Sticky navbar shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // Active TOC highlight
+    const sections = document.querySelectorAll('.article-content h2[id]');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const tocObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-15% 0px -75% 0px' });
+
+    sections.forEach(s => tocObs.observe(s));
+
+    // Copy link
+    function copyLink(btn) {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        btn.style.color = '#16a34a';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>

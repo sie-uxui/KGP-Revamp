@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Established Italian Restaurant — BizMatch | Key Global Projects</title>
+  <meta name="description" content="Prime-location Italian restaurant with a loyal customer base. Fully equipped kitchen, 60 seats, consistent revenue."/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+  /* ═══════════════════════════════════════════════════════
+     KGP DESIGN SYSTEM
+     Navy: #0d1f4e  |  Red: #d02020  |  Font: Nunito Sans
+  ═══════════════════════════════════════════════════════ */
+  :root {
+    --navy:    #0d1f4e;
+    --navydark:#091638;
+    --red:     #d02020;
+    --reddark: #aa1818;
+    --white:   #ffffff;
+    --offbg:   #f2f4f8;
+    --gray:    #666666;
+    --lgray:   #999999;
+    --border:  #e2e6ef;
+    --shadow:  0 4px 24px rgba(13,31,78,.08);
+    --f:       'Nunito Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--f); color: #333; overflow-x: hidden; background: var(--offbg); }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ul { list-style: none; }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+  .topbar .wrap,
+  .navbar .wrap { max-width: 1350px; padding: 0 28px; }
+
+  .eyebrow { color: var(--red); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 30px; border-radius: 40px;
+    font-family: var(--f); font-weight: 800; font-size: 13.5px;
+    text-transform: uppercase; letter-spacing: .6px;
+    cursor: pointer; border: none; transition: background .2s, transform .15s, box-shadow .2s;
+  }
+  .btn .arr { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  .btn-red  { background: var(--red); color: #fff; box-shadow: 0 6px 20px rgba(208,32,32,.32); }
+  .btn-red:hover  { background: var(--reddark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(208,32,32,.38); }
+  .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 6px 20px rgba(13,31,78,.25); }
+  .btn-navy:hover { background: var(--navydark); transform: translateY(-2px); }
+  .btn-outline { background: #fff; color: var(--navy); border: 2px solid var(--border); box-shadow: none; }
+  .btn-outline:hover { border-color: var(--navy); background: var(--offbg); transform: translateY(-1px); }
+
+  /* ═══ TOPBAR ═══ */
+  .topbar { background: var(--navy); color: rgba(255,255,255,.8); font-size: 13px; font-weight: 600; }
+  .topbar-inner { display: flex; align-items: stretch; justify-content: space-between; min-height: 44px; }
+  .topbar-left { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; padding: 8px 0; }
+  .topbar-left span { display: flex; align-items: center; gap: 7px; }
+  .topbar-left i { color: var(--red); font-size: 12px; }
+  .topbar-right {
+    display: flex; align-items: stretch;
+    background: var(--red);
+    clip-path: polygon(28px 0%, 100% 0%, 100% 100%, 0% 100%);
+    padding-left: 28px; margin-right: -28px; align-self: stretch;
+  }
+  .topbar-right a {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; color: #fff; font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,.15); transition: background .2s;
+  }
+  .topbar-right a:last-child { border-right: none; }
+  .topbar-right a:hover { background: rgba(255,255,255,.15); }
+
+  /* ═══ NAVBAR ═══ */
+  .navbar {
+    background: #fff; position: sticky; top: 0; z-index: 900;
+    box-shadow: 0 3px 20px rgba(13,31,78,.09);
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 16px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-words .en { font-size: 22px; font-weight: 900; color: var(--navy); text-transform: uppercase; line-height: 1.1; letter-spacing: -.2px; }
+  .logo-words .en span { color: var(--red); }
+  .logo-words .zh { font-size: 10.5px; color: var(--lgray); letter-spacing: 2.5px; font-weight: 700; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; }
+  .nav-links a {
+    font-size: 13px; font-weight: 800; color: var(--navy);
+    padding: 8px 13px; text-transform: uppercase; letter-spacing: .4px;
+    position: relative; transition: color .2s; white-space: nowrap;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 2px; left: 13px; right: 13px;
+    height: 2px; background: var(--red); transform: scaleX(0);
+    transform-origin: left; transition: transform .25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2.5px; background: var(--navy); border-radius: 2px; }
+  .mobile-nav { display: none; background: #fff; border-top: 2px solid var(--red); box-shadow: 0 8px 24px rgba(13,31,78,.12); }
+  .mobile-nav.open { display: block; }
+  .mobile-nav a { display: block; padding: 14px 28px; font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--navy); border-bottom: 1px solid var(--border); letter-spacing: .4px; }
+  .mobile-nav a:hover, .mobile-nav a.active { color: var(--red); background: rgba(208,32,32,.04); }
+  .mobile-nav .mn-cta { padding: 18px 28px; }
+
+  /* ═══ PAGE LAYOUT ═══ */
+  .page-main { padding: 40px 0 80px; }
+  .page-layout { display: grid; grid-template-columns: 1fr 360px; gap: 36px; align-items: start; }
+
+  /* ═══ LEFT COLUMN ═══ */
+
+  /* Image Carousel */
+  .carousel { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 28px; position: relative; }
+  .carousel-main { position: relative; height: 440px; overflow: hidden; background: #c8d0e0; }
+  .carousel-main img { width: 100%; height: 100%; object-fit: cover; transition: opacity .4s ease; }
+  .carousel-badge-area { position: absolute; top: 16px; left: 16px; display: flex; gap: 8px; flex-wrap: wrap; z-index: 3; }
+  .badge { padding: 5px 12px; border-radius: 40px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; }
+  .b-feat { background: var(--red); color: #fff; }
+  .b-kgp  { background: rgba(13,31,78,.85); border: 1px solid rgba(255,255,255,.22); color: #fff; }
+  .b-ind  { background: rgba(13,31,78,.8); color: #fff; }
+  .carousel-counter { position: absolute; bottom: 16px; right: 16px; background: rgba(0,0,0,.55); color: #fff; font-size: 12px; font-weight: 800; padding: 5px 12px; border-radius: 20px; z-index: 3; }
+  .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; display: flex; justify-content: space-between; width: 100%; padding: 0 14px; pointer-events: none; }
+  .cn-btn { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.92); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; color: var(--navy); box-shadow: 0 4px 16px rgba(0,0,0,.18); transition: all .2s; pointer-events: all; }
+  .cn-btn:hover { background: #fff; transform: scale(1.08); }
+  .carousel-thumbs { display: flex; gap: 8px; padding: 14px 16px; overflow-x: auto; }
+  .carousel-thumbs::-webkit-scrollbar { height: 3px; }
+  .carousel-thumbs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  .ct { width: 80px; height: 58px; border-radius: 8px; overflow: hidden; flex-shrink: 0; cursor: pointer; border: 3px solid transparent; transition: border-color .2s, opacity .2s; opacity: .6; }
+  .ct img { width: 100%; height: 100%; object-fit: cover; }
+  .ct.active { border-color: var(--red); opacity: 1; }
+  .ct:hover { opacity: .9; }
+
+  /* Overview Card */
+  .card { background: #fff; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 28px; overflow: hidden; }
+  .card-head { padding: 22px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .card-head h3 { font-size: 15px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .7px; }
+  .card-head i { color: var(--red); font-size: 14px; }
+  .card-body { padding: 24px 28px; }
+
+  /* Key Facts Grid */
+  .kf-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+  .kf { background: #fff; padding: 18px 16px; text-align: center; }
+  .kf-lbl { font-size: 11px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; }
+  .kf-val { font-size: 18px; font-weight: 900; color: var(--navy); line-height: 1.1; }
+  .kf-val.red { color: var(--red); }
+  .kf-sub { font-size: 11.5px; color: var(--lgray); font-weight: 600; margin-top: 3px; }
+
+  /* Description */
+  .desc-text { font-size: 14.5px; color: #444; line-height: 1.82; }
+  .desc-text p { margin-bottom: 16px; }
+  .desc-text p:last-child { margin-bottom: 0; }
+  .desc-text strong { color: var(--navy); font-weight: 800; }
+
+  /* Business Details list */
+  .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .detail-row { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; background: var(--offbg); border-radius: 10px; border: 1px solid var(--border); }
+  .detail-lbl { font-size: 11px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: 1px; }
+  .detail-val { font-size: 14px; font-weight: 800; color: var(--navy); }
+
+  /* Financials */
+  .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fin-card { background: var(--offbg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  .fin-card.highlight { background: linear-gradient(135deg, var(--navy), #162861); border-color: transparent; }
+  .fin-lbl { font-size: 11px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .fin-card.highlight .fin-lbl { color: rgba(255,255,255,.55); }
+  .fin-val { font-size: 22px; font-weight: 900; color: var(--navy); line-height: 1; }
+  .fin-card.highlight .fin-val { color: #fff; }
+  .fin-note { font-size: 12px; color: var(--lgray); font-weight: 600; margin-top: 4px; }
+  .fin-card.highlight .fin-note { color: rgba(255,255,255,.5); }
+
+  /* ═══ RIGHT COLUMN — STICKY SIDEBAR ═══ */
+  .sticky-sidebar { position: sticky; top: 92px; display: flex; flex-direction: column; gap: 20px; }
+
+  /* Price + CTA Card */
+  .cta-card { background: #fff; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+  .cta-price-area { background: var(--navy); padding: 26px 28px; }
+  .cta-price-lbl { font-size: 11px; font-weight: 900; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .cta-price { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
+  .cta-price span { color: var(--red); }
+  .cta-price-sub { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 5px; font-weight: 600; }
+  .cta-match { display: inline-flex; align-items: center; gap: 7px; background: rgba(34,197,94,.15); border: 1px solid rgba(34,197,94,.3); color: #4ade80; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; padding: 5px 12px; border-radius: 40px; margin-top: 12px; }
+  .cta-body { padding: 24px 28px; }
+  .cta-actions { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .cta-actions .btn { width: 100%; justify-content: center; font-size: 14px; padding: 15px 20px; }
+  .cta-actions .btn-save-full { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 13px; border-radius: 40px; border: 2px solid var(--border); background: var(--offbg); color: var(--navy); font-family: var(--f); font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; transition: all .2s; }
+  .cta-actions .btn-save-full:hover { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.04); }
+  .cta-actions .btn-save-full.saved { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.06); }
+  .cta-divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .cta-actions-row { display: flex; gap: 10px; }
+  .cta-icon-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px; border-radius: 10px; border: 1.5px solid var(--border); background: var(--offbg); color: var(--navy); font-family: var(--f); font-size: 12.5px; font-weight: 800; cursor: pointer; transition: all .2s; }
+  .cta-icon-btn:hover { border-color: var(--navy); background: #fff; }
+  .cta-note { display: flex; align-items: flex-start; gap: 8px; background: rgba(208,32,32,.04); border: 1px solid rgba(208,32,32,.12); border-radius: 10px; padding: 12px 14px; font-size: 12.5px; color: var(--gray); line-height: 1.55; margin-top: 16px; }
+  .cta-note i { color: var(--red); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+
+  /* Consultant Card */
+  .consultant-card { background: var(--navy); border-radius: 16px; padding: 24px; }
+  .cc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .cc-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; flex-shrink: 0; }
+  .cc-name { font-size: 15px; font-weight: 900; color: #fff; }
+  .cc-title { font-size: 12px; color: rgba(255,255,255,.55); font-weight: 600; margin-top: 2px; }
+  .cc-contacts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+  .cc-contact { display: flex; align-items: center; gap: 9px; font-size: 13px; color: rgba(255,255,255,.7); font-weight: 600; }
+  .cc-contact i { color: var(--red); width: 14px; flex-shrink: 0; font-size: 12px; }
+  .cc-contact a { color: inherit; transition: color .2s; }
+  .cc-contact a:hover { color: #fff; }
+  .cc-btn { display: block; width: 100%; background: var(--red); color: #fff; border: none; padding: 13px; border-radius: 40px; font-family: var(--f); font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; transition: background .2s; text-align: center; }
+  .cc-btn:hover { background: var(--reddark); }
+
+  /* Source tag */
+  .source-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--offbg); border: 1px solid var(--border); color: var(--lgray); font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 40px; }
+  .source-tag i { font-size: 10px; color: var(--red); }
+
+  /* ═══ RELATED LISTINGS ═══ */
+  .related-section { padding: 56px 0 80px; background: var(--offbg); border-top: 1px solid var(--border); }
+  .related-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; gap: 20px; }
+  .related-head h2 { font-size: 26px; font-weight: 900; color: var(--navy); }
+  .related-head h2 span { color: var(--red); }
+  .related-head a { font-size: 13px; font-weight: 800; color: var(--red); text-transform: uppercase; letter-spacing: .5px; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+  .related-head a:hover { text-decoration: underline; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  /* Related Card (compact) */
+  .rcard { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; cursor: pointer; border: 1.5px solid var(--border); opacity: 0; transform: translateY(20px); animation: cardIn .45s ease forwards; }
+  .rcard:nth-child(1){animation-delay:.05s} .rcard:nth-child(2){animation-delay:.12s} .rcard:nth-child(3){animation-delay:.19s}
+  @keyframes cardIn { to { opacity: 1; transform: none; } }
+  .rcard:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(13,31,78,.13); border-color: #c4cce2; }
+  .rcard-photo { height: 170px; overflow: hidden; position: relative; background: #c8d0e0; flex-shrink: 0; }
+  .rcard-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .rcard:hover .rcard-photo img { transform: scale(1.05); }
+  .rcard-body { padding: 16px 18px 14px; display: flex; flex-direction: column; flex: 1; }
+  .rcard-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .rcard-meta span { font-size: 12px; color: var(--gray); font-weight: 600; display: flex; align-items: center; gap: 4px; }
+  .rcard-meta i { color: var(--red); font-size: 10.5px; }
+  .rcard-body h4 { font-size: 15px; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+  .rcard-desc { font-size: 13px; color: var(--gray); line-height: 1.6; flex: 1; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .rcard-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--border); }
+  .rcard-price { font-size: 16px; font-weight: 900; color: var(--navy); }
+  .rcard-price small { font-size: 11px; color: var(--lgray); font-weight: 600; display: block; }
+  .rcard-ms { display: flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .3px; padding: 4px 10px; border-radius: 6px; }
+  .ms-hi  { background: rgba(22,163,74,.1); color: #16a34a; }
+  .ms-med { background: rgba(180,83,9,.1); color: #b45309; }
+
+  /* ═══ MODALS ═══ */
+  .modal-bg { display: none; position: fixed; inset: 0; z-index: 9800; background: rgba(13,31,78,.72); backdrop-filter: blur(5px); }
+  .modal-bg.open { display: block; }
+  .modal-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-58%); opacity: 0; z-index: 9900; width: 94%; max-width: 560px; background: #fff; border-radius: 18px; box-shadow: 0 28px 72px rgba(13,31,78,.3); overflow: hidden; transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .28s; }
+  .modal-box.open { display: block; transform: translate(-50%,-50%); opacity: 1; }
+  .mh { background: var(--navy); padding: 26px 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+  .mh-left { display: flex; align-items: center; gap: 14px; }
+  .mh-ico { width: 50px; height: 50px; background: var(--red); border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mh-ico i { font-size: 21px; color: #fff; }
+  .mh h3 { color: #fff; font-size: 19px; font-weight: 900; }
+  .mh p { color: rgba(255,255,255,.58); font-size: 13.5px; margin-top: 3px; }
+  .mh-close { background: rgba(255,255,255,.1); border: none; color: rgba(255,255,255,.65); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; transition: background .2s; margin-top: 2px; }
+  .mh-close:hover { background: var(--red); color: #fff; }
+  .mb { padding: 28px 30px; max-height: 72vh; overflow-y: auto; }
+  .mb::-webkit-scrollbar { width: 4px; }
+  .mb::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  .ff { margin-bottom: 15px; }
+  .ff label { display: block; font-size: 12.5px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .7px; margin-bottom: 7px; }
+  .ff input, .ff textarea, .ff select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 8px; font-family: var(--f); font-size: 14px; color: #222; background: var(--offbg); outline: none; transition: border-color .2s; }
+  .ff input:focus, .ff textarea:focus { border-color: var(--red); background: #fff; }
+  .ff textarea { resize: vertical; min-height: 88px; }
+  .ff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .m-note { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; background: var(--offbg); border-radius: 8px; padding: 12px 15px; font-size: 13px; color: var(--gray); line-height: 1.55; }
+  .m-note i { color: var(--red); font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+  .m-submit { width: 100%; padding: 15px; background: var(--red); color: #fff; border: none; border-radius: 40px; font-family: var(--f); font-size: 14.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .18s, transform .15s; box-shadow: 0 6px 20px rgba(208,32,32,.32); }
+  .m-submit:hover { background: var(--reddark); transform: translateY(-2px); }
+  .m-success { display: none; text-align: center; padding: 44px 30px; }
+  .m-success.show { display: block; }
+  .m-success-ico { width: 80px; height: 80px; background: rgba(22,163,74,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .m-success-ico i { font-size: 36px; color: #16a34a; }
+  .m-success h3 { font-size: 23px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+  .m-success p { color: var(--gray); font-size: 14.5px; line-height: 1.72; margin-bottom: 24px; }
+  .calendly-placeholder { background: var(--offbg); border: 2px dashed var(--border); border-radius: 12px; min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 28px; margin-bottom: 20px; }
+  .calendly-placeholder i { font-size: 36px; color: var(--border); }
+  .calendly-placeholder span { font-size: 13px; color: var(--lgray); font-weight: 700; }
+  .calendly-placeholder small { font-size: 11.5px; color: #bbb; }
+
+  /* ═══ FOOTER ═══ */
+  footer { position: relative; color: rgba(255,255,255,.82); overflow: hidden; }
+  footer::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=70') center/cover no-repeat; z-index: 0; }
+  .footer-main-wrap { position: relative; z-index: 1; background: rgba(13,31,78,.88); }
+  .footer-main { display: grid; grid-template-columns: 2fr 1.2fr 1.4fr 1.6fr; gap: 48px; padding: 72px 0 48px; }
+  .f-brand p { font-size: 14px; line-height: 1.8; margin: 16px 0 18px; }
+  .f-contact { list-style: none; }
+  .f-contact li { display: flex; align-items: center; gap: 9px; font-size: 14px; margin-bottom: 9px; }
+  .f-contact li i { color: var(--red); width: 14px; flex-shrink: 0; }
+  .f-socials { display: flex; gap: 8px; margin-top: 20px; }
+  .f-socials a { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; transition: background .2s; }
+  .f-socials a:hover { background: #fff; color: var(--red); }
+  .f-col h4 { font-size: 18px; font-weight: 900; color: #fff; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 3px solid var(--red); display: inline-block; }
+  .f-links { list-style: none; }
+  .f-links li { margin-bottom: 10px; }
+  .f-links a { color: rgba(255,255,255,.65); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+  .f-links a::before { content: '▸'; color: var(--red); font-size: 11px; }
+  .f-links a:hover { color: #fff; }
+  .footer-bot-wrap { position: relative; z-index: 1; background: #0b1a41; }
+  .footer-bot { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bot p { font-size: 13px; color: rgba(255,255,255,.65); }
+  .footer-bot span { color: var(--red); }
+  .footer-bot-links { display: flex; gap: 24px; }
+  .footer-bot-links a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s; font-weight: 600; }
+  .footer-bot-links a:hover { color: #fff; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:1024px){
+    .page-layout { grid-template-columns: 1fr; }
+    .sticky-sidebar { position: static; }
+    .cta-card, .consultant-card { max-width: 520px; }
+    .related-grid { grid-template-columns: 1fr 1fr; }
+    .footer-main { grid-template-columns: 1fr 1fr; }
+  }
+  @media(max-width:768px){
+    .carousel-main { height: 280px; }
+    .kf-grid { grid-template-columns: 1fr 1fr; }
+    .details-grid { grid-template-columns: 1fr; }
+    .fin-grid { grid-template-columns: 1fr; }
+    .related-grid { grid-template-columns: 1fr; }
+    .ff-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .footer-main { grid-template-columns: 1fr; }
+    .related-head { flex-direction: column; align-items: flex-start; }
+  }
+  @media(max-width:480px){
+    .cta-price { font-size: 28px; }
+    .cta-actions-row { flex-direction: column; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- ════ TOPBAR ════ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i>+65 9456 0451</span>
+        <span><i class="fas fa-envelope"></i>info@keyglobalprojects.com</span>
+        <span><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WeChat"><i class="fab fa-weixin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar">
+  <div class="wrap">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;width:auto;object-fit:contain;">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#cases">Cases</a>
+        <a href="index.html#team">Team</a>
+        <a href="index.html#blog">Blog</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="bizmatch.html" class="active">BizMatch +</a>
+      </div>
+      <a href="index.html#contact" class="btn btn-red" style="padding:12px 22px;font-size:12.5px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="bizmatch.html" class="active">BizMatch +</a>
+    <div class="mn-cta">
+      <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;">
+        Get Quote <span class="arr"><i class="fas fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+
+<!-- ════ MAIN PAGE ════ -->
+<div class="page-main">
+  <div class="wrap">
+
+    <!-- Listing title row -->
+    <div style="margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+          <span class="badge b-feat">Featured</span>
+          <span class="badge b-kgp"><i class="fas fa-key" style="margin-right:4px;font-size:10px;"></i>KGP Listed</span>
+          <span class="badge b-ind"><i class="fas fa-utensils" style="margin-right:5px;"></i>F&amp;B / Restaurant</span>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.25);color:#16a34a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:4px 12px;border-radius:40px;">
+            <i class="fas fa-bolt"></i> High Match
+          </div>
+        </div>
+        <h1 style="font-size:32px;font-weight:900;color:var(--navy);line-height:1.15;margin-bottom:10px;">Established Italian Restaurant</h1>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--gray);"><i class="fas fa-map-marker-alt" style="color:var(--red);"></i>Central, Singapore</span>
+          <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--gray);"><i class="fas fa-calendar-alt" style="color:var(--red);"></i>Est. 2015 · 9 years in operation</span>
+          <span class="source-tag"><i class="fas fa-check-circle"></i>Verified Listing</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+        <button class="cta-icon-btn" onclick="handleSave(this)" style="padding:10px 16px;border-radius:40px;">
+          <i class="far fa-heart" id="saveIconTop"></i> <span id="saveLabelTop">Save</span>
+        </button>
+        <button class="cta-icon-btn" onclick="handleShare()" style="padding:10px 16px;border-radius:40px;">
+          <i class="fas fa-share-alt"></i> Share
+        </button>
+      </div>
+    </div>
+
+    <div class="page-layout">
+
+      <!-- ══ LEFT ══ -->
+      <div>
+
+        <!-- Image Carousel -->
+        <div class="carousel">
+          <div class="carousel-main" id="carouselMain">
+            <img id="carouselImg" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&h=600&fit=crop" alt="Restaurant interior"/>
+            <div class="carousel-badge-area">
+              <span class="badge b-feat">Featured</span>
+              <span class="badge b-kgp">KGP Listed</span>
+            </div>
+            <div class="carousel-counter"><span id="carouselCurrent">1</span> / <span id="carouselTotal">5</span></div>
+            <div class="carousel-nav">
+              <button class="cn-btn" onclick="carouselPrev()"><i class="fas fa-chevron-left"></i></button>
+              <button class="cn-btn" onclick="carouselNext()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+          <div class="carousel-thumbs" id="carouselThumbs">
+            <div class="ct active" onclick="goToSlide(0)"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=160&h=120&fit=crop" alt=""/></div>
+            <div class="ct" onclick="goToSlide(1)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=160&h=120&fit=crop" alt=""/></div>
+            <div class="ct" onclick="goToSlide(2)"><img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=160&h=120&fit=crop" alt=""/></div>
+            <div class="ct" onclick="goToSlide(3)"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=160&h=120&fit=crop" alt=""/></div>
+            <div class="ct" onclick="goToSlide(4)"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=160&h=120&fit=crop" alt=""/></div>
+          </div>
+        </div>
+
+        <!-- Key Facts -->
+        <div class="card">
+          <div class="card-head">
+            <i class="fas fa-chart-bar"></i>
+            <h3>Key Highlights</h3>
+          </div>
+          <div class="card-body">
+            <div class="kf-grid">
+              <div class="kf">
+                <div class="kf-lbl">Annual Revenue</div>
+                <div class="kf-val">~$1.2M</div>
+                <div class="kf-sub">per year</div>
+              </div>
+              <div class="kf">
+                <div class="kf-lbl">Asking Price</div>
+                <div class="kf-val red">$850K</div>
+                <div class="kf-sub">SGD</div>
+              </div>
+              <div class="kf">
+                <div class="kf-lbl">Price/Revenue</div>
+                <div class="kf-val">0.7×</div>
+                <div class="kf-sub">ratio</div>
+              </div>
+              <div class="kf">
+                <div class="kf-lbl">Staff</div>
+                <div class="kf-val">12 FTE</div>
+                <div class="kf-sub">full-time</div>
+              </div>
+              <div class="kf">
+                <div class="kf-lbl">Seating</div>
+                <div class="kf-val">60</div>
+                <div class="kf-sub">covers</div>
+              </div>
+              <div class="kf">
+                <div class="kf-lbl">Years Active</div>
+                <div class="kf-val">9 yrs</div>
+                <div class="kf-sub">since 2015</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Overview -->
+        <div class="card">
+          <div class="card-head">
+            <i class="fas fa-file-alt"></i>
+            <h3>Business Overview</h3>
+          </div>
+          <div class="card-body">
+            <div class="desc-text">
+              <p>A well-established Italian restaurant operating from a prime CBD location, with a loyal customer base built over nearly a decade. The business benefits from consistent walk-in traffic as well as a strong repeat patronage from nearby office workers and residents.</p>
+              <p>The fully equipped kitchen features professional-grade Italian appliances capable of supporting a high-volume service. The 60-seat dining room is designed to accommodate both casual dining and private group bookings, which contribute meaningfully to overall revenue. Strong brand presence in the Central Business District supported by consistent Google and TripAdvisor ratings.</p>
+              <p><strong>Reason for sale:</strong> Owner is relocating overseas for personal reasons and wishes to ensure business continuity under new management. Full handover support and staff retention planned during transition.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Details -->
+        <div class="card">
+          <div class="card-head">
+            <i class="fas fa-info-circle"></i>
+            <h3>Business Details</h3>
+          </div>
+          <div class="card-body">
+            <div class="details-grid">
+              <div class="detail-row">
+                <span class="detail-lbl">Business Type</span>
+                <span class="detail-val">F&B / Restaurant</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-lbl">Location</span>
+                <span class="detail-val">Central, Singapore</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-lbl">Year Established</span>
+                <span class="detail-val">2015</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-lbl">Years in Operation</span>
+                <span class="detail-val">9 years</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-lbl">Cuisine Type</span>
+                <span class="detail-val">Italian / Mediterranean</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-lbl">Operating Hours</span>
+                <span class="detail-val">Mon–Sun, 11AM–10PM</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-lbl">Lease Remaining</span>
+                <span class="detail-val">3+ years</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-lbl">Ownership Type</span>
+                <span class="detail-val">100% Acquisition</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Financials -->
+        <div class="card">
+          <div class="card-head">
+            <i class="fas fa-dollar-sign"></i>
+            <h3>Financial Summary</h3>
+          </div>
+          <div class="card-body">
+            <div style="background:rgba(208,32,32,.04);border:1px solid rgba(208,32,32,.14);border-radius:10px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--gray);line-height:1.55;">
+              <i class="fas fa-lock" style="color:var(--red);margin-top:1px;flex-shrink:0;"></i>
+              Full financials including audited P&L, balance sheets, and lease details are available upon signing an NDA. Express interest below to receive the full information pack.
+            </div>
+            <div class="fin-grid">
+              <div class="fin-card highlight">
+                <div class="fin-lbl">Asking Price</div>
+                <div class="fin-val">$850,000</div>
+                <div class="fin-note">SGD — Negotiable</div>
+              </div>
+              <div class="fin-card">
+                <div class="fin-lbl">Annual Revenue</div>
+                <div class="fin-val">~$1.2M</div>
+                <div class="fin-note">Estimated FY2024</div>
+              </div>
+              <div class="fin-card">
+                <div class="fin-lbl">Monthly Gross</div>
+                <div class="fin-val">~$100K</div>
+                <div class="fin-note">Average, last 12 months</div>
+              </div>
+              <div class="fin-card">
+                <div class="fin-lbl">Staff Cost</div>
+                <div class="fin-val">12 FTE</div>
+                <div class="fin-note">Retained on acquisition</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why This Business -->
+        <div class="card">
+          <div class="card-head">
+            <i class="fas fa-star"></i>
+            <h3>Why This Business</h3>
+          </div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:flex-start;gap:14px;padding:14px;background:var(--offbg);border-radius:10px;border:1px solid var(--border);">
+                <div style="width:36px;height:36px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-map-pin" style="color:#fff;font-size:14px;"></i></div>
+                <div><div style="font-size:14px;font-weight:900;color:var(--navy);margin-bottom:3px;">Prime CBD Location</div><div style="font-size:13px;color:var(--gray);line-height:1.55;">High foot traffic from surrounding offices and residences, with strong lunchtime and dinner covers.</div></div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:14px;padding:14px;background:var(--offbg);border-radius:10px;border:1px solid var(--border);">
+                <div style="width:36px;height:36px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-users" style="color:#fff;font-size:14px;"></i></div>
+                <div><div style="font-size:14px;font-weight:900;color:var(--navy);margin-bottom:3px;">Loyal Customer Base</div><div style="font-size:13px;color:var(--gray);line-height:1.55;">9 years of consistent repeat business with strong TripAdvisor and Google ratings averaging 4.4/5.</div></div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:14px;padding:14px;background:var(--offbg);border-radius:10px;border:1px solid var(--border);">
+                <div style="width:36px;height:36px;border-radius:8px;background:#16a34a;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-handshake" style="color:#fff;font-size:14px;"></i></div>
+                <div><div style="font-size:14px;font-weight:900;color:var(--navy);margin-bottom:3px;">Full Handover Support</div><div style="font-size:13px;color:var(--gray);line-height:1.55;">Seller committed to a 3-month transition period to ensure smooth knowledge transfer and staff continuity.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /left column -->
+
+      <!-- ══ RIGHT: STICKY SIDEBAR ══ -->
+      <div class="sticky-sidebar">
+
+        <!-- Price + CTA Card -->
+        <div class="cta-card">
+          <div class="cta-price-area">
+            <div class="cta-price-lbl">Asking Price (SGD)</div>
+            <div class="cta-price">$<span>850</span>,000</div>
+            <div class="cta-price-sub">Negotiable · 100% Acquisition</div>
+            <div class="cta-match"><i class="fas fa-bolt"></i> High Match — Score 91/100</div>
+          </div>
+          <div class="cta-body">
+            <div class="cta-actions">
+              <button class="btn btn-red" onclick="openInterestModal()">
+                <i class="fas fa-handshake"></i> I'm Interested
+              </button>
+              <button class="btn-save-full" id="saveBtnMain" onclick="handleSave(this)">
+                <i class="far fa-heart" id="saveIconMain"></i>
+                <span id="saveLabelMain">Save Listing</span>
+              </button>
+            </div>
+            <div class="cta-divider"></div>
+            <div class="cta-actions-row">
+              <button class="cta-icon-btn" onclick="handleShare()">
+                <i class="fas fa-share-alt"></i> Share
+              </button>
+              <button class="cta-icon-btn" onclick="handlePrint()">
+                <i class="fas fa-print"></i> Print
+              </button>
+              <button class="cta-icon-btn" onclick="handleCompare()">
+                <i class="fas fa-columns"></i> Compare
+              </button>
+            </div>
+            <div class="cta-note">
+              <i class="fas fa-shield-alt"></i>
+              Your enquiry is strictly confidential. Source details are never shared with third parties.
+            </div>
+          </div>
+        </div>
+
+        <!-- KGP Consultant Card -->
+        <div class="consultant-card">
+          <div class="cc-head">
+            <div class="cc-avatar"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="cc-name">KGP M&amp;A Consultant</div>
+              <div class="cc-title">Key Global Projects Pte. Ltd.</div>
+            </div>
+          </div>
+          <div class="cc-contacts">
+            <div class="cc-contact"><i class="fas fa-phone"></i>+65 9456 0451</div>
+            <div class="cc-contact"><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com">info@keyglobalprojects.com</a></div>
+            <div class="cc-contact"><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07</div>
+          </div>
+          <button class="cc-btn" onclick="openInterestModal()">
+            <i class="fas fa-calendar-alt" style="margin-right:8px;"></i>Schedule a Free Consultation
+          </button>
+        </div>
+
+        <!-- Listing Meta -->
+        <div style="background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:20px 22px;">
+          <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;">Listing Info</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:13.5px;">
+              <span style="color:var(--gray);font-weight:600;">Listed</span>
+              <span style="color:var(--navy);font-weight:800;">3 days ago</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:13.5px;">
+              <span style="color:var(--gray);font-weight:600;">Listing ID</span>
+              <span style="color:var(--navy);font-weight:800;">KGP-2026-0041</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:13.5px;">
+              <span style="color:var(--gray);font-weight:600;">Views</span>
+              <span style="color:var(--navy);font-weight:800;">148 this week</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:13.5px;">
+              <span style="color:var(--gray);font-weight:600;">Enquiries</span>
+              <span style="color:var(--red);font-weight:800;">6 interested</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#16a34a;flex-shrink:0;"></div>
+            <span style="font-size:13px;color:var(--gray);font-weight:600;">Listing active and verified</span>
+          </div>
+        </div>
+
+      </div><!-- /sticky sidebar -->
+
+    </div><!-- /page-layout -->
+  </div><!-- /wrap -->
+</div><!-- /page-main -->
+
+<!-- ════ RELATED LISTINGS ════ -->
+<section class="related-section">
+  <div class="wrap">
+    <div class="related-head">
+      <div>
+        <span class="eyebrow">You May Also Like</span>
+        <h2>Similar <span>Listings</span></h2>
+      </div>
+      <a href="bizmatch.html">View All F&amp;B Listings <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="related-grid">
+
+      <!-- Related 1 -->
+      <div class="rcard" onclick="window.location='bizmatch-listing.html'">
+        <div class="rcard-photo">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+          <span class="badge btl b-new" style="position:absolute;top:10px;left:10px;">New</span>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-meta">
+            <span><i class="fas fa-map-marker-alt"></i>North</span>
+            <span><i class="fas fa-utensils"></i>F&amp;B</span>
+          </div>
+          <h4>Specialty Coffee Cafe</h4>
+          <p class="rcard-desc">Instagram-worthy cafe with strong social media following. Turnkey operation with trained staff and strong weekend footfall.</p>
+          <div class="rcard-foot">
+            <div class="rcard-price">$250,000 <small>Asking Price</small></div>
+            <div class="rcard-ms ms-hi"><i class="fas fa-bolt"></i> High</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related 2 -->
+      <div class="rcard" onclick="window.location='bizmatch-listing.html'">
+        <div class="rcard-photo">
+          <div style="background:linear-gradient(135deg,#c8930a,#8a5e00);width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-glass-cheers" style="font-size:54px;color:rgba(255,255,255,.2);"></i>
+          </div>
+          <span class="badge" style="position:absolute;top:10px;left:10px;background:#ea7c00;color:#fff;">Hot Deal</span>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-meta">
+            <span><i class="fas fa-map-marker-alt"></i>Central</span>
+            <span><i class="fas fa-utensils"></i>F&amp;B</span>
+          </div>
+          <h4>Craft Beer Bar &amp; Taproom</h4>
+          <p class="rcard-desc">Trendy bar with high foot traffic and strong weekend revenue. Corporate event hosting capability.</p>
+          <div class="rcard-foot">
+            <div class="rcard-price">$540,000 <small>Asking Price</small></div>
+            <div class="rcard-ms ms-med"><i class="fas fa-signal"></i> Med</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related 3 -->
+      <div class="rcard" onclick="window.location='bizmatch-listing.html'">
+        <div class="rcard-photo">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="" loading="lazy"/>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-meta">
+            <span><i class="fas fa-map-marker-alt"></i>East</span>
+            <span><i class="fas fa-utensils"></i>F&amp;B</span>
+          </div>
+          <h4>Japanese Omakase Restaurant</h4>
+          <p class="rcard-desc">Intimate 20-seat omakase concept with premium positioning. Strong advance reservations and high average spend per cover.</p>
+          <div class="rcard-foot">
+            <div class="rcard-price">$420,000 <small>Asking Price</small></div>
+            <div class="rcard-ms ms-hi"><i class="fas fa-bolt"></i> High</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ INTEREST MODAL ════ -->
+<div class="modal-bg" id="modalBg" onclick="closeInterestModal()"></div>
+<div class="modal-box" id="interestModal">
+  <div class="mh">
+    <div class="mh-left">
+      <div class="mh-ico"><i class="fas fa-handshake"></i></div>
+      <div>
+        <h3>Express Your Interest</h3>
+        <p>Established Italian Restaurant</p>
+      </div>
+    </div>
+    <button class="mh-close" onclick="closeInterestModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="modalFormWrap">
+    <div class="mb">
+      <div class="ff-row">
+        <div class="ff"><label>Your Name *</label><input type="text" id="iName" placeholder="John Tan"/></div>
+        <div class="ff"><label>Email Address *</label><input type="email" id="iEmail" placeholder="john@company.com"/></div>
+      </div>
+      <div class="ff-row">
+        <div class="ff"><label>Phone Number</label><input type="tel" id="iPhone" placeholder="+65 9123 4567"/></div>
+        <div class="ff"><label>Company Name</label><input type="text" id="iCompany" placeholder="Company Pte Ltd"/></div>
+      </div>
+      <div class="ff"><label>Message (Optional)</label><textarea id="iMsg" placeholder="Tell us about your interest, budget confirmation, or any questions about this listing…"></textarea></div>
+      <button class="m-submit" onclick="submitInterest()"><i class="fas fa-paper-plane"></i> Submit Interest</button>
+      <div class="m-note"><i class="fas fa-shield-alt"></i> Your information is strictly confidential. A KGP consultant will contact you within 1 business day.</div>
+    </div>
+  </div>
+  <div class="m-success" id="modalSuccess">
+    <div class="m-success-ico"><i class="fas fa-check"></i></div>
+    <h3>Interest Submitted!</h3>
+    <p>Thank you. A Key Global Projects consultant will reach out within <strong>1 business day</strong> regarding <strong>Established Italian Restaurant</strong>.</p>
+    <div class="calendly-placeholder">
+      <i class="fas fa-calendar-check"></i>
+      <span>Calendly Booking Widget</span>
+      <small>Schedule a consultation immediately</small>
+    </div>
+    <div style="background:var(--offbg);border-radius:12px;padding:18px 20px;text-align:left;margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">KGP Contact Details</div>
+      <div style="font-size:13.5px;color:var(--navy);display:flex;flex-direction:column;gap:7px;">
+        <span><i class="fas fa-phone" style="color:var(--red);width:16px;"></i> +65 9456 0451</span>
+        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> info@keyglobalprojects.com</span>
+        <span><i class="fas fa-map-marker-alt" style="color:var(--red);width:16px;"></i> 47 Kallang Pudding Rd, #11-07</span>
+      </div>
+    </div>
+    <button class="btn btn-red" onclick="closeInterestModal()" style="margin:0 auto;">
+      Close <span class="arr"><i class="fas fa-times"></i></span>
+    </button>
+  </div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-main-wrap">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="f-brand">
+          <a href="index.html" style="display:inline-block;margin-bottom:14px;">
+            <img src="KGP-Logo.png" alt="Key Global Projects" style="height:48px;width:auto;object-fit:contain;">
+          </a>
+          <p>Inherit Corporate Values, Achieve a Global Future. Singapore's trusted M&A and IPO advisory partner since 2013.</p>
+          <ul class="f-contact">
+            <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
+            <li><i class="fas fa-phone"></i>+65 9456 0451</li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
+          </ul>
+          <div class="f-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+          </div>
+        </div>
+        <div class="f-col">
+          <h4>Quick Links</h4>
+          <ul class="f-links">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#services">Our Services</a></li>
+            <li><a href="index.html#cases">Success Stories</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>BizMatch</h4>
+          <ul class="f-links">
+            <li><a href="bizmatch.html">Browse Listings</a></li>
+            <li><a href="bizmatch-step1.html">AI Business Matching</a></li>
+            <li><a href="index.html#services">M&amp;A Advisory</a></li>
+            <li><a href="index.html#services">Business Valuation</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>Book a Consult</h4>
+          <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.8;margin-bottom:20px;">Interested in this or any other listing? Our consultants are standing by.</p>
+          <a href="index.html#contact" class="btn btn-red" style="font-size:12.5px;padding:12px 22px;display:inline-flex;margin-bottom:14px;">
+            Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <p style="color:rgba(255,255,255,.4);font-size:12px;">Mon – Fri, 9 AM – 6 PM SGT</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot-wrap">
+    <div class="wrap">
+      <div class="footer-bot">
+        <p>© 2026 <span>Key Global Projects Pte. Ltd.</span> All Rights Reserved.</p>
+        <div class="footer-bot-links">
+          <a href="#">Support</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Carousel ──
+const slides = [
+  'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=900&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&h=600&fit=crop'
+];
+let current = 0;
+
+function goToSlide(n) {
+  current = n;
+  const img = document.getElementById('carouselImg');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = slides[n];
+    img.style.opacity = '1';
+  }, 200);
+  document.getElementById('carouselCurrent').textContent = n + 1;
+  document.querySelectorAll('.ct').forEach((t, i) => t.classList.toggle('active', i === n));
+}
+
+function carouselNext() { goToSlide((current + 1) % slides.length); }
+function carouselPrev() { goToSlide((current - 1 + slides.length) % slides.length); }
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') carouselNext();
+  if (e.key === 'ArrowLeft') carouselPrev();
+});
+
+// ── Save ──
+let saved = false;
+function handleSave(btn) {
+  saved = !saved;
+  // Sync all save buttons
+  document.getElementById('saveIconTop').className = saved ? 'fas fa-heart' : 'far fa-heart';
+  document.getElementById('saveLabelTop').textContent = saved ? 'Saved' : 'Save';
+  document.getElementById('saveIconMain').className = saved ? 'fas fa-heart' : 'far fa-heart';
+  document.getElementById('saveLabelMain').textContent = saved ? 'Saved' : 'Save Listing';
+  document.getElementById('saveBtnMain').classList.toggle('saved', saved);
+  if (saved) {
+    showToast('<i class="fas fa-heart" style="color:var(--red)"></i> Listing saved to your favourites');
+  }
+}
+
+// ── Share ──
+function handleShare() {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      showToast('<i class="fas fa-check" style="color:#16a34a"></i> Link copied to clipboard');
+    });
+  } else {
+    prompt('Copy this link:', window.location.href);
+  }
+}
+
+// ── Print ──
+function handlePrint() { window.print(); }
+
+// ── Compare ──
+function handleCompare() {
+  showToast('<i class="fas fa-columns" style="color:var(--navy)"></i> Compare feature coming soon');
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.style.cssText = `position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#fff;border:1.5px solid var(--border);color:var(--navy);font-family:var(--f);font-size:14px;font-weight:700;padding:13px 22px;border-radius:40px;box-shadow:0 8px 32px rgba(13,31,78,.18);z-index:9999;display:flex;align-items:center;gap:9px;white-space:nowrap;animation:toastIn .3s ease;`;
+  t.innerHTML = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.opacity='0'; t.style.transition='opacity .3s'; setTimeout(()=>t.remove(), 300); }, 2500);
+}
+
+// ── Interest Modal ──
+function openInterestModal() {
+  document.getElementById('modalFormWrap').style.display = '';
+  document.getElementById('modalSuccess').classList.remove('show');
+  document.getElementById('modalBg').classList.add('open');
+  const m = document.getElementById('interestModal');
+  m.style.display = 'block';
+  requestAnimationFrame(() => m.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+}
+function closeInterestModal() {
+  const m = document.getElementById('interestModal');
+  m.classList.remove('open');
+  setTimeout(() => m.style.display = 'none', 360);
+  document.getElementById('modalBg').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitInterest() {
+  if (!document.getElementById('iName').value.trim() || !document.getElementById('iEmail').value.trim()) {
+    alert('Please fill in your name and email.'); return;
+  }
+  document.getElementById('modalFormWrap').style.display = 'none';
+  document.getElementById('modalSuccess').classList.add('show');
+}
+
+// ── Mobile nav ──
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+</script>
+
+<style>
+@keyframes toastIn { from { opacity:0; transform:translateX(-50%) translateY(12px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+</style>
+
+</body>
+</html>
