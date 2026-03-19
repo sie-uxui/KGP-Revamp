@@ -75,27 +75,25 @@
 
   /* ═══ PAGE HERO ═══ */
   .ai-hero {
-    background: var(--navy);
+    background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover no-repeat;
     padding: 44px 0 40px;
     position: relative; overflow: hidden;
   }
   .ai-hero::before {
     content: '';
     position: absolute; inset: 0;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,.02) 60px, rgba(255,255,255,.02) 61px),
-      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,.02) 60px, rgba(255,255,255,.02) 61px);
+    background: linear-gradient(to right, rgba(13,31,78,.82) 50%, rgba(13,31,78,.55) 100%);
     pointer-events: none;
   }
   .ai-hero::after {
     content: '';
     position: absolute; width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(208,32,32,.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(208,32,32,.12) 0%, transparent 70%);
     top: -200px; right: -100px; pointer-events: none;
   }
   .ai-hero .wrap { position: relative; z-index: 2; }
-  .ai-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.4); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .8px; }
-  .ai-breadcrumb a { color: rgba(255,255,255,.4); transition: color .2s; }
+  .ai-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.85); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .8px; }
+  .ai-breadcrumb a { color: rgba(255,255,255,.85); transition: color .2s; }
   .ai-breadcrumb a:hover { color: var(--red); }
   .ai-breadcrumb i { font-size: 9px; }
   .ai-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
@@ -149,7 +147,8 @@
     display: flex; align-items: center; justify-content: space-between;
   }
   .screen-card-head .sch-left { display: flex; align-items: center; gap: 14px; }
-  .sch-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 17px; color: #fff; flex-shrink: 0; }
+  .sch-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; padding: 4px; }
+  .sch-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .sch-info .sch-name { font-size: 15px; font-weight: 900; color: #fff; }
   .sch-info .sch-status { font-size: 12px; color: rgba(255,255,255,.55); display: flex; align-items: center; gap: 5px; }
   .sch-info .sch-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; display: inline-block; }
@@ -320,7 +319,8 @@
   .cm { display: flex; gap: 10px; align-items: flex-end; }
   .cm.bot { justify-content: flex-start; }
   .cm.user { justify-content: flex-end; }
-  .cm-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; flex-shrink: 0; }
+  .cm-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; padding: 3px; }
+  .cm-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .cm-wrap { max-width: 78%; display: flex; flex-direction: column; gap: 6px; }
   .cm-bubble {
     padding: 11px 15px; border-radius: 16px;
@@ -509,7 +509,7 @@
     <div class="topbar-inner">
       <div class="topbar-left">
         <span><i class="fas fa-phone"></i> +65 9456 0451</span>
-        <span><i class="fas fa-envelope"></i> enquiry@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adc8c3dcd8c4dfd4edc6c8d4cac1c2cfccc1dddfc2c7c8ced9de83cec2c0">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
       </div>
       <div class="topbar-right">
@@ -552,16 +552,7 @@
       <div class="ai-hero-inner">
         <div class="ai-hero-left">
           <h1>KGP <span>AdvisorAI</span></h1>
-          <p>Get expert guidance on IPO readiness, M&amp;A strategy, and business valuation — powered by AI and grounded in our directors' real-world expertise.</p>
-          <div class="ai-hero-badges">
-            <div class="ai-badge"><i class="fas fa-brain"></i> GPT-4o-mini Powered</div>
-            <div class="ai-badge"><i class="fas fa-database"></i> Knowledge-Based</div>
-            <div class="ai-badge"><i class="fas fa-shield-alt"></i> PDPA Compliant</div>
-            <div class="ai-badge"><i class="fas fa-lock"></i> Secure & Encrypted</div>
-          </div>
-        </div>
-        <div class="ai-hero-right">
-          <div class="ai-avatar-large"><i class="fas fa-robot"></i></div>
+          <p>Get expert guidance on IPO readiness, M&amp;A strategy, and business valuation — grounded in our directors' real-world expertise.</p>
         </div>
       </div>
     </div>
@@ -582,7 +573,7 @@
           <!-- Header -->
           <div class="screen-card-head">
             <div class="sch-left">
-              <div class="sch-avatar"><i class="fas fa-robot"></i></div>
+              <div class="sch-avatar"><img src="chatbot.png" alt="KGP AdvisorAI"/></div>
               <div class="sch-info">
                 <div class="sch-name">KGP AdvisorAI</div>
                 <div class="sch-status">Online — IPO &amp; M&A Advisory</div>
@@ -681,7 +672,7 @@
           <!-- Header -->
           <div class="screen-card-head">
             <div class="sch-left">
-              <div class="sch-avatar"><i class="fas fa-robot"></i></div>
+              <div class="sch-avatar"><img src="chatbot.png" alt="KGP AdvisorAI"/></div>
               <div class="sch-info">
                 <div class="sch-name">KGP AdvisorAI</div>
                 <div class="sch-status">Please review before proceeding</div>
@@ -784,7 +775,7 @@
           <!-- Header -->
           <div class="screen-card-head">
             <div class="sch-left">
-              <div class="sch-avatar"><i class="fas fa-robot"></i></div>
+              <div class="sch-avatar"><img src="chatbot.png" alt="KGP AdvisorAI"/></div>
               <div class="sch-info">
                 <div class="sch-name">KGP AdvisorAI</div>
                 <div class="sch-status">Online — IPO &amp; M&A Advisory</div>
@@ -805,7 +796,7 @@
 
               <!-- Bot welcome message -->
               <div class="cm bot">
-                <div class="cm-avatar"><i class="fas fa-robot"></i></div>
+                <div class="cm-avatar"><img src="chatbot.png" alt="KGP AdvisorAI"/></div>
                 <div class="cm-wrap">
                   <div class="cm-bubble">
                     你好! Hi <strong id="greetName">there</strong>! 👋 I'm the KGP AI Advisor. I can help you explore IPO readiness, M&amp;A opportunities, or business valuation options. What brings you here today?
@@ -832,7 +823,7 @@
 
               <!-- Bot reply with suggested actions -->
               <div class="cm bot">
-                <div class="cm-avatar"><i class="fas fa-robot"></i></div>
+                <div class="cm-avatar"><img src="chatbot.png" alt="KGP AdvisorAI"/></div>
                 <div class="cm-wrap">
                   <div class="cm-bubble">
                     Based on our advisory experience, <strong>NASDAQ listing</strong> requirements for foreign private issuers generally include:<br><br>
@@ -846,7 +837,6 @@
                   <!-- Suggested actions after each reply -->
                   <div class="suggested-actions">
                     <button class="sa-chip" onclick="sendQuick('What\'s the typical IPO timeline?')">IPO Timeline</button>
-                    <button class="sa-chip" onclick="sendQuick('What does KGP charge for IPO advisory?')">Pricing</button>
                     <button class="sa-chip" onclick="sendQuick('Tell me about RTO vs IPO')">RTO vs IPO</button>
                     <button class="sa-chip red" onclick="sendQuick('I want to schedule a consultation')">📅 Schedule Consultation</button>
                   </div>
@@ -854,14 +844,6 @@
               </div>
 
             </div><!-- /chatMessages -->
-
-            <!-- Quick replies -->
-            <div class="quick-replies">
-              <button class="qr-btn" onclick="sendQuick('What services does KGP offer?')">Our Services</button>
-              <button class="qr-btn" onclick="sendQuick('Tell me about M&A advisory')">M&A Advisory</button>
-              <button class="qr-btn" onclick="sendQuick('How is a business valuation done?')">Valuation</button>
-              <button class="qr-btn" onclick="sendQuick('Show me BizMatch listings')">Try BizMatch</button>
-            </div>
 
             <!-- Input -->
             <div class="chat-input-bar">
@@ -900,74 +882,6 @@
     ════════════════════════════════ -->
     <aside class="ai-sidebar">
 
-      <!-- Response Guardrails -->
-      <div class="info-card">
-        <div class="ic-head"><i class="fas fa-traffic-light"></i> Response Guidelines</div>
-        <div class="ic-body">
-          <div class="guardrail-list">
-            <div class="gl-item">
-              <div class="gl-dot green"></div>
-              <div class="gl-text">
-                <div class="gl-label">Full Answer</div>
-                <div class="gl-desc">NASDAQ/NYSE, US IPO, M&A basics, KGP services, knowledge base topics</div>
-              </div>
-            </div>
-            <div class="gl-item">
-              <div class="gl-dot yellow"></div>
-              <div class="gl-text">
-                <div class="gl-label">Answer + Redirect</div>
-                <div class="gl-desc">Company valuations, timelines, costs — general info then recommends consultation</div>
-              </div>
-            </div>
-            <div class="gl-item">
-              <div class="gl-dot red"></div>
-              <div class="gl-text">
-                <div class="gl-label">Politely Declines</div>
-                <div class="gl-desc">Off-topic, specific legal advice, stock predictions, competitor comparisons</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KGP Contact -->
-      <div class="info-card">
-        <div class="ic-head"><i class="fas fa-address-card"></i> KGP Contact</div>
-        <div class="ic-body">
-          <div class="contact-detail">
-            <i class="fas fa-phone"></i>
-            <div class="cd-info">
-              <div class="cd-label">Phone</div>
-              <div class="cd-val">+65 9456 0451</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <i class="fas fa-envelope"></i>
-            <div class="cd-info">
-              <div class="cd-label">Email</div>
-              <div class="cd-val">enquiry@keyglobalprojects.com</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <i class="fas fa-map-marker-alt"></i>
-            <div class="cd-info">
-              <div class="cd-label">Address</div>
-              <div class="cd-val">47 Kallang Pudding Rd #11-07, S349318</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <i class="fas fa-clock"></i>
-            <div class="cd-info">
-              <div class="cd-label">Office Hours</div>
-              <div class="cd-val">Mon–Fri, 9 AM – 6 PM SGT</div>
-            </div>
-          </div>
-          <button class="schedule-btn">
-            <i class="fas fa-calendar-alt"></i> Schedule a Meeting
-          </button>
-        </div>
-      </div>
-
       <!-- Disclaimer note -->
       <div class="disclaimer-badge">
         <i class="fas fa-info-circle"></i>
@@ -978,7 +892,7 @@
 
   </div><!-- /ai-layout -->
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── Screen navigation ──
     let userName = '';
 
@@ -1061,7 +975,7 @@
       const typing = document.createElement('div');
       typing.className = 'cm bot';
       typing.id = 'typingIndicator';
-      typing.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-typing-bubble"><span></span><span></span><span></span></div>`;
+      typing.innerHTML = `<div class="cm-avatar"><img src="chatbot.png" alt="KGP AdvisorAI"/></div><div class="cm-typing-bubble"><span></span><span></span><span></span></div>`;
       chatMessages.appendChild(typing);
       chatMessages.scrollTop = chatMessages.scrollHeight;
       setTimeout(() => { typing.remove(); addBotReply(userText); }, 1400);
@@ -1090,7 +1004,7 @@
         chips = ['What is an RTO?', 'How do I prepare for an IPO?', 'Schedule a consultation'];
       } else {
         reply = `Thank you for your question about <em>"${userText}"</em>. Based on KGP's knowledge base, I can provide guidance on IPO readiness, M&A strategy, business valuation, and corporate structuring for Singapore SMEs targeting international listings.<br><br>Could you share a bit more about your business and what you're looking to achieve?`;
-        chips = ['Tell me about IPO requirements', 'M&A Advisory', 'Business Valuation', 'Schedule a Consultation'];
+        chips = ['Tell me about IPO requirements', 'M&A Advisory', 'Schedule a Consultation'];
       }
 
       const div = document.createElement('div');
@@ -1101,16 +1015,26 @@
       ).join('');
 
       div.innerHTML = `
-        <div class="cm-avatar"><i class="fas fa-robot"></i></div>
+        <div class="cm-avatar"><img src="chatbot.png" alt="KGP AdvisorAI"/></div>
         <div class="cm-wrap">
           <div class="cm-bubble">${reply}</div>
           <div class="cm-time">Just now</div>
           <div class="suggested-actions">${chipsHtml}</div>
         </div>`;
+
       chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-  </script>
 
+    // ── Navbar scroll ──
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Mobile nav toggle ──
+    document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+      document.getElementById('navLinks')?.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

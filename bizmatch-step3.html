@@ -136,8 +136,7 @@
   /* ═══ MAIN LAYOUT ═══ */
   .page-body { padding: 40px 0 72px; }
   .page-inner { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
-
-  /* ═══ CONFIRMATION TOAST ═══ */
+  .sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 92px; }
   .toast {
     display: flex; align-items: center; gap: 14px;
     background: linear-gradient(135deg, #f0fdf4, #dcfce7);
@@ -264,11 +263,29 @@
   .score-num { font-size: 22px; font-weight: 900; color: var(--navy); line-height: 1; }
   .score-denom { font-size: 9.5px; font-weight: 700; color: var(--lgray); }
 
-  .score-badge-row { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .4px; padding: 4px 12px; border-radius: 20px; }
+  .score-badge-row { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .4px; padding: 4px 12px; border-radius: 20px; position: relative; cursor: default; }
   .score-badge-row.hi  { background: #dcfce7; color: var(--green); }
   .score-badge-row.med { background: #fef9c3; color: var(--yellow); }
   .score-badge-row.low { background: #ffedd5; color: var(--orange); }
   .score-badge-row i { font-size: 10px; }
+  .score-badge-row::after {
+    content: attr(data-tip);
+    position: absolute; bottom: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy); color: #fff;
+    font-size: 11px; font-weight: 700; white-space: nowrap;
+    padding: 5px 10px; border-radius: 6px;
+    pointer-events: none; opacity: 0; transition: opacity .2s;
+    letter-spacing: 0; text-transform: none; z-index: 10;
+  }
+  .score-badge-row::before {
+    content: ''; position: absolute; bottom: calc(100% + 2px); left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent; border-top-color: var(--navy);
+    pointer-events: none; opacity: 0; transition: opacity .2s; z-index: 10;
+  }
+  .score-badge-row:hover::after,
+  .score-badge-row:hover::before { opacity: 1; }
 
   .mc-price { font-size: 20px; font-weight: 900; color: var(--navy); text-align: center; line-height: 1; }
   .mc-price small { font-size: 11px; color: var(--gray); font-weight: 600; display: block; margin-top: 3px; }
@@ -315,7 +332,6 @@
   .bs-text p { font-size: 13px; color: rgba(255,255,255,.6); }
 
   /* ═══ RIGHT SIDEBAR ═══ */
-  .sidebar { display: flex; flex-direction: column; gap: 20px; }
   .info-card { background: #fff; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
   .ic-head { padding: 18px 22px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .ic-head i { color: var(--red); font-size: 16px; }
@@ -588,7 +604,7 @@
   <div class="wrap">
     <div class="step-hero-inner">
       <div class="step-hero-text">
-        <span class="eyebrow"><i class="fas fa-bolt"></i> AI-Powered Business Matching</span>
+        <span class="eyebrow"><i class="fas fa-bolt"></i>Business Matching</span>
         <h1>Find Your Next<br><span>Business Opportunity</span></h1>
         <p>Tell us about yourself and we'll match you with the most relevant business listings — buyers, suppliers, or partners — using our AI matching engine.</p>
       </div>
@@ -725,14 +741,14 @@
                     <div class="score-denom">/100</div>
                   </div>
                 </div>
-                <div class="score-badge-row hi"><i class="fas fa-bolt"></i> High Match</div>
+                <div class="score-badge-row hi" data-tip="Strong industry &amp; budget fit (75–100)"><i class="fas fa-bolt"></i> High Match</div>
               </div>
               <div class="mc-actions">
                 <button class="mc-btn primary" onclick="openInterestModal('Established Italian Restaurant', 91)">
                   <i class="fas fa-handshake"></i> I'm Interested
                 </button>
                 <div class="mc-row">
-                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing.html'">
                     <i class="fas fa-eye"></i> View Details
                   </button>
                   <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
@@ -774,14 +790,14 @@
                     <div class="score-denom">/100</div>
                   </div>
                 </div>
-                <div class="score-badge-row hi"><i class="fas fa-bolt"></i> High Match</div>
+                <div class="score-badge-row hi" data-tip="Strong industry &amp; budget fit (75–100)"><i class="fas fa-bolt"></i> High Match</div>
               </div>
               <div class="mc-actions">
                 <button class="mc-btn primary" onclick="openInterestModal('SaaS Platform — HR Tech', 87)">
                   <i class="fas fa-handshake"></i> I'm Interested
                 </button>
                 <div class="mc-row">
-                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing.html'">
                     <i class="fas fa-eye"></i> View Details
                   </button>
                   <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
@@ -823,14 +839,14 @@
                     <div class="score-denom">/100</div>
                   </div>
                 </div>
-                <div class="score-badge-row hi"><i class="fas fa-bolt"></i> High Match</div>
+                <div class="score-badge-row hi" data-tip="Strong industry &amp; budget fit (75–100)"><i class="fas fa-bolt"></i> High Match</div>
               </div>
               <div class="mc-actions">
                 <button class="mc-btn primary" onclick="openInterestModal('Cloud Kitchen Network', 82)">
                   <i class="fas fa-handshake"></i> I'm Interested
                 </button>
                 <div class="mc-row">
-                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing.html'">
                     <i class="fas fa-eye"></i> View Details
                   </button>
                   <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
@@ -870,14 +886,14 @@
                     <div class="score-denom">/100</div>
                   </div>
                 </div>
-                <div class="score-badge-row med"><i class="fas fa-circle-half-stroke"></i> Medium</div>
+                <div class="score-badge-row med" data-tip="Good fit, some criteria gaps (50–74)"><i class="fas fa-circle-half-stroke"></i> Medium</div>
               </div>
               <div class="mc-actions">
                 <button class="mc-btn primary" onclick="openInterestModal('EdTech Platform — K-12 Tutoring', 71)">
                   <i class="fas fa-handshake"></i> I'm Interested
                 </button>
                 <div class="mc-row">
-                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing.html'">
                     <i class="fas fa-eye"></i> View Details
                   </button>
                   <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
@@ -918,14 +934,14 @@
                     <div class="score-denom">/100</div>
                   </div>
                 </div>
-                <div class="score-badge-row med"><i class="fas fa-circle-half-stroke"></i> Medium</div>
+                <div class="score-badge-row med" data-tip="Good fit, some criteria gaps (50–74)"><i class="fas fa-circle-half-stroke"></i> Medium</div>
               </div>
               <div class="mc-actions">
                 <button class="mc-btn primary" onclick="openInterestModal('Specialty Coffee Roastery', 65)">
                   <i class="fas fa-handshake"></i> I'm Interested
                 </button>
                 <div class="mc-row">
-                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing.html'">
                     <i class="fas fa-eye"></i> View Details
                   </button>
                   <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
@@ -965,14 +981,14 @@
                     <div class="score-denom">/100</div>
                   </div>
                 </div>
-                <div class="score-badge-row low"><i class="fas fa-minus-circle"></i> Low Match</div>
+                <div class="score-badge-row low" data-tip="Partial match — worth reviewing (25–49)"><i class="fas fa-minus-circle"></i> Low Match</div>
               </div>
               <div class="mc-actions">
                 <button class="mc-btn primary" onclick="openInterestModal('Last-Mile Delivery Co.', 48)">
                   <i class="fas fa-handshake"></i> I'm Interested
                 </button>
                 <div class="mc-row">
-                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing-detail.html'">
+                  <button class="mc-btn secondary" onclick="window.location.href='bizmatch-listing.html'">
                     <i class="fas fa-eye"></i> View Details
                   </button>
                   <button class="mc-btn-save" onclick="toggleSave(this)" aria-label="Save"><i class="far fa-heart"></i></button>
@@ -1052,35 +1068,17 @@
           </div>
         </div>
 
-        <!-- Match Score Guide -->
-        <div class="info-card">
-          <div class="ic-head">
-            <i class="fas fa-trophy"></i>
-            <span>Match Score Guide</span>
-          </div>
-          <div class="ic-body">
-            <div class="score-legend">
-              <div class="sl-row hi">
-                <div class="sl-dot hi"></div>
-                <div class="sl-label hi">High Match</div>
-                <div class="sl-range">75 – 100</div>
-              </div>
-              <div class="sl-row med">
-                <div class="sl-dot med"></div>
-                <div class="sl-label med">Medium Match</div>
-                <div class="sl-range">50 – 74</div>
-              </div>
-              <div class="sl-row low">
-                <div class="sl-dot low"></div>
-                <div class="sl-label low">Low Match</div>
-                <div class="sl-range">25 – 49</div>
-              </div>
-            </div>
-            <div class="sl-foot">
-              Scores are calculated from industry relevance, budget fit, location proximity, and listing recency. Matches below 25 are not shown.
-            </div>
-          </div>
+
+        <!-- CTA card -->
+        <div class="cta-card">
+          <div class="cta-icon"><i class="fas fa-calendar-check"></i></div>
+          <h4>Need expert guidance?</h4>
+          <p>Speak with our M&A advisors to shortlist the right opportunities.</p>
+          <a href="index.html#contact" class="btn btn-red">
+            Book Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
+          </a>
         </div>
+
 
         <!-- Weekly Digest -->
         <div class="digest-card">
@@ -1099,27 +1097,14 @@
                 <div class="toggle-track"></div>
               </label>
             </div>
-            <div class="digest-note">
-              <i class="fas fa-info-circle"></i>
-              Sent from <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f799988592879b8eb79c928e909b9895969b8785989d92948384d994989a">[email&#160;protected]</a>. Unsubscribe anytime via the link in each email.
-            </div>
           </div>
-        </div>
-
-        <!-- CTA card -->
-        <div class="cta-card">
-          <div class="cta-icon"><i class="fas fa-calendar-check"></i></div>
-          <h4>Need expert guidance?</h4>
-          <p>Our M&A advisors can help you evaluate options and shortlist the right opportunities for your goals.</p>
-          <a href="index.html#contact" class="btn btn-red">
-            Book Free Consultation <span class="arr"><i class="fas fa-arrow-right"></i></span>
-          </a>
         </div>
 
       </div><!-- /sidebar -->
     </div><!-- /page-inner -->
   </div><!-- /wrap -->
 </div><!-- /page-body -->
+
 
 <!-- ════ FOOTER ════ -->
 <footer>
@@ -1253,7 +1238,7 @@
   <div id="chat-box">
     <div id="chat-header">
       <div class="ch-left">
-        <div class="ch-avatar"><i class="fas fa-robot"></i></div>
+        <div class="ch-avatar"><img src="bot.png" style="width:20px;height:20px;filter:invert(1);"></div>
         <div class="ch-info">
           <div class="ch-name">KGP AI Advisor</div>
           <div class="ch-status">Online — IPO &amp; M&A Advisory</div>
@@ -1340,7 +1325,7 @@ function toggleChat() {
 function addBotMessage(text) {
   const el = document.createElement('div');
   el.className = 'cm bot';
-  el.innerHTML = `<div class="cm-avatar"><i class="fas fa-robot"></i></div><div class="cm-bubble">${text}</div>`;
+  el.innerHTML = `<div class="cm-avatar"><img src="bot.png" style="width:16px;height:16px;filter:invert(1);"></div><div class="cm-bubble">${text}</div>`;el.innerHTML = `<div class="cm-avatar"><img src="bot.png" style="width:16px;height:16px;filter:invert(1);"></div><div class="cm-bubble">${text}</div>`;
   chatMessages.appendChild(el);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }

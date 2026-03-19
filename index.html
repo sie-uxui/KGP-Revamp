@@ -71,6 +71,7 @@
       cursor: pointer; box-shadow: 0 6px 24px rgba(208,32,32,.45);
       transition: transform .2s, box-shadow .2s;
       animation: pulsePlay 2.5s ease-in-out infinite;
+      overflow: hidden; padding: 6px;
     }
     #chat-bubble:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(208,32,32,.55); }
     #chat-box {
@@ -115,10 +116,12 @@
     .cm.bot { justify-content: flex-start; }
     .cm.user { justify-content: flex-end; }
     .cm-avatar {
-      width: 28px; height: 28px; border-radius: 50%; background: var(--navy);
+      width: 28px; height: 28px; border-radius: 50%; background: var(--red);
       display: flex; align-items: center; justify-content: center;
       font-size: 11px; color: #fff; flex-shrink: 0;
+      overflow: hidden; padding: 3px;
     }
+    .cm-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .cm-bubble {
       max-width: 78%; padding: 10px 14px; border-radius: 16px;
       font-size: 13.5px; line-height: 1.6;
@@ -1115,7 +1118,7 @@
     <div class="inner">
       <div class="topbar-left">
         <span><i class="fas fa-phone"></i> +65 9456 0451</span>
-        <span><i class="fas fa-envelope"></i> <a href="mailto:info@key.com.sg">info@key.com.sg</a></span>
+        <span><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#85ecebe3eac5eee0fcabe6eae8abf6e2"><span class="__cf_email__" data-cfemail="325b5c545d7259574b1c515d5f1c4155">[email&#160;protected]</span></a></span>
         <span><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
       </div>
       <div class="topbar-right">
@@ -1275,7 +1278,7 @@
 
       <div class="svc-card">
         <div class="svc-photo">
-          <div class="svc-photo-ph bg-navy"><i class="fas fa-chart-bar"></i></div>
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Business Valuation" style="width:100%;height:200px;object-fit:cover;display:block;"/>
           <div class="svc-icon-badge"><i class="fas fa-chart-bar"></i></div>
         </div>
         <div class="svc-body">
@@ -1287,7 +1290,7 @@
 
       <div class="svc-card">
         <div class="svc-photo">
-          <div class="svc-photo-ph bg-blue"><i class="fas fa-handshake"></i></div>
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="M&A Planning" style="width:100%;height:200px;object-fit:cover;display:block;"/>
           <div class="svc-icon-badge"><i class="fas fa-handshake"></i></div>
         </div>
         <div class="svc-body">
@@ -1299,7 +1302,7 @@
 
       <div class="svc-card">
         <div class="svc-photo">
-          <div class="svc-photo-ph bg-red"><i class="fas fa-landmark"></i></div>
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt="IPO Strategies" style="width:100%;height:200px;object-fit:cover;display:block;"/>
           <div class="svc-icon-badge"><i class="fas fa-landmark"></i></div>
         </div>
         <div class="svc-body">
@@ -1311,7 +1314,7 @@
 
       <div class="svc-card">
         <div class="svc-photo">
-          <div class="svc-photo-ph bg-teal"><i class="fas fa-building"></i></div>
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Corporate Structuring" style="width:100%;height:200px;object-fit:cover;display:block;"/>
           <div class="svc-icon-badge"><i class="fas fa-building"></i></div>
         </div>
         <div class="svc-body">
@@ -1323,7 +1326,7 @@
 
       <div class="svc-card">
         <div class="svc-photo">
-          <div class="svc-photo-ph bg-grn"><i class="fas fa-seedling"></i></div>
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Business Modernisation" style="width:100%;height:200px;object-fit:cover;display:block;"/>
           <div class="svc-icon-badge"><i class="fas fa-seedling"></i></div>
         </div>
         <div class="svc-body">
@@ -1335,7 +1338,7 @@
 
       <div class="svc-card">
         <div class="svc-photo">
-          <div class="svc-photo-ph bg-purp"><i class="fas fa-robot"></i></div>
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="AI Advisory Platform" style="width:100%;height:200px;object-fit:cover;display:block;"/>
           <div class="svc-icon-badge"><i class="fas fa-robot"></i></div>
         </div>
         <div class="svc-body">
@@ -1349,62 +1352,28 @@
   </div>
 </section>
 
-<!-- ══ 7. SKILLS / EXPERTISE ══ -->
-<section class="skills">
-  <div class="wrap">
-    <div class="split-2">
-      <div class="img-box reveal-left">
-        <div class="img-ph bg-dark">
-          <i class="fas fa-users-cog ph-i"></i>
-          <p class="ph-t">[Photo: KGP advisory session / team consultation]</p>
-        </div>
-      </div>
-      <div>
-        <p class="lbl">OUR SKILLS</p>
-        <h2 class="htitle" style="margin-bottom:18px;">We Offer You The <span>Best Corporate</span> Advisory Service</h2>
-        <p style="color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:20px;">Our team of certified accountants, M&A specialists, and capital market advisors brings deep expertise across all aspects of Singapore corporate advisory, cross-border transactions, and international listings.</p>
-        <div class="skill-bars">
-          <div class="sb">
-            <div class="sb-hdr"><span>M&amp;A Advisory</span><span>95%</span></div>
-            <div class="sb-track"><div class="sb-fill" data-width="95"></div></div>
-          </div>
-          <div class="sb">
-            <div class="sb-hdr"><span>IPO &amp; Listing Strategy</span><span>92%</span></div>
-            <div class="sb-track"><div class="sb-fill" data-width="92"></div></div>
-          </div>
-          <div class="sb">
-            <div class="sb-hdr"><span>Business Valuation</span><span>90%</span></div>
-            <div class="sb-track"><div class="sb-fill" data-width="90"></div></div>
-          </div>
-        </div>
-        <a href="#contact" class="btn btn-red">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ 8. STATS BANNER ══ -->
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid stagger">
       <div class="stat">
         <div class="si"><i class="fas fa-users"></i></div>
-        <div class="num">100+</div>
+        <div class="num" data-count="100" data-suffix="+">100+</div>
         <div class="lbl2">Clients Served</div>
       </div>
       <div class="stat">
         <div class="si"><i class="fas fa-globe-asia"></i></div>
-        <div class="num">4</div>
+        <div class="num" data-count="4" data-suffix="">4</div>
         <div class="lbl2">Nasdaq Listings in 2024</div>
       </div>
       <div class="stat">
         <div class="si"><i class="fas fa-dollar-sign"></i></div>
-        <div class="num">500M+</div>
+        <div class="num" data-count="500" data-suffix="M+">500M+</div>
         <div class="lbl2">SGD Transactions Facilitated</div>
       </div>
       <div class="stat">
         <div class="si"><i class="fas fa-calendar-check"></i></div>
-        <div class="num">2013</div>
+        <div class="num" data-count="2013" data-suffix="">2013</div>
         <div class="lbl2">Est. in Singapore</div>
       </div>
     </div>
@@ -1415,7 +1384,7 @@
 <section class="advisory">
   <div class="wrap">
     <div class="sec-head">  
-      <p class="lbl">ADVISORY PROGRAMS</p>
+      <p class="lbl">OUR SERVICES</p>
       <h2 class="htitle">Best <span>Advisory</span> From Us</h2>
     </div>
 
@@ -1423,7 +1392,7 @@
       <div class="adv-grid stagger" id="advGrid">
 
         <div class="adv-card" data-slide-card>
-          <div class="adv-photo"><div class="adv-ph bg-navy"><i class="fas fa-chart-pie"></i></div></div>
+          <div class="adv-photo"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="M&A" style="width:100%;height:200px;object-fit:cover;display:block;"/></div>
           <div class="adv-meta">
             <span><i class="fas fa-clock"></i> Full-Cycle</span>
             <span><i class="fas fa-clipboard-list"></i> M&amp;A Support</span>
@@ -1431,12 +1400,12 @@
           <div class="adv-body">
             <h3>Mergers &amp; Acquisitions</h3>
             <p>End-to-end M&A services from strategy development and buyer screening through negotiations and post-merger integration planning.</p>
-            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
           </div>
         </div>
 
         <div class="adv-card" data-slide-card>
-          <div class="adv-photo"><div class="adv-ph bg-blue"><i class="fas fa-landmark"></i></div></div>
+          <div class="adv-photo"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt="IPO Strategy" style="width:100%;height:200px;object-fit:cover;display:block;"/></div>
           <div class="adv-meta">
             <span><i class="fas fa-clock"></i> Full-Cycle</span>
             <span><i class="fas fa-clipboard-list"></i> Listing Support</span>
@@ -1444,12 +1413,12 @@
           <div class="adv-body">
             <h3>U.S. IPO Strategy</h3>
             <p>From compliance management to Nasdaq listing execution — we've helped four companies successfully list in the U.S. in 2024 alone.</p>
-            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
           </div>
         </div>
 
         <div class="adv-card" data-slide-card>
-          <div class="adv-photo"><div class="adv-ph bg-teal"><i class="fas fa-search-dollar"></i></div></div>
+          <div class="adv-photo"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Business Valuation" style="width:100%;height:200px;object-fit:cover;display:block;"/></div>
           <div class="adv-meta">
             <span><i class="fas fa-clock"></i> Full-Cycle</span>
             <span><i class="fas fa-clipboard-list"></i> Valuation</span>
@@ -1457,12 +1426,12 @@
           <div class="adv-body">
             <h3>Business Valuation</h3>
             <p>Comprehensive valuation assessments for investor attraction, acquisitions, divestitures, or share issuance — customized to your business.</p>
-            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
           </div>
         </div>
 
         <div class="adv-card" data-slide-card>
-          <div class="adv-photo"><div class="adv-ph bg-grn"><i class="fas fa-seedling"></i></div></div>
+          <div class="adv-photo"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Business Modernisation" style="width:100%;height:200px;object-fit:cover;display:block;"/></div>
           <div class="adv-meta">
             <span><i class="fas fa-clock"></i> Full-Cycle</span>
             <span><i class="fas fa-clipboard-list"></i> Modernisation</span>
@@ -1470,12 +1439,12 @@
           <div class="adv-body">
             <h3>Business Modernisation</h3>
             <p>Helping traditional enterprises modernise operations, adopt technology, and achieve sustainable development for the next generation of ownership.</p>
-            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
           </div>
         </div>
 
         <div class="adv-card" data-slide-card>
-          <div class="adv-photo"><div class="adv-ph bg-gold"><i class="fas fa-exchange-alt"></i></div></div>
+          <div class="adv-photo"><img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80" alt="Reverse Takeover" style="width:100%;height:200px;object-fit:cover;display:block;"/></div>
           <div class="adv-meta">
             <span><i class="fas fa-clock"></i> Full-Cycle</span>
             <span><i class="fas fa-clipboard-list"></i> RTO</span>
@@ -1483,12 +1452,12 @@
           <div class="adv-body">
             <h3>Reverse Takeover (RTO)</h3>
             <p>Acquire a listed shell company to dramatically accelerate your path to public markets — a faster, cost-effective alternative to a traditional IPO.</p>
-            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
           </div>
         </div>
 
         <div class="adv-card" data-slide-card>
-          <div class="adv-photo"><div class="adv-ph bg-purp"><i class="fas fa-building"></i></div></div>
+          <div class="adv-photo"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Corporate Structuring" style="width:100%;height:200px;object-fit:cover;display:block;"/></div>
           <div class="adv-meta">
             <span><i class="fas fa-clock"></i> Full-Cycle</span>
             <span><i class="fas fa-clipboard-list"></i> Structuring</span>
@@ -1496,7 +1465,7 @@
           <div class="adv-body">
             <h3>Corporate Structuring</h3>
             <p>Optimal shareholding arrangements, entity structuring, and detailed financial forecasting to position your company for sustainable long-term growth.</p>
-            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">READ MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
+            <a href="#contact" class="btn btn-red" style="font-size:13px;padding:10px 22px;">LEARN MORE <span class="arr"><i class="fas fa-arrow-right"></i></span></a>
           </div>
         </div>
 
@@ -1661,9 +1630,9 @@
     <div class="cases-grid stagger">
 
       <div class="case-card">
-        <div class="case-photo bg-navy">
+        <div class="case-photo" style="padding:0;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="PC Catering" style="width:100%;height:160px;object-fit:cover;display:block;"/>
           <div class="case-ticker">PC</div>
-          <i class="fas fa-utensils case-ico"></i>
         </div>
         <div class="case-body">
           <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
@@ -1676,9 +1645,9 @@
       </div>
 
       <div class="case-card">
-        <div class="case-photo bg-blue">
+        <div class="case-photo" style="padding:0;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&q=80" alt="SAG Auto Parts" style="width:100%;height:160px;object-fit:cover;display:block;"/>
           <div class="case-ticker">SAG</div>
-          <i class="fas fa-car case-ico"></i>
         </div>
         <div class="case-body">
           <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
@@ -1691,9 +1660,9 @@
       </div>
 
       <div class="case-card">
-        <div class="case-photo bg-teal">
+        <div class="case-photo" style="padding:0;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="JBDI Chemical" style="width:100%;height:160px;object-fit:cover;display:block;"/>
           <div class="case-ticker">JBDI</div>
-          <i class="fas fa-flask case-ico"></i>
         </div>
         <div class="case-body">
           <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
@@ -1706,9 +1675,9 @@
       </div>
 
       <div class="case-card">
-        <div class="case-photo bg-red">
+        <div class="case-photo" style="padding:0;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="SKK Plumbing" style="width:100%;height:160px;object-fit:cover;display:block;"/>
           <div class="case-ticker">SKK</div>
-          <i class="fas fa-tools case-ico"></i>
         </div>
         <div class="case-body">
           <div class="case-badge"><i class="fas fa-chart-line"></i> Nasdaq Listed 2024</div>
@@ -1859,7 +1828,9 @@
     <div class="blog-grid stagger">
 
       <div class="blog-card">
-        <div class="blog-photo"><div class="blog-ph bg-navy"><i class="fas fa-newspaper"></i></div></div>
+        <div class="blog-photo">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt="Nasdaq listing" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        </div>
         <div class="blog-body">
           <div class="blog-meta">
             <span><i class="fas fa-user-circle"></i> By KGP Team</span>
@@ -1873,7 +1844,9 @@
       </div>
 
       <div class="blog-card">
-        <div class="blog-photo"><div class="blog-ph bg-blue"><i class="fas fa-newspaper"></i></div></div>
+        <div class="blog-photo">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="M&A business" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        </div>
         <div class="blog-body">
           <div class="blog-meta">
             <span><i class="fas fa-user-circle"></i> By KGP Team</span>
@@ -1887,7 +1860,9 @@
       </div>
 
       <div class="blog-card">
-        <div class="blog-photo"><div class="blog-ph bg-teal"><i class="fas fa-newspaper"></i></div></div>
+        <div class="blog-photo">
+          <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80" alt="RTO IPO strategy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        </div>
         <div class="blog-body">
           <div class="blog-meta">
             <span><i class="fas fa-user-circle"></i> By KGP Team</span>
@@ -2037,7 +2012,7 @@
           <ul class="f-contact">
             <li><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
             <li><i class="fas fa-phone"></i> +65 9456 0451</li>
-            <li><i class="fas fa-envelope"></i> <a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#9ff6f1f9f0dff4fae6f8f3f0fdfef3efedf0f5fafcebecb1fcf0f2" style="color:inherit;"><span class="__cf_email__" data-cfemail="f990979f96b9929c809e95969b9895898b96939c9a8d8ad79a9694">[email&#160;protected]</span></a></li>
           </ul>
           <div class="f-socials">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -2097,7 +2072,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 window.addEventListener('load', () => {
   const loader = document.getElementById('page-loader');
   const hasVisited = sessionStorage.getItem('kgp_visited');
@@ -2258,7 +2233,7 @@ function toggleFaq(el) {
   <div id="chat-box">
     <div id="chat-header">
       <div class="ch-left">
-        <div class="ch-avatar"><i class="fas fa-robot"></i></div>
+        <div class="ch-avatar"><img src="chatbot.png" style="width:100%;height:100%;object-fit:contain;display:block;"/></div>
         <div class="ch-info">
           <div class="ch-name">KGP AI Advisor</div>
           <div class="ch-status">Online — IPO & M&A Advisory</div>
@@ -2280,7 +2255,7 @@ function toggleFaq(el) {
     </div>
   </div>
   <div id="chat-bubble" onclick="toggleChat()">
-    <i class="fas fa-comment-dots"></i>
+    <img src="chatbot.png" style="width:100%;height:100%;object-fit:contain;display:block;"/>
   </div>
 </div>
 
@@ -2537,22 +2512,83 @@ function goHeroSlide(n) {
 }
 
 function startHeroAuto() {
-  heroTimer = setInterval(() => goHeroSlide(heroPage + 1), 6000);
+  heroTimer = setInterval(() => goHeroSlide(heroPage + 1), 5000);
 }
 
-document.getElementById('heroPrev').addEventListener('click', () => {
-  clearInterval(heroTimer);
+function stopHeroAuto() {
+  if (heroTimer) { clearInterval(heroTimer); heroTimer = null; }
+}
+
+// Hero dot clicks
+heroDots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    goHeroSlide(i);
+    stopHeroAuto();
+    startHeroAuto();
+  });
+});
+
+// Hero arrow clicks
+document.getElementById('heroPrev')?.addEventListener('click', () => {
   goHeroSlide(heroPage - 1);
+  stopHeroAuto();
   startHeroAuto();
 });
-document.getElementById('heroNext').addEventListener('click', () => {
-  clearInterval(heroTimer);
+document.getElementById('heroNext')?.addEventListener('click', () => {
   goHeroSlide(heroPage + 1);
+  stopHeroAuto();
   startHeroAuto();
 });
 
-startHeroAuto();
+// Hero touch/swipe
+let heroTouchX = 0;
+document.querySelector('.hero')?.addEventListener('touchstart', e => {
+  heroTouchX = e.touches[0].clientX;
+  stopHeroAuto();
+}, { passive: true });
+document.querySelector('.hero')?.addEventListener('touchend', e => {
+  const diff = heroTouchX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) goHeroSlide(diff > 0 ? heroPage + 1 : heroPage - 1);
+  startHeroAuto();
+}, { passive: true });
 
+// ── Count-up animation on scroll ──
+function animateCount(el) {
+  const target = parseInt(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+
+  // For large numbers like 2013, start closer to the target so it feels snappy
+  const startVal = target > 100 ? Math.floor(target * 0.6) : 0;
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out cubic
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(startVal + (target - startVal) * ease);
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target + suffix;
+  }
+
+  requestAnimationFrame(update);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const countEls = document.querySelectorAll('.num[data-count]');
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        countObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  countEls.forEach(el => countObs.observe(el));
+});
 </script>
 </body>
 </html>

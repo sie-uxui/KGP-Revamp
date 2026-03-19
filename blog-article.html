@@ -105,22 +105,23 @@
 
     /* ══ ARTICLE HERO ══ */
     .article-hero {
-      background: var(--navy);
+      background: #f0f3f9;
       position: relative; overflow: hidden;
       padding: 64px 0 0;
+      border-bottom: 1px solid var(--border);
     }
     .article-hero::before {
       content: '';
       position: absolute; inset: 0;
       background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,.02) 60px, rgba(255,255,255,.02) 61px),
-        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,.02) 60px, rgba(255,255,255,.02) 61px);
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(13,31,78,.025) 60px, rgba(13,31,78,.025) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(13,31,78,.025) 60px, rgba(13,31,78,.025) 61px);
       pointer-events: none;
     }
     .article-hero::after {
       content: '';
       position: absolute; width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(208,32,32,.14) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(208,32,32,.07) 0%, transparent 70%);
       top: -200px; right: -100px; pointer-events: none;
     }
     .article-hero .wrap { position: relative; z-index: 2; }
@@ -129,14 +130,14 @@
     .breadcrumb {
       display: flex; align-items: center; gap: 8px;
       font-size: 12.5px; font-weight: 700;
-      color: rgba(255,255,255,.4);
+      color: rgba(13,31,78,.4);
       text-transform: uppercase; letter-spacing: .8px;
       margin-bottom: 24px;
     }
-    .breadcrumb a { color: rgba(255,255,255,.4); transition: color .2s; }
+    .breadcrumb a { color: rgba(13,31,78,.4); transition: color .2s; }
     .breadcrumb a:hover { color: var(--red); }
     .breadcrumb i { font-size: 9px; }
-    .breadcrumb span { color: rgba(255,255,255,.65); }
+    .breadcrumb span { color: rgba(13,31,78,.65); }
 
     /* Category tag */
     .article-cat {
@@ -149,7 +150,7 @@
     }
 
     .article-hero h1 {
-      font-size: 40px; font-weight: 900; color: #fff;
+      font-size: 40px; font-weight: 900; color: var(--navy);
       line-height: 1.15; margin-bottom: 20px;
       max-width: 780px; letter-spacing: -.3px;
     }
@@ -160,11 +161,11 @@
       display: flex; align-items: center; gap: 24px;
       flex-wrap: wrap; margin-bottom: 36px;
     }
-    .am-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.55); }
+    .am-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: rgba(13,31,78,.55); }
     .am-item i { color: var(--red); font-size: 12px; }
-    .am-item a { color: rgba(255,255,255,.55); transition: color .2s; }
-    .am-item a:hover { color: #fff; }
-    .am-divider { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.2); }
+    .am-item a { color: rgba(13,31,78,.55); transition: color .2s; }
+    .am-item a:hover { color: var(--navy); }
+    .am-divider { width: 4px; height: 4px; border-radius: 50%; background: rgba(13,31,78,.2); }
 
     /* Hero feature image container — sits at bottom of hero, overlaps content */
     .hero-img-wrap {
@@ -194,9 +195,9 @@
     /* ══ ARTICLE LAYOUT ══ */
     .article-layout {
       display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 48px;
-      max-width: 1200px; margin: 0 auto;
+      grid-template-columns: 1fr 280px;
+      gap: 40px;
+      max-width: 1100px; margin: 0 auto;
       padding: 48px 28px 80px;
       align-items: start;
     }
@@ -532,7 +533,7 @@
     <div class="inner">
       <div class="topbar-left">
         <span><i class="fas fa-phone"></i> +65 9456 0451</span>
-        <span><i class="fas fa-envelope"></i> enquiry@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e1b100f0b170c073e151b071912111c1f120e0c11141b1d0a0d501d1113">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
       </div>
       <div class="topbar-right">
@@ -811,80 +812,81 @@
           </div>
         </div>
 
-        <!-- Contact KGP -->
-        <div class="sidebar-card">
-          <div class="sidebar-card-head"><i class="fas fa-phone-alt"></i> Talk to an Advisor</div>
-          <div class="contact-sidebar-body">
-            <div class="csb-item">
-              <div class="csb-icon"><i class="fas fa-phone"></i></div>
-              <div class="csb-text">
-                <div class="csb-label">Phone</div>
-                <div class="csb-val">+65 9456 0451</div>
-              </div>
+        <!-- AdvisorAI logo only -->
+        <div style="display:flex;align-items:center;justify-content:center;padding:18px;">
+          <a href="advisorai.html" title="KGP AdvisorAI">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;box-shadow:0 4px 14px rgba(208,32,32,.3);transition:transform .2s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fas fa-robot"></i>
             </div>
-            <div class="csb-item">
-              <div class="csb-icon"><i class="fas fa-envelope"></i></div>
-              <div class="csb-text">
-                <div class="csb-label">Email</div>
-                <div class="csb-val">enquiry@keyglobalprojects.com</div>
-              </div>
-            </div>
-            <div class="csb-item">
-              <div class="csb-icon"><i class="fas fa-clock"></i></div>
-              <div class="csb-text">
-                <div class="csb-label">Hours</div>
-                <div class="csb-val">Mon–Fri, 9AM–6PM SGT</div>
-              </div>
-            </div>
-            <button class="csb-cta"><i class="fas fa-calendar-alt"></i> Schedule a Meeting</button>
-          </div>
+          </a>
         </div>
-
-        <!-- Recent posts -->
-        <div class="sidebar-card">
-          <div class="sidebar-card-head"><i class="fas fa-newspaper"></i> Recent Articles</div>
-          <div class="sidebar-card-body">
-            <div class="recent-list">
-              <a href="blog-article.html" class="recent-item">
-                <div class="recent-thumb" style="padding:0;overflow:hidden;border-radius:8px;">
-                  <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=120&q=75" alt="M&A" style="width:62px;height:52px;object-fit:cover;display:block;border-radius:8px;"/>
-                </div>
-                <div class="recent-info">
-                  <div class="recent-cat">M&A</div>
-                  <h5>The Business Inheritance Problem: How M&A Can Save Traditional Enterprises</h5>
-                  <div class="recent-date">October 2025</div>
-                </div>
-              </a>
-              <a href="blog-article.html" class="recent-item">
-                <div class="recent-thumb" style="padding:0;overflow:hidden;border-radius:8px;">
-                  <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=120&q=75" alt="IPO" style="width:62px;height:52px;object-fit:cover;display:block;border-radius:8px;"/>
-                </div>
-                <div class="recent-info">
-                  <div class="recent-cat">RTO</div>
-                  <h5>Reverse Takeover vs. Traditional IPO: Which Path Is Right for You?</h5>
-                  <div class="recent-date">September 2025</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- AdvisorAI promo -->
-        <div class="sidebar-card" style="background:var(--navy); border-color:var(--navy);">
-          <div style="padding:22px; text-align:center;">
-            <div style="width:50px;height:50px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;color:#fff;"><i class="fas fa-robot"></i></div>
-            <div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:8px;">Ask KGP AdvisorAI</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:16px;">Have questions about IPO readiness or M&A? Our AI advisor is available 24/7.</div>
-            <a href="advisorai.html" class="btn btn-red" style="font-size:12px;padding:10px 22px;display:inline-flex;">
-              Chat Now <span class="arr"><i class="fas fa-arrow-right"></i></span>
-            </a>
-          </div>
-        </div>
-
       </div>
     </aside>
 
   </div><!-- /article-layout -->
+
+  <!-- ══ BOTTOM SIDEBAR SECTIONS ══ -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 28px 64px;display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+
+    <!-- Talk to an Advisor -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-head"><i class="fas fa-phone-alt"></i> Talk to an Advisor</div>
+      <div class="contact-sidebar-body">
+        <div class="csb-item">
+          <div class="csb-icon"><i class="fas fa-phone"></i></div>
+          <div class="csb-text">
+            <div class="csb-label">Phone</div>
+            <div class="csb-val">+65 9456 0451</div>
+          </div>
+        </div>
+        <div class="csb-item">
+          <div class="csb-icon"><i class="fas fa-envelope"></i></div>
+          <div class="csb-text">
+            <div class="csb-label">Email</div>
+            <div class="csb-val">enquiry@keyglobalprojects.com</div>
+          </div>
+        </div>
+        <div class="csb-item">
+          <div class="csb-icon"><i class="fas fa-clock"></i></div>
+          <div class="csb-text">
+            <div class="csb-label">Hours</div>
+            <div class="csb-val">Mon–Fri, 9AM–6PM SGT</div>
+          </div>
+        </div>
+        <button class="csb-cta"><i class="fas fa-calendar-alt"></i> Schedule a Meeting</button>
+      </div>
+    </div>
+
+    <!-- Recent Articles -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-head"><i class="fas fa-newspaper"></i> Recent Articles</div>
+      <div class="sidebar-card-body">
+        <div class="recent-list">
+          <a href="blog-article.html" class="recent-item">
+            <div class="recent-thumb" style="padding:0;overflow:hidden;border-radius:8px;">
+              <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=120&q=75" alt="M&A" style="width:62px;height:52px;object-fit:cover;display:block;border-radius:8px;"/>
+            </div>
+            <div class="recent-info">
+              <div class="recent-cat">M&A</div>
+              <h5>The Business Inheritance Problem: How M&A Can Save Traditional Enterprises</h5>
+              <div class="recent-date">October 2025</div>
+            </div>
+          </a>
+          <a href="blog-article.html" class="recent-item">
+            <div class="recent-thumb" style="padding:0;overflow:hidden;border-radius:8px;">
+              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=120&q=75" alt="IPO" style="width:62px;height:52px;object-fit:cover;display:block;border-radius:8px;"/>
+            </div>
+            <div class="recent-info">
+              <div class="recent-cat">RTO</div>
+              <h5>Reverse Takeover vs. Traditional IPO: Which Path Is Right for You?</h5>
+              <div class="recent-date">September 2025</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
   <!-- ══ FOOTER ══ -->
   <footer>
@@ -899,7 +901,7 @@
             <ul class="f-contact">
               <li><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
               <li><i class="fas fa-phone"></i> +65 9456 0451</li>
-              <li><i class="fas fa-envelope"></i> enquiry@keyglobalprojects.com</li>
+              <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6c3c8d7d3cfd4dfe6cdc3dfc1cac9c4c7cad6d4c9ccc3c5d2d588c5c9cb">[email&#160;protected]</a></li>
             </ul>
             <div class="f-socials">
               <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -956,7 +958,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Reading progress bar
     window.addEventListener('scroll', () => {
       const body = document.getElementById('articleBody');
@@ -985,22 +987,23 @@
           if (link) link.classList.add('active');
         }
       });
-    }, { rootMargin: '-15% 0px -75% 0px' });
+    }, { rootMargin: '0px 0px -60% 0px' });
 
     sections.forEach(s => tocObs.observe(s));
 
-    // Copy link
+    // Copy link button
     function copyLink(btn) {
       navigator.clipboard.writeText(window.location.href).then(() => {
+        const orig = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        btn.style.color = '#16a34a';
-        setTimeout(() => {
-          btn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-          btn.style.color = '';
-        }, 2000);
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
       });
     }
-  </script>
 
+    // Mobile nav toggle
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

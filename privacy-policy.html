@@ -406,7 +406,7 @@
     <div class="inner">
       <div class="topbar-left">
         <span><i class="fas fa-phone"></i> +65 9456 0451</span>
-        <span><i class="fas fa-envelope"></i> enquiry@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="17727966627e656e577c726e707b7875767b6765787d727463643974787a">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt"></i> 47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
       </div>
       <div class="topbar-right">
@@ -449,12 +449,9 @@
         <span>Disclaimer & Privacy Policy</span>
       </div>
       <h1>Disclaimer &amp; <span>Privacy Policy</span></h1>
-      <p>Please read this document carefully before using our AI Advisory chatbot or any platform services.</p>
+      <p>This policy governs your use of our AI Advisory chatbot and platform services. By accessing these services, you agree to the terms outlined below.</p>
       <div class="pp-meta">
         <div class="pp-meta-item"><i class="fas fa-calendar-alt"></i> Effective: January 2026</div>
-        <div class="pp-meta-item"><i class="fas fa-file-alt"></i> 6 Sections</div>
-        <div class="pp-meta-item"><i class="fas fa-shield-alt"></i> PDPA Compliant</div>
-        <div class="pp-meta-item"><i class="fas fa-building"></i> Key Global Projects Pte. Ltd.</div>
       </div>
     </div>
   </div>
@@ -579,7 +576,7 @@
       <div class="pp-content-footer">
         <div>
           <p><strong>Key Global Projects Pte. Ltd.</strong></p>
-          <p>47 Kallang Pudding Rd, #11-07, Singapore 349318 &nbsp;·&nbsp; enquiry@keyglobalprojects.com</p>
+          <p>47 Kallang Pudding Rd, #11-07, Singapore 349318 &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f4a415e5a465d566f444a564843404d4e435f5d40454a4c5b5c014c4042">[email&#160;protected]</a></p>
         </div>
         <div class="pp-cf-actions">
           <button class="pp-cf-btn navy" onclick="window.print()">
@@ -605,7 +602,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Scroll progress bar
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
@@ -625,10 +622,14 @@
           if (link) link.classList.add('active');
         }
       });
-    }, { rootMargin: '-20% 0px -70% 0px' });
+    }, { rootMargin: '0px 0px -60% 0px' });
 
     sections.forEach(s => obs.observe(s));
-  </script>
 
+    // Mobile nav toggle
+    document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+      document.getElementById('navLinks')?.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

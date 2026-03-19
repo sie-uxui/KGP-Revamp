@@ -107,7 +107,7 @@
 
   /* ═══ PAGE LAYOUT ═══ */
   .page-main { padding: 40px 0 80px; }
-  .page-layout { display: grid; grid-template-columns: 1fr 360px; gap: 36px; align-items: start; }
+  .page-layout { display: grid; grid-template-columns: 1fr 300px; gap: 36px; align-items: start; }
 
   /* ═══ LEFT COLUMN ═══ */
 
@@ -137,11 +137,12 @@
   .card-head { padding: 22px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .card-head h3 { font-size: 15px; font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: .7px; }
   .card-head i { color: var(--red); font-size: 14px; }
-  .card-body { padding: 24px 28px; }
+  .card-body { padding: 0; }
+  .card-body.padded { padding: 24px 28px; }
 
   /* Key Facts Grid */
-  .kf-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
-  .kf { background: #fff; padding: 18px 16px; text-align: center; }
+  .kf-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border-radius: 0 0 12px 12px; overflow: hidden; }
+  .kf { background: #fff; padding: 16px; text-align: center; }
   .kf-lbl { font-size: 11px; font-weight: 900; color: var(--lgray); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; }
   .kf-val { font-size: 18px; font-weight: 900; color: var(--navy); line-height: 1.1; }
   .kf-val.red { color: var(--red); }
@@ -174,38 +175,38 @@
   .sticky-sidebar { position: sticky; top: 92px; display: flex; flex-direction: column; gap: 20px; }
 
   /* Price + CTA Card */
-  .cta-card { background: #fff; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
-  .cta-price-area { background: var(--navy); padding: 26px 28px; }
-  .cta-price-lbl { font-size: 11px; font-weight: 900; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
-  .cta-price { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
-  .cta-price span { color: var(--red); }
-  .cta-price-sub { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 5px; font-weight: 600; }
-  .cta-match { display: inline-flex; align-items: center; gap: 7px; background: rgba(34,197,94,.15); border: 1px solid rgba(34,197,94,.3); color: #4ade80; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; padding: 5px 12px; border-radius: 40px; margin-top: 12px; }
-  .cta-body { padding: 24px 28px; }
-  .cta-actions { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-  .cta-actions .btn { width: 100%; justify-content: center; font-size: 14px; padding: 15px 20px; }
-  .cta-actions .btn-save-full { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 13px; border-radius: 40px; border: 2px solid var(--border); background: var(--offbg); color: var(--navy); font-family: var(--f); font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; transition: all .2s; }
-  .cta-actions .btn-save-full:hover { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.04); }
-  .cta-actions .btn-save-full.saved { border-color: var(--red); color: var(--red); background: rgba(208,32,32,.06); }
-  .cta-divider { height: 1px; background: var(--border); margin: 20px 0; }
-  .cta-actions-row { display: flex; gap: 10px; }
-  .cta-icon-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px; border-radius: 10px; border: 1.5px solid var(--border); background: var(--offbg); color: var(--navy); font-family: var(--f); font-size: 12.5px; font-weight: 800; cursor: pointer; transition: all .2s; }
-  .cta-icon-btn:hover { border-color: var(--navy); background: #fff; }
-  .cta-note { display: flex; align-items: flex-start; gap: 8px; background: rgba(208,32,32,.04); border: 1px solid rgba(208,32,32,.12); border-radius: 10px; padding: 12px 14px; font-size: 12.5px; color: var(--gray); line-height: 1.55; margin-top: 16px; }
-  .cta-note i { color: var(--red); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .cta-card { background: #fff; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+  .cta-price-area { background: var(--navy); padding: 22px 24px; }
+  .cta-price-lbl { font-size: 10px; font-weight: 900; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 6px; }
+  .cta-price { font-size: 32px; font-weight: 900; color: #fff; line-height: 1; }
+  .cta-price span { color: #fff; }
+  .cta-price-sub { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 4px; font-weight: 600; }
+  .cta-match { display: inline-flex; align-items: center; gap: 6px; background: rgba(208,32,32,.2); border: 1px solid rgba(208,32,32,.35); color: #fff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; padding: 4px 10px; border-radius: 40px; margin-top: 10px; }
+  .cta-body { padding: 18px 20px; }
+  .cta-actions { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+  .cta-actions .btn { width: 100%; justify-content: center; font-size: 13.5px; padding: 13px 20px; }
+  .cta-actions .btn-save-full { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 11px; border-radius: 40px; border: 1.5px solid var(--border); background: #fff; color: var(--navy); font-family: var(--f); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; cursor: pointer; transition: all .2s; }
+  .cta-actions .btn-save-full:hover { border-color: var(--red); color: var(--red); }
+  .cta-actions .btn-save-full.saved { border-color: var(--red); color: var(--red); }
+  .cta-divider { height: 1px; background: var(--border); margin: 14px 0; }
+  .cta-actions-row { display: flex; gap: 8px; }
+  .cta-icon-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 6px; border-radius: 8px; border: 1.5px solid var(--border); background: #fff; color: var(--navy); font-family: var(--f); font-size: 12px; font-weight: 800; cursor: pointer; transition: all .2s; }
+  .cta-icon-btn:hover { border-color: var(--navy); background: var(--offbg); }
+  .cta-note { display: flex; align-items: flex-start; gap: 7px; background: var(--offbg); border-radius: 8px; padding: 10px 12px; font-size: 12px; color: var(--gray); line-height: 1.5; margin-top: 12px; }
+  .cta-note i { color: var(--red); font-size: 12px; flex-shrink: 0; margin-top: 1px; }
 
   /* Consultant Card */
-  .consultant-card { background: var(--navy); border-radius: 16px; padding: 24px; }
-  .cc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-  .cc-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; flex-shrink: 0; }
-  .cc-name { font-size: 15px; font-weight: 900; color: #fff; }
-  .cc-title { font-size: 12px; color: rgba(255,255,255,.55); font-weight: 600; margin-top: 2px; }
-  .cc-contacts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-  .cc-contact { display: flex; align-items: center; gap: 9px; font-size: 13px; color: rgba(255,255,255,.7); font-weight: 600; }
-  .cc-contact i { color: var(--red); width: 14px; flex-shrink: 0; font-size: 12px; }
+  .consultant-card { background: var(--navy); border-radius: 16px; padding: 20px; }
+  .cc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .cc-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 17px; color: #fff; flex-shrink: 0; }
+  .cc-name { font-size: 14px; font-weight: 900; color: #fff; }
+  .cc-title { font-size: 11.5px; color: rgba(255,255,255,.45); font-weight: 600; margin-top: 2px; }
+  .cc-contacts { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+  .cc-contact { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: rgba(255,255,255,.65); font-weight: 600; }
+  .cc-contact i { color: var(--red); width: 13px; flex-shrink: 0; font-size: 11px; }
   .cc-contact a { color: inherit; transition: color .2s; }
   .cc-contact a:hover { color: #fff; }
-  .cc-btn { display: block; width: 100%; background: var(--red); color: #fff; border: none; padding: 13px; border-radius: 40px; font-family: var(--f); font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; transition: background .2s; text-align: center; }
+  .cc-btn { display: block; width: 100%; background: var(--red); color: #fff; border: none; padding: 12px; border-radius: 40px; font-family: var(--f); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; cursor: pointer; transition: background .2s; text-align: center; }
   .cc-btn:hover { background: var(--reddark); }
 
   /* Source tag */
@@ -339,7 +340,7 @@
     <div class="topbar-inner">
       <div class="topbar-left">
         <span><i class="fas fa-phone"></i>+65 9456 0451</span>
-        <span><i class="fas fa-envelope"></i>info@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b8d1d6ded7f8d3ddc1dfd4d7dad9d4c8cad7d2dddbcccb96dbd7d5">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</span>
       </div>
       <div class="topbar-right">
@@ -501,7 +502,7 @@
             <i class="fas fa-file-alt"></i>
             <h3>Business Overview</h3>
           </div>
-          <div class="card-body">
+          <div class="card-body padded">
             <div class="desc-text">
               <p>A well-established Italian restaurant operating from a prime CBD location, with a loyal customer base built over nearly a decade. The business benefits from consistent walk-in traffic as well as a strong repeat patronage from nearby office workers and residents.</p>
               <p>The fully equipped kitchen features professional-grade Italian appliances capable of supporting a high-volume service. The 60-seat dining room is designed to accommodate both casual dining and private group bookings, which contribute meaningfully to overall revenue. Strong brand presence in the Central Business District supported by consistent Google and TripAdvisor ratings.</p>
@@ -516,7 +517,7 @@
             <i class="fas fa-info-circle"></i>
             <h3>Business Details</h3>
           </div>
-          <div class="card-body">
+          <div class="card-body padded">
             <div class="details-grid">
               <div class="detail-row">
                 <span class="detail-lbl">Business Type</span>
@@ -560,7 +561,7 @@
             <i class="fas fa-dollar-sign"></i>
             <h3>Financial Summary</h3>
           </div>
-          <div class="card-body">
+          <div class="card-body padded">
             <div style="background:rgba(208,32,32,.04);border:1px solid rgba(208,32,32,.14);border-radius:10px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--gray);line-height:1.55;">
               <i class="fas fa-lock" style="color:var(--red);margin-top:1px;flex-shrink:0;"></i>
               Full financials including audited P&L, balance sheets, and lease details are available upon signing an NDA. Express interest below to receive the full information pack.
@@ -596,7 +597,7 @@
             <i class="fas fa-star"></i>
             <h3>Why This Business</h3>
           </div>
-          <div class="card-body">
+          <div class="card-body padded">
             <div style="display:flex;flex-direction:column;gap:12px;">
               <div style="display:flex;align-items:flex-start;gap:14px;padding:14px;background:var(--offbg);border-radius:10px;border:1px solid var(--border);">
                 <div style="width:36px;height:36px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-map-pin" style="color:#fff;font-size:14px;"></i></div>
@@ -623,7 +624,7 @@
         <div class="cta-card">
           <div class="cta-price-area">
             <div class="cta-price-lbl">Asking Price (SGD)</div>
-            <div class="cta-price">$<span>850</span>,000</div>
+            <div class="cta-price"><span>$</span>850,000</div>
             <div class="cta-price-sub">Negotiable · 100% Acquisition</div>
             <div class="cta-match"><i class="fas fa-bolt"></i> High Match — Score 91/100</div>
           </div>
@@ -667,7 +668,7 @@
           </div>
           <div class="cc-contacts">
             <div class="cc-contact"><i class="fas fa-phone"></i>+65 9456 0451</div>
-            <div class="cc-contact"><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com">info@keyglobalprojects.com</a></div>
+            <div class="cc-contact"><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#7811161e1738131d011f14171a1914080a17121d1b0c0b561b1715"><span class="__cf_email__" data-cfemail="157c7b737a557e706c72797a77747965677a7f707661663b767a78">[email&#160;protected]</span></a></div>
             <div class="cc-contact"><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07</div>
           </div>
           <button class="cc-btn" onclick="openInterestModal()">
@@ -827,7 +828,7 @@
       <div style="font-size:11px;font-weight:900;color:var(--lgray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">KGP Contact Details</div>
       <div style="font-size:13.5px;color:var(--navy);display:flex;flex-direction:column;gap:7px;">
         <span><i class="fas fa-phone" style="color:var(--red);width:16px;"></i> +65 9456 0451</span>
-        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> info@keyglobalprojects.com</span>
+        <span><i class="fas fa-envelope" style="color:var(--red);width:16px;"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a4cdcac2cbe4cfc1ddc3c8cbc6c5c8d4d6cbcec1c7d0d78ac7cbc9">[email&#160;protected]</a></span>
         <span><i class="fas fa-map-marker-alt" style="color:var(--red);width:16px;"></i> 47 Kallang Pudding Rd, #11-07</span>
       </div>
     </div>
@@ -850,7 +851,7 @@
           <ul class="f-contact">
             <li><i class="fas fa-map-marker-alt"></i>47 Kallang Pudding Rd, #11-07, Singapore 349318</li>
             <li><i class="fas fa-phone"></i>+65 9456 0451</li>
-            <li><i class="fas fa-envelope"></i><a href="mailto:info@keyglobalprojects.com" style="color:inherit;">info@keyglobalprojects.com</a></li>
+            <li><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#432a2d252c0328263a242f2c21222f33312c29262037306d202c2e" style="color:inherit;"><span class="__cf_email__" data-cfemail="8ee7e0e8e1cee5ebf7e9e2e1ecefe2fefce1e4ebedfafda0ede1e3">[email&#160;protected]</span></a></li>
           </ul>
           <div class="f-socials">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -903,7 +904,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── Carousel ──
 const slides = [
   'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&h=600&fit=crop',
@@ -996,23 +997,24 @@ function closeInterestModal() {
   document.body.style.overflow = '';
 }
 function submitInterest() {
-  if (!document.getElementById('iName').value.trim() || !document.getElementById('iEmail').value.trim()) {
-    alert('Please fill in your name and email.'); return;
-  }
+  const name = document.getElementById('iName').value.trim();
+  const email = document.getElementById('iEmail').value.trim();
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { alert('Please enter a valid email.'); return; }
+
   document.getElementById('modalFormWrap').style.display = 'none';
   document.getElementById('modalSuccess').classList.add('show');
 }
 
-// ── Mobile nav ──
-document.getElementById('hamburger').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('mobileNav').classList.toggle('open');
+// ── Navbar scroll ──
+window.addEventListener('scroll', () => {
+  document.querySelector('.navbar')?.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── Mobile hamburger ──
+document.getElementById('hamburger')?.addEventListener('click', () => {
+  document.getElementById('mobileNav')?.classList.toggle('open');
 });
 </script>
-
-<style>
-@keyframes toastIn { from { opacity:0; transform:translateX(-50%) translateY(12px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
-</style>
-
 </body>
 </html>

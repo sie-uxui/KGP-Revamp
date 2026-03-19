@@ -545,17 +545,17 @@
       <span class="nav-badge" id="leadsBadge">12</span>
     </div>
     <div class="nav-item" onclick="goPage('sessions', this)">
-      <i class="fas fa-comments"></i> AI Sessions
+      <i class="fas fa-comments"></i> Chat Logs
     </div>
   </div>
 
   <div class="nav-section">
-    <div class="nav-label">Content</div>
+    <div class="nav-label">Content Management</div>
     <div class="nav-item" onclick="goPage('kb', this)">
       <i class="fas fa-database"></i> Knowledge Base
     </div>
     <div class="nav-item" onclick="goPage('cms', this)">
-      <i class="fas fa-th-large"></i> CMS
+      <i class="fas fa-th-large"></i> Content Management
     </div>
     <div class="nav-item" onclick="goPage('blog', this)">
       <i class="fas fa-pen-nib"></i> Blog
@@ -958,7 +958,7 @@
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
       <div>
         <div class="lbl" style="margin-bottom:4px;">Chatbot</div>
-        <div style="font-size:24px;font-weight:900;color:var(--navy);">AI Advisory Sessions</div>
+        <div style="font-size:24px;font-weight:900;color:var(--navy);">Chat Logs</div>
       </div>
     </div>
     <div class="sessions-layout">
@@ -1515,7 +1515,7 @@ function goPage(id, el) {
   const titles = {
     dashboard: ['Dashboard', 'KGP Admin / Dashboard'],
     leads: ['Leads Management', 'KGP Admin / Leads'],
-    sessions: ['AI Advisory Sessions', 'KGP Admin / Sessions'],
+    sessions: ['Chat Logs', 'KGP Admin / Chat Logs'],
     kb: ['Knowledge Base', 'KGP Admin / Knowledge Base'],
     cms: ['Business Listings CMS', 'KGP Admin / CMS'],
     blog: ['Blog CMS', 'KGP Admin / Blog'],
@@ -1648,8 +1648,10 @@ function loadSession(el, idx) {
   c.messages.forEach(m => {
     const div = document.createElement('div');
     div.className = 'msg ' + m.role;
-    const icon = m.role === 'bot' ? 'fas fa-robot' : 'fas fa-user';
-    div.innerHTML = `<div class="msg-avatar"><i class="${icon}"></i></div><div class="msg-bubble">${m.text}</div>`;
+    const avatarHTML = m.role === 'bot'
+      ? `<img src="bot.png" style="width:20px;height:20px;filter:invert(1);">`
+      : `<i class="fas fa-user"></i>`;
+    div.innerHTML = `<div class="msg-avatar">${avatarHTML}</div><div class="msg-bubble">${m.text}</div>`;
     msgs.appendChild(div);
   });
   msgs.scrollTop = msgs.scrollHeight;
